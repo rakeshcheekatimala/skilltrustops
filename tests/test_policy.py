@@ -4,6 +4,7 @@ from pathlib import Path
 import pytest
 
 from skilltrustops.policies.loader import PolicyError, PolicyLoader
+from skilltrustops.policies.profiles import recommended_v2
 
 
 def policy_data(*, lint_enabled: bool = True) -> dict[str, object]:
@@ -22,9 +23,11 @@ def policy_data(*, lint_enabled: bool = True) -> dict[str, object]:
 def test_uses_builtin_profile_when_repository_has_no_policy(tmp_path: Path) -> None:
     loaded = PolicyLoader().load(None, tmp_path)
 
-    assert loaded.policy.profile == "recommended-v1"
+    assert loaded.policy.profile == "recommended-v2"
     assert loaded.policy.checks.lint.enabled is True
-    assert loaded.reference.source == "builtin:recommended-v1"
+    assert loaded.policy.checks.security is not None
+    assert loaded.policy.checks.privacy is not None
+    assert loaded.reference.source == "builtin:recommended-v2"
     assert len(loaded.reference.sha256) == 64
 
 
@@ -78,12 +81,38 @@ def test_rejects_unimplemented_future_checks(tmp_path: Path) -> None:
         "  lint:\n"
         "    enabled: true\n"
         "    ruleset: agent-skills-specification\n"
-        "  privacy:\n"
+        "  review:\n"
         "    enabled: true\n",
         encoding="utf-8",
     )
 
-    with pytest.raises(PolicyError, match="privacy"):
+    with pytest.raises(PolicyError, match="review"):
+        PolicyLoader().load(path, tmp_path)
+
+
+def test_recommended_v2_requires_security_and_privacy(tmp_path: Path) -> None:
+    path = tmp_path / "policy.yaml"
+    path.write_text(
+        "version: 1\n"
+        "profile: recommended-v2\n"
+        "checks:\n"
+        "  lint:\n"
+        "    enabled: true\n"
+        "    ruleset: agent-skills-specification\n",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(PolicyError, match="requires both security and privacy"):
+        PolicyLoader().load(path, tmp_path)
+
+
+def test_recommended_v1_rejects_static_checks(tmp_path: Path) -> None:
+    data = recommended_v2().model_dump(mode="json")
+    data["profile"] = "recommended-v1"
+    path = tmp_path / "policy.json"
+    path.write_text(json.dumps(data), encoding="utf-8")
+
+    with pytest.raises(PolicyError, match="recommended-v1 supports only lint"):
         PolicyLoader().load(path, tmp_path)
 
 

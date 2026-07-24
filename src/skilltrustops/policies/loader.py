@@ -12,7 +12,7 @@ from pydantic import ValidationError
 
 from skilltrustops.domain.reports import PolicyReference
 from skilltrustops.policies.models import SkillTrustPolicy
-from skilltrustops.policies.profiles import recommended_v1
+from skilltrustops.policies.profiles import recommended_v2
 
 POLICY_FILENAMES = (
     "skilltrustops.yaml",
@@ -45,10 +45,10 @@ class PolicyLoader:
         """Load an explicit policy, discover a repository policy, or use defaults."""
         selected_path = policy_path or self._discover(search_start)
         if selected_path is None:
-            policy = recommended_v1()
+            policy = recommended_v2()
             return LoadedPolicy(
                 policy=policy,
-                reference=self._reference(policy, "builtin:recommended-v1"),
+                reference=self._reference(policy, "builtin:recommended-v2"),
             )
 
         policy = self._load_file(selected_path)
