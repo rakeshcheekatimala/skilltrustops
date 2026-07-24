@@ -1,0 +1,6 @@
+version: 1
+profile: recommended-v1
+checks:
+  lint:
+    enabled: true
+    ruleset: agent-skills-specification
