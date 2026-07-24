@@ -50,7 +50,7 @@ def test_lint_emits_machine_readable_json(tmp_path: Path) -> None:
     assert report["schema_version"] == "1.1"
     assert report["specification"] == "https://agentskills.io/specification"
     assert report["command"] == "lint"
-    assert report["policy"]["profile"] == "recommended-v1"
+    assert report["policy"]["profile"] == "recommended-v2"
     assert len(report["policy"]["sha256"]) == 64
     assert report["passed"] is True
     assert report["findings"] == []
@@ -146,5 +146,27 @@ def test_policy_init_generates_json(tmp_path: Path) -> None:
 
     assert result.exit_code == 0
     generated = json.loads(destination.read_text(encoding="utf-8"))
-    assert generated["profile"] == "recommended-v1"
+    assert generated["profile"] == "recommended-v2"
     assert generated["checks"]["lint"]["enabled"] is True
+
+
+def test_policy_init_can_generate_immutable_v1(tmp_path: Path) -> None:
+    destination = tmp_path / "skilltrustops.yaml"
+
+    result = runner.invoke(
+        app,
+        [
+            "policy",
+            "init",
+            "--profile",
+            "recommended-v1",
+            "--output",
+            str(destination),
+        ],
+    )
+
+    assert result.exit_code == 0
+    generated = destination.read_text(encoding="utf-8")
+    assert "profile: recommended-v1" in generated
+    assert "security:" not in generated
+    assert "privacy:" not in generated

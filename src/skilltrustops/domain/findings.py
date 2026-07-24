@@ -8,6 +8,10 @@ from pydantic import BaseModel, ConfigDict, Field
 class Severity(StrEnum):
     """Severity levels used by static analysis findings."""
 
+    CRITICAL = "critical"
+    HIGH = "high"
+    MEDIUM = "medium"
+    LOW = "low"
     ERROR = "error"
     WARNING = "warning"
 

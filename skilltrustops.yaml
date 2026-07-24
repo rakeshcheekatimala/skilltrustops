@@ -1,6 +1,27 @@
 version: 1
-profile: recommended-v1
+profile: recommended-v2
 checks:
   lint:
     enabled: true
     ruleset: agent-skills-specification
+  security:
+    enabled: true
+    secrets:
+      enabled: true
+      engine: builtin
+    dangerous_code:
+      enabled: true
+      engine: ast
+      block_eval: true
+      block_destructive_shell: true
+      block_remote_pipe: true
+  privacy:
+    enabled: true
+    pii:
+      enabled: true
+      engine: builtin
+      entities:
+        - email
+        - phone
+        - ssn
+        - credit_card

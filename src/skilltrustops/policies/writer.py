@@ -6,7 +6,8 @@ from pathlib import Path
 
 import yaml
 
-from skilltrustops.policies.profiles import recommended_v1
+from skilltrustops.policies.models import ProfileName
+from skilltrustops.policies.profiles import recommended_v1, recommended_v2
 
 
 class PolicyFileFormat(StrEnum):
@@ -23,8 +24,13 @@ class PolicyWriteError(ValueError):
 class PolicyWriter:
     """Write a built-in profile without overwriting an existing policy."""
 
-    def write(self, path: Path, output_format: PolicyFileFormat) -> Path:
-        """Generate recommended-v1 at an explicit destination."""
+    def write(
+        self,
+        path: Path,
+        output_format: PolicyFileFormat,
+        profile: ProfileName = ProfileName.RECOMMENDED_V2,
+    ) -> Path:
+        """Generate a built-in profile at an explicit destination."""
         expected_suffixes = (
             {".yaml", ".yml"}
             if output_format is PolicyFileFormat.YAML
@@ -40,7 +46,12 @@ class PolicyWriter:
                 f"{output_format.value} policy output must use {expected}."
             )
 
-        policy_data = recommended_v1().model_dump(mode="json")
+        policy = (
+            recommended_v1()
+            if profile is ProfileName.RECOMMENDED_V1
+            else recommended_v2()
+        )
+        policy_data = policy.model_dump(mode="json", exclude_none=True)
         if output_format is PolicyFileFormat.JSON:
             rendered = json.dumps(policy_data, indent=2) + "\n"
         else:

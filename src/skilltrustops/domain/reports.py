@@ -32,3 +32,19 @@ class LintReport(BaseModel):
     policy: PolicyReference
     passed: bool
     findings: tuple[Finding, ...]
+
+
+class StaticScanReport(BaseModel):
+    """Machine-readable deterministic security or privacy result."""
+
+    model_config = ConfigDict(frozen=True)
+
+    schema_version: Literal["1.2"] = "1.2"
+    tool_version: str
+    command: Literal["security", "privacy"]
+    target: str
+    policy: PolicyReference
+    deterministic: Literal[True] = True
+    duration_ms: float
+    passed: bool
+    findings: tuple[Finding, ...]
