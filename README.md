@@ -22,6 +22,7 @@ Run the Phase 1 checks:
 ```bash
 skilltrustops lint ./my-skill/SKILL.md
 skilltrustops lint ./my-skill/SKILL.md --format json
+skilltrustops lint ./examples/valid-skill/SKILL.md
 pytest
 ruff check .
 mypy src
