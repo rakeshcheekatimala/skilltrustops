@@ -8,7 +8,9 @@ checks:
     enabled: true
     secrets:
       enabled: true
-      engine: builtin
+      scanners:
+        - engine: builtin
+          enabled: true
     dangerous_code:
       enabled: true
       engine: ast

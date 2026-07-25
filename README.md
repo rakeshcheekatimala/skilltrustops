@@ -166,7 +166,7 @@ uv build
 Expected results:
 
 ```text
-58 passed
+69 passed
 All checks passed!
 Success: no issues found
 Successfully built ...
@@ -203,7 +203,9 @@ checks:
     enabled: true
     secrets:
       enabled: true
-      engine: builtin
+      scanners:
+        - engine: builtin
+          enabled: true
     dangerous_code:
       enabled: true
       engine: ast
@@ -298,8 +300,14 @@ checks:
   security:
     enabled: true
     secrets:
-      enabled: false
-      engine: builtin
+      enabled: true
+      scanners:
+        - engine: builtin
+          enabled: false
+        - engine: gitleaks
+          enabled: true
+          timeout_seconds: 30
+          config: .skilltrustops/gitleaks.toml
     dangerous_code:
       enabled: true
       engine: ast
@@ -352,6 +360,67 @@ SkillTrustOps never includes a detected secret value in report evidence.
 Security findings retain their individual severity; they are not hidden inside
 a combined score.
 
+### Use Gitleaks for secret scanning
+
+Gitleaks is an optional local executable; it is not downloaded or installed by
+SkillTrustOps. Install it separately and verify it is available:
+
+```bash
+# macOS
+brew install gitleaks
+
+gitleaks version
+```
+
+For Linux, Windows, and other installation methods, use the
+[official Gitleaks installation documentation](https://github.com/gitleaks/gitleaks#installing).
+
+Replace the `secrets` block in `skilltrustops.yaml`:
+
+```yaml
+checks:
+  security:
+    enabled: true
+    secrets:
+      enabled: true
+      scanners:
+        - engine: builtin
+          enabled: true
+
+        - engine: gitleaks
+          enabled: true
+          timeout_seconds: 30
+          config: .skilltrustops/gitleaks.toml
+    dangerous_code:
+      enabled: true
+      engine: ast
+      block_eval: true
+      block_destructive_shell: true
+      block_remote_pipe: true
+```
+
+Validate and run:
+
+```bash
+uv run skilltrustops policy validate
+uv run skilltrustops security path/to/skill/SKILL.md
+```
+
+The included `.skilltrustops/gitleaks.toml` extends Gitleaks' default rules.
+Its contents are included in the effective SkillTrustOps policy hash.
+
+The adapter streams the bounded `SKILL.md` content to `gitleaks stdin`. It does
+not scan Git history, recurse through neighboring files, execute skill code, or
+make a network request. It invokes Gitleaks with `shell=False`, full output
+redaction, a timeout, and `gitleaks:allow` comments disabled. Ambient
+`GITLEAKS_CONFIG` variables are removed so policy controls configuration.
+Secret, match, and source-line values from the Gitleaks report are never copied
+into SkillTrustOps evidence.
+
+If policy selects `gitleaks` but the executable is unavailable or fails to
+produce a valid JSON report, the command returns exit code `2`. SkillTrustOps
+does not silently fall back to the built-in detector.
+
 ## Deterministic privacy scanning
 
 Run the privacy check:
@@ -372,12 +441,19 @@ Detected PII values are redacted from evidence and terminal/JSON reports.
 
 ## Scanner adapters
 
-Policy uses one consistent `engine` attribute. The working defaults are local
-and dependency-light:
+Secret scanning accepts an ordered `scanners` list. The working default is
+local and dependency-light; Gitleaks can run alone or alongside it:
 
 ```yaml
 secrets:
-  engine: builtin
+  enabled: true
+  scanners:
+    - engine: builtin
+      enabled: true
+    - engine: gitleaks
+      enabled: true
+      timeout_seconds: 30
+      config: .skilltrustops/gitleaks.toml
 pii:
   engine: builtin
 dangerous_code:
@@ -385,9 +461,9 @@ dangerous_code:
 ```
 
 The detector protocols and engine factory allow future adapters for
-detect-secrets, Gitleaks, Microsoft Presidio, and YARA without changing CLI
-commands or report models. Those third-party engines are not yet accepted as
-policy values, so a policy cannot claim an analysis that was not executed.
+detect-secrets, Microsoft Presidio, and YARA without changing CLI commands or
+report models. Unsupported third-party engines are rejected so a policy cannot
+claim an analysis that was not executed.
 
 ## Phase 1 skill contract
 

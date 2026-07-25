@@ -11,7 +11,14 @@ import yaml
 from pydantic import ValidationError
 
 from skilltrustops.domain.reports import PolicyReference
-from skilltrustops.policies.models import SkillTrustPolicy
+from skilltrustops.policies.models import (
+    GitleaksSecretScannerPolicy,
+    SkillTrustPolicy,
+)
+from skilltrustops.policies.paths import (
+    TrustedPolicyPathError,
+    resolve_trusted_policy_file,
+)
 from skilltrustops.policies.profiles import recommended_v2
 
 POLICY_FILENAMES = (
@@ -32,6 +39,7 @@ class LoadedPolicy:
 
     policy: SkillTrustPolicy
     reference: PolicyReference
+    base_dir: Path
 
 
 class PolicyLoader:
@@ -46,15 +54,27 @@ class PolicyLoader:
         selected_path = policy_path or self._discover(search_start)
         if selected_path is None:
             policy = recommended_v2()
+            base_dir = search_start.absolute()
             return LoadedPolicy(
                 policy=policy,
-                reference=self._reference(policy, "builtin:recommended-v2"),
+                reference=self._reference(
+                    policy,
+                    "builtin:recommended-v2",
+                    base_dir,
+                ),
+                base_dir=base_dir,
             )
 
         policy = self._load_file(selected_path)
+        base_dir = selected_path.absolute().parent
         return LoadedPolicy(
             policy=policy,
-            reference=self._reference(policy, str(selected_path.absolute())),
+            reference=self._reference(
+                policy,
+                str(selected_path.absolute()),
+                base_dir,
+            ),
+            base_dir=base_dir,
         )
 
     def _discover(self, search_start: Path) -> Path | None:
@@ -122,10 +142,18 @@ class PolicyLoader:
         except (json.JSONDecodeError, yaml.YAMLError) as error:
             raise PolicyError(f"Policy syntax is invalid: {error}") from error
 
-    @staticmethod
-    def _reference(policy: SkillTrustPolicy, source: str) -> PolicyReference:
+    def _reference(
+        self,
+        policy: SkillTrustPolicy,
+        source: str,
+        base_dir: Path,
+    ) -> PolicyReference:
+        referenced_files = self._referenced_file_hashes(policy, base_dir)
         canonical = json.dumps(
-            policy.model_dump(mode="json"),
+            {
+                "policy": policy.model_dump(mode="json"),
+                "referenced_files": referenced_files,
+            },
             sort_keys=True,
             separators=(",", ":"),
         ).encode()
@@ -134,3 +162,28 @@ class PolicyLoader:
             source=source,
             sha256=hashlib.sha256(canonical).hexdigest(),
         )
+
+    @staticmethod
+    def _referenced_file_hashes(
+        policy: SkillTrustPolicy,
+        base_dir: Path,
+    ) -> dict[str, str]:
+        security = policy.checks.security
+        if security is None or not security.enabled or not security.secrets.enabled:
+            return {}
+
+        hashes: dict[str, str] = {}
+        for scanner in security.secrets.scanners:
+            if (
+                not isinstance(scanner, GitleaksSecretScannerPolicy)
+                or not scanner.enabled
+                or scanner.config is None
+            ):
+                continue
+            try:
+                resolved = resolve_trusted_policy_file(base_dir, scanner.config)
+                content = resolved.read_bytes()
+            except (TrustedPolicyPathError, OSError) as error:
+                raise PolicyError(f"Invalid Gitleaks config: {error}") from error
+            hashes[scanner.config.as_posix()] = hashlib.sha256(content).hexdigest()
+        return hashes

@@ -10,6 +10,7 @@ from rich.console import Console
 from rich.table import Table
 
 from skilltrustops.domain.reports import LintReport, StaticScanReport
+from skilltrustops.engines.errors import ScannerError
 from skilltrustops.factories import (
     build_lint_engine,
     build_privacy_engine,
@@ -106,11 +107,17 @@ def security(
     if not security_policy.enabled:
         _disabled_check_error("security")
 
-    engine = build_security_engine(security_policy)
-    report = StaticScanService(engine, "security").run(
-        skill_path,
-        loaded_policy.reference,
-    )
+    try:
+        engine = build_security_engine(
+            security_policy,
+            loaded_policy.base_dir,
+        )
+        report = StaticScanService(engine, "security").run(
+            skill_path,
+            loaded_policy.reference,
+        )
+    except ScannerError as error:
+        _scanner_error(error)
     _output_static_report(report, output_format)
 
 
@@ -138,10 +145,13 @@ def privacy(
         _disabled_check_error("privacy")
 
     engine = build_privacy_engine(privacy_policy)
-    report = StaticScanService(engine, "privacy").run(
-        skill_path,
-        loaded_policy.reference,
-    )
+    try:
+        report = StaticScanService(engine, "privacy").run(
+            skill_path,
+            loaded_policy.reference,
+        )
+    except ScannerError as error:
+        _scanner_error(error)
     _output_static_report(report, output_format)
 
 
@@ -212,6 +222,11 @@ def _disabled_check_error(command: str) -> NoReturn:
         f"Enable checks.{command}.enabled before running {command}."
     )
     raise typer.Exit(code=2)
+
+
+def _scanner_error(error: ScannerError) -> NoReturn:
+    console.print(f"[bold red]SCANNER ERROR[/bold red] {error}")
+    raise typer.Exit(code=2) from error
 
 
 def _output_static_report(

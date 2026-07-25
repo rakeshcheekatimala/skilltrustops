@@ -1,9 +1,10 @@
 """Strict policy models shared by YAML and JSON configurations."""
 
 from enum import StrEnum
-from typing import Literal, Self
+from pathlib import Path
+from typing import Annotated, Literal, Self
 
-from pydantic import BaseModel, ConfigDict, StrictBool, model_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, model_validator
 
 
 class ProfileName(StrEnum):
@@ -17,12 +18,6 @@ class LintRuleset(StrEnum):
     """Lint rulesets available in the current release."""
 
     AGENT_SKILLS_SPECIFICATION = "agent-skills-specification"
-
-
-class SecretEngine(StrEnum):
-    """Secret-scanning engines implemented in this release."""
-
-    BUILTIN = "builtin"
 
 
 class DangerousCodeEngine(StrEnum):
@@ -55,13 +50,52 @@ class LintCheckPolicy(BaseModel):
     ruleset: LintRuleset = LintRuleset.AGENT_SKILLS_SPECIFICATION
 
 
+class BuiltinSecretScannerPolicy(BaseModel):
+    """Configuration for the dependency-free built-in scanner."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    engine: Literal["builtin"] = "builtin"
+    enabled: StrictBool = True
+
+
+class GitleaksSecretScannerPolicy(BaseModel):
+    """Configuration for the optional local Gitleaks executable."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    engine: Literal["gitleaks"] = "gitleaks"
+    enabled: StrictBool = True
+    timeout_seconds: int = Field(default=30, ge=1, le=300)
+    config: Path | None = None
+
+
+SecretScannerPolicy = Annotated[
+    BuiltinSecretScannerPolicy | GitleaksSecretScannerPolicy,
+    Field(discriminator="engine"),
+]
+
+
 class SecretsPolicy(BaseModel):
-    """Secret-scanner configuration."""
+    """Ordered secret-scanner configuration."""
 
     model_config = ConfigDict(extra="forbid", frozen=True)
 
     enabled: StrictBool = True
-    engine: SecretEngine = SecretEngine.BUILTIN
+    scanners: tuple[SecretScannerPolicy, ...]
+
+    @model_validator(mode="after")
+    def validate_scanners(self) -> Self:
+        """Require useful, unambiguous scanner composition."""
+        engines = [scanner.engine for scanner in self.scanners]
+        if len(engines) != len(set(engines)):
+            raise ValueError("secrets.scanners cannot contain duplicate engines")
+        if self.enabled and not any(scanner.enabled for scanner in self.scanners):
+            raise ValueError(
+                "secrets.scanners requires at least one enabled scanner "
+                "when secret scanning is enabled"
+            )
+        return self
 
 
 class DangerousCodePolicy(BaseModel):

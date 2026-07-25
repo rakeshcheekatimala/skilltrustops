@@ -1,8 +1,11 @@
 import json
+import subprocess
 from pathlib import Path
 
+import pytest
 from typer.testing import CliRunner
 
+import skilltrustops.adapters.gitleaks as gitleaks_module
 from skilltrustops.cli import app
 from skilltrustops.policies.profiles import recommended_v2
 
@@ -119,3 +122,105 @@ def test_security_refuses_to_claim_pass_when_disabled(tmp_path: Path) -> None:
 
     assert result.exit_code == 2
     assert "security check is disabled" in result.stdout
+
+
+def test_security_reports_unavailable_gitleaks_as_scanner_error(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    policy_data = recommended_v2().model_dump(mode="json")
+    checks = policy_data["checks"]
+    assert isinstance(checks, dict)
+    security = checks["security"]
+    assert isinstance(security, dict)
+    secrets = security["secrets"]
+    assert isinstance(secrets, dict)
+    secrets["scanners"] = [{"engine": "gitleaks", "enabled": True}]
+    policy_path = tmp_path / "policy.json"
+    policy_path.write_text(json.dumps(policy_data), encoding="utf-8")
+    monkeypatch.setattr(gitleaks_module.shutil, "which", lambda _: None)
+
+    result = runner.invoke(
+        app,
+        [
+            "security",
+            str(create_skill(tmp_path, "Safe instructions.")),
+            "--policy",
+            str(policy_path),
+        ],
+    )
+
+    assert result.exit_code == 2
+    assert "SCANNER ERROR" in result.stdout
+    assert "not installed" in result.stdout
+
+
+def test_security_runs_builtin_and_gitleaks_together(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    config_dir = tmp_path / ".skilltrustops"
+    config_dir.mkdir()
+    (config_dir / "gitleaks.toml").write_text(
+        "[extend]\nuseDefault = true\n",
+        encoding="utf-8",
+    )
+    policy_data = recommended_v2().model_dump(mode="json")
+    checks = policy_data["checks"]
+    assert isinstance(checks, dict)
+    security = checks["security"]
+    assert isinstance(security, dict)
+    secrets = security["secrets"]
+    assert isinstance(secrets, dict)
+    secrets["scanners"] = [
+        {"engine": "builtin", "enabled": True},
+        {
+            "engine": "gitleaks",
+            "enabled": True,
+            "timeout_seconds": 30,
+            "config": ".skilltrustops/gitleaks.toml",
+        },
+    ]
+    policy_path = tmp_path / "policy.json"
+    policy_path.write_text(json.dumps(policy_data), encoding="utf-8")
+
+    def fake_run(
+        command: list[str],
+        **options: object,
+    ) -> subprocess.CompletedProcess[str]:
+        report_path = Path(command[command.index("--report-path") + 1])
+        report_path.write_text(
+            json.dumps(
+                [
+                    {
+                        "RuleID": "github-pat",
+                        "StartLine": 5,
+                    }
+                ]
+            ),
+            encoding="utf-8",
+        )
+        return subprocess.CompletedProcess(command, 1, "", "")
+
+    monkeypatch.setattr(gitleaks_module.shutil, "which", lambda _: "gitleaks")
+    monkeypatch.setattr(gitleaks_module.subprocess, "run", fake_run)
+    secret = "ghp_" + ("a" * 36)
+
+    result = runner.invoke(
+        app,
+        [
+            "security",
+            str(create_skill(tmp_path, f"token = {secret}")),
+            "--policy",
+            str(policy_path),
+            "--format",
+            "json",
+        ],
+    )
+
+    assert result.exit_code == 1
+    assert secret not in result.stdout
+    rule_ids = {
+        finding["rule_id"] for finding in json.loads(result.stdout)["findings"]
+    }
+    assert rule_ids == {"STO-SEC-003", "STO-SEC-GL-001"}
