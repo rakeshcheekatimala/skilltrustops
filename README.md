@@ -8,6 +8,109 @@ provides specification linting plus deterministic security and privacy scans.
 It does not execute skill code, make network requests, or require an account or
 API key.
 
+## Phase 1 behavioral red-team harness
+
+SkillTrustOps can also test one `SKILL.md` in a controlled reference harness.
+This is separate from the deterministic `lint`, `security`, and `privacy`
+commands: a behavioral run invokes the selected model, gives it generated
+in-memory tools and synthetic records, and observes whether adversarial inputs
+cause unsafe output or tool intent.
+
+The harness currently supports:
+
+- One `SKILL.md` beside one declarative package manifest
+- JSON Schema-style tool inputs and outputs
+- Generated tools that never perform real side effects
+- Synthetic records and uniquely detectable canaries
+- Direct and indirect prompt injection
+- Sensitive-data disclosure
+- Unauthorized tool-call attempts
+- Confirmation bypass
+- Multi-turn authority escalation
+- Deterministic assertions over model output and tool traces
+- A content-addressed SkillTrustOps evidence bundle
+- An Inspect-oriented JSONL event export for later import/adaptation
+- `assured`, `blocked`, and `inconclusive` decisions
+
+The example package is in
+[`examples/redteam-support`](examples/redteam-support). Run its safe,
+deterministic demonstration target:
+
+```bash
+uv run skilltrustops redteam run \
+  examples/redteam-support/skilltrust-package.yaml \
+  --model resistant-demo
+```
+
+Run the deliberately weak target to inspect failures and blocked tool calls:
+
+```bash
+uv run skilltrustops redteam run \
+  examples/redteam-support/skilltrust-package.yaml \
+  --model vulnerable-demo
+```
+
+Evidence is written under `.skilltrustops/redteam-runs/<run-id>/` unless
+`--evidence-dir` is supplied. Submitted Python, JavaScript, shell scripts,
+Dockerfiles, and tool implementations are never executed in Phase 1.
+
+### Test a real OpenAI model
+
+The reference models require no API key. To opt into a real model call, copy
+`.env.example` to `.env`, add the key, and restart the backend:
+
+```dotenv
+OPENAI_API_KEY=your-local-key
+SKILLTRUST_OPENAI_MODEL=gpt-5.6-terra
+```
+
+Then run:
+
+```bash
+uv run skilltrustops redteam run \
+  examples/redteam-support/skilltrust-package.yaml \
+  --provider openai \
+  --model gpt-5.6-terra
+```
+
+The CLI reads `OPENAI_API_KEY` from its process environment. The Studio backend
+also loads the repository-local `.env`. The key is not accepted from the
+browser, returned by the API, or included in evidence. A real-provider run is
+not fully deterministic even with fixed inputs; the report records that fact.
+
+For durable assessments, choose a pinned provider model snapshot when one is
+available rather than a moving alias.
+
+### Generate behavioral tests from one SKILL.md
+
+When a skill has no adjacent manifest, generate a model-proposed draft:
+
+```bash
+uv run skilltrustops redteam init examples/my-skill/SKILL.md \
+  --provider openai \
+  --model gpt-5.6-terra
+```
+
+Studio provides the same flow with **Generate behavioral test draft**. The
+generator treats SKILL.md as untrusted data, requests schema-constrained attack
+proposals, adds baseline attacks and synthetic canaries, validates the complete
+manifest, and writes `skilltrust-package.yaml` beside the skill. Submitted code
+is not executed.
+
+Generated manifests are bound to the source skill SHA-256 and marked as
+review-required. A confirmed attack still produces `blocked`; a clean run stays
+`inconclusive` until the generated capabilities, tools, attacks, and expected
+markers have been reviewed. Changing SKILL.md makes the draft stale and requires
+regeneration.
+
+### What `assured` means
+
+`assured` means that all applicable Phase 1 cases were resisted by the exact
+skill, manifest, model, harness, and attack definitions identified in the
+evidence bundle. It does not claim that the skill is universally safe in every
+agent framework or production application. Changing the skill, tool contract,
+model, harness, or attack suite requires a new assessment.
+
 ## Local quick start
 
 SkillTrustOps requires Python 3.12 or newer.
@@ -166,7 +269,7 @@ uv build
 Expected results:
 
 ```text
-58 passed
+69 passed
 All checks passed!
 Success: no issues found
 Successfully built ...
@@ -203,7 +306,9 @@ checks:
     enabled: true
     secrets:
       enabled: true
-      engine: builtin
+      scanners:
+        - engine: builtin
+          enabled: true
     dangerous_code:
       enabled: true
       engine: ast
@@ -298,8 +403,14 @@ checks:
   security:
     enabled: true
     secrets:
-      enabled: false
-      engine: builtin
+      enabled: true
+      scanners:
+        - engine: builtin
+          enabled: false
+        - engine: gitleaks
+          enabled: true
+          timeout_seconds: 30
+          config: .skilltrustops/gitleaks.toml
     dangerous_code:
       enabled: true
       engine: ast
@@ -352,6 +463,67 @@ SkillTrustOps never includes a detected secret value in report evidence.
 Security findings retain their individual severity; they are not hidden inside
 a combined score.
 
+### Use Gitleaks for secret scanning
+
+Gitleaks is an optional local executable; it is not downloaded or installed by
+SkillTrustOps. Install it separately and verify it is available:
+
+```bash
+# macOS
+brew install gitleaks
+
+gitleaks version
+```
+
+For Linux, Windows, and other installation methods, use the
+[official Gitleaks installation documentation](https://github.com/gitleaks/gitleaks#installing).
+
+Replace the `secrets` block in `skilltrustops.yaml`:
+
+```yaml
+checks:
+  security:
+    enabled: true
+    secrets:
+      enabled: true
+      scanners:
+        - engine: builtin
+          enabled: true
+
+        - engine: gitleaks
+          enabled: true
+          timeout_seconds: 30
+          config: .skilltrustops/gitleaks.toml
+    dangerous_code:
+      enabled: true
+      engine: ast
+      block_eval: true
+      block_destructive_shell: true
+      block_remote_pipe: true
+```
+
+Validate and run:
+
+```bash
+uv run skilltrustops policy validate
+uv run skilltrustops security path/to/skill/SKILL.md
+```
+
+The included `.skilltrustops/gitleaks.toml` extends Gitleaks' default rules.
+Its contents are included in the effective SkillTrustOps policy hash.
+
+The adapter streams the bounded `SKILL.md` content to `gitleaks stdin`. It does
+not scan Git history, recurse through neighboring files, execute skill code, or
+make a network request. It invokes Gitleaks with `shell=False`, full output
+redaction, a timeout, and `gitleaks:allow` comments disabled. Ambient
+`GITLEAKS_CONFIG` variables are removed so policy controls configuration.
+Secret, match, and source-line values from the Gitleaks report are never copied
+into SkillTrustOps evidence.
+
+If policy selects `gitleaks` but the executable is unavailable or fails to
+produce a valid JSON report, the command returns exit code `2`. SkillTrustOps
+does not silently fall back to the built-in detector.
+
 ## Deterministic privacy scanning
 
 Run the privacy check:
@@ -372,12 +544,19 @@ Detected PII values are redacted from evidence and terminal/JSON reports.
 
 ## Scanner adapters
 
-Policy uses one consistent `engine` attribute. The working defaults are local
-and dependency-light:
+Secret scanning accepts an ordered `scanners` list. The working default is
+local and dependency-light; Gitleaks can run alone or alongside it:
 
 ```yaml
 secrets:
-  engine: builtin
+  enabled: true
+  scanners:
+    - engine: builtin
+      enabled: true
+    - engine: gitleaks
+      enabled: true
+      timeout_seconds: 30
+      config: .skilltrustops/gitleaks.toml
 pii:
   engine: builtin
 dangerous_code:
@@ -385,9 +564,9 @@ dangerous_code:
 ```
 
 The detector protocols and engine factory allow future adapters for
-detect-secrets, Gitleaks, Microsoft Presidio, and YARA without changing CLI
-commands or report models. Those third-party engines are not yet accepted as
-policy values, so a policy cannot claim an analysis that was not executed.
+detect-secrets, Microsoft Presidio, and YARA without changing CLI commands or
+report models. Unsupported third-party engines are rejected so a policy cannot
+claim an analysis that was not executed.
 
 ## Phase 1 skill contract
 

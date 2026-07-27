@@ -1,6 +1,7 @@
 """Built-in, immutable policy profiles."""
 
 from skilltrustops.policies.models import (
+    BuiltinSecretScannerPolicy,
     ChecksPolicy,
     DangerousCodeEngine,
     DangerousCodePolicy,
@@ -11,7 +12,6 @@ from skilltrustops.policies.models import (
     PiiPolicy,
     PrivacyCheckPolicy,
     ProfileName,
-    SecretEngine,
     SecretsPolicy,
     SecurityCheckPolicy,
     SkillTrustPolicy,
@@ -46,7 +46,7 @@ def recommended_v2() -> SkillTrustPolicy:
                 enabled=True,
                 secrets=SecretsPolicy(
                     enabled=True,
-                    engine=SecretEngine.BUILTIN,
+                    scanners=(BuiltinSecretScannerPolicy(enabled=True),),
                 ),
                 dangerous_code=DangerousCodePolicy(
                     enabled=True,

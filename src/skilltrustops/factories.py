@@ -1,23 +1,30 @@
 """Composition factories that map policy choices to replaceable engines."""
 
+from pathlib import Path
 from typing import assert_never
 
 from skilltrustops.adapters.filesystem import SafeSkillFileLoader
+from skilltrustops.adapters.gitleaks import GitleaksSecretDetector
 from skilltrustops.detectors.dangerous_code import AstDangerousCodeDetector
 from skilltrustops.detectors.pii import BuiltinPiiDetector
 from skilltrustops.detectors.secrets import BuiltinSecretDetector
 from skilltrustops.engines.base import LintEngine
 from skilltrustops.engines.content import ContentDetector, ContentScanEngine
+from skilltrustops.engines.errors import ScannerError
 from skilltrustops.engines.structure import StructureEngine
 from skilltrustops.parsers.front_matter import FrontMatterParser
 from skilltrustops.policies.models import (
     DangerousCodeEngine,
+    GitleaksSecretScannerPolicy,
     LintCheckPolicy,
     LintRuleset,
     PiiEngine,
     PrivacyCheckPolicy,
-    SecretEngine,
     SecurityCheckPolicy,
+)
+from skilltrustops.policies.paths import (
+    TrustedPolicyPathError,
+    resolve_trusted_policy_file,
 )
 from skilltrustops.rules.agent_skills import AgentSkillsSpecificationRules
 
@@ -37,16 +44,39 @@ def build_lint_engine(policy: LintCheckPolicy) -> LintEngine:
     )
 
 
-def build_security_engine(policy: SecurityCheckPolicy) -> LintEngine:
+def build_security_engine(
+    policy: SecurityCheckPolicy,
+    policy_root: Path,
+) -> LintEngine:
     """Build deterministic security detectors selected by policy."""
     detectors: list[ContentDetector] = []
 
     if policy.secrets.enabled:
-        match policy.secrets.engine:
-            case SecretEngine.BUILTIN:
+        for scanner in policy.secrets.scanners:
+            if not scanner.enabled:
+                continue
+            if scanner.engine == "builtin":
                 detectors.append(BuiltinSecretDetector())
-            case unsupported_secret_engine:
-                assert_never(unsupported_secret_engine)
+            elif isinstance(scanner, GitleaksSecretScannerPolicy):
+                config_path: Path | None = None
+                if scanner.config is not None:
+                    try:
+                        config_path = resolve_trusted_policy_file(
+                            policy_root,
+                            scanner.config,
+                        )
+                    except TrustedPolicyPathError as error:
+                        raise ScannerError(
+                            f"Invalid Gitleaks config: {error}"
+                        ) from error
+                detectors.append(
+                    GitleaksSecretDetector(
+                        timeout_seconds=scanner.timeout_seconds,
+                        config_path=config_path,
+                    )
+                )
+            else:
+                assert_never(scanner)
 
     if policy.dangerous_code.enabled:
         match policy.dangerous_code.engine:

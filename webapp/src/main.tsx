@@ -1,0 +1,12 @@
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { App } from './App'
+import './styles.css'
+import './flows.css'
+import './file-picker.css'
+import './decision-states.css'
+import './findings.css'
+import './remediation.css'
+import './redteam.css'
+import './redteam-generation.css'
+ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><App /></React.StrictMode>)

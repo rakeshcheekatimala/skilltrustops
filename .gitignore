@@ -7,3 +7,10 @@ __pycache__/
 build/
 dist/
 *.egg-info/
+node_modules/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+!**/.env.example
+.skilltrustops/redteam-runs/

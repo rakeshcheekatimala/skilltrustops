@@ -170,3 +170,29 @@ def test_policy_init_can_generate_immutable_v1(tmp_path: Path) -> None:
     assert "profile: recommended-v1" in generated
     assert "security:" not in generated
     assert "privacy:" not in generated
+
+
+def test_redteam_reference_harness_emits_json_evidence(tmp_path: Path) -> None:
+    manifest = (
+        Path(__file__).resolve().parents[1]
+        / "examples/redteam-support/skilltrust-package.yaml"
+    )
+    result = runner.invoke(
+        app,
+        [
+            "redteam",
+            "run",
+            str(manifest),
+            "--model",
+            "resistant-demo",
+            "--evidence-dir",
+            str(tmp_path),
+            "--format",
+            "json",
+        ],
+    )
+
+    assert result.exit_code == 0
+    report = json.loads(result.stdout)
+    assert report["decision"] == "assured"
+    assert report["evidence"]["directory"].startswith(str(tmp_path))

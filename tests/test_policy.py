@@ -20,6 +20,10 @@ def policy_data(*, lint_enabled: bool = True) -> dict[str, object]:
     }
 
 
+def v2_policy_data() -> dict[str, object]:
+    return recommended_v2().model_dump(mode="json")
+
+
 def test_uses_builtin_profile_when_repository_has_no_policy(tmp_path: Path) -> None:
     loaded = PolicyLoader().load(None, tmp_path)
 
@@ -141,3 +145,95 @@ def test_discovery_does_not_ignore_broken_policy_symlink(tmp_path: Path) -> None
 
     with pytest.raises(PolicyError, match="symbolic link"):
         PolicyLoader().load(None, tmp_path)
+
+
+def test_policy_hash_includes_enabled_gitleaks_config(tmp_path: Path) -> None:
+    config_dir = tmp_path / ".skilltrustops"
+    config_dir.mkdir()
+    config_path = config_dir / "gitleaks.toml"
+    config_path.write_text("[extend]\nuseDefault = true\n", encoding="utf-8")
+    data = v2_policy_data()
+    checks = data["checks"]
+    assert isinstance(checks, dict)
+    security = checks["security"]
+    assert isinstance(security, dict)
+    secrets = security["secrets"]
+    assert isinstance(secrets, dict)
+    secrets["scanners"] = [
+        {
+            "engine": "gitleaks",
+            "enabled": True,
+            "timeout_seconds": 30,
+            "config": ".skilltrustops/gitleaks.toml",
+        }
+    ]
+    policy_path = tmp_path / "policy.json"
+    policy_path.write_text(json.dumps(data), encoding="utf-8")
+
+    first_hash = PolicyLoader().load(policy_path, tmp_path).reference.sha256
+    config_path.write_text(
+        "[extend]\nuseDefault = true\n# changed\n",
+        encoding="utf-8",
+    )
+    second_hash = PolicyLoader().load(policy_path, tmp_path).reference.sha256
+
+    assert first_hash != second_hash
+
+
+def test_rejects_gitleaks_config_outside_policy_directory(tmp_path: Path) -> None:
+    outside_path = tmp_path.parent / "outside-gitleaks.toml"
+    outside_path.write_text("[extend]\nuseDefault = true\n", encoding="utf-8")
+    data = v2_policy_data()
+    checks = data["checks"]
+    assert isinstance(checks, dict)
+    security = checks["security"]
+    assert isinstance(security, dict)
+    secrets = security["secrets"]
+    assert isinstance(secrets, dict)
+    secrets["scanners"] = [
+        {
+            "engine": "gitleaks",
+            "enabled": True,
+            "config": "../outside-gitleaks.toml",
+        }
+    ]
+    policy_path = tmp_path / "policy.json"
+    policy_path.write_text(json.dumps(data), encoding="utf-8")
+
+    with pytest.raises(PolicyError, match="escapes the policy directory"):
+        PolicyLoader().load(policy_path, tmp_path)
+
+
+def test_rejects_duplicate_secret_scanner_engines(tmp_path: Path) -> None:
+    data = v2_policy_data()
+    checks = data["checks"]
+    assert isinstance(checks, dict)
+    security = checks["security"]
+    assert isinstance(security, dict)
+    secrets = security["secrets"]
+    assert isinstance(secrets, dict)
+    secrets["scanners"] = [
+        {"engine": "builtin", "enabled": True},
+        {"engine": "builtin", "enabled": True},
+    ]
+    policy_path = tmp_path / "policy.json"
+    policy_path.write_text(json.dumps(data), encoding="utf-8")
+
+    with pytest.raises(PolicyError, match="duplicate engines"):
+        PolicyLoader().load(policy_path, tmp_path)
+
+
+def test_rejects_secret_scanning_without_enabled_scanner(tmp_path: Path) -> None:
+    data = v2_policy_data()
+    checks = data["checks"]
+    assert isinstance(checks, dict)
+    security = checks["security"]
+    assert isinstance(security, dict)
+    secrets = security["secrets"]
+    assert isinstance(secrets, dict)
+    secrets["scanners"] = [{"engine": "builtin", "enabled": False}]
+    policy_path = tmp_path / "policy.json"
+    policy_path.write_text(json.dumps(data), encoding="utf-8")
+
+    with pytest.raises(PolicyError, match="at least one enabled scanner"):
+        PolicyLoader().load(policy_path, tmp_path)

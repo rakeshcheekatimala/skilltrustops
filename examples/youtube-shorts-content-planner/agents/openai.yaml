@@ -1,0 +1,4 @@
+interface:
+  display_name: "YouTube Shorts Content Planner"
+  short_description: "Plan five high-retention micro-history Shorts"
+  default_prompt: "Use $youtube-shorts-content-planner to create a one-week micro-history YouTube Shorts plan."
