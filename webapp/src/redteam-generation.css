@@ -1,0 +1,36 @@
+.rt-generate {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.rt-generate:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.rt-draft {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+  padding: 10px;
+  border: 1px solid #5c4a27;
+  background: #282214;
+  border-radius: 6px;
+}
+
+.rt-draft b {
+  font-size: 9px;
+  color: var(--amber);
+}
+
+.rt-draft span,
+.rt-draft small {
+  font-size: 8px;
+  color: #c8b78f;
+}
+
+.rt-draft small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

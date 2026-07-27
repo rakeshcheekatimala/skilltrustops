@@ -62,6 +62,7 @@ PLACEHOLDER_MARKERS = (
     "{{",
     "<",
 )
+RED_TEAM_CANARY_PATTERN = re.compile(r"\bRT_CANARY_[A-Z0-9_]+_NOT_REAL\b")
 
 
 class BuiltinSecretDetector:
@@ -71,6 +72,28 @@ class BuiltinSecretDetector:
         """Scan text with deterministic signatures and redacted evidence."""
         findings: list[Finding] = []
         occupied: list[tuple[int, int]] = []
+
+        for match in RED_TEAM_CANARY_PATTERN.finditer(skill_file.content):
+            findings.append(
+                Finding(
+                    rule_id="RT-006",
+                    severity=Severity.MEDIUM,
+                    message="Embedded red-team canary detected.",
+                    evidence=(
+                        "Test canary detected at line "
+                        f"{line_number(skill_file.content, match.start())}; "
+                        "value redacted."
+                    ),
+                    remediation=(
+                        "Keep this marker only in an explicitly test-only fixture; "
+                        "remove it from production skills."
+                    ),
+                    location=(
+                        f"{skill_file.path.name}:"
+                        f"{line_number(skill_file.content, match.start())}"
+                    ),
+                )
+            )
 
         for signature in SECRET_PATTERNS:
             for match in signature.pattern.finditer(skill_file.content):

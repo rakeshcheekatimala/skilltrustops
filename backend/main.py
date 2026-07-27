@@ -1,10 +1,12 @@
 """Loopback-only FastAPI adapter over the shared SkillTrustOps services."""
 
+import os
 from datetime import UTC, datetime
 from hashlib import sha256
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from time import perf_counter
+from typing import Literal
 from uuid import uuid4
 
 import yaml
@@ -15,6 +17,9 @@ from backend.models import (
     CheckResult,
     Decision,
     EngineInfo,
+    ManifestGenerationRequest,
+    ModelConfigurationStatus,
+    RedTeamRunRequest,
     ScanContentRequest,
     ScanRequest,
     SkillInfo,
@@ -28,8 +33,23 @@ from skilltrustops.factories import (
     build_security_engine,
 )
 from skilltrustops.policies.loader import PolicyError, PolicyLoader
+from skilltrustops.redteam.generator import (
+    ManifestGenerationResult,
+    RedTeamManifestGenerator,
+)
+from skilltrustops.redteam.loader import RedTeamPackageError
+from skilltrustops.redteam.models import RedTeamReport
+from skilltrustops.redteam.service import RedTeamService
+from skilltrustops.redteam.targets import OpenAIModelTarget, ReferenceModelTarget
 from skilltrustops.services.lint import LintService
+from skilltrustops.services.local_env import load_local_env
 from skilltrustops.services.static_scan import StaticScanService
+
+ROOT = Path(__file__).resolve().parents[1]
+ENV_FILE = ROOT / ".env"
+
+
+load_local_env(ENV_FILE)
 
 app = FastAPI(title="SkillTrustOps Studio API", version="0.1.0")
 app.add_middleware(
@@ -43,6 +63,71 @@ app.add_middleware(
 @app.get("/api/health")
 def health() -> dict[str, str]:
     return {"status": "local", "version": __version__}
+
+
+@app.get("/api/redteam/config", response_model=ModelConfigurationStatus)
+def redteam_config() -> ModelConfigurationStatus:
+    return ModelConfigurationStatus(
+        openai_configured=bool(os.getenv("OPENAI_API_KEY")),
+        openai_default_model=os.getenv("SKILLTRUST_OPENAI_MODEL", "gpt-5.6-terra"),
+        reference_models=["resistant-demo", "vulnerable-demo"],
+        env_file=str(ENV_FILE),
+    )
+
+
+@app.post("/api/redteam/runs", response_model=RedTeamReport)
+def run_redteam(request: RedTeamRunRequest) -> RedTeamReport:
+    manifest_path = Path(request.manifest_path)
+    if not manifest_path.is_absolute():
+        manifest_path = ROOT / manifest_path
+    try:
+        target = (
+            OpenAIModelTarget(request.model)
+            if request.provider == "openai"
+            else ReferenceModelTarget(request.model)
+        )
+        return RedTeamService(ROOT / ".skilltrustops" / "redteam-runs").run(
+            manifest_path, target
+        )
+    except (RedTeamPackageError, ValueError) as error:
+        raise HTTPException(400, str(error)) from error
+
+
+@app.post(
+    "/api/redteam/manifests/generate",
+    response_model=ManifestGenerationResult,
+)
+def generate_redteam_manifest(
+    request: ManifestGenerationRequest,
+) -> ManifestGenerationResult:
+    skill_path = Path(request.skill_path)
+    if not skill_path.is_absolute():
+        skill_path = ROOT / skill_path
+    skill_path = skill_path.resolve()
+    if not skill_path.is_relative_to(ROOT):
+        raise HTTPException(400, "Manifest generation is limited to this repository")
+    try:
+        return RedTeamManifestGenerator().write(
+            skill_path,
+            force=request.force,
+            strategy=request.strategy,
+            model=request.model,
+        )
+    except RedTeamPackageError as error:
+        raise HTTPException(400, str(error)) from error
+
+
+@app.get("/api/redteam/demo/{profile}", response_model=RedTeamReport)
+def redteam_demo(
+    profile: Literal["resistant-demo", "vulnerable-demo"],
+) -> RedTeamReport:
+    return run_redteam(
+        RedTeamRunRequest(
+            manifest_path="examples/redteam-support/skilltrust-package.yaml",
+            provider="reference",
+            model=profile,
+        )
+    )
 
 
 @app.post("/api/scans", response_model=TrustDecisionReport)
@@ -83,7 +168,9 @@ def scan(request: ScanRequest) -> TrustDecisionReport:
         reports.append(("privacy", report, report.duration_ms))
 
     findings = [finding for _, report, _ in reports for finding in report.findings]
-    counts = {key: 0 for key in ("critical", "high", "medium", "low")}
+    counts = {
+        key: 0 for key in ("critical", "high", "medium", "low", "error", "warning")
+    }
     for finding in findings:
         if finding.severity.value in counts:
             counts[finding.severity.value] += 1
@@ -129,11 +216,10 @@ def scan(request: ScanRequest) -> TrustDecisionReport:
 
 @app.get("/api/demo", response_model=TrustDecisionReport)
 def demo() -> TrustDecisionReport:
-    root = Path(__file__).resolve().parents[1]
     return scan(
         ScanRequest(
-            skill_path=str(root / "examples/invalid-skill/SKILL.md"),
-            policy_path=str(root / "skilltrustops.yaml"),
+            skill_path=str(ROOT / "examples/invalid-skill/SKILL.md"),
+            policy_path=str(ROOT / "skilltrustops.yaml"),
         )
     )
 

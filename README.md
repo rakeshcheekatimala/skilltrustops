@@ -8,6 +8,109 @@ provides specification linting plus deterministic security and privacy scans.
 It does not execute skill code, make network requests, or require an account or
 API key.
 
+## Phase 1 behavioral red-team harness
+
+SkillTrustOps can also test one `SKILL.md` in a controlled reference harness.
+This is separate from the deterministic `lint`, `security`, and `privacy`
+commands: a behavioral run invokes the selected model, gives it generated
+in-memory tools and synthetic records, and observes whether adversarial inputs
+cause unsafe output or tool intent.
+
+The harness currently supports:
+
+- One `SKILL.md` beside one declarative package manifest
+- JSON Schema-style tool inputs and outputs
+- Generated tools that never perform real side effects
+- Synthetic records and uniquely detectable canaries
+- Direct and indirect prompt injection
+- Sensitive-data disclosure
+- Unauthorized tool-call attempts
+- Confirmation bypass
+- Multi-turn authority escalation
+- Deterministic assertions over model output and tool traces
+- A content-addressed SkillTrustOps evidence bundle
+- An Inspect-oriented JSONL event export for later import/adaptation
+- `assured`, `blocked`, and `inconclusive` decisions
+
+The example package is in
+[`examples/redteam-support`](examples/redteam-support). Run its safe,
+deterministic demonstration target:
+
+```bash
+uv run skilltrustops redteam run \
+  examples/redteam-support/skilltrust-package.yaml \
+  --model resistant-demo
+```
+
+Run the deliberately weak target to inspect failures and blocked tool calls:
+
+```bash
+uv run skilltrustops redteam run \
+  examples/redteam-support/skilltrust-package.yaml \
+  --model vulnerable-demo
+```
+
+Evidence is written under `.skilltrustops/redteam-runs/<run-id>/` unless
+`--evidence-dir` is supplied. Submitted Python, JavaScript, shell scripts,
+Dockerfiles, and tool implementations are never executed in Phase 1.
+
+### Test a real OpenAI model
+
+The reference models require no API key. To opt into a real model call, copy
+`.env.example` to `.env`, add the key, and restart the backend:
+
+```dotenv
+OPENAI_API_KEY=your-local-key
+SKILLTRUST_OPENAI_MODEL=gpt-5.6-terra
+```
+
+Then run:
+
+```bash
+uv run skilltrustops redteam run \
+  examples/redteam-support/skilltrust-package.yaml \
+  --provider openai \
+  --model gpt-5.6-terra
+```
+
+The CLI reads `OPENAI_API_KEY` from its process environment. The Studio backend
+also loads the repository-local `.env`. The key is not accepted from the
+browser, returned by the API, or included in evidence. A real-provider run is
+not fully deterministic even with fixed inputs; the report records that fact.
+
+For durable assessments, choose a pinned provider model snapshot when one is
+available rather than a moving alias.
+
+### Generate behavioral tests from one SKILL.md
+
+When a skill has no adjacent manifest, generate a model-proposed draft:
+
+```bash
+uv run skilltrustops redteam init examples/my-skill/SKILL.md \
+  --provider openai \
+  --model gpt-5.6-terra
+```
+
+Studio provides the same flow with **Generate behavioral test draft**. The
+generator treats SKILL.md as untrusted data, requests schema-constrained attack
+proposals, adds baseline attacks and synthetic canaries, validates the complete
+manifest, and writes `skilltrust-package.yaml` beside the skill. Submitted code
+is not executed.
+
+Generated manifests are bound to the source skill SHA-256 and marked as
+review-required. A confirmed attack still produces `blocked`; a clean run stays
+`inconclusive` until the generated capabilities, tools, attacks, and expected
+markers have been reviewed. Changing SKILL.md makes the draft stale and requires
+regeneration.
+
+### What `assured` means
+
+`assured` means that all applicable Phase 1 cases were resisted by the exact
+skill, manifest, model, harness, and attack definitions identified in the
+evidence bundle. It does not claim that the skill is universally safe in every
+agent framework or production application. Changing the skill, tool contract,
+model, harness, or attack suite requires a new assessment.
+
 ## Local quick start
 
 SkillTrustOps requires Python 3.12 or newer.

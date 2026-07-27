@@ -3,7 +3,7 @@
 import json
 from enum import StrEnum
 from pathlib import Path
-from typing import Annotated, NoReturn
+from typing import Annotated, Literal, NoReturn
 
 import typer
 from rich.console import Console
@@ -23,7 +23,12 @@ from skilltrustops.policies.writer import (
     PolicyWriteError,
     PolicyWriter,
 )
+from skilltrustops.redteam.generator import RedTeamManifestGenerator
+from skilltrustops.redteam.loader import RedTeamPackageError
+from skilltrustops.redteam.service import RedTeamService
+from skilltrustops.redteam.targets import OpenAIModelTarget, ReferenceModelTarget
 from skilltrustops.services.lint import LintService
+from skilltrustops.services.local_env import load_discovered_env
 from skilltrustops.services.static_scan import StaticScanService
 
 app = typer.Typer(
@@ -34,6 +39,10 @@ app = typer.Typer(
 console = Console()
 policy_app = typer.Typer(help="Generate and validate repository policies.")
 app.add_typer(policy_app, name="policy")
+redteam_app = typer.Typer(
+    help="Run behavioral attacks in the Phase 1 reference harness."
+)
+app.add_typer(redteam_app, name="redteam")
 
 
 class OutputFormat(StrEnum):
@@ -41,6 +50,59 @@ class OutputFormat(StrEnum):
 
     TERMINAL = "terminal"
     JSON = "json"
+
+
+class ModelProvider(StrEnum):
+    REFERENCE = "reference"
+    OPENAI = "openai"
+
+
+@redteam_app.command("init")
+def redteam_init(
+    skill_path: Annotated[
+        Path,
+        typer.Argument(help="Path to one SKILL.md file."),
+    ],
+    force: Annotated[
+        bool,
+        typer.Option("--force", help="Replace an existing generated manifest."),
+    ] = False,
+    provider: Annotated[
+        Literal["openai", "deterministic"],
+        typer.Option("--provider", help="Behavioral test generation strategy."),
+    ] = "openai",
+    model: Annotated[
+        str,
+        typer.Option("--model", help="OpenAI model used to propose attack cases."),
+    ] = "gpt-5.6-terra",
+    output_format: Annotated[
+        OutputFormat,
+        typer.Option("--format", help="Report output format."),
+    ] = OutputFormat.TERMINAL,
+) -> None:
+    """Generate a deterministic, review-required red-team manifest draft."""
+    load_discovered_env(Path.cwd())
+    try:
+        result = RedTeamManifestGenerator().write(
+            skill_path,
+            force=force,
+            strategy=provider,
+            model=model,
+        )
+    except RedTeamPackageError as error:
+        console.print(f"[bold red]REDTEAM ERROR[/bold red] {error}")
+        raise typer.Exit(code=2) from error
+    if output_format is OutputFormat.JSON:
+        typer.echo(json.dumps(result.model_dump(mode="json"), indent=2))
+    else:
+        console.print(
+            f"[bold green]GENERATED DRAFT[/bold green] {result.manifest_path}"
+        )
+        console.print(
+            "Capabilities: " + ", ".join(result.inferred_capabilities) + "\n"
+            "Review the manifest and set generation.status to approved with "
+            "requires_review: false before assurance."
+        )
 
 
 @app.callback()
@@ -153,6 +215,84 @@ def privacy(
     except ScannerError as error:
         _scanner_error(error)
     _output_static_report(report, output_format)
+
+
+@redteam_app.command("run")
+def redteam_run(
+    manifest_path: Annotated[
+        Path,
+        typer.Argument(help="Path to one declarative skilltrust-package manifest."),
+    ],
+    provider: Annotated[
+        ModelProvider,
+        typer.Option("--provider", help="Model provider used by the harness."),
+    ] = ModelProvider.REFERENCE,
+    model: Annotated[
+        str,
+        typer.Option(
+            "--model",
+            help="Reference profile or OpenAI model ID.",
+        ),
+    ] = "resistant-demo",
+    evidence_dir: Annotated[
+        Path,
+        typer.Option("--evidence-dir", help="Directory for immutable run evidence."),
+    ] = Path(".skilltrustops/redteam-runs"),
+    output_format: Annotated[
+        OutputFormat,
+        typer.Option("--format", help="Report output format."),
+    ] = OutputFormat.TERMINAL,
+) -> None:
+    """Test one SKILL.md with generated tools and synthetic records."""
+    load_discovered_env(Path.cwd())
+    try:
+        target = (
+            OpenAIModelTarget(model)
+            if provider is ModelProvider.OPENAI
+            else ReferenceModelTarget(model)
+        )
+        report = RedTeamService(evidence_dir).run(manifest_path, target)
+    except (RedTeamPackageError, ValueError) as error:
+        console.print(f"[bold red]REDTEAM ERROR[/bold red] {error}")
+        raise typer.Exit(code=2) from error
+    if output_format is OutputFormat.JSON:
+        typer.echo(json.dumps(report.model_dump(mode="json"), indent=2))
+    else:
+        color = {
+            "assured": "green",
+            "blocked": "red",
+            "inconclusive": "yellow",
+        }[report.decision.value]
+        console.print(
+            f"[bold {color}]{report.decision.value.upper()}[/bold {color}] "
+            f"{report.package_name}@{report.package_version}"
+        )
+        console.print(
+            f"Model: {report.model.provider}/{report.model.name}; "
+            f"resisted {report.summary.resisted}/{report.summary.executed}"
+        )
+        if report.evidence:
+            console.print(f"[dim]Evidence: {report.evidence.directory}[/dim]")
+        failures = [
+            attempt
+            for attempt in report.attempts
+            if attempt.outcome.value == "attack_succeeded"
+        ]
+        if failures:
+            table = Table(show_header=True, header_style="bold")
+            table.add_column("Case")
+            table.add_column("Family")
+            table.add_column("Failure")
+            for attempt in failures:
+                failed = next(
+                    assertion.message
+                    for assertion in attempt.assertions
+                    if not assertion.passed
+                )
+                table.add_row(attempt.case.id, attempt.case.family.value, failed)
+            console.print(table)
+    if report.decision.value != "assured":
+        raise typer.Exit(code=1 if report.decision.value == "blocked" else 3)
 
 
 @policy_app.command("init")

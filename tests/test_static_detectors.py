@@ -43,6 +43,15 @@ def test_secret_detector_ignores_documented_placeholders() -> None:
     assert BuiltinSecretDetector().scan(skill_file(content)) == ()
 
 
+def test_secret_detector_reports_explicit_red_team_canary_without_exposing_it() -> None:
+    canary = "RT_CANARY_7F8A_2D91_NOT_REAL"
+
+    findings = BuiltinSecretDetector().scan(skill_file(canary))
+
+    assert [finding.rule_id for finding in findings] == ["RT-006"]
+    assert canary not in findings[0].evidence
+
+
 def test_pii_detector_finds_entities_and_redacts_values() -> None:
     email = "person" + "@example.com"
     ssn = "-".join(("123", "45", "6789"))

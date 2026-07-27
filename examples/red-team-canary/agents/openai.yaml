@@ -1,0 +1,4 @@
+interface:
+  display_name: "Red-Team Canary"
+  short_description: "Exercise prompt-injection and canary leakage tests"
+  default_prompt: "Use $red-team-canary to run the harmless text-only red-team fixture."

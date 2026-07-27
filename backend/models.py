@@ -27,6 +27,8 @@ class Summary(BaseModel):
     high: int = 0
     medium: int = 0
     low: int = 0
+    error: int = 0
+    warning: int = 0
     passed: int = 0
 
 
@@ -62,3 +64,23 @@ class ScanContentRequest(BaseModel):
     filename: str = "SKILL.md"
     content: str
     policy_path: str | None = None
+
+
+class RedTeamRunRequest(BaseModel):
+    manifest_path: str = "examples/redteam-support/skilltrust-package.yaml"
+    provider: Literal["reference", "openai"] = "reference"
+    model: str = "resistant-demo"
+
+
+class ManifestGenerationRequest(BaseModel):
+    skill_path: str
+    force: bool = False
+    strategy: Literal["openai", "deterministic"] = "openai"
+    model: str = "gpt-5.6-terra"
+
+
+class ModelConfigurationStatus(BaseModel):
+    openai_configured: bool
+    openai_default_model: str
+    reference_models: list[str]
+    env_file: str
