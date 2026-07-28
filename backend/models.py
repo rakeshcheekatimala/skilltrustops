@@ -70,6 +70,8 @@ class RedTeamRunRequest(BaseModel):
     manifest_path: str = "examples/redteam-support/skilltrust-package.yaml"
     provider: Literal["reference", "openai"] = "reference"
     model: str = "resistant-demo"
+    sandbox: Literal["none", "docker", "gvisor"] = "none"
+    sandbox_image: str = "alpine:3.20"
 
 
 class ManifestGenerationRequest(BaseModel):

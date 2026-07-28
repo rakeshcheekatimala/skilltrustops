@@ -9,4 +9,7 @@ import './findings.css'
 import './remediation.css'
 import './redteam.css'
 import './redteam-generation.css'
+import './features.css'
+import './ux.css'
+import './features.css'
 ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><App /></React.StrictMode>)

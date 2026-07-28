@@ -7,6 +7,8 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
+from skilltrustops.sandbox.models import SandboxReport, no_sandbox_report
+
 
 class ToolEffect(StrEnum):
     READ = "read"
@@ -248,6 +250,29 @@ class EvidenceReference(BaseModel):
     manifest: str
     report: str
     inspect_log: str
+    friendly_report: str
+
+
+class FriendlyIssue(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    id: str
+    title: str
+    what_happened: str
+    why_it_matters: str
+    how_to_fix: str
+    policies: tuple[str, ...] = ()
+
+
+class FriendlyReport(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    headline: str
+    summary: str
+    sandbox_summary: str
+    issues: tuple[FriendlyIssue, ...]
+    next_steps: tuple[str, ...]
+    scope_note: str
 
 
 class RedTeamReport(BaseModel):
@@ -268,6 +293,8 @@ class RedTeamReport(BaseModel):
     decision_reasons: tuple[str, ...]
     summary: RedTeamSummary
     attempts: tuple[AttackAttempt, ...]
+    sandbox: SandboxReport = Field(default_factory=no_sandbox_report)
+    friendly_report: FriendlyReport | None = None
     evidence: EvidenceReference | None = None
     deterministic_assertions: Literal[True] = True
     model_execution_deterministic: bool

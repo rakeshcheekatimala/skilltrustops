@@ -3,7 +3,7 @@
 import json
 from enum import StrEnum
 from pathlib import Path
-from typing import Annotated, Literal, NoReturn
+from typing import Annotated, NoReturn
 
 import typer
 from rich.console import Console
@@ -27,6 +27,7 @@ from skilltrustops.redteam.generator import RedTeamManifestGenerator
 from skilltrustops.redteam.loader import RedTeamPackageError
 from skilltrustops.redteam.service import RedTeamService
 from skilltrustops.redteam.targets import OpenAIModelTarget, ReferenceModelTarget
+from skilltrustops.sandbox.providers import DockerSandboxProvider
 from skilltrustops.services.lint import LintService
 from skilltrustops.services.local_env import load_discovered_env
 from skilltrustops.services.static_scan import StaticScanService
@@ -57,6 +58,17 @@ class ModelProvider(StrEnum):
     OPENAI = "openai"
 
 
+class SandboxProviderName(StrEnum):
+    NONE = "none"
+    DOCKER = "docker"
+    GVISOR = "gvisor"
+
+
+class ManifestGenerationProvider(StrEnum):
+    OPENAI = "openai"
+    DETERMINISTIC = "deterministic"
+
+
 @redteam_app.command("init")
 def redteam_init(
     skill_path: Annotated[
@@ -68,9 +80,9 @@ def redteam_init(
         typer.Option("--force", help="Replace an existing generated manifest."),
     ] = False,
     provider: Annotated[
-        Literal["openai", "deterministic"],
+        ManifestGenerationProvider,
         typer.Option("--provider", help="Behavioral test generation strategy."),
-    ] = "openai",
+    ] = ManifestGenerationProvider.OPENAI,
     model: Annotated[
         str,
         typer.Option("--model", help="OpenAI model used to propose attack cases."),
@@ -86,7 +98,7 @@ def redteam_init(
         result = RedTeamManifestGenerator().write(
             skill_path,
             force=force,
-            strategy=provider,
+            strategy=provider.value,
             model=model,
         )
     except RedTeamPackageError as error:
@@ -234,6 +246,14 @@ def redteam_run(
             help="Reference profile or OpenAI model ID.",
         ),
     ] = "resistant-demo",
+    sandbox: Annotated[
+        SandboxProviderName,
+        typer.Option("--sandbox", help="Isolation provider for the package boundary."),
+    ] = SandboxProviderName.NONE,
+    sandbox_image: Annotated[
+        str,
+        typer.Option("--sandbox-image", help="Container image used for probes."),
+    ] = "alpine:3.20",
     evidence_dir: Annotated[
         Path,
         typer.Option("--evidence-dir", help="Directory for immutable run evidence."),
@@ -251,7 +271,17 @@ def redteam_run(
             if provider is ModelProvider.OPENAI
             else ReferenceModelTarget(model)
         )
-        report = RedTeamService(evidence_dir).run(manifest_path, target)
+        sandbox_provider = (
+            None
+            if sandbox is SandboxProviderName.NONE
+            else DockerSandboxProvider(
+                runtime="runsc" if sandbox is SandboxProviderName.GVISOR else "runc",
+                image=sandbox_image,
+            )
+        )
+        report = RedTeamService(evidence_dir).run(
+            manifest_path, target, sandbox_provider
+        )
     except (RedTeamPackageError, ValueError) as error:
         console.print(f"[bold red]REDTEAM ERROR[/bold red] {error}")
         raise typer.Exit(code=2) from error
@@ -273,6 +303,13 @@ def redteam_run(
         )
         if report.evidence:
             console.print(f"[dim]Evidence: {report.evidence.directory}[/dim]")
+            console.print(
+                f"[dim]Friendly report: {report.evidence.friendly_report}[/dim]"
+            )
+        console.print(
+            f"Sandbox: {report.sandbox.provider}/{report.sandbox.runtime} "
+            f"({report.sandbox.status})"
+        )
         failures = [
             attempt
             for attempt in report.attempts

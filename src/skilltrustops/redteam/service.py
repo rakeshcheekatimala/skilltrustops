@@ -10,6 +10,7 @@ from skilltrustops import __version__
 from skilltrustops.redteam.assertions import evaluate
 from skilltrustops.redteam.attacks import cases_for
 from skilltrustops.redteam.evidence import EvidenceWriter
+from skilltrustops.redteam.friendly import build_friendly_report
 from skilltrustops.redteam.loader import LoadedRedTeamPackage, RedTeamPackageLoader
 from skilltrustops.redteam.models import (
     AssessmentDecision,
@@ -21,6 +22,8 @@ from skilltrustops.redteam.models import (
 )
 from skilltrustops.redteam.simulator import GeneratedToolRuntime, SimulationState
 from skilltrustops.redteam.targets import ModelTarget
+from skilltrustops.sandbox.contracts import SandboxProvider
+from skilltrustops.sandbox.models import no_sandbox_report
 
 
 class RedTeamService:
@@ -29,11 +32,26 @@ class RedTeamService:
     def __init__(self, evidence_root: Path):
         self.evidence_root = evidence_root
 
-    def run(self, manifest_path: Path, target: ModelTarget) -> RedTeamReport:
+    def run(
+        self,
+        manifest_path: Path,
+        target: ModelTarget,
+        sandbox_provider: SandboxProvider | None = None,
+    ) -> RedTeamReport:
         package = RedTeamPackageLoader().load(manifest_path)
-        attempts = tuple(
-            self._run_case(package, target, case)
-            for case in cases_for(package.manifest)
+        sandbox = (
+            sandbox_provider.run(package.root)
+            if sandbox_provider is not None
+            else no_sandbox_report()
+        )
+        planned_cases = cases_for(package.manifest)
+        attempts = (
+            tuple(
+                self._run_case(package, target, case)
+                for case in planned_cases
+            )
+            if sandbox.status not in {"failed", "unavailable"}
+            else ()
         )
         succeeded = sum(
             attempt.outcome is AttemptOutcome.ATTACK_SUCCEEDED for attempt in attempts
@@ -45,6 +63,15 @@ class RedTeamService:
         if succeeded:
             decision = AssessmentDecision.BLOCKED
             reasons = (f"{succeeded} adversarial case(s) produced a security failure",)
+        elif sandbox.status in {"failed", "unavailable"}:
+            decision = AssessmentDecision.INCONCLUSIVE
+            reasons = (sandbox.explanation,)
+        elif sandbox.status == "passed" and not sandbox.certifying:
+            decision = AssessmentDecision.INCONCLUSIVE
+            reasons = (
+                "Docker development isolation passed, but it is not a certifying "
+                "sandbox boundary",
+            )
         elif inconclusive:
             decision = AssessmentDecision.INCONCLUSIVE
             reasons = (f"{inconclusive} case(s) could not be evaluated conclusively",)
@@ -73,7 +100,7 @@ class RedTeamService:
             decision=decision,
             decision_reasons=reasons,
             summary=RedTeamSummary(
-                planned=len(attempts),
+                planned=len(planned_cases),
                 executed=len(attempts),
                 resisted=sum(
                     attempt.outcome is AttemptOutcome.RESISTED for attempt in attempts
@@ -82,7 +109,11 @@ class RedTeamService:
                 inconclusive=inconclusive,
             ),
             attempts=attempts,
+            sandbox=sandbox,
             model_execution_deterministic=target.deterministic,
+        )
+        report = report.model_copy(
+            update={"friendly_report": build_friendly_report(report)}
         )
         reference = EvidenceWriter(self.evidence_root).write(report)
         return report.model_copy(update={"evidence": reference})

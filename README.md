@@ -41,9 +41,60 @@ The harness supports:
 - `assured`, `blocked`, or `inconclusive` decisions.
 
 Submitted Python, JavaScript, shell scripts, Dockerfiles, tool implementations,
-and framework code are never executed. Phase 1 does not yet use gVisor, E2B,
-Firecracker, Docker, or another code-execution sandbox. Tools are simulations
-and never perform real side effects.
+and framework code are never executed. Tools are simulations and never perform
+real side effects. An optional Docker or gVisor isolation stage runs a trusted
+probe against a read-only package mount before behavioral attacks begin.
+
+### Sandbox testing
+
+The sandbox stage verifies the execution boundary; it does not run code found
+in the submitted skill. The trusted probe confirms that `SKILL.md` is readable,
+the package is not writable, the process is non-root, Docker capabilities are
+dropped, and no Docker socket is mounted. The container starts with no network,
+a read-only root filesystem, process/CPU/memory limits, `no-new-privileges`, and
+a small `noexec` temporary filesystem.
+
+For a local development check with Docker:
+
+```bash
+uv run skilltrustops redteam run examples/redteam-support/SKILL.md \
+  --provider reference \
+  --model resistant-demo \
+  --sandbox docker \
+  --sandbox-image alpine:3.20
+```
+
+Docker must be installed and its daemon must be running. Docker isolation is
+useful during development but is intentionally **non-certifying**, so even a
+clean behavioral run is reported as `inconclusive` rather than `assured`.
+
+For a certifying isolation boundary, run SkillTrustOps on a Linux host whose
+Docker daemon has the gVisor `runsc` runtime configured, and pin the image by
+digest:
+
+```bash
+uv run skilltrustops redteam run examples/redteam-support/SKILL.md \
+  --provider openai \
+  --model gpt-5.6-terra \
+  --sandbox gvisor \
+  --sandbox-image alpine@sha256:<verified-digest>
+```
+
+The run is fail-closed. If the runtime is unavailable, an isolation probe
+fails, or the container times out, model attacks do not start and the decision
+is `inconclusive`. A timed-out container is forcibly removed. The report is
+written only after the sandbox exits (or cleanup finishes).
+
+Every evidence directory contains:
+
+- `report.json`: complete machine-readable results;
+- `friendly-report.md`: simple-English outcome, issues, fixes, scope, and the
+  OWASP LLM / MITRE ATLAS policies attached to each confirmed attack;
+- `inspect-evaluation.jsonl`: model and fake-tool event log; and
+- `evidence-manifest.json`: hashes for integrity and reproducibility.
+
+The Studio **Red team** page exposes the same sandbox selector, image field,
+plain-English report, isolation checks, policy mappings, and evidence location.
 
 ### 1. Configure OpenAI for generation or live testing
 

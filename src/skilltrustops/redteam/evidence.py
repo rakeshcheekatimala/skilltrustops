@@ -8,6 +8,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from skilltrustops.redteam.attacks import ATTACK_PACK_ID, ATTACK_PACK_VERSION
+from skilltrustops.redteam.friendly import render_friendly_markdown
 from skilltrustops.redteam.models import EvidenceReference, RedTeamReport
 
 
@@ -21,6 +22,7 @@ class EvidenceWriter:
         report_path = directory / "report.json"
         inspect_path = directory / "inspect-events.jsonl"
         manifest_path = directory / "evidence-manifest.json"
+        friendly_path = directory / "friendly-report.md"
 
         report_payload = report.model_dump(mode="json", exclude={"evidence"})
         report_path.write_text(
@@ -52,9 +54,11 @@ class EvidenceWriter:
                     )
                     + "\n"
                 )
+        friendly_path.write_text(render_friendly_markdown(report), encoding="utf-8")
         artifacts = {
             report_path.name: _digest(report_path),
             inspect_path.name: _digest(inspect_path),
+            friendly_path.name: _digest(friendly_path),
         }
         manifest_path.write_text(
             json.dumps(
@@ -81,6 +85,7 @@ class EvidenceWriter:
             manifest=str(manifest_path),
             report=str(report_path),
             inspect_log=str(inspect_path),
+            friendly_report=str(friendly_path),
         )
 
 
