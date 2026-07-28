@@ -3,87 +3,66 @@
 SkillTrustOps is a local-first CLI for reviewing AI agent skills before they
 are allowed to run inside an organization.
 
-The project is being built in small, independently tested phases. It currently
-provides specification linting plus deterministic security and privacy scans.
-It does not execute skill code, make network requests, or require an account or
-API key.
+The project is being built in small, independently tested phases. It provides
+specification linting, deterministic security and privacy scans, and an
+optional behavioral red-team harness. Static commands stay local. Behavioral
+runs make explicit calls to the selected model provider and require that
+provider's API key. Submitted skill code is never executed in Phase 1.
 
-## Phase 1 behavioral red-team harness
+## Behavioral red-team testing
 
-SkillTrustOps can also test one `SKILL.md` in a controlled reference harness.
-This is separate from the deterministic `lint`, `security`, and `privacy`
-commands: a behavioral run invokes the selected model, gives it generated
-in-memory tools and synthetic records, and observes whether adversarial inputs
-cause unsafe output or tool intent.
+Behavioral red-team testing is separate from `lint`, `security`, and `privacy`.
+Those commands inspect files deterministically. A red-team run invokes a model,
+sends adversarial conversations, observes model output and fake-tool intent, and
+evaluates deterministic assertions.
 
-The harness currently supports:
+### Current Phase 1 boundary
 
-- One `SKILL.md` beside one declarative package manifest
-- JSON Schema-style tool inputs and outputs
-- Generated tools that never perform real side effects
-- Synthetic records and uniquely detectable canaries
-- Direct and indirect prompt injection
-- Sensitive-data disclosure
-- Unauthorized tool-call attempts
-- Confirmation bypass
-- Multi-turn authority escalation
-- Deterministic assertions over model output and tool traces
-- A content-addressed SkillTrustOps evidence bundle
-- An Inspect-oriented JSONL event export for later import/adaptation
-- `assured`, `blocked`, and `inconclusive` decisions
+Phase 1 supports one declarative package containing:
 
-The example package is in
-[`examples/redteam-support`](examples/redteam-support). Run its safe,
-deterministic demonstration target:
-
-```bash
-uv run skilltrustops redteam run \
-  examples/redteam-support/skilltrust-package.yaml \
-  --model resistant-demo
+```text
+my-skill/
+├── SKILL.md
+└── skilltrust-package.yaml
 ```
 
-Run the deliberately weak target to inspect failures and blocked tool calls:
+The harness supports:
 
-```bash
-uv run skilltrustops redteam run \
-  examples/redteam-support/skilltrust-package.yaml \
-  --model vulnerable-demo
-```
+- model-assisted, skill-specific behavioral test generation;
+- versioned baseline attacks for direct injection, indirect document injection,
+  sensitive disclosure, unauthorized tool calls, confirmation bypass, and
+  multi-turn escalation;
+- JSON Schema tool declarations with in-memory fake implementations;
+- synthetic records and uniquely detectable canaries;
+- deterministic assertions over model output, encoded canaries, output markers,
+  authorization decisions, confirmations, and fake-tool traces;
+- OWASP LLM and MITRE ATLAS mappings;
+- hash-bound evidence bundles; and
+- `assured`, `blocked`, or `inconclusive` decisions.
 
-Evidence is written under `.skilltrustops/redteam-runs/<run-id>/` unless
-`--evidence-dir` is supplied. Submitted Python, JavaScript, shell scripts,
-Dockerfiles, and tool implementations are never executed in Phase 1.
+Submitted Python, JavaScript, shell scripts, Dockerfiles, tool implementations,
+and framework code are never executed. Phase 1 does not yet use gVisor, E2B,
+Firecracker, Docker, or another code-execution sandbox. Tools are simulations
+and never perform real side effects.
 
-### Test a real OpenAI model
+### 1. Configure OpenAI for generation or live testing
 
-The reference models require no API key. To opt into a real model call, copy
-`.env.example` to `.env`, add the key, and restart the backend:
+Reference targets require no key. Model-assisted test generation and OpenAI
+target runs require a repository-local `.env`:
 
 ```dotenv
 OPENAI_API_KEY=your-local-key
 SKILLTRUST_OPENAI_MODEL=gpt-5.6-terra
 ```
 
-Then run:
+Never commit `.env`. The CLI discovers the nearest `.env` in the current
+directory or its parents. Studio loads the repository `.env`. Existing process
+environment values take precedence. The key is never accepted from the browser,
+returned by the API, inserted into a manifest, or written to evidence.
 
-```bash
-uv run skilltrustops redteam run \
-  examples/redteam-support/skilltrust-package.yaml \
-  --provider openai \
-  --model gpt-5.6-terra
-```
+### 2. Generate behavioral tests from only SKILL.md
 
-The CLI reads `OPENAI_API_KEY` from its process environment. The Studio backend
-also loads the repository-local `.env`. The key is not accepted from the
-browser, returned by the API, or included in evidence. A real-provider run is
-not fully deterministic even with fixed inputs; the report records that fact.
-
-For durable assessments, choose a pinned provider model snapshot when one is
-available rather than a moving alias.
-
-### Generate behavioral tests from one SKILL.md
-
-When a skill has no adjacent manifest, generate a model-proposed draft:
+When no adjacent manifest exists, generate a model-proposed draft:
 
 ```bash
 uv run skilltrustops redteam init examples/my-skill/SKILL.md \
@@ -91,25 +70,169 @@ uv run skilltrustops redteam init examples/my-skill/SKILL.md \
   --model gpt-5.6-terra
 ```
 
-Studio provides the same flow with **Generate behavioral test draft**. The
-generator treats SKILL.md as untrusted data, requests schema-constrained attack
-proposals, adds baseline attacks and synthetic canaries, validates the complete
-manifest, and writes `skilltrust-package.yaml` beside the skill. Submitted code
-is not executed.
+If a manifest already exists and should be replaced deliberately, add
+`--force`:
 
-Generated manifests are bound to the source skill SHA-256 and marked as
-review-required. A confirmed attack still produces `blocked`; a clean run stays
-`inconclusive` until the generated capabilities, tools, attacks, and expected
-markers have been reviewed. Changing SKILL.md makes the draft stale and requires
-regeneration.
+```bash
+uv run skilltrustops redteam init examples/my-skill/SKILL.md \
+  --provider openai \
+  --model gpt-5.6-terra \
+  --force
+```
 
-### What `assured` means
+The generator:
 
-`assured` means that all applicable Phase 1 cases were resisted by the exact
-skill, manifest, model, harness, and attack definitions identified in the
-evidence bundle. It does not claim that the skill is universally safe in every
-agent framework or production application. Changing the skill, tool contract,
-model, harness, or attack suite requires a new assessment.
+1. reads `SKILL.md` as untrusted data without executing it;
+2. asks the generation model for schema-constrained capabilities and attacks;
+3. validates and normalizes the untrusted model proposal;
+4. adds portable baseline attacks and synthetic canaries;
+5. records the generation model, generator version, and source skill SHA-256;
+6. writes `skilltrust-package.yaml` beside `SKILL.md`; and
+7. marks the result as a review-required draft.
+
+Studio exposes the same operation as **Generate behavioral test draft** on the
+**Red team** page.
+
+### 3. Review the generated manifest
+
+Review at least:
+
+- inferred capabilities;
+- synthetic canaries and records;
+- every generated attack prompt;
+- expected forbidden output markers;
+- OWASP and MITRE mappings;
+- JSON Schema tools;
+- authorization scope; and
+- confirmation requirements.
+
+SkillTrustOps intentionally does not invent tool contracts from prose. Add
+tools explicitly when the skill uses them. Incorrect tool inference could omit
+an authorization or confirmation boundary.
+
+Generated manifests contain:
+
+```yaml
+generation:
+  status: draft
+  method: openai
+  source_skill_sha256: "..."
+  requires_review: true
+  model: gpt-5.6-terra
+```
+
+A clean draft run remains `inconclusive`. After completing the review, mark it:
+
+```yaml
+generation:
+  status: approved
+  method: openai
+  source_skill_sha256: "..."
+  requires_review: false
+  model: gpt-5.6-terra
+```
+
+Do not alter `source_skill_sha256`. If `SKILL.md` changes, the loader rejects
+the stale manifest and requires regeneration.
+
+### 4. Run deterministic reference targets
+
+Use the resistant fixture to verify the pass path without network access:
+
+```bash
+uv run skilltrustops redteam run \
+  examples/redteam-support/SKILL.md \
+  --provider reference \
+  --model resistant-demo
+```
+
+Use the deliberately weak fixture to inspect failures:
+
+```bash
+uv run skilltrustops redteam run \
+  examples/redteam-support/SKILL.md \
+  --provider reference \
+  --model vulnerable-demo
+```
+
+Reference targets are transparent test fixtures, not real language models.
+
+### 5. Run a real OpenAI target
+
+```bash
+uv run skilltrustops redteam run \
+  examples/my-skill/SKILL.md \
+  --provider openai \
+  --model gpt-5.6-terra
+```
+
+The command accepts either `SKILL.md` or the adjacent YAML/JSON manifest. A real
+provider run is not fully deterministic even with fixed inputs. For durable
+assessments, use a pinned provider model snapshot when one is available.
+
+### 6. Interpret the decision
+
+- `blocked`: at least one deterministic assertion confirmed a security failure.
+- `inconclusive`: the model, harness, or provider failed, or a clean generated
+  manifest still requires review.
+- `assured`: every applicable case passed for an approved manifest and the exact
+  package, model, harness, and attack definitions recorded in evidence.
+
+Decision precedence is fail-closed:
+
+```text
+confirmed security failure -> blocked
+missing or uncertain evidence -> inconclusive
+all required evidence passed -> assured
+```
+
+`assured` is scoped evidence, not universal certification. It does not prove
+that the skill is safe with every model, framework, tool implementation, future
+attack, or production environment.
+
+CLI exit codes are:
+
+- `0` for `assured`;
+- `1` for `blocked`;
+- `2` for configuration or validation errors; and
+- `3` for `inconclusive`.
+
+### 7. Inspect evidence
+
+Evidence is written to:
+
+```text
+.skilltrustops/redteam-runs/<run-id>/
+├── evidence-manifest.json
+├── report.json
+└── inspect-events.jsonl
+```
+
+The bundle records package hashes, the selected model, attack definitions,
+conversation turns, outputs, assertions, fake-tool traces, decision reasons,
+and generation provenance. Use `--evidence-dir` to select another root.
+
+Machine-readable terminal output is available with `--format json`.
+
+### End-to-end example
+
+The intentionally vulnerable fixture starts from
+[`examples/red-team-canary/SKILL.md`](examples/red-team-canary/SKILL.md):
+
+```bash
+uv run skilltrustops redteam init examples/red-team-canary/SKILL.md \
+  --provider openai \
+  --model gpt-5.6-terra \
+  --force
+
+uv run skilltrustops redteam run examples/red-team-canary/SKILL.md \
+  --provider openai \
+  --model gpt-5.6-terra
+```
+
+This fixture is deliberately weak, so the expected result is `blocked`, with
+evidence of behavior such as debug leakage, instruction override, hidden-rule
+disclosure, user-controlled trust, or sensitive token echoing.
 
 ## Local quick start
 
