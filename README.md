@@ -38,6 +38,16 @@ never overwrites an existing file.
 
 [![SkillTrustOps command reference for policy validation, static checks, and red-team testing](docs/images/skilltrustops-command-reference.png)](docs/images/skilltrustops-command-reference.png)
 
+### What the security scan checks
+
+`skilltrustops security` reads one `SKILL.md` locally and checks it for exposed
+credentials, private keys, dynamic Python execution, shell invocation,
+destructive removal commands, and downloads piped directly to a shell. It does
+not execute the skill, and all matched secret values are redacted from output.
+
+See [Security scan](docs/security-scan.md) for the complete rule list, execution
+flow, configuration, and scope limits.
+
 ## Red-team a skill
 
 Create and review a behavioral test manifest, then run it:
@@ -76,6 +86,7 @@ section configures sandbox behavior.
 | [Getting started](docs/getting-started.md) | Install SkillTrustOps and complete a first assessment. |
 | [Policy guide](docs/policy-guide.md) | Create, validate, discover, and maintain `skilltrustops.yaml`. |
 | [Policy reference](docs/policy-reference.md) | Look up every supported policy field and constraint. |
+| [Security scan](docs/security-scan.md) | Understand secret and dangerous-instruction checks, execution flow, and limits. |
 | [Red-team testing](docs/red-team-testing.md) | Decide when to test, activate it, review manifests, and interpret evidence. |
 | [Security best practices](docs/security-best-practices.md) | Operate SkillTrustOps safely in development and CI. |
 | [Troubleshooting](docs/troubleshooting.md) | Resolve common policy, provider, sandbox, and exit-code failures. |
