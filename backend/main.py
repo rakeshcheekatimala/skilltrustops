@@ -41,6 +41,7 @@ from skilltrustops.redteam.loader import RedTeamPackageError
 from skilltrustops.redteam.models import RedTeamReport
 from skilltrustops.redteam.service import RedTeamService
 from skilltrustops.redteam.targets import OpenAIModelTarget, ReferenceModelTarget
+from skilltrustops.sandbox.providers import DockerSandboxProvider
 from skilltrustops.services.lint import LintService
 from skilltrustops.services.local_env import load_local_env
 from skilltrustops.services.static_scan import StaticScanService
@@ -86,8 +87,16 @@ def run_redteam(request: RedTeamRunRequest) -> RedTeamReport:
             if request.provider == "openai"
             else ReferenceModelTarget(request.model)
         )
+        sandbox_provider = (
+            None
+            if request.sandbox == "none"
+            else DockerSandboxProvider(
+                runtime="runsc" if request.sandbox == "gvisor" else "runc",
+                image=request.sandbox_image,
+            )
+        )
         return RedTeamService(ROOT / ".skilltrustops" / "redteam-runs").run(
-            manifest_path, target
+            manifest_path, target, sandbox_provider
         )
     except (RedTeamPackageError, ValueError) as error:
         raise HTTPException(400, str(error)) from error
