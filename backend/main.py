@@ -41,7 +41,7 @@ from skilltrustops.redteam.loader import RedTeamPackageError
 from skilltrustops.redteam.models import RedTeamReport
 from skilltrustops.redteam.service import RedTeamService
 from skilltrustops.redteam.targets import OpenAIModelTarget, ReferenceModelTarget
-from skilltrustops.sandbox.providers import DockerSandboxProvider
+from skilltrustops.sandbox.providers import provider_from_policy
 from skilltrustops.services.lint import LintService
 from skilltrustops.services.local_env import load_local_env
 from skilltrustops.services.static_scan import StaticScanService
@@ -68,11 +68,16 @@ def health() -> dict[str, str]:
 
 @app.get("/api/redteam/config", response_model=ModelConfigurationStatus)
 def redteam_config() -> ModelConfigurationStatus:
+    loaded_policy = PolicyLoader().load(ROOT / "skilltrustops.yaml", ROOT)
+    sandbox = loaded_policy.policy.redteam.sandbox
     return ModelConfigurationStatus(
         openai_configured=bool(os.getenv("OPENAI_API_KEY")),
         openai_default_model=os.getenv("SKILLTRUST_OPENAI_MODEL", "gpt-5.6-terra"),
         reference_models=["resistant-demo", "vulnerable-demo"],
         env_file=str(ENV_FILE),
+        config_file=loaded_policy.reference.source,
+        sandbox_provider=sandbox.provider,
+        sandbox_image=sandbox.image,
     )
 
 
@@ -82,23 +87,21 @@ def run_redteam(request: RedTeamRunRequest) -> RedTeamReport:
     if not manifest_path.is_absolute():
         manifest_path = ROOT / manifest_path
     try:
+        loaded_policy = PolicyLoader().load(ROOT / "skilltrustops.yaml", ROOT)
         target = (
             OpenAIModelTarget(request.model)
             if request.provider == "openai"
             else ReferenceModelTarget(request.model)
         )
-        sandbox_provider = (
-            None
-            if request.sandbox == "none"
-            else DockerSandboxProvider(
-                runtime="runsc" if request.sandbox == "gvisor" else "runc",
-                image=request.sandbox_image,
-            )
+        sandbox_provider = provider_from_policy(
+            loaded_policy.policy.redteam.sandbox,
+            provider_override=request.sandbox,
+            image_override=request.sandbox_image,
         )
         return RedTeamService(ROOT / ".skilltrustops" / "redteam-runs").run(
             manifest_path, target, sandbox_provider
         )
-    except (RedTeamPackageError, ValueError) as error:
+    except (PolicyError, RedTeamPackageError, ValueError) as error:
         raise HTTPException(400, str(error)) from error
 
 

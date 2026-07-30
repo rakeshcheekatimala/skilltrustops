@@ -154,6 +154,28 @@ class ChecksPolicy(BaseModel):
     privacy: PrivacyCheckPolicy | None = None
 
 
+class SandboxPolicy(BaseModel):
+    """Repository-owned sandbox defaults; security invariants are not configurable."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    provider: Literal["none", "docker", "gvisor"] = "none"
+    image: str = "alpine:3.20"
+    timeout_seconds: int = Field(default=90, ge=10, le=600)
+    pids_limit: int = Field(default=64, ge=16, le=512)
+    memory: str = "256m"
+    cpus: float = Field(default=1.0, gt=0, le=8)
+    user_id: int = Field(default=65532, ge=1)
+    group_id: int = Field(default=65532, ge=1)
+    tmpfs_size_mb: int = Field(default=16, ge=4, le=256)
+
+
+class RedTeamPolicy(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    sandbox: SandboxPolicy = SandboxPolicy()
+
+
 class SkillTrustPolicy(BaseModel):
     """Versioned repository policy."""
 
@@ -162,6 +184,7 @@ class SkillTrustPolicy(BaseModel):
     version: Literal[1]
     profile: ProfileName
     checks: ChecksPolicy
+    redteam: RedTeamPolicy = RedTeamPolicy()
 
     @model_validator(mode="after")
     def checks_match_profile(self) -> Self:

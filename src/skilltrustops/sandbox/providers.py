@@ -10,6 +10,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from uuid import uuid4
 
+from skilltrustops.policies.models import SandboxPolicy
 from skilltrustops.sandbox.models import SandboxCheck, SandboxReport
 
 CommandRunner = Callable[..., subprocess.CompletedProcess[str]]
@@ -28,6 +29,31 @@ test -s /tmp/skill.sha256
 """.strip()
 
 
+def provider_from_policy(
+    policy: SandboxPolicy,
+    *,
+    provider_override: str | None = None,
+    image_override: str | None = None,
+) -> DockerSandboxProvider | None:
+    """Resolve optional caller overrides over trusted repository defaults."""
+    provider = provider_override or policy.provider
+    if provider == "none":
+        return None
+    if provider not in {"docker", "gvisor"}:
+        raise ValueError(f"Unsupported sandbox provider: {provider}")
+    return DockerSandboxProvider(
+        runtime="runsc" if provider == "gvisor" else "runc",
+        image=image_override or policy.image,
+        timeout_seconds=policy.timeout_seconds,
+        pids_limit=policy.pids_limit,
+        memory=policy.memory,
+        cpus=policy.cpus,
+        user_id=policy.user_id,
+        group_id=policy.group_id,
+        tmpfs_size_mb=policy.tmpfs_size_mb,
+    )
+
+
 class DockerSandboxProvider:
     """Run trusted isolation probes without executing submitted package code."""
 
@@ -36,10 +62,24 @@ class DockerSandboxProvider:
         *,
         runtime: str = "runc",
         image: str = "alpine:3.20",
+        timeout_seconds: int = 90,
+        pids_limit: int = 64,
+        memory: str = "256m",
+        cpus: float = 1.0,
+        user_id: int = 65532,
+        group_id: int = 65532,
+        tmpfs_size_mb: int = 16,
         runner: CommandRunner = subprocess.run,
     ) -> None:
         self.runtime = runtime
         self.image = image
+        self.timeout_seconds = timeout_seconds
+        self.pids_limit = pids_limit
+        self.memory = memory
+        self.cpus = cpus
+        self.user_id = user_id
+        self.group_id = group_id
+        self.tmpfs_size_mb = tmpfs_size_mb
         self.runner = runner
 
     @property
@@ -48,7 +88,8 @@ class DockerSandboxProvider:
 
     def run(self, package_root: Path) -> SandboxReport:
         started = datetime.now(UTC).isoformat()
-        certifying = self.runtime == "runsc" and "@sha256:" in self.image
+        digest_ok = "@sha256:" in self.image
+        certifying = self.runtime == "runsc" and digest_ok
         if shutil.which("docker") is None:
             return self._unavailable(started, "Docker CLI is not installed.")
 
@@ -61,7 +102,11 @@ class DockerSandboxProvider:
 
         container_name = f"skilltrust-{uuid4().hex[:12]}"
         command = self._docker_command(package_root, container_name)
-        completed = self._execute(command, 90, cleanup_container=container_name)
+        completed = self._execute(
+            command,
+            self.timeout_seconds,
+            cleanup_container=container_name,
+        )
         exited = datetime.now(UTC).isoformat()
         passed = completed.returncode == 0
         checks = (
@@ -122,6 +167,13 @@ class DockerSandboxProvider:
             certifying=certifying,
             runtime=self.runtime,
             image=self.image,
+            timeout_seconds=self.timeout_seconds,
+            pids_limit=self.pids_limit,
+            memory=self.memory,
+            cpus=self.cpus,
+            user_id=self.user_id,
+            group_id=self.group_id,
+            tmpfs_size_mb=self.tmpfs_size_mb,
             container_name=container_name,
             started_at=started,
             exited_at=exited,
@@ -151,15 +203,15 @@ class DockerSandboxProvider:
             "--security-opt",
             "no-new-privileges:true",
             "--pids-limit",
-            "64",
+            str(self.pids_limit),
             "--memory",
-            "256m",
+            self.memory,
             "--cpus",
-            "1",
+            str(self.cpus),
             "--user",
-            "65532:65532",
+            f"{self.user_id}:{self.group_id}",
             "--tmpfs",
-            "/tmp:rw,noexec,nosuid,nodev,size=16m",
+            f"/tmp:rw,noexec,nosuid,nodev,size={self.tmpfs_size_mb}m",
             "--mount",
             f"type=bind,src={package_root.absolute()},dst=/input,readonly",
         ]
@@ -204,6 +256,13 @@ class DockerSandboxProvider:
             certifying=False,
             runtime=self.runtime,
             image=self.image,
+            timeout_seconds=self.timeout_seconds,
+            pids_limit=self.pids_limit,
+            memory=self.memory,
+            cpus=self.cpus,
+            user_id=self.user_id,
+            group_id=self.group_id,
+            tmpfs_size_mb=self.tmpfs_size_mb,
             started_at=started,
             exited_at=datetime.now(UTC).isoformat(),
             explanation=explanation,

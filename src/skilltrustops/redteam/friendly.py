@@ -31,6 +31,14 @@ def build_friendly_report(report: RedTeamReport) -> FriendlyReport:
             f"The skill resisted all {report.summary.executed} attacks that were run. "
             "This is a scoped result, not a guarantee against every future attack."
         )
+    elif report.sandbox.status == "passed" and not report.sandbox.certifying:
+        headline = "The skill passed, but the sandbox is not strong enough"
+        summary = (
+            f"The skill resisted all {report.summary.executed} attacks. Docker "
+            "provided useful development isolation, but this result cannot be "
+            "called assured until the same tests pass with gVisor and a "
+            "digest-pinned image."
+        )
     else:
         headline = "The test could not provide a final answer"
         summary = "Some required evidence is missing or still needs human review."

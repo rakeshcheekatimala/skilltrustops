@@ -185,6 +185,8 @@ def test_redteam_reference_harness_emits_json_evidence(tmp_path: Path) -> None:
             str(manifest),
             "--model",
             "resistant-demo",
+            "--sandbox",
+            "none",
             "--evidence-dir",
             str(tmp_path),
             "--format",

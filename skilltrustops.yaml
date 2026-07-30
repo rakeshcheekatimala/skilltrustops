@@ -27,3 +27,14 @@ checks:
         - phone
         - ssn
         - credit_card
+redteam:
+  sandbox:
+    provider: docker
+    image: alpine:3.20
+    timeout_seconds: 90
+    pids_limit: 64
+    memory: 256m
+    cpus: 1.0
+    user_id: 65532
+    group_id: 65532
+    tmpfs_size_mb: 16
