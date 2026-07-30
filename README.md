@@ -12,6 +12,13 @@ synthetic data, and simulated tools.
 > Red-team runs call the model provider you select. All tools used by the
 > red-team harness are in-memory simulations and perform no real side effects.
 
+## Three gates to trust
+
+SkillTrustOps evaluates a skill in three stages: structure, security and
+privacy, then model behavior under attack.
+
+[![Three SkillTrustOps trust gates: lint, security and privacy, and red-team testing](docs/images/skilltrustops-three-gates.png)](docs/images/skilltrustops-three-gates.png)
+
 ## Quick start
 
 Requirements: Python 3.12 or newer and
@@ -28,6 +35,8 @@ uv run skilltrustops privacy examples/valid-skill/SKILL.md
 
 `policy init` creates `skilltrustops.yaml` in the repository root. The command
 never overwrites an existing file.
+
+[![SkillTrustOps command reference for policy validation, static checks, and red-team testing](docs/images/skilltrustops-command-reference.png)](docs/images/skilltrustops-command-reference.png)
 
 ## Red-team a skill
 
