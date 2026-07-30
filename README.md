@@ -2,10 +2,20 @@
 
 Local-first trust checks and behavioral security testing for AI agent skills.
 
-SkillTrustOps helps maintainers review a `SKILL.md` before it is trusted. It
-combines deterministic specification, security, and privacy checks with an
-optional red-team harness that tests a model against adversarial conversations,
-synthetic data, and simulated tools.
+## Catch unsafe skill instructions before an agent follows them
+
+Run the first trust check in three commands:
+
+```bash
+uv sync --extra dev
+uv run skilltrustops policy init --profile recommended-v2
+uv run skilltrustops lint path/to/SKILL.md && uv run skilltrustops security path/to/SKILL.md && uv run skilltrustops privacy path/to/SKILL.md
+```
+
+You get a local, deterministic pass or fail for skill structure, exposed
+credentials, dangerous instructions, and personal data. Start with
+[Getting started](docs/getting-started.md) for installation alternatives and
+behavioral testing.
 
 > [!IMPORTANT]
 > Static checks never execute the submitted skill or upload its content.
@@ -19,22 +29,17 @@ privacy, then model behavior under attack.
 
 [![Three SkillTrustOps trust gates: lint, security and privacy, and red-team testing](docs/images/skilltrustops-three-gates.png)](docs/images/skilltrustops-three-gates.png)
 
-## Quick start
-
-Requirements: Python 3.12 or newer and
-[`uv`](https://docs.astral.sh/uv/).
+## Run individual checks
 
 ```bash
-uv sync --extra dev
-uv run skilltrustops policy init
 uv run skilltrustops policy validate
 uv run skilltrustops lint examples/valid-skill/SKILL.md
 uv run skilltrustops security examples/valid-skill/SKILL.md
 uv run skilltrustops privacy examples/valid-skill/SKILL.md
 ```
 
-`policy init` creates `skilltrustops.yaml` in the repository root. The command
-never overwrites an existing file.
+`policy init` creates `skilltrustops.yaml` in the repository root and never
+overwrites an existing file.
 
 [![SkillTrustOps command reference for policy validation, static checks, and red-team testing](docs/images/skilltrustops-command-reference.png)](docs/images/skilltrustops-command-reference.png)
 
@@ -47,6 +52,61 @@ not execute the skill, and all matched secret values are redacted from output.
 
 See [Security scan](docs/security-scan.md) for the complete rule list, execution
 flow, configuration, and scope limits.
+
+## Agent-to-Skill trust boundary
+
+SkillTrustOps is a pre-trust review gate. It evaluates an untrusted skill before
+a reviewer allows an agent runtime to load it; it is not an inline production
+proxy.
+
+### Static review stays local
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor M as Maintainer
+    participant S as Untrusted SKILL.md
+    participant T as SkillTrustOps
+    participant P as Trusted repository policy
+    participant D as Local detectors
+    actor R as Reviewer
+    participant A as Agent runtime
+
+    M->>T: Submit one SKILL.md
+    T->>P: Load and validate policy
+    T->>S: Read bounded UTF-8 text
+    T->>D: Run lint, security, and privacy
+    D-->>T: Return redacted findings
+    T-->>R: Report PASS or FAIL with policy hash
+    alt Review passes
+        R->>A: Allow the reviewed skill
+    else Finding or scanner error
+        R-->>M: Fix the skill and scan again
+    end
+    Note over S,A: Trust boundary: only a reviewed skill should reach the agent
+```
+
+### Red-team testing uses simulated tools
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor R as Security reviewer
+    participant T as SkillTrustOps harness
+    participant M as Selected model provider
+    participant F as In-memory simulated tools
+    participant E as Local evidence
+
+    R->>T: Run an approved behavioral manifest
+    T->>M: Send the skill and a synthetic attack
+    M-->>T: Return a response or proposed tool call
+    T->>F: Execute the proposed call in memory
+    F-->>T: Return a simulated result
+    T->>T: Check authorization, confirmation, and leakage assertions
+    T->>E: Record hashes, transcript, and findings
+    T-->>R: Return assured, blocked, or inconclusive
+    Note over M,F: Live providers receive test context; simulated tools have no real side effects
+```
 
 ## Red-team a skill
 
