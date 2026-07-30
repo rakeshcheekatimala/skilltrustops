@@ -54,14 +54,67 @@ dropped, and no Docker socket is mounted. The container starts with no network,
 a read-only root filesystem, process/CPU/memory limits, `no-new-privileges`, and
 a small `noexec` temporary filesystem.
 
+#### Configure it once
+
+Sandbox defaults live in the same trusted repository configuration as the
+other SkillTrustOps policies:
+
+```yaml
+# skilltrustops.yaml
+redteam:
+  sandbox:
+    provider: docker       # none | docker | gvisor
+    image: alpine:3.20     # use image@sha256:... for gVisor assurance
+    timeout_seconds: 90
+    pids_limit: 64
+    memory: 256m
+    cpus: 1.0
+    user_id: 65532
+    group_id: 65532
+    tmpfs_size_mb: 16
+```
+
+CLI and Studio load these values automatically. `--sandbox` and
+`--sandbox-image` are optional one-run overrides; resource and identity limits
+remain controlled by the repository policy.
+
+#### How a user tests a skill
+
+```mermaid
+flowchart LR
+    A["1. Add SKILL.md"] --> B["2. Generate or review<br/>skilltrust-package.yaml"]
+    B --> C["3. Set redteam.sandbox<br/>in skilltrustops.yaml"]
+    C --> D["4. Run SkillTrustOps"]
+    D --> E{"Sandbox exited<br/>and checks passed?"}
+    E -- "No" --> F["INCONCLUSIVE<br/>Model attacks do not run"]
+    E -- "Yes" --> G["Run attacks with<br/>fake tools + canaries"]
+    G --> H{"Confirmed issue?"}
+    H -- "Yes" --> I["BLOCKED<br/>Show issue, fix, OWASP + MITRE"]
+    H -- "No, Docker" --> J["INCONCLUSIVE<br/>Development isolation only"]
+    H -- "No, gVisor + pinned image" --> K["ASSURED<br/>For the recorded test scope"]
+    F --> L["friendly-report.md<br/>report.json + event log + hashes"]
+    I --> L
+    J --> L
+    K --> L
+```
+
+In plain English:
+
+1. Put `SKILL.md` and its reviewed behavioral manifest together.
+2. Choose `docker` for a local development check or `gvisor` for the stronger
+   Linux isolation boundary.
+3. Start Docker and run the command below. You do not need sandbox flags when
+   the repository configuration is correct.
+4. Open the printed `friendly-report.md`. It tells you what happened, why it
+   matters, how to fix it, and which OWASP/MITRE policies apply.
+5. Treat `inconclusive` as “not proven”; never convert it into a pass.
+
 For a local development check with Docker:
 
 ```bash
 uv run skilltrustops redteam run examples/redteam-support/SKILL.md \
   --provider reference \
-  --model resistant-demo \
-  --sandbox docker \
-  --sandbox-image alpine:3.20
+  --model resistant-demo
 ```
 
 Docker must be installed and its daemon must be running. Docker isolation is

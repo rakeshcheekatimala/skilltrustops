@@ -27,7 +27,7 @@ from skilltrustops.redteam.generator import RedTeamManifestGenerator
 from skilltrustops.redteam.loader import RedTeamPackageError
 from skilltrustops.redteam.service import RedTeamService
 from skilltrustops.redteam.targets import OpenAIModelTarget, ReferenceModelTarget
-from skilltrustops.sandbox.providers import DockerSandboxProvider
+from skilltrustops.sandbox.providers import provider_from_policy
 from skilltrustops.services.lint import LintService
 from skilltrustops.services.local_env import load_discovered_env
 from skilltrustops.services.static_scan import StaticScanService
@@ -247,13 +247,17 @@ def redteam_run(
         ),
     ] = "resistant-demo",
     sandbox: Annotated[
-        SandboxProviderName,
-        typer.Option("--sandbox", help="Isolation provider for the package boundary."),
-    ] = SandboxProviderName.NONE,
+        SandboxProviderName | None,
+        typer.Option("--sandbox", help="Override configured isolation provider."),
+    ] = None,
     sandbox_image: Annotated[
-        str,
-        typer.Option("--sandbox-image", help="Container image used for probes."),
-    ] = "alpine:3.20",
+        str | None,
+        typer.Option("--sandbox-image", help="Override configured probe image."),
+    ] = None,
+    policy_path: Annotated[
+        Path | None,
+        typer.Option("--policy", help="Repository configuration and policy."),
+    ] = None,
     evidence_dir: Annotated[
         Path,
         typer.Option("--evidence-dir", help="Directory for immutable run evidence."),
@@ -265,19 +269,17 @@ def redteam_run(
 ) -> None:
     """Test one SKILL.md with generated tools and synthetic records."""
     load_discovered_env(Path.cwd())
+    loaded_policy = _load_policy(policy_path)
     try:
         target = (
             OpenAIModelTarget(model)
             if provider is ModelProvider.OPENAI
             else ReferenceModelTarget(model)
         )
-        sandbox_provider = (
-            None
-            if sandbox is SandboxProviderName.NONE
-            else DockerSandboxProvider(
-                runtime="runsc" if sandbox is SandboxProviderName.GVISOR else "runc",
-                image=sandbox_image,
-            )
+        sandbox_provider = provider_from_policy(
+            loaded_policy.policy.redteam.sandbox,
+            provider_override=sandbox.value if sandbox is not None else None,
+            image_override=sandbox_image,
         )
         report = RedTeamService(evidence_dir).run(
             manifest_path, target, sandbox_provider

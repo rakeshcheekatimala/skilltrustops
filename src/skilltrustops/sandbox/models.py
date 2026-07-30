@@ -24,6 +24,13 @@ class SandboxReport(BaseModel):
     certifying: bool
     runtime: str
     image: str | None = None
+    timeout_seconds: int | None = None
+    pids_limit: int | None = None
+    memory: str | None = None
+    cpus: float | None = None
+    user_id: int | None = None
+    group_id: int | None = None
+    tmpfs_size_mb: int | None = None
     container_name: str | None = None
     started_at: str | None = None
     exited_at: str | None = None
