@@ -6,6 +6,10 @@ from typing import assert_never
 from skilltrustops.adapters.filesystem import SafeSkillFileLoader
 from skilltrustops.adapters.gitleaks import GitleaksSecretDetector
 from skilltrustops.detectors.dangerous_code import AstDangerousCodeDetector
+from skilltrustops.detectors.package import (
+    PackagePrivacyDetector,
+    PackageSecurityDetector,
+)
 from skilltrustops.detectors.pii import BuiltinPiiDetector
 from skilltrustops.detectors.secrets import BuiltinSecretDetector
 from skilltrustops.engines.base import LintEngine
@@ -85,6 +89,8 @@ def build_security_engine(
             case unsupported_code_engine:
                 assert_never(unsupported_code_engine)
 
+    detectors.append(PackageSecurityDetector())
+
     return ContentScanEngine(
         loader=SafeSkillFileLoader(rule_prefix="STO-INPUT"),
         detectors=tuple(detectors),
@@ -99,6 +105,7 @@ def build_privacy_engine(policy: PrivacyCheckPolicy) -> LintEngine:
         match policy.pii.engine:
             case PiiEngine.BUILTIN:
                 detectors.append(BuiltinPiiDetector(policy.pii.entities))
+                detectors.append(PackagePrivacyDetector(policy.pii.entities))
             case unsupported_pii_engine:
                 assert_never(unsupported_pii_engine)
 

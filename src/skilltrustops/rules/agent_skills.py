@@ -127,9 +127,7 @@ class AgentSkillsSpecificationRules:
 
         return findings
 
-    def _validate_description(
-        self, metadata: dict[object, object]
-    ) -> list[Finding]:
+    def _validate_description(self, metadata: dict[object, object]) -> list[Finding]:
         description = metadata.get("description")
         if not isinstance(description, str) or not description.strip():
             return [

@@ -106,7 +106,8 @@ def main() -> None:
             "wall_duration_ms": wall_times,
             "median_wall_duration_ms": round(median_wall, 3),
             "median_throughput_skills_per_second": round(
-                skills / (median_wall / 1000), 3  # type: ignore[operator]
+                skills / (median_wall / 1000),
+                3,  # type: ignore[operator]
             ),
             "skill_latency_ms": {
                 "p50": percentile(skill_times, 0.50),

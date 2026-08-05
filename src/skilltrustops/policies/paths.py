@@ -42,7 +42,6 @@ def resolve_trusted_policy_file(base_dir: Path, configured_path: Path) -> Path:
         )
     if resolved.stat().st_size > MAX_REFERENCED_POLICY_FILE_BYTES:
         raise TrustedPolicyPathError(
-            "Policy-referenced file exceeds the 1 MiB safety limit: "
-            f"{configured_path}"
+            f"Policy-referenced file exceeds the 1 MiB safety limit: {configured_path}"
         )
     return resolved

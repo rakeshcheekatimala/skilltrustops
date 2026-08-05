@@ -93,6 +93,7 @@ class BatchScanReport(BaseModel):
 
     schema_version: Literal["1.0"] = "1.0"
     tool_version: str
+    ruleset_version: str
     command: Literal["scan"] = "scan"
     target: str
     policy: PolicyReference

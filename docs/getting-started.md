@@ -5,7 +5,7 @@ behavioral assessment.
 
 ## 1. Install the development environment
 
-SkillTrustOps requires Python 3.12 or newer.
+SkillTrustOps requires Python 3.11 or newer.
 
 ```bash
 uv sync --extra dev
@@ -128,7 +128,7 @@ manifest for audit.
 
 | Code | Meaning | CI action |
 | --- | --- | --- |
-| `0` | Check passed, or red-team decision is `assured` | Continue. |
+| `0` | Check passed, or red-team decision is `passed_scope` | Continue. |
 | `1` | Static violations or red-team decision is `blocked` | Fail the job. |
 | `2` | Invalid command, policy, package, or scanner configuration | Fail the job and fix configuration. |
 | `3` | Red-team decision is `inconclusive` | Fail closed; investigate or rerun. |

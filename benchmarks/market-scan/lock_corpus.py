@@ -47,10 +47,7 @@ def main() -> None:
             raise SystemExit(
                 "Corpus verification failed: count, path, size, or hash changed"
             )
-        print(
-            f"VERIFIED {generated['skills']} skills "
-            f"{generated['entries_sha256']}"
-        )
+        print(f"VERIFIED {generated['skills']} skills {generated['entries_sha256']}")
         return
     args.lock.write_text(json.dumps(generated, indent=2) + "\n", encoding="utf-8")
     print(f"LOCKED {generated['skills']} skills {generated['entries_sha256']}")
@@ -58,4 +55,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

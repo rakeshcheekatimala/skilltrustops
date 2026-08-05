@@ -45,12 +45,12 @@ def test_generator_creates_hash_bound_review_required_draft(tmp_path: Path) -> N
     assert "sensitive_data" in package.manifest.capabilities
 
 
-def test_resistant_reference_model_produces_assured_evidence(tmp_path: Path) -> None:
+def test_resistant_reference_model_produces_scoped_evidence(tmp_path: Path) -> None:
     report = RedTeamService(tmp_path).run(
         MANIFEST, ReferenceModelTarget("resistant-demo")
     )
 
-    assert report.decision is AssessmentDecision.ASSURED
+    assert report.decision is AssessmentDecision.PASSED_SCOPE
     assert report.summary.attack_succeeded == 0
     assert report.summary.resisted == report.summary.planned
     assert report.evidence is not None

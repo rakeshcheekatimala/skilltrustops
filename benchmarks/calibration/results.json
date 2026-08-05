@@ -1,0 +1,4725 @@
+{
+  "schema_version": "1.0",
+  "dataset_cases": 500,
+  "label_status": "construction-derived; independent review required",
+  "claim_boundary": "Regression metrics only; not independently validated real-world accuracy.",
+  "aggregate": {
+    "tp": 250,
+    "fp": 0,
+    "fn": 0,
+    "tn": 250,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "false_positive_rate": 0.0
+  },
+  "by_family": {
+    "archive_escape": {
+      "tp": 25,
+      "fp": 0,
+      "fn": 0,
+      "tn": 25,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_positive_rate": 0.0,
+      "recall_95pct_wilson": [
+        0.866808,
+        1.0
+      ],
+      "specificity_95pct_wilson": [
+        0.866808,
+        1.0
+      ]
+    },
+    "cross_file_risk": {
+      "tp": 25,
+      "fp": 0,
+      "fn": 0,
+      "tn": 25,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_positive_rate": 0.0,
+      "recall_95pct_wilson": [
+        0.866808,
+        1.0
+      ],
+      "specificity_95pct_wilson": [
+        0.866808,
+        1.0
+      ]
+    },
+    "dependency_risk": {
+      "tp": 25,
+      "fp": 0,
+      "fn": 0,
+      "tn": 25,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_positive_rate": 0.0,
+      "recall_95pct_wilson": [
+        0.866808,
+        1.0
+      ],
+      "specificity_95pct_wilson": [
+        0.866808,
+        1.0
+      ]
+    },
+    "exfiltration": {
+      "tp": 25,
+      "fp": 0,
+      "fn": 0,
+      "tn": 25,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_positive_rate": 0.0,
+      "recall_95pct_wilson": [
+        0.866808,
+        1.0
+      ],
+      "specificity_95pct_wilson": [
+        0.866808,
+        1.0
+      ]
+    },
+    "lifecycle_hook": {
+      "tp": 25,
+      "fp": 0,
+      "fn": 0,
+      "tn": 25,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_positive_rate": 0.0,
+      "recall_95pct_wilson": [
+        0.866808,
+        1.0
+      ],
+      "specificity_95pct_wilson": [
+        0.866808,
+        1.0
+      ]
+    },
+    "obfuscation": {
+      "tp": 25,
+      "fp": 0,
+      "fn": 0,
+      "tn": 25,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_positive_rate": 0.0,
+      "recall_95pct_wilson": [
+        0.866808,
+        1.0
+      ],
+      "specificity_95pct_wilson": [
+        0.866808,
+        1.0
+      ]
+    },
+    "permission_abuse": {
+      "tp": 25,
+      "fp": 0,
+      "fn": 0,
+      "tn": 25,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_positive_rate": 0.0,
+      "recall_95pct_wilson": [
+        0.866808,
+        1.0
+      ],
+      "specificity_95pct_wilson": [
+        0.866808,
+        1.0
+      ]
+    },
+    "persistence": {
+      "tp": 25,
+      "fp": 0,
+      "fn": 0,
+      "tn": 25,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_positive_rate": 0.0,
+      "recall_95pct_wilson": [
+        0.866808,
+        1.0
+      ],
+      "specificity_95pct_wilson": [
+        0.866808,
+        1.0
+      ]
+    },
+    "prompt_injection": {
+      "tp": 25,
+      "fp": 0,
+      "fn": 0,
+      "tn": 25,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_positive_rate": 0.0,
+      "recall_95pct_wilson": [
+        0.866808,
+        1.0
+      ],
+      "specificity_95pct_wilson": [
+        0.866808,
+        1.0
+      ]
+    },
+    "symlink_escape": {
+      "tp": 25,
+      "fp": 0,
+      "fn": 0,
+      "tn": 25,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_positive_rate": 0.0,
+      "recall_95pct_wilson": [
+        0.866808,
+        1.0
+      ],
+      "specificity_95pct_wilson": [
+        0.866808,
+        1.0
+      ]
+    }
+  },
+  "cases": [
+    {
+      "case_id": "STO-CAL-0001",
+      "family": "prompt_injection",
+      "expected_rules": [
+        "STO-PKG-200"
+      ],
+      "observed_rules": [
+        "STO-PKG-200"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0002",
+      "family": "prompt_injection",
+      "expected_rules": [
+        "STO-PKG-200"
+      ],
+      "observed_rules": [
+        "STO-PKG-200"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0003",
+      "family": "prompt_injection",
+      "expected_rules": [
+        "STO-PKG-200"
+      ],
+      "observed_rules": [
+        "STO-PKG-200"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0004",
+      "family": "prompt_injection",
+      "expected_rules": [
+        "STO-PKG-200"
+      ],
+      "observed_rules": [
+        "STO-PKG-200"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0005",
+      "family": "prompt_injection",
+      "expected_rules": [
+        "STO-PKG-200"
+      ],
+      "observed_rules": [
+        "STO-PKG-200"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0006",
+      "family": "prompt_injection",
+      "expected_rules": [
+        "STO-PKG-200"
+      ],
+      "observed_rules": [
+        "STO-PKG-200"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0007",
+      "family": "prompt_injection",
+      "expected_rules": [
+        "STO-PKG-200"
+      ],
+      "observed_rules": [
+        "STO-PKG-200"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0008",
+      "family": "prompt_injection",
+      "expected_rules": [
+        "STO-PKG-200"
+      ],
+      "observed_rules": [
+        "STO-PKG-200"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0009",
+      "family": "prompt_injection",
+      "expected_rules": [
+        "STO-PKG-200"
+      ],
+      "observed_rules": [
+        "STO-PKG-200"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0010",
+      "family": "prompt_injection",
+      "expected_rules": [
+        "STO-PKG-200"
+      ],
+      "observed_rules": [
+        "STO-PKG-200"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0011",
+      "family": "prompt_injection",
+      "expected_rules": [
+        "STO-PKG-200"
+      ],
+      "observed_rules": [
+        "STO-PKG-200"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0012",
+      "family": "prompt_injection",
+      "expected_rules": [
+        "STO-PKG-200"
+      ],
+      "observed_rules": [
+        "STO-PKG-200"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0013",
+      "family": "prompt_injection",
+      "expected_rules": [
+        "STO-PKG-200"
+      ],
+      "observed_rules": [
+        "STO-PKG-200"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0014",
+      "family": "prompt_injection",
+      "expected_rules": [
+        "STO-PKG-200"
+      ],
+      "observed_rules": [
+        "STO-PKG-200"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0015",
+      "family": "prompt_injection",
+      "expected_rules": [
+        "STO-PKG-200"
+      ],
+      "observed_rules": [
+        "STO-PKG-200"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0016",
+      "family": "prompt_injection",
+      "expected_rules": [
+        "STO-PKG-200"
+      ],
+      "observed_rules": [
+        "STO-PKG-200"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0017",
+      "family": "prompt_injection",
+      "expected_rules": [
+        "STO-PKG-200"
+      ],
+      "observed_rules": [
+        "STO-PKG-200"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0018",
+      "family": "prompt_injection",
+      "expected_rules": [
+        "STO-PKG-200"
+      ],
+      "observed_rules": [
+        "STO-PKG-200"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0019",
+      "family": "prompt_injection",
+      "expected_rules": [
+        "STO-PKG-200"
+      ],
+      "observed_rules": [
+        "STO-PKG-200"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0020",
+      "family": "prompt_injection",
+      "expected_rules": [
+        "STO-PKG-200"
+      ],
+      "observed_rules": [
+        "STO-PKG-200"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0021",
+      "family": "prompt_injection",
+      "expected_rules": [
+        "STO-PKG-200"
+      ],
+      "observed_rules": [
+        "STO-PKG-200"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0022",
+      "family": "prompt_injection",
+      "expected_rules": [
+        "STO-PKG-200"
+      ],
+      "observed_rules": [
+        "STO-PKG-200"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0023",
+      "family": "prompt_injection",
+      "expected_rules": [
+        "STO-PKG-200"
+      ],
+      "observed_rules": [
+        "STO-PKG-200"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0024",
+      "family": "prompt_injection",
+      "expected_rules": [
+        "STO-PKG-200"
+      ],
+      "observed_rules": [
+        "STO-PKG-200"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0025",
+      "family": "prompt_injection",
+      "expected_rules": [
+        "STO-PKG-200"
+      ],
+      "observed_rules": [
+        "STO-PKG-200"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0026",
+      "family": "prompt_injection",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0027",
+      "family": "prompt_injection",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0028",
+      "family": "prompt_injection",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0029",
+      "family": "prompt_injection",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0030",
+      "family": "prompt_injection",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0031",
+      "family": "prompt_injection",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0032",
+      "family": "prompt_injection",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0033",
+      "family": "prompt_injection",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0034",
+      "family": "prompt_injection",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0035",
+      "family": "prompt_injection",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0036",
+      "family": "prompt_injection",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0037",
+      "family": "prompt_injection",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0038",
+      "family": "prompt_injection",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0039",
+      "family": "prompt_injection",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0040",
+      "family": "prompt_injection",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0041",
+      "family": "prompt_injection",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0042",
+      "family": "prompt_injection",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0043",
+      "family": "prompt_injection",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0044",
+      "family": "prompt_injection",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0045",
+      "family": "prompt_injection",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0046",
+      "family": "prompt_injection",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0047",
+      "family": "prompt_injection",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0048",
+      "family": "prompt_injection",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0049",
+      "family": "prompt_injection",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0050",
+      "family": "prompt_injection",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0051",
+      "family": "obfuscation",
+      "expected_rules": [
+        "STO-PKG-201"
+      ],
+      "observed_rules": [
+        "STO-PKG-201"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0052",
+      "family": "obfuscation",
+      "expected_rules": [
+        "STO-PKG-201"
+      ],
+      "observed_rules": [
+        "STO-PKG-201"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0053",
+      "family": "obfuscation",
+      "expected_rules": [
+        "STO-PKG-201"
+      ],
+      "observed_rules": [
+        "STO-PKG-201"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0054",
+      "family": "obfuscation",
+      "expected_rules": [
+        "STO-PKG-201"
+      ],
+      "observed_rules": [
+        "STO-PKG-201"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0055",
+      "family": "obfuscation",
+      "expected_rules": [
+        "STO-PKG-201"
+      ],
+      "observed_rules": [
+        "STO-PKG-201"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0056",
+      "family": "obfuscation",
+      "expected_rules": [
+        "STO-PKG-201"
+      ],
+      "observed_rules": [
+        "STO-PKG-201"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0057",
+      "family": "obfuscation",
+      "expected_rules": [
+        "STO-PKG-201"
+      ],
+      "observed_rules": [
+        "STO-PKG-201"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0058",
+      "family": "obfuscation",
+      "expected_rules": [
+        "STO-PKG-201"
+      ],
+      "observed_rules": [
+        "STO-PKG-201"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0059",
+      "family": "obfuscation",
+      "expected_rules": [
+        "STO-PKG-201"
+      ],
+      "observed_rules": [
+        "STO-PKG-201"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0060",
+      "family": "obfuscation",
+      "expected_rules": [
+        "STO-PKG-201"
+      ],
+      "observed_rules": [
+        "STO-PKG-201"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0061",
+      "family": "obfuscation",
+      "expected_rules": [
+        "STO-PKG-201"
+      ],
+      "observed_rules": [
+        "STO-PKG-201"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0062",
+      "family": "obfuscation",
+      "expected_rules": [
+        "STO-PKG-201"
+      ],
+      "observed_rules": [
+        "STO-PKG-201"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0063",
+      "family": "obfuscation",
+      "expected_rules": [
+        "STO-PKG-201"
+      ],
+      "observed_rules": [
+        "STO-PKG-201"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0064",
+      "family": "obfuscation",
+      "expected_rules": [
+        "STO-PKG-201"
+      ],
+      "observed_rules": [
+        "STO-PKG-201"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0065",
+      "family": "obfuscation",
+      "expected_rules": [
+        "STO-PKG-201"
+      ],
+      "observed_rules": [
+        "STO-PKG-201"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0066",
+      "family": "obfuscation",
+      "expected_rules": [
+        "STO-PKG-201"
+      ],
+      "observed_rules": [
+        "STO-PKG-201"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0067",
+      "family": "obfuscation",
+      "expected_rules": [
+        "STO-PKG-201"
+      ],
+      "observed_rules": [
+        "STO-PKG-201"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0068",
+      "family": "obfuscation",
+      "expected_rules": [
+        "STO-PKG-201"
+      ],
+      "observed_rules": [
+        "STO-PKG-201"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0069",
+      "family": "obfuscation",
+      "expected_rules": [
+        "STO-PKG-201"
+      ],
+      "observed_rules": [
+        "STO-PKG-201"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0070",
+      "family": "obfuscation",
+      "expected_rules": [
+        "STO-PKG-201"
+      ],
+      "observed_rules": [
+        "STO-PKG-201"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0071",
+      "family": "obfuscation",
+      "expected_rules": [
+        "STO-PKG-201"
+      ],
+      "observed_rules": [
+        "STO-PKG-201"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0072",
+      "family": "obfuscation",
+      "expected_rules": [
+        "STO-PKG-201"
+      ],
+      "observed_rules": [
+        "STO-PKG-201"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0073",
+      "family": "obfuscation",
+      "expected_rules": [
+        "STO-PKG-201"
+      ],
+      "observed_rules": [
+        "STO-PKG-201"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0074",
+      "family": "obfuscation",
+      "expected_rules": [
+        "STO-PKG-201"
+      ],
+      "observed_rules": [
+        "STO-PKG-201"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0075",
+      "family": "obfuscation",
+      "expected_rules": [
+        "STO-PKG-201"
+      ],
+      "observed_rules": [
+        "STO-PKG-201"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0076",
+      "family": "obfuscation",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0077",
+      "family": "obfuscation",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0078",
+      "family": "obfuscation",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0079",
+      "family": "obfuscation",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0080",
+      "family": "obfuscation",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0081",
+      "family": "obfuscation",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0082",
+      "family": "obfuscation",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0083",
+      "family": "obfuscation",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0084",
+      "family": "obfuscation",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0085",
+      "family": "obfuscation",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0086",
+      "family": "obfuscation",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0087",
+      "family": "obfuscation",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0088",
+      "family": "obfuscation",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0089",
+      "family": "obfuscation",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0090",
+      "family": "obfuscation",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0091",
+      "family": "obfuscation",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0092",
+      "family": "obfuscation",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0093",
+      "family": "obfuscation",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0094",
+      "family": "obfuscation",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0095",
+      "family": "obfuscation",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0096",
+      "family": "obfuscation",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0097",
+      "family": "obfuscation",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0098",
+      "family": "obfuscation",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0099",
+      "family": "obfuscation",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0100",
+      "family": "obfuscation",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0101",
+      "family": "persistence",
+      "expected_rules": [
+        "STO-PKG-202"
+      ],
+      "observed_rules": [
+        "STO-PKG-202"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0102",
+      "family": "persistence",
+      "expected_rules": [
+        "STO-PKG-202"
+      ],
+      "observed_rules": [
+        "STO-PKG-202"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0103",
+      "family": "persistence",
+      "expected_rules": [
+        "STO-PKG-202"
+      ],
+      "observed_rules": [
+        "STO-PKG-202"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0104",
+      "family": "persistence",
+      "expected_rules": [
+        "STO-PKG-202"
+      ],
+      "observed_rules": [
+        "STO-PKG-202"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0105",
+      "family": "persistence",
+      "expected_rules": [
+        "STO-PKG-202"
+      ],
+      "observed_rules": [
+        "STO-PKG-202"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0106",
+      "family": "persistence",
+      "expected_rules": [
+        "STO-PKG-202"
+      ],
+      "observed_rules": [
+        "STO-PKG-202"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0107",
+      "family": "persistence",
+      "expected_rules": [
+        "STO-PKG-202"
+      ],
+      "observed_rules": [
+        "STO-PKG-202"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0108",
+      "family": "persistence",
+      "expected_rules": [
+        "STO-PKG-202"
+      ],
+      "observed_rules": [
+        "STO-PKG-202"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0109",
+      "family": "persistence",
+      "expected_rules": [
+        "STO-PKG-202"
+      ],
+      "observed_rules": [
+        "STO-PKG-202"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0110",
+      "family": "persistence",
+      "expected_rules": [
+        "STO-PKG-202"
+      ],
+      "observed_rules": [
+        "STO-PKG-202"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0111",
+      "family": "persistence",
+      "expected_rules": [
+        "STO-PKG-202"
+      ],
+      "observed_rules": [
+        "STO-PKG-202"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0112",
+      "family": "persistence",
+      "expected_rules": [
+        "STO-PKG-202"
+      ],
+      "observed_rules": [
+        "STO-PKG-202"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0113",
+      "family": "persistence",
+      "expected_rules": [
+        "STO-PKG-202"
+      ],
+      "observed_rules": [
+        "STO-PKG-202"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0114",
+      "family": "persistence",
+      "expected_rules": [
+        "STO-PKG-202"
+      ],
+      "observed_rules": [
+        "STO-PKG-202"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0115",
+      "family": "persistence",
+      "expected_rules": [
+        "STO-PKG-202"
+      ],
+      "observed_rules": [
+        "STO-PKG-202"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0116",
+      "family": "persistence",
+      "expected_rules": [
+        "STO-PKG-202"
+      ],
+      "observed_rules": [
+        "STO-PKG-202"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0117",
+      "family": "persistence",
+      "expected_rules": [
+        "STO-PKG-202"
+      ],
+      "observed_rules": [
+        "STO-PKG-202"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0118",
+      "family": "persistence",
+      "expected_rules": [
+        "STO-PKG-202"
+      ],
+      "observed_rules": [
+        "STO-PKG-202"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0119",
+      "family": "persistence",
+      "expected_rules": [
+        "STO-PKG-202"
+      ],
+      "observed_rules": [
+        "STO-PKG-202"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0120",
+      "family": "persistence",
+      "expected_rules": [
+        "STO-PKG-202"
+      ],
+      "observed_rules": [
+        "STO-PKG-202"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0121",
+      "family": "persistence",
+      "expected_rules": [
+        "STO-PKG-202"
+      ],
+      "observed_rules": [
+        "STO-PKG-202"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0122",
+      "family": "persistence",
+      "expected_rules": [
+        "STO-PKG-202"
+      ],
+      "observed_rules": [
+        "STO-PKG-202"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0123",
+      "family": "persistence",
+      "expected_rules": [
+        "STO-PKG-202"
+      ],
+      "observed_rules": [
+        "STO-PKG-202"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0124",
+      "family": "persistence",
+      "expected_rules": [
+        "STO-PKG-202"
+      ],
+      "observed_rules": [
+        "STO-PKG-202"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0125",
+      "family": "persistence",
+      "expected_rules": [
+        "STO-PKG-202"
+      ],
+      "observed_rules": [
+        "STO-PKG-202"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0126",
+      "family": "persistence",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0127",
+      "family": "persistence",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0128",
+      "family": "persistence",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0129",
+      "family": "persistence",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0130",
+      "family": "persistence",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0131",
+      "family": "persistence",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0132",
+      "family": "persistence",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0133",
+      "family": "persistence",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0134",
+      "family": "persistence",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0135",
+      "family": "persistence",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0136",
+      "family": "persistence",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0137",
+      "family": "persistence",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0138",
+      "family": "persistence",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0139",
+      "family": "persistence",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0140",
+      "family": "persistence",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0141",
+      "family": "persistence",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0142",
+      "family": "persistence",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0143",
+      "family": "persistence",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0144",
+      "family": "persistence",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0145",
+      "family": "persistence",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0146",
+      "family": "persistence",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0147",
+      "family": "persistence",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0148",
+      "family": "persistence",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0149",
+      "family": "persistence",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0150",
+      "family": "persistence",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0151",
+      "family": "exfiltration",
+      "expected_rules": [
+        "STO-PKG-203"
+      ],
+      "observed_rules": [
+        "STO-PKG-203"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0152",
+      "family": "exfiltration",
+      "expected_rules": [
+        "STO-PKG-203"
+      ],
+      "observed_rules": [
+        "STO-PKG-203"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0153",
+      "family": "exfiltration",
+      "expected_rules": [
+        "STO-PKG-203"
+      ],
+      "observed_rules": [
+        "STO-PKG-203"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0154",
+      "family": "exfiltration",
+      "expected_rules": [
+        "STO-PKG-203"
+      ],
+      "observed_rules": [
+        "STO-PKG-203"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0155",
+      "family": "exfiltration",
+      "expected_rules": [
+        "STO-PKG-203"
+      ],
+      "observed_rules": [
+        "STO-PKG-203"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0156",
+      "family": "exfiltration",
+      "expected_rules": [
+        "STO-PKG-203"
+      ],
+      "observed_rules": [
+        "STO-PKG-203"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0157",
+      "family": "exfiltration",
+      "expected_rules": [
+        "STO-PKG-203"
+      ],
+      "observed_rules": [
+        "STO-PKG-203"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0158",
+      "family": "exfiltration",
+      "expected_rules": [
+        "STO-PKG-203"
+      ],
+      "observed_rules": [
+        "STO-PKG-203"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0159",
+      "family": "exfiltration",
+      "expected_rules": [
+        "STO-PKG-203"
+      ],
+      "observed_rules": [
+        "STO-PKG-203"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0160",
+      "family": "exfiltration",
+      "expected_rules": [
+        "STO-PKG-203"
+      ],
+      "observed_rules": [
+        "STO-PKG-203"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0161",
+      "family": "exfiltration",
+      "expected_rules": [
+        "STO-PKG-203"
+      ],
+      "observed_rules": [
+        "STO-PKG-203"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0162",
+      "family": "exfiltration",
+      "expected_rules": [
+        "STO-PKG-203"
+      ],
+      "observed_rules": [
+        "STO-PKG-203"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0163",
+      "family": "exfiltration",
+      "expected_rules": [
+        "STO-PKG-203"
+      ],
+      "observed_rules": [
+        "STO-PKG-203"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0164",
+      "family": "exfiltration",
+      "expected_rules": [
+        "STO-PKG-203"
+      ],
+      "observed_rules": [
+        "STO-PKG-203"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0165",
+      "family": "exfiltration",
+      "expected_rules": [
+        "STO-PKG-203"
+      ],
+      "observed_rules": [
+        "STO-PKG-203"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0166",
+      "family": "exfiltration",
+      "expected_rules": [
+        "STO-PKG-203"
+      ],
+      "observed_rules": [
+        "STO-PKG-203"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0167",
+      "family": "exfiltration",
+      "expected_rules": [
+        "STO-PKG-203"
+      ],
+      "observed_rules": [
+        "STO-PKG-203"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0168",
+      "family": "exfiltration",
+      "expected_rules": [
+        "STO-PKG-203"
+      ],
+      "observed_rules": [
+        "STO-PKG-203"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0169",
+      "family": "exfiltration",
+      "expected_rules": [
+        "STO-PKG-203"
+      ],
+      "observed_rules": [
+        "STO-PKG-203"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0170",
+      "family": "exfiltration",
+      "expected_rules": [
+        "STO-PKG-203"
+      ],
+      "observed_rules": [
+        "STO-PKG-203"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0171",
+      "family": "exfiltration",
+      "expected_rules": [
+        "STO-PKG-203"
+      ],
+      "observed_rules": [
+        "STO-PKG-203"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0172",
+      "family": "exfiltration",
+      "expected_rules": [
+        "STO-PKG-203"
+      ],
+      "observed_rules": [
+        "STO-PKG-203"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0173",
+      "family": "exfiltration",
+      "expected_rules": [
+        "STO-PKG-203"
+      ],
+      "observed_rules": [
+        "STO-PKG-203"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0174",
+      "family": "exfiltration",
+      "expected_rules": [
+        "STO-PKG-203"
+      ],
+      "observed_rules": [
+        "STO-PKG-203"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0175",
+      "family": "exfiltration",
+      "expected_rules": [
+        "STO-PKG-203"
+      ],
+      "observed_rules": [
+        "STO-PKG-203"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0176",
+      "family": "exfiltration",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0177",
+      "family": "exfiltration",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0178",
+      "family": "exfiltration",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0179",
+      "family": "exfiltration",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0180",
+      "family": "exfiltration",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0181",
+      "family": "exfiltration",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0182",
+      "family": "exfiltration",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0183",
+      "family": "exfiltration",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0184",
+      "family": "exfiltration",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0185",
+      "family": "exfiltration",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0186",
+      "family": "exfiltration",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0187",
+      "family": "exfiltration",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0188",
+      "family": "exfiltration",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0189",
+      "family": "exfiltration",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0190",
+      "family": "exfiltration",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0191",
+      "family": "exfiltration",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0192",
+      "family": "exfiltration",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0193",
+      "family": "exfiltration",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0194",
+      "family": "exfiltration",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0195",
+      "family": "exfiltration",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0196",
+      "family": "exfiltration",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0197",
+      "family": "exfiltration",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0198",
+      "family": "exfiltration",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0199",
+      "family": "exfiltration",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0200",
+      "family": "exfiltration",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0201",
+      "family": "permission_abuse",
+      "expected_rules": [
+        "STO-PKG-204"
+      ],
+      "observed_rules": [
+        "STO-PKG-204"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0202",
+      "family": "permission_abuse",
+      "expected_rules": [
+        "STO-PKG-204"
+      ],
+      "observed_rules": [
+        "STO-PKG-204"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0203",
+      "family": "permission_abuse",
+      "expected_rules": [
+        "STO-PKG-204"
+      ],
+      "observed_rules": [
+        "STO-PKG-204"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0204",
+      "family": "permission_abuse",
+      "expected_rules": [
+        "STO-PKG-204"
+      ],
+      "observed_rules": [
+        "STO-PKG-204"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0205",
+      "family": "permission_abuse",
+      "expected_rules": [
+        "STO-PKG-204"
+      ],
+      "observed_rules": [
+        "STO-PKG-204"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0206",
+      "family": "permission_abuse",
+      "expected_rules": [
+        "STO-PKG-204"
+      ],
+      "observed_rules": [
+        "STO-PKG-204"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0207",
+      "family": "permission_abuse",
+      "expected_rules": [
+        "STO-PKG-204"
+      ],
+      "observed_rules": [
+        "STO-PKG-204"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0208",
+      "family": "permission_abuse",
+      "expected_rules": [
+        "STO-PKG-204"
+      ],
+      "observed_rules": [
+        "STO-PKG-204"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0209",
+      "family": "permission_abuse",
+      "expected_rules": [
+        "STO-PKG-204"
+      ],
+      "observed_rules": [
+        "STO-PKG-204"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0210",
+      "family": "permission_abuse",
+      "expected_rules": [
+        "STO-PKG-204"
+      ],
+      "observed_rules": [
+        "STO-PKG-204"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0211",
+      "family": "permission_abuse",
+      "expected_rules": [
+        "STO-PKG-204"
+      ],
+      "observed_rules": [
+        "STO-PKG-204"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0212",
+      "family": "permission_abuse",
+      "expected_rules": [
+        "STO-PKG-204"
+      ],
+      "observed_rules": [
+        "STO-PKG-204"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0213",
+      "family": "permission_abuse",
+      "expected_rules": [
+        "STO-PKG-204"
+      ],
+      "observed_rules": [
+        "STO-PKG-204"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0214",
+      "family": "permission_abuse",
+      "expected_rules": [
+        "STO-PKG-204"
+      ],
+      "observed_rules": [
+        "STO-PKG-204"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0215",
+      "family": "permission_abuse",
+      "expected_rules": [
+        "STO-PKG-204"
+      ],
+      "observed_rules": [
+        "STO-PKG-204"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0216",
+      "family": "permission_abuse",
+      "expected_rules": [
+        "STO-PKG-204"
+      ],
+      "observed_rules": [
+        "STO-PKG-204"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0217",
+      "family": "permission_abuse",
+      "expected_rules": [
+        "STO-PKG-204"
+      ],
+      "observed_rules": [
+        "STO-PKG-204"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0218",
+      "family": "permission_abuse",
+      "expected_rules": [
+        "STO-PKG-204"
+      ],
+      "observed_rules": [
+        "STO-PKG-204"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0219",
+      "family": "permission_abuse",
+      "expected_rules": [
+        "STO-PKG-204"
+      ],
+      "observed_rules": [
+        "STO-PKG-204"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0220",
+      "family": "permission_abuse",
+      "expected_rules": [
+        "STO-PKG-204"
+      ],
+      "observed_rules": [
+        "STO-PKG-204"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0221",
+      "family": "permission_abuse",
+      "expected_rules": [
+        "STO-PKG-204"
+      ],
+      "observed_rules": [
+        "STO-PKG-204"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0222",
+      "family": "permission_abuse",
+      "expected_rules": [
+        "STO-PKG-204"
+      ],
+      "observed_rules": [
+        "STO-PKG-204"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0223",
+      "family": "permission_abuse",
+      "expected_rules": [
+        "STO-PKG-204"
+      ],
+      "observed_rules": [
+        "STO-PKG-204"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0224",
+      "family": "permission_abuse",
+      "expected_rules": [
+        "STO-PKG-204"
+      ],
+      "observed_rules": [
+        "STO-PKG-204"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0225",
+      "family": "permission_abuse",
+      "expected_rules": [
+        "STO-PKG-204"
+      ],
+      "observed_rules": [
+        "STO-PKG-204"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0226",
+      "family": "permission_abuse",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0227",
+      "family": "permission_abuse",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0228",
+      "family": "permission_abuse",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0229",
+      "family": "permission_abuse",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0230",
+      "family": "permission_abuse",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0231",
+      "family": "permission_abuse",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0232",
+      "family": "permission_abuse",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0233",
+      "family": "permission_abuse",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0234",
+      "family": "permission_abuse",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0235",
+      "family": "permission_abuse",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0236",
+      "family": "permission_abuse",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0237",
+      "family": "permission_abuse",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0238",
+      "family": "permission_abuse",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0239",
+      "family": "permission_abuse",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0240",
+      "family": "permission_abuse",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0241",
+      "family": "permission_abuse",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0242",
+      "family": "permission_abuse",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0243",
+      "family": "permission_abuse",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0244",
+      "family": "permission_abuse",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0245",
+      "family": "permission_abuse",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0246",
+      "family": "permission_abuse",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0247",
+      "family": "permission_abuse",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0248",
+      "family": "permission_abuse",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0249",
+      "family": "permission_abuse",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0250",
+      "family": "permission_abuse",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0251",
+      "family": "lifecycle_hook",
+      "expected_rules": [
+        "STO-PKG-205"
+      ],
+      "observed_rules": [
+        "STO-PKG-205"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0252",
+      "family": "lifecycle_hook",
+      "expected_rules": [
+        "STO-PKG-205"
+      ],
+      "observed_rules": [
+        "STO-PKG-205"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0253",
+      "family": "lifecycle_hook",
+      "expected_rules": [
+        "STO-PKG-205"
+      ],
+      "observed_rules": [
+        "STO-PKG-205"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0254",
+      "family": "lifecycle_hook",
+      "expected_rules": [
+        "STO-PKG-205"
+      ],
+      "observed_rules": [
+        "STO-PKG-205"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0255",
+      "family": "lifecycle_hook",
+      "expected_rules": [
+        "STO-PKG-205"
+      ],
+      "observed_rules": [
+        "STO-PKG-205"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0256",
+      "family": "lifecycle_hook",
+      "expected_rules": [
+        "STO-PKG-205"
+      ],
+      "observed_rules": [
+        "STO-PKG-205"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0257",
+      "family": "lifecycle_hook",
+      "expected_rules": [
+        "STO-PKG-205"
+      ],
+      "observed_rules": [
+        "STO-PKG-205"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0258",
+      "family": "lifecycle_hook",
+      "expected_rules": [
+        "STO-PKG-205"
+      ],
+      "observed_rules": [
+        "STO-PKG-205"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0259",
+      "family": "lifecycle_hook",
+      "expected_rules": [
+        "STO-PKG-205"
+      ],
+      "observed_rules": [
+        "STO-PKG-205"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0260",
+      "family": "lifecycle_hook",
+      "expected_rules": [
+        "STO-PKG-205"
+      ],
+      "observed_rules": [
+        "STO-PKG-205"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0261",
+      "family": "lifecycle_hook",
+      "expected_rules": [
+        "STO-PKG-205"
+      ],
+      "observed_rules": [
+        "STO-PKG-205"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0262",
+      "family": "lifecycle_hook",
+      "expected_rules": [
+        "STO-PKG-205"
+      ],
+      "observed_rules": [
+        "STO-PKG-205"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0263",
+      "family": "lifecycle_hook",
+      "expected_rules": [
+        "STO-PKG-205"
+      ],
+      "observed_rules": [
+        "STO-PKG-205"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0264",
+      "family": "lifecycle_hook",
+      "expected_rules": [
+        "STO-PKG-205"
+      ],
+      "observed_rules": [
+        "STO-PKG-205"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0265",
+      "family": "lifecycle_hook",
+      "expected_rules": [
+        "STO-PKG-205"
+      ],
+      "observed_rules": [
+        "STO-PKG-205"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0266",
+      "family": "lifecycle_hook",
+      "expected_rules": [
+        "STO-PKG-205"
+      ],
+      "observed_rules": [
+        "STO-PKG-205"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0267",
+      "family": "lifecycle_hook",
+      "expected_rules": [
+        "STO-PKG-205"
+      ],
+      "observed_rules": [
+        "STO-PKG-205"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0268",
+      "family": "lifecycle_hook",
+      "expected_rules": [
+        "STO-PKG-205"
+      ],
+      "observed_rules": [
+        "STO-PKG-205"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0269",
+      "family": "lifecycle_hook",
+      "expected_rules": [
+        "STO-PKG-205"
+      ],
+      "observed_rules": [
+        "STO-PKG-205"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0270",
+      "family": "lifecycle_hook",
+      "expected_rules": [
+        "STO-PKG-205"
+      ],
+      "observed_rules": [
+        "STO-PKG-205"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0271",
+      "family": "lifecycle_hook",
+      "expected_rules": [
+        "STO-PKG-205"
+      ],
+      "observed_rules": [
+        "STO-PKG-205"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0272",
+      "family": "lifecycle_hook",
+      "expected_rules": [
+        "STO-PKG-205"
+      ],
+      "observed_rules": [
+        "STO-PKG-205"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0273",
+      "family": "lifecycle_hook",
+      "expected_rules": [
+        "STO-PKG-205"
+      ],
+      "observed_rules": [
+        "STO-PKG-205"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0274",
+      "family": "lifecycle_hook",
+      "expected_rules": [
+        "STO-PKG-205"
+      ],
+      "observed_rules": [
+        "STO-PKG-205"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0275",
+      "family": "lifecycle_hook",
+      "expected_rules": [
+        "STO-PKG-205"
+      ],
+      "observed_rules": [
+        "STO-PKG-205"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0276",
+      "family": "lifecycle_hook",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0277",
+      "family": "lifecycle_hook",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0278",
+      "family": "lifecycle_hook",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0279",
+      "family": "lifecycle_hook",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0280",
+      "family": "lifecycle_hook",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0281",
+      "family": "lifecycle_hook",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0282",
+      "family": "lifecycle_hook",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0283",
+      "family": "lifecycle_hook",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0284",
+      "family": "lifecycle_hook",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0285",
+      "family": "lifecycle_hook",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0286",
+      "family": "lifecycle_hook",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0287",
+      "family": "lifecycle_hook",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0288",
+      "family": "lifecycle_hook",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0289",
+      "family": "lifecycle_hook",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0290",
+      "family": "lifecycle_hook",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0291",
+      "family": "lifecycle_hook",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0292",
+      "family": "lifecycle_hook",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0293",
+      "family": "lifecycle_hook",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0294",
+      "family": "lifecycle_hook",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0295",
+      "family": "lifecycle_hook",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0296",
+      "family": "lifecycle_hook",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0297",
+      "family": "lifecycle_hook",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0298",
+      "family": "lifecycle_hook",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0299",
+      "family": "lifecycle_hook",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0300",
+      "family": "lifecycle_hook",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0301",
+      "family": "archive_escape",
+      "expected_rules": [
+        "STO-PKG-207"
+      ],
+      "observed_rules": [
+        "STO-PKG-207"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0302",
+      "family": "archive_escape",
+      "expected_rules": [
+        "STO-PKG-207"
+      ],
+      "observed_rules": [
+        "STO-PKG-207"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0303",
+      "family": "archive_escape",
+      "expected_rules": [
+        "STO-PKG-207"
+      ],
+      "observed_rules": [
+        "STO-PKG-207"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0304",
+      "family": "archive_escape",
+      "expected_rules": [
+        "STO-PKG-207"
+      ],
+      "observed_rules": [
+        "STO-PKG-207"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0305",
+      "family": "archive_escape",
+      "expected_rules": [
+        "STO-PKG-207"
+      ],
+      "observed_rules": [
+        "STO-PKG-207"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0306",
+      "family": "archive_escape",
+      "expected_rules": [
+        "STO-PKG-207"
+      ],
+      "observed_rules": [
+        "STO-PKG-207"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0307",
+      "family": "archive_escape",
+      "expected_rules": [
+        "STO-PKG-207"
+      ],
+      "observed_rules": [
+        "STO-PKG-207"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0308",
+      "family": "archive_escape",
+      "expected_rules": [
+        "STO-PKG-207"
+      ],
+      "observed_rules": [
+        "STO-PKG-207"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0309",
+      "family": "archive_escape",
+      "expected_rules": [
+        "STO-PKG-207"
+      ],
+      "observed_rules": [
+        "STO-PKG-207"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0310",
+      "family": "archive_escape",
+      "expected_rules": [
+        "STO-PKG-207"
+      ],
+      "observed_rules": [
+        "STO-PKG-207"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0311",
+      "family": "archive_escape",
+      "expected_rules": [
+        "STO-PKG-207"
+      ],
+      "observed_rules": [
+        "STO-PKG-207"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0312",
+      "family": "archive_escape",
+      "expected_rules": [
+        "STO-PKG-207"
+      ],
+      "observed_rules": [
+        "STO-PKG-207"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0313",
+      "family": "archive_escape",
+      "expected_rules": [
+        "STO-PKG-207"
+      ],
+      "observed_rules": [
+        "STO-PKG-207"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0314",
+      "family": "archive_escape",
+      "expected_rules": [
+        "STO-PKG-207"
+      ],
+      "observed_rules": [
+        "STO-PKG-207"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0315",
+      "family": "archive_escape",
+      "expected_rules": [
+        "STO-PKG-207"
+      ],
+      "observed_rules": [
+        "STO-PKG-207"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0316",
+      "family": "archive_escape",
+      "expected_rules": [
+        "STO-PKG-207"
+      ],
+      "observed_rules": [
+        "STO-PKG-207"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0317",
+      "family": "archive_escape",
+      "expected_rules": [
+        "STO-PKG-207"
+      ],
+      "observed_rules": [
+        "STO-PKG-207"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0318",
+      "family": "archive_escape",
+      "expected_rules": [
+        "STO-PKG-207"
+      ],
+      "observed_rules": [
+        "STO-PKG-207"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0319",
+      "family": "archive_escape",
+      "expected_rules": [
+        "STO-PKG-207"
+      ],
+      "observed_rules": [
+        "STO-PKG-207"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0320",
+      "family": "archive_escape",
+      "expected_rules": [
+        "STO-PKG-207"
+      ],
+      "observed_rules": [
+        "STO-PKG-207"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0321",
+      "family": "archive_escape",
+      "expected_rules": [
+        "STO-PKG-207"
+      ],
+      "observed_rules": [
+        "STO-PKG-207"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0322",
+      "family": "archive_escape",
+      "expected_rules": [
+        "STO-PKG-207"
+      ],
+      "observed_rules": [
+        "STO-PKG-207"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0323",
+      "family": "archive_escape",
+      "expected_rules": [
+        "STO-PKG-207"
+      ],
+      "observed_rules": [
+        "STO-PKG-207"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0324",
+      "family": "archive_escape",
+      "expected_rules": [
+        "STO-PKG-207"
+      ],
+      "observed_rules": [
+        "STO-PKG-207"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0325",
+      "family": "archive_escape",
+      "expected_rules": [
+        "STO-PKG-207"
+      ],
+      "observed_rules": [
+        "STO-PKG-207"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0326",
+      "family": "archive_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0327",
+      "family": "archive_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0328",
+      "family": "archive_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0329",
+      "family": "archive_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0330",
+      "family": "archive_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0331",
+      "family": "archive_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0332",
+      "family": "archive_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0333",
+      "family": "archive_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0334",
+      "family": "archive_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0335",
+      "family": "archive_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0336",
+      "family": "archive_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0337",
+      "family": "archive_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0338",
+      "family": "archive_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0339",
+      "family": "archive_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0340",
+      "family": "archive_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0341",
+      "family": "archive_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0342",
+      "family": "archive_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0343",
+      "family": "archive_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0344",
+      "family": "archive_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0345",
+      "family": "archive_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0346",
+      "family": "archive_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0347",
+      "family": "archive_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0348",
+      "family": "archive_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0349",
+      "family": "archive_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0350",
+      "family": "archive_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0351",
+      "family": "dependency_risk",
+      "expected_rules": [
+        "STO-PKG-208"
+      ],
+      "observed_rules": [
+        "STO-PKG-208"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0352",
+      "family": "dependency_risk",
+      "expected_rules": [
+        "STO-PKG-208"
+      ],
+      "observed_rules": [
+        "STO-PKG-208"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0353",
+      "family": "dependency_risk",
+      "expected_rules": [
+        "STO-PKG-208"
+      ],
+      "observed_rules": [
+        "STO-PKG-208"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0354",
+      "family": "dependency_risk",
+      "expected_rules": [
+        "STO-PKG-208"
+      ],
+      "observed_rules": [
+        "STO-PKG-208"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0355",
+      "family": "dependency_risk",
+      "expected_rules": [
+        "STO-PKG-208"
+      ],
+      "observed_rules": [
+        "STO-PKG-208"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0356",
+      "family": "dependency_risk",
+      "expected_rules": [
+        "STO-PKG-208"
+      ],
+      "observed_rules": [
+        "STO-PKG-208"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0357",
+      "family": "dependency_risk",
+      "expected_rules": [
+        "STO-PKG-208"
+      ],
+      "observed_rules": [
+        "STO-PKG-208"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0358",
+      "family": "dependency_risk",
+      "expected_rules": [
+        "STO-PKG-208"
+      ],
+      "observed_rules": [
+        "STO-PKG-208"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0359",
+      "family": "dependency_risk",
+      "expected_rules": [
+        "STO-PKG-208"
+      ],
+      "observed_rules": [
+        "STO-PKG-208"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0360",
+      "family": "dependency_risk",
+      "expected_rules": [
+        "STO-PKG-208"
+      ],
+      "observed_rules": [
+        "STO-PKG-208"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0361",
+      "family": "dependency_risk",
+      "expected_rules": [
+        "STO-PKG-208"
+      ],
+      "observed_rules": [
+        "STO-PKG-208"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0362",
+      "family": "dependency_risk",
+      "expected_rules": [
+        "STO-PKG-208"
+      ],
+      "observed_rules": [
+        "STO-PKG-208"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0363",
+      "family": "dependency_risk",
+      "expected_rules": [
+        "STO-PKG-208"
+      ],
+      "observed_rules": [
+        "STO-PKG-208"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0364",
+      "family": "dependency_risk",
+      "expected_rules": [
+        "STO-PKG-208"
+      ],
+      "observed_rules": [
+        "STO-PKG-208"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0365",
+      "family": "dependency_risk",
+      "expected_rules": [
+        "STO-PKG-208"
+      ],
+      "observed_rules": [
+        "STO-PKG-208"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0366",
+      "family": "dependency_risk",
+      "expected_rules": [
+        "STO-PKG-208"
+      ],
+      "observed_rules": [
+        "STO-PKG-208"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0367",
+      "family": "dependency_risk",
+      "expected_rules": [
+        "STO-PKG-208"
+      ],
+      "observed_rules": [
+        "STO-PKG-208"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0368",
+      "family": "dependency_risk",
+      "expected_rules": [
+        "STO-PKG-208"
+      ],
+      "observed_rules": [
+        "STO-PKG-208"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0369",
+      "family": "dependency_risk",
+      "expected_rules": [
+        "STO-PKG-208"
+      ],
+      "observed_rules": [
+        "STO-PKG-208"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0370",
+      "family": "dependency_risk",
+      "expected_rules": [
+        "STO-PKG-208"
+      ],
+      "observed_rules": [
+        "STO-PKG-208"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0371",
+      "family": "dependency_risk",
+      "expected_rules": [
+        "STO-PKG-208"
+      ],
+      "observed_rules": [
+        "STO-PKG-208"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0372",
+      "family": "dependency_risk",
+      "expected_rules": [
+        "STO-PKG-208"
+      ],
+      "observed_rules": [
+        "STO-PKG-208"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0373",
+      "family": "dependency_risk",
+      "expected_rules": [
+        "STO-PKG-208"
+      ],
+      "observed_rules": [
+        "STO-PKG-208"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0374",
+      "family": "dependency_risk",
+      "expected_rules": [
+        "STO-PKG-208"
+      ],
+      "observed_rules": [
+        "STO-PKG-208"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0375",
+      "family": "dependency_risk",
+      "expected_rules": [
+        "STO-PKG-208"
+      ],
+      "observed_rules": [
+        "STO-PKG-208"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0376",
+      "family": "dependency_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0377",
+      "family": "dependency_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0378",
+      "family": "dependency_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0379",
+      "family": "dependency_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0380",
+      "family": "dependency_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0381",
+      "family": "dependency_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0382",
+      "family": "dependency_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0383",
+      "family": "dependency_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0384",
+      "family": "dependency_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0385",
+      "family": "dependency_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0386",
+      "family": "dependency_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0387",
+      "family": "dependency_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0388",
+      "family": "dependency_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0389",
+      "family": "dependency_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0390",
+      "family": "dependency_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0391",
+      "family": "dependency_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0392",
+      "family": "dependency_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0393",
+      "family": "dependency_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0394",
+      "family": "dependency_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0395",
+      "family": "dependency_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0396",
+      "family": "dependency_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0397",
+      "family": "dependency_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0398",
+      "family": "dependency_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0399",
+      "family": "dependency_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0400",
+      "family": "dependency_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0401",
+      "family": "symlink_escape",
+      "expected_rules": [
+        "STO-PKG-206"
+      ],
+      "observed_rules": [
+        "STO-PKG-206"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0402",
+      "family": "symlink_escape",
+      "expected_rules": [
+        "STO-PKG-206"
+      ],
+      "observed_rules": [
+        "STO-PKG-206"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0403",
+      "family": "symlink_escape",
+      "expected_rules": [
+        "STO-PKG-206"
+      ],
+      "observed_rules": [
+        "STO-PKG-206"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0404",
+      "family": "symlink_escape",
+      "expected_rules": [
+        "STO-PKG-206"
+      ],
+      "observed_rules": [
+        "STO-PKG-206"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0405",
+      "family": "symlink_escape",
+      "expected_rules": [
+        "STO-PKG-206"
+      ],
+      "observed_rules": [
+        "STO-PKG-206"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0406",
+      "family": "symlink_escape",
+      "expected_rules": [
+        "STO-PKG-206"
+      ],
+      "observed_rules": [
+        "STO-PKG-206"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0407",
+      "family": "symlink_escape",
+      "expected_rules": [
+        "STO-PKG-206"
+      ],
+      "observed_rules": [
+        "STO-PKG-206"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0408",
+      "family": "symlink_escape",
+      "expected_rules": [
+        "STO-PKG-206"
+      ],
+      "observed_rules": [
+        "STO-PKG-206"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0409",
+      "family": "symlink_escape",
+      "expected_rules": [
+        "STO-PKG-206"
+      ],
+      "observed_rules": [
+        "STO-PKG-206"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0410",
+      "family": "symlink_escape",
+      "expected_rules": [
+        "STO-PKG-206"
+      ],
+      "observed_rules": [
+        "STO-PKG-206"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0411",
+      "family": "symlink_escape",
+      "expected_rules": [
+        "STO-PKG-206"
+      ],
+      "observed_rules": [
+        "STO-PKG-206"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0412",
+      "family": "symlink_escape",
+      "expected_rules": [
+        "STO-PKG-206"
+      ],
+      "observed_rules": [
+        "STO-PKG-206"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0413",
+      "family": "symlink_escape",
+      "expected_rules": [
+        "STO-PKG-206"
+      ],
+      "observed_rules": [
+        "STO-PKG-206"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0414",
+      "family": "symlink_escape",
+      "expected_rules": [
+        "STO-PKG-206"
+      ],
+      "observed_rules": [
+        "STO-PKG-206"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0415",
+      "family": "symlink_escape",
+      "expected_rules": [
+        "STO-PKG-206"
+      ],
+      "observed_rules": [
+        "STO-PKG-206"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0416",
+      "family": "symlink_escape",
+      "expected_rules": [
+        "STO-PKG-206"
+      ],
+      "observed_rules": [
+        "STO-PKG-206"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0417",
+      "family": "symlink_escape",
+      "expected_rules": [
+        "STO-PKG-206"
+      ],
+      "observed_rules": [
+        "STO-PKG-206"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0418",
+      "family": "symlink_escape",
+      "expected_rules": [
+        "STO-PKG-206"
+      ],
+      "observed_rules": [
+        "STO-PKG-206"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0419",
+      "family": "symlink_escape",
+      "expected_rules": [
+        "STO-PKG-206"
+      ],
+      "observed_rules": [
+        "STO-PKG-206"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0420",
+      "family": "symlink_escape",
+      "expected_rules": [
+        "STO-PKG-206"
+      ],
+      "observed_rules": [
+        "STO-PKG-206"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0421",
+      "family": "symlink_escape",
+      "expected_rules": [
+        "STO-PKG-206"
+      ],
+      "observed_rules": [
+        "STO-PKG-206"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0422",
+      "family": "symlink_escape",
+      "expected_rules": [
+        "STO-PKG-206"
+      ],
+      "observed_rules": [
+        "STO-PKG-206"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0423",
+      "family": "symlink_escape",
+      "expected_rules": [
+        "STO-PKG-206"
+      ],
+      "observed_rules": [
+        "STO-PKG-206"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0424",
+      "family": "symlink_escape",
+      "expected_rules": [
+        "STO-PKG-206"
+      ],
+      "observed_rules": [
+        "STO-PKG-206"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0425",
+      "family": "symlink_escape",
+      "expected_rules": [
+        "STO-PKG-206"
+      ],
+      "observed_rules": [
+        "STO-PKG-206"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0426",
+      "family": "symlink_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0427",
+      "family": "symlink_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0428",
+      "family": "symlink_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0429",
+      "family": "symlink_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0430",
+      "family": "symlink_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0431",
+      "family": "symlink_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0432",
+      "family": "symlink_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0433",
+      "family": "symlink_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0434",
+      "family": "symlink_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0435",
+      "family": "symlink_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0436",
+      "family": "symlink_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0437",
+      "family": "symlink_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0438",
+      "family": "symlink_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0439",
+      "family": "symlink_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0440",
+      "family": "symlink_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0441",
+      "family": "symlink_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0442",
+      "family": "symlink_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0443",
+      "family": "symlink_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0444",
+      "family": "symlink_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0445",
+      "family": "symlink_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0446",
+      "family": "symlink_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0447",
+      "family": "symlink_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0448",
+      "family": "symlink_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0449",
+      "family": "symlink_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0450",
+      "family": "symlink_escape",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0451",
+      "family": "cross_file_risk",
+      "expected_rules": [
+        "STO-PKG-210"
+      ],
+      "observed_rules": [
+        "STO-PKG-203",
+        "STO-PKG-210"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0452",
+      "family": "cross_file_risk",
+      "expected_rules": [
+        "STO-PKG-210"
+      ],
+      "observed_rules": [
+        "STO-PKG-203",
+        "STO-PKG-210"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0453",
+      "family": "cross_file_risk",
+      "expected_rules": [
+        "STO-PKG-210"
+      ],
+      "observed_rules": [
+        "STO-PKG-203",
+        "STO-PKG-210"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0454",
+      "family": "cross_file_risk",
+      "expected_rules": [
+        "STO-PKG-210"
+      ],
+      "observed_rules": [
+        "STO-PKG-203",
+        "STO-PKG-210"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0455",
+      "family": "cross_file_risk",
+      "expected_rules": [
+        "STO-PKG-210"
+      ],
+      "observed_rules": [
+        "STO-PKG-203",
+        "STO-PKG-210"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0456",
+      "family": "cross_file_risk",
+      "expected_rules": [
+        "STO-PKG-210"
+      ],
+      "observed_rules": [
+        "STO-PKG-203",
+        "STO-PKG-210"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0457",
+      "family": "cross_file_risk",
+      "expected_rules": [
+        "STO-PKG-210"
+      ],
+      "observed_rules": [
+        "STO-PKG-203",
+        "STO-PKG-210"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0458",
+      "family": "cross_file_risk",
+      "expected_rules": [
+        "STO-PKG-210"
+      ],
+      "observed_rules": [
+        "STO-PKG-203",
+        "STO-PKG-210"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0459",
+      "family": "cross_file_risk",
+      "expected_rules": [
+        "STO-PKG-210"
+      ],
+      "observed_rules": [
+        "STO-PKG-203",
+        "STO-PKG-210"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0460",
+      "family": "cross_file_risk",
+      "expected_rules": [
+        "STO-PKG-210"
+      ],
+      "observed_rules": [
+        "STO-PKG-203",
+        "STO-PKG-210"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0461",
+      "family": "cross_file_risk",
+      "expected_rules": [
+        "STO-PKG-210"
+      ],
+      "observed_rules": [
+        "STO-PKG-203",
+        "STO-PKG-210"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0462",
+      "family": "cross_file_risk",
+      "expected_rules": [
+        "STO-PKG-210"
+      ],
+      "observed_rules": [
+        "STO-PKG-203",
+        "STO-PKG-210"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0463",
+      "family": "cross_file_risk",
+      "expected_rules": [
+        "STO-PKG-210"
+      ],
+      "observed_rules": [
+        "STO-PKG-203",
+        "STO-PKG-210"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0464",
+      "family": "cross_file_risk",
+      "expected_rules": [
+        "STO-PKG-210"
+      ],
+      "observed_rules": [
+        "STO-PKG-203",
+        "STO-PKG-210"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0465",
+      "family": "cross_file_risk",
+      "expected_rules": [
+        "STO-PKG-210"
+      ],
+      "observed_rules": [
+        "STO-PKG-203",
+        "STO-PKG-210"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0466",
+      "family": "cross_file_risk",
+      "expected_rules": [
+        "STO-PKG-210"
+      ],
+      "observed_rules": [
+        "STO-PKG-203",
+        "STO-PKG-210"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0467",
+      "family": "cross_file_risk",
+      "expected_rules": [
+        "STO-PKG-210"
+      ],
+      "observed_rules": [
+        "STO-PKG-203",
+        "STO-PKG-210"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0468",
+      "family": "cross_file_risk",
+      "expected_rules": [
+        "STO-PKG-210"
+      ],
+      "observed_rules": [
+        "STO-PKG-203",
+        "STO-PKG-210"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0469",
+      "family": "cross_file_risk",
+      "expected_rules": [
+        "STO-PKG-210"
+      ],
+      "observed_rules": [
+        "STO-PKG-203",
+        "STO-PKG-210"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0470",
+      "family": "cross_file_risk",
+      "expected_rules": [
+        "STO-PKG-210"
+      ],
+      "observed_rules": [
+        "STO-PKG-203",
+        "STO-PKG-210"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0471",
+      "family": "cross_file_risk",
+      "expected_rules": [
+        "STO-PKG-210"
+      ],
+      "observed_rules": [
+        "STO-PKG-203",
+        "STO-PKG-210"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0472",
+      "family": "cross_file_risk",
+      "expected_rules": [
+        "STO-PKG-210"
+      ],
+      "observed_rules": [
+        "STO-PKG-203",
+        "STO-PKG-210"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0473",
+      "family": "cross_file_risk",
+      "expected_rules": [
+        "STO-PKG-210"
+      ],
+      "observed_rules": [
+        "STO-PKG-203",
+        "STO-PKG-210"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0474",
+      "family": "cross_file_risk",
+      "expected_rules": [
+        "STO-PKG-210"
+      ],
+      "observed_rules": [
+        "STO-PKG-203",
+        "STO-PKG-210"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0475",
+      "family": "cross_file_risk",
+      "expected_rules": [
+        "STO-PKG-210"
+      ],
+      "observed_rules": [
+        "STO-PKG-203",
+        "STO-PKG-210"
+      ],
+      "outcome": "tp"
+    },
+    {
+      "case_id": "STO-CAL-0476",
+      "family": "cross_file_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0477",
+      "family": "cross_file_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0478",
+      "family": "cross_file_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0479",
+      "family": "cross_file_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0480",
+      "family": "cross_file_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0481",
+      "family": "cross_file_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0482",
+      "family": "cross_file_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0483",
+      "family": "cross_file_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0484",
+      "family": "cross_file_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0485",
+      "family": "cross_file_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0486",
+      "family": "cross_file_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0487",
+      "family": "cross_file_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0488",
+      "family": "cross_file_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0489",
+      "family": "cross_file_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0490",
+      "family": "cross_file_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0491",
+      "family": "cross_file_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0492",
+      "family": "cross_file_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0493",
+      "family": "cross_file_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0494",
+      "family": "cross_file_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0495",
+      "family": "cross_file_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0496",
+      "family": "cross_file_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0497",
+      "family": "cross_file_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0498",
+      "family": "cross_file_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0499",
+      "family": "cross_file_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    },
+    {
+      "case_id": "STO-CAL-0500",
+      "family": "cross_file_risk",
+      "expected_rules": [],
+      "observed_rules": [],
+      "outcome": "tn"
+    }
+  ]
+}

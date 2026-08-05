@@ -61,7 +61,7 @@ Common causes:
   boundary.
 
 Read `decision_reasons` in `report.json` and the next steps in
-`friendly-report.md`. Never promote `inconclusive` to `assured` manually.
+`friendly-report.md`. Never promote `inconclusive` to `passed_scope` manually.
 
 ## Docker or gVisor is unavailable
 
@@ -93,7 +93,7 @@ Run the command once per skill in repository automation.
 
 | Code | Meaning |
 | --- | --- |
-| `0` | Passed or `assured`. |
+| `0` | Passed or `passed_scope`. |
 | `1` | Violations found or behavioral decision `blocked`. |
 | `2` | Invalid command, policy, package, or scanner configuration. |
 | `3` | Behavioral decision `inconclusive`. |

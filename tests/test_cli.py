@@ -196,5 +196,5 @@ def test_redteam_reference_harness_emits_json_evidence(tmp_path: Path) -> None:
 
     assert result.exit_code == 0
     report = json.loads(result.stdout)
-    assert report["decision"] == "assured"
+    assert report["decision"] == "passed_scope"
     assert report["evidence"]["directory"].startswith(str(tmp_path))

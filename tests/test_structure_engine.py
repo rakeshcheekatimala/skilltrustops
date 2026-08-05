@@ -136,13 +136,7 @@ def test_requires_name(tmp_path: Path) -> None:
 
 
 def test_accepts_one_character_description(tmp_path: Path) -> None:
-    content = (
-        "---\n"
-        "name: example-skill\n"
-        "description: x\n"
-        "---\n"
-        "Instructions.\n"
-    )
+    content = "---\nname: example-skill\ndescription: x\n---\nInstructions.\n"
 
     assert scan(tmp_path, content) == set()
 
@@ -164,11 +158,7 @@ def test_rejects_invalid_name_formats(tmp_path: Path, name: str) -> None:
 def test_rejects_description_over_1024_characters(tmp_path: Path) -> None:
     description = "x" * (MAX_DESCRIPTION_LENGTH + 1)
     content = (
-        "---\n"
-        "name: example-skill\n"
-        f"description: {description}\n"
-        "---\n"
-        "Instructions.\n"
+        f"---\nname: example-skill\ndescription: {description}\n---\nInstructions.\n"
     )
 
     assert scan(tmp_path, content) == {"STO-LINT-020"}

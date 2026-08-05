@@ -156,9 +156,26 @@ from the browser, embedded in the package manifest, or written to evidence.
 Live provider runs are not fully deterministic; use an approved pinned model
 snapshot when the provider offers one.
 
+For another provider or an internal model gateway, use `generic-http`. The
+endpoint must use HTTPS, except loopback endpoints used for local testing. The
+request contains schema version `1.0`, the selected model name, skill text,
+validated manifest, current attack case, and turn index. The response must match
+the strict `ModelResponse` schema: `content` plus optional `tool_calls`.
+
+```bash
+export SKILLTRUSTOPS_PROVIDER_TOKEN=replace-with-a-secret
+uv run skilltrustops redteam run my-skill/skilltrust-package.yaml \
+  --provider generic-http \
+  --endpoint https://gateway.example/evaluate \
+  --model approved-model
+```
+
+Use `--token-env` to select another environment variable. Tokens are never
+accepted in manifests or report output.
+
 ## Choose a sandbox boundary
 
-| Provider | Intended use | Can a clean run be `assured`? |
+| Provider | Intended use | Can a clean run be `passed_scope`? |
 | --- | --- | --- |
 | `none` | Harness development or environments with a separately accepted boundary | Yes, if all other assurance conditions hold; document the external boundary. |
 | `docker` | Local development isolation | No; a clean run is intentionally `inconclusive`. |
@@ -185,14 +202,14 @@ Decision precedence is:
 ```text
 confirmed security failure -> blocked
 missing or uncertain evidence -> inconclusive
-all required evidence passed -> assured
+all required evidence passed -> passed_scope
 ```
 
 - `blocked`: remediate the confirmed assertion and rerun the full affected
   scope.
 - `inconclusive`: do not approve. Fix the draft, provider, sandbox, or evidence
   problem and rerun.
-- `assured`: approve only the exact package/model/harness/attack scope recorded.
+- `passed_scope`: approve only the exact package/model/harness/attack scope recorded.
 
 ## Evidence
 

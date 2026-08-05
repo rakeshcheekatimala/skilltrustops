@@ -69,9 +69,7 @@ class BuiltinPiiDetector:
         if PiiEntity.CREDIT_CARD in self._entities:
             for match in CREDIT_CARD_CANDIDATE.finditer(skill_file.content):
                 digits = "".join(
-                    character
-                    for character in match.group()
-                    if character.isdigit()
+                    character for character in match.group() if character.isdigit()
                 )
                 if not self._passes_luhn(digits):
                     continue

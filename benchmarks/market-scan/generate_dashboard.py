@@ -39,6 +39,7 @@ def dashboard_data(results: Path) -> dict[str, object]:
             by_path.setdefault(skill["relative_path"], []).append(skill)
 
     skills = []
+    rule_catalog: dict[str, dict[str, str]] = {}
     for path, observations in sorted(by_path.items()):
         first = observations[0]
         source_parts = path.split("/")
@@ -55,7 +56,16 @@ def dashboard_data(results: Path) -> dict[str, object]:
                 check_times[check["command"]].append(check["duration_ms"])
                 if observation is first:
                     finding_count += check["finding_count"]
-                    rules.update(finding["rule_id"] for finding in check["findings"])
+                    for finding in check["findings"]:
+                        rules.add(finding["rule_id"])
+                        rule_catalog.setdefault(
+                            finding["rule_id"],
+                            {
+                                "severity": finding["severity"],
+                                "message": finding["message"],
+                                "remediation": finding["remediation"],
+                            },
+                        )
         durations = [observation["duration_ms"] for observation in observations]
         skills.append(
             {
@@ -96,6 +106,7 @@ def dashboard_data(results: Path) -> dict[str, object]:
         "outcomes": runs[-1]["report"]["summary"],
         "skills": skills,
         "profiles": profile_rows,
+        "rule_catalog": rule_catalog,
     }
 
 
@@ -113,7 +124,7 @@ def main() -> None:
     print(f"WROTE {args.output}")
 
 
-TEMPLATE = r'''<!doctype html>
+TEMPLATE = r"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -129,18 +140,20 @@ TEMPLATE = r'''<!doctype html>
 <section class="grid" id="metrics"></section>
 <p class="notice"><strong>Interpretation:</strong> “Review required” means deterministic findings exist. It does not mean malicious, unsafe, or exploitable. These results measure operation and throughput; detector accuracy requires an adjudicated labeled dataset.</p>
 <section><h2>Docker resource comparison</h2><div class="two"><div class="card" id="bars"></div><div class="table-wrap"><table id="profiles"><thead><tr><th>Profile</th><th class="num">Median</th><th class="num">Skills/s</th><th class="num">p95/skill</th><th class="num">Peak RAM</th></tr></thead><tbody></tbody></table></div></div></section>
-<section><h2>Every skill: representative 1 CPU / 512 MiB profile</h2><div class="sub">Median and p95 across five runs. Click any column header to sort.</div><div class="controls"><input id="search" aria-label="Search skills" placeholder="Search name, source, path, or rule"><select id="source" aria-label="Filter source"><option value="">All sources</option></select><select id="status" aria-label="Filter status"><option value="">All outcomes</option><option value="passed">No findings</option><option value="failed">Review required</option></select></div><div class="muted" id="count"></div><div class="table-wrap"><table id="skills"><thead><tr><th data-key="name">Skill</th><th data-key="source">Source</th><th data-key="status">Outcome</th><th data-key="median_ms" class="num">Median ms</th><th data-key="p95_ms" class="num">p95 ms</th><th data-key="lint_ms" class="num">Lint</th><th data-key="security_ms" class="num">Security</th><th data-key="privacy_ms" class="num">Privacy</th><th data-key="findings" class="num">Findings</th><th data-key="rules">Rules</th></tr></thead><tbody></tbody></table></div></section>
-<section><h2>What recommended-v2 tests</h2><div class="two"><div class="card"><h3>Lint and input safety</h3><ul><li>Recursive discovery of regular, non-symlink <code>SKILL.md</code> files</li><li>UTF-8 and 1 MiB file limit</li><li>YAML frontmatter parsing</li><li>Agent Skills name, directory match, description, allowed fields, metadata, compatibility, license and body rules</li></ul></div><div class="card"><h3>Security and privacy</h3><ul><li>Private-key, AWS, GitHub and generic credential patterns</li><li>Python <code>eval</code>/<code>exec</code>, <code>os.system</code>, and <code>subprocess(..., shell=True)</code></li><li>Recursive/forced <code>rm</code> and download piped to shell</li><li>Email, phone, US SSN and Luhn-valid payment-card patterns</li></ul></div></div><details><summary>Explicit non-coverage</summary><p>Static scanning reads each SKILL.md only. It does not execute it, call an LLM, require an API key, or currently analyze scripts, references, assets, dependencies, hooks, semantic prompt injection, obfuscation, or cross-file data flow. The deterministic reference red-team target tests harness behavior, not real-model safety.</p></details></section>
+<section><h2>Every skill: representative 1 CPU / 512 MiB profile</h2><div class="sub">Median and p95 across five runs. Click any column header to sort. Expand a rule to see what it means and how to fix it.</div><div class="controls"><input id="search" aria-label="Search skills" placeholder="Search name, source, path, rule, or description"><select id="source" aria-label="Filter source"><option value="">All sources</option></select><select id="status" aria-label="Filter status"><option value="">All outcomes</option><option value="passed">No findings</option><option value="failed">Review required</option></select></div><div class="muted" id="count"></div><div class="table-wrap"><table id="skills"><thead><tr><th data-key="name">Skill</th><th data-key="source">Source</th><th data-key="status">Outcome</th><th data-key="median_ms" class="num">Median ms</th><th data-key="p95_ms" class="num">p95 ms</th><th data-key="lint_ms" class="num">Lint</th><th data-key="security_ms" class="num">Security</th><th data-key="privacy_ms" class="num">Privacy</th><th data-key="findings" class="num">Findings</th><th data-key="rules">Rule and meaning</th></tr></thead><tbody></tbody></table></div></section>
+<section><h2>Rule reference</h2><p class="sub">Stable IDs support CI, SARIF, baselines, and suppressions. Descriptions and remediation explain the developer action.</p><div class="table-wrap"><table id="rule-catalog"><thead><tr><th>Rule</th><th>Severity</th><th>Meaning</th><th>What to do</th></tr></thead><tbody></tbody></table></div></section>
+<section><h2>What recommended-v2 tests</h2><div class="two"><div class="card"><h3>Lint and input safety</h3><ul><li>Recursive, deterministic skill discovery</li><li>Bounded files, total package size, archive expansion, and entry counts</li><li>YAML frontmatter and Agent Skills metadata</li><li>Links and special filesystem entries are reported, never followed</li></ul></div><div class="card"><h3>Security and privacy</h3><ul><li>Secrets, private keys, email, phone, SSN, and payment-card patterns</li><li>Dangerous execution, destructive shell, and download-to-shell</li><li>Injection, obfuscation, persistence, exfiltration, and permission abuse</li><li>Lifecycle hooks, unsafe archives, dependencies, and cross-file risk</li></ul></div></div><details><summary>Explicit limits</summary><p>Static scanning does not execute package content, call an LLM, or require an API key. Pattern findings require review and are not proof of exploitability. The deterministic reference red-team target validates the harness, not real-model safety.</p></details></section>
 <section><h2>Reproduce on any Docker laptop</h2><pre>./benchmarks/market-scan/reproduce.sh</pre><ol><li>Builds the digest-pinned benchmark image.</li><li>Fetches eight repositories at immutable commits.</li><li>Verifies all 605 paths, sizes, and SHA-256 hashes.</li><li>Runs seven network-disabled CPU/RAM profiles, five runs each.</li><li>Checks raw artifact hashes and regenerates this dashboard.</li></ol><p class="muted">Expected run time depends on Docker allocation, CPU architecture, storage, thermal state, and concurrent workloads. Matching outcomes and corpus/policy hashes are required; timings should be compared as distributions, not exact identical numbers.</p></section>
 <footer>Corpus and policy fingerprints are displayed above. Full compressed JSON retains every run, skill, check, finding and timing.</footer>
 </main><script>
 const DATA=__BENCHMARK_DATA__;const $=s=>document.querySelector(s);const fmt=n=>Number(n).toLocaleString(undefined,{maximumFractionDigits:3});const mib=n=>fmt(n/1048576)+" MiB";
 const outcomes=DATA.outcomes;const metrics=[['Skills',DATA.corpus.skills],['Median total',fmt(DATA.summary.median_wall_duration_ms)+' ms'],['Throughput',fmt(DATA.summary.median_throughput_skills_per_second)+'/s'],['Scanner errors',outcomes.errors]];$('#metrics').innerHTML=metrics.map(x=>`<div class="card"><div class="metric">${x[1]}</div><div class="metric-label">${x[0]}</div></div>`).join('');
 const max=Math.max(...DATA.profiles.map(x=>x.median_ms));$('#bars').innerHTML='<h3>Time for 605 skills</h3>'+DATA.profiles.map(x=>`<div class="bar-row"><span>${x.profile}</span><div class="bar"><span style="width:${x.median_ms/max*100}%"></span></div><span class="num">${fmt(x.median_ms)} ms</span></div>`).join('');$('#profiles tbody').innerHTML=DATA.profiles.map(x=>`<tr><td>${x.profile}</td><td class="num">${fmt(x.median_ms)} ms</td><td class="num">${fmt(x.throughput)}</td><td class="num">${fmt(x.p95_ms)} ms</td><td class="num">${mib(x.peak_memory_bytes)}</td></tr>`).join('');
-const sources=[...new Set(DATA.skills.map(x=>x.source))].sort();$('#source').innerHTML+=[...sources].map(x=>`<option>${x}</option>`).join('');let sortKey='median_ms',ascending=true;const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function draw(){const q=$('#search').value.toLowerCase(),src=$('#source').value,status=$('#status').value;let rows=DATA.skills.filter(x=>(!src||x.source===src)&&(!status||x.status===status)&&(!q||[x.name,x.source,x.path,...x.rules].join(' ').toLowerCase().includes(q)));rows.sort((a,b)=>{const x=a[sortKey],y=b[sortKey];return (typeof x==='number'?x-y:String(x).localeCompare(String(y)))*(ascending?1:-1)});$('#count').textContent=`Showing ${rows.length} of ${DATA.skills.length} skills`;$('#skills tbody').innerHTML=rows.map(x=>`<tr title="${esc(x.path)}"><td>${esc(x.name)}</td><td>${esc(x.source)}</td><td><span class="pill ${x.status}">${x.status==='passed'?'No findings':'Review required'}</span></td><td class="num">${fmt(x.median_ms)}</td><td class="num">${fmt(x.p95_ms)}</td><td class="num">${fmt(x.lint_ms)}</td><td class="num">${fmt(x.security_ms)}</td><td class="num">${fmt(x.privacy_ms)}</td><td class="num">${x.findings}</td><td>${esc(x.rules.join(', '))}</td></tr>`).join('')}
+const sources=[...new Set(DATA.skills.map(x=>x.source))].sort();$('#source').innerHTML+=[...sources].map(x=>`<option>${x}</option>`).join('');let sortKey='median_ms',ascending=true;const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const ruleText=id=>{const r=DATA.rule_catalog[id];return r?`${id}: ${r.message} ${r.remediation}`:id};const ruleCell=ids=>ids.map(id=>{const r=DATA.rule_catalog[id];return r?`<details><summary><code>${esc(id)}</code> · ${esc(r.message)}</summary><div class="muted"><strong>Fix:</strong> ${esc(r.remediation)}</div></details>`:`<code>${esc(id)}</code>`}).join('');
+function draw(){const q=$('#search').value.toLowerCase(),src=$('#source').value,status=$('#status').value;let rows=DATA.skills.filter(x=>(!src||x.source===src)&&(!status||x.status===status)&&(!q||[x.name,x.source,x.path,...x.rules.map(ruleText)].join(' ').toLowerCase().includes(q)));rows.sort((a,b)=>{const x=a[sortKey],y=b[sortKey];return (typeof x==='number'?x-y:String(x).localeCompare(String(y)))*(ascending?1:-1)});$('#count').textContent=`Showing ${rows.length} of ${DATA.skills.length} skills`;$('#skills tbody').innerHTML=rows.map(x=>`<tr title="${esc(x.path)}"><td>${esc(x.name)}</td><td>${esc(x.source)}</td><td><span class="pill ${x.status}">${x.status==='passed'?'No findings':'Review required'}</span></td><td class="num">${fmt(x.median_ms)}</td><td class="num">${fmt(x.p95_ms)}</td><td class="num">${fmt(x.lint_ms)}</td><td class="num">${fmt(x.security_ms)}</td><td class="num">${fmt(x.privacy_ms)}</td><td class="num">${x.findings}</td><td>${ruleCell(x.rules)}</td></tr>`).join('')}
+$('#rule-catalog tbody').innerHTML=Object.entries(DATA.rule_catalog).sort(([a],[b])=>a.localeCompare(b)).map(([id,r])=>`<tr><td><code>${esc(id)}</code></td><td>${esc(r.severity)}</td><td>${esc(r.message)}</td><td>${esc(r.remediation)}</td></tr>`).join('');
 ['search','source','status'].forEach(id=>$('#'+id).addEventListener(id==='search'?'input':'change',draw));document.querySelectorAll('#skills th[data-key]').forEach(th=>th.addEventListener('click',()=>{if(sortKey===th.dataset.key)ascending=!ascending;else{sortKey=th.dataset.key;ascending=true}draw()}));draw();
-</script></body></html>'''
+</script></body></html>"""
 
 
 if __name__ == "__main__":

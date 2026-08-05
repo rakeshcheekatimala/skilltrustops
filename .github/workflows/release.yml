@@ -1,0 +1,42 @@
+name: Publish release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+    environment: pypi
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          version: "0.11.32"
+          python-version: "3.11"
+      - run: uv sync --locked --extra dev
+      - run: uv run pytest
+      - run: uv build
+      - run: uv run python scripts/generate_sbom.py
+      - name: Smoke-test wheel
+        run: uv run --isolated --no-project --with dist/*.whl tests/smoke_test.py
+      - name: Smoke-test source distribution
+        run: uv run --isolated --no-project --with dist/*.tar.gz tests/smoke_test.py
+      - name: Attest distributions and SBOM
+        uses: actions/attest-build-provenance@43d14bc2b83dec42d39ecae14e916627a18bb661 # v3
+        with:
+          subject-path: |
+            dist/*
+            artifacts/skilltrustops.spdx.json
+      - name: Publish with PyPI trusted publishing
+        uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # release/v1
+        with:
+          packages-dir: dist/
+          attestations: true

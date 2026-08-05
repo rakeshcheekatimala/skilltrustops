@@ -99,5 +99,5 @@ Communicate results precisely. A defensible statement is:
 > The recorded package resisted the recorded attacks with the recorded model,
 > harness, policy, and isolation boundary at the time of testing.
 
-Avoid claiming that an `assured` decision proves safety across all models,
+Avoid claiming that an `passed_scope` decision proves safety across all models,
 future attacks, frameworks, real tool implementations, or production systems.

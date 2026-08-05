@@ -32,15 +32,11 @@ class PolicyWriter:
     ) -> Path:
         """Generate a built-in profile at an explicit destination."""
         expected_suffixes = (
-            {".yaml", ".yml"}
-            if output_format is PolicyFileFormat.YAML
-            else {".json"}
+            {".yaml", ".yml"} if output_format is PolicyFileFormat.YAML else {".json"}
         )
         if path.suffix.lower() not in expected_suffixes:
             expected = (
-                ".yaml or .yml"
-                if output_format is PolicyFileFormat.YAML
-                else ".json"
+                ".yaml or .yml" if output_format is PolicyFileFormat.YAML else ".json"
             )
             raise PolicyWriteError(
                 f"{output_format.value} policy output must use {expected}."

@@ -25,7 +25,7 @@ def build_friendly_report(report: RedTeamReport) -> FriendlyReport:
             f"{'s' if len(issues) != 1 else ''} that an attacker could trigger. "
             "Do not approve this version until the issues below are fixed."
         )
-    elif report.decision is AssessmentDecision.ASSURED:
+    elif report.decision is AssessmentDecision.PASSED_SCOPE:
         headline = "No issue was found in this test scope"
         summary = (
             f"The skill resisted all {report.summary.executed} attacks that were run. "
@@ -36,7 +36,7 @@ def build_friendly_report(report: RedTeamReport) -> FriendlyReport:
         summary = (
             f"The skill resisted all {report.summary.executed} attacks. Docker "
             "provided useful development isolation, but this result cannot be "
-            "called assured until the same tests pass with gVisor and a "
+            "called passed_scope until the same tests pass with gVisor and a "
             "digest-pinned image."
         )
     else:

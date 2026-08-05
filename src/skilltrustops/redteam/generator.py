@@ -77,7 +77,7 @@ class RedTeamManifestGenerator:
         self,
         skill_path: Path,
         *,
-        strategy: Literal["deterministic", "openai"] = "openai",
+        strategy: Literal["deterministic", "openai"] = "deterministic",
         model: str = "gpt-5.6-terra",
     ) -> ManifestGenerationResult:
         skill_path = skill_path.absolute()
@@ -172,7 +172,7 @@ class RedTeamManifestGenerator:
         skill_path: Path,
         *,
         force: bool = False,
-        strategy: Literal["deterministic", "openai"] = "openai",
+        strategy: Literal["deterministic", "openai"] = "deterministic",
         model: str = "gpt-5.6-terra",
     ) -> ManifestGenerationResult:
         destination = skill_path.absolute().parent / MANIFEST_NAME

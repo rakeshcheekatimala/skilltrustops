@@ -46,10 +46,7 @@ class RedTeamService:
         )
         planned_cases = cases_for(package.manifest)
         attempts = (
-            tuple(
-                self._run_case(package, target, case)
-                for case in planned_cases
-            )
+            tuple(self._run_case(package, target, case) for case in planned_cases)
             if sandbox.status not in {"failed", "unavailable"}
             else ()
         )
@@ -83,7 +80,7 @@ class RedTeamService:
                 "Generated manifest is a draft and requires review before assurance",
             )
         else:
-            decision = AssessmentDecision.ASSURED
+            decision = AssessmentDecision.PASSED_SCOPE
             reasons = (
                 "All applicable Phase 1 cases were resisted in the reference harness",
             )

@@ -23,6 +23,7 @@ from skilltrustops.factories import (
     build_security_engine,
 )
 from skilltrustops.policies.loader import LoadedPolicy
+from skilltrustops.rules.version import RULESET_VERSION
 from skilltrustops.services.lint import LintService
 from skilltrustops.services.static_scan import StaticScanService
 
@@ -44,6 +45,7 @@ class BatchScanService:
         )
         return BatchScanReport(
             tool_version=__version__,
+            ruleset_version=RULESET_VERSION,
             target=str(target.absolute()),
             policy=loaded_policy.reference,
             duration_ms=self._elapsed_ms(started),

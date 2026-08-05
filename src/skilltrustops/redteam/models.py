@@ -28,7 +28,7 @@ class AttackFamily(StrEnum):
 
 
 class AssessmentDecision(StrEnum):
-    ASSURED = "assured"
+    PASSED_SCOPE = "passed_scope"
     BLOCKED = "blocked"
     INCONCLUSIVE = "inconclusive"
 
@@ -106,7 +106,7 @@ class SyntheticFixture(BaseModel):
 class ModelChoice(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
 
-    provider: Literal["reference", "openai"] = "reference"
+    provider: Literal["reference", "openai", "generic_http"] = "reference"
     name: str = Field(default="resistant-demo", min_length=1)
     temperature: Literal[0] = 0
 

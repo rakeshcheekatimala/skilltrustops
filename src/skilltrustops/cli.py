@@ -1,11 +1,13 @@
 """Command-line entry point for SkillTrustOps."""
 
 import json
+from datetime import date, timedelta
 from enum import StrEnum
 from pathlib import Path
 from typing import Annotated, NoReturn
 
 import typer
+import yaml
 from rich.console import Console
 from rich.table import Table
 
@@ -27,7 +29,18 @@ from skilltrustops.policies.writer import (
 from skilltrustops.redteam.generator import RedTeamManifestGenerator
 from skilltrustops.redteam.loader import RedTeamPackageError
 from skilltrustops.redteam.service import RedTeamService
-from skilltrustops.redteam.targets import OpenAIModelTarget, ReferenceModelTarget
+from skilltrustops.redteam.targets import (
+    GenericHTTPModelTarget,
+    ModelTarget,
+    OpenAIModelTarget,
+    ReferenceModelTarget,
+)
+from skilltrustops.reporting.sarif import to_sarif
+from skilltrustops.reporting.suppressions import (
+    apply_suppressions,
+    baseline_document,
+    load_suppressions,
+)
 from skilltrustops.sandbox.providers import provider_from_policy
 from skilltrustops.services.batch import BatchScanError
 from skilltrustops.services.lint import LintService
@@ -55,9 +68,16 @@ class OutputFormat(StrEnum):
     JSON = "json"
 
 
+class BatchOutputFormat(StrEnum):
+    TERMINAL = "terminal"
+    JSON = "json"
+    SARIF = "sarif"
+
+
 class ModelProvider(StrEnum):
     REFERENCE = "reference"
     OPENAI = "openai"
+    GENERIC_HTTP = "generic-http"
 
 
 class SandboxProviderName(StrEnum):
@@ -67,8 +87,8 @@ class SandboxProviderName(StrEnum):
 
 
 class ManifestGenerationProvider(StrEnum):
-    OPENAI = "openai"
     DETERMINISTIC = "deterministic"
+    OPENAI = "openai"
 
 
 @redteam_app.command("init")
@@ -84,7 +104,7 @@ def redteam_init(
     provider: Annotated[
         ManifestGenerationProvider,
         typer.Option("--provider", help="Behavioral test generation strategy."),
-    ] = ManifestGenerationProvider.OPENAI,
+    ] = ManifestGenerationProvider.DETERMINISTIC,
     model: Annotated[
         str,
         typer.Option("--model", help="OpenAI model used to propose attack cases."),
@@ -135,23 +155,78 @@ def scan_command(
         typer.Option("--policy", help="One YAML or JSON policy for the batch."),
     ] = None,
     output_format: Annotated[
-        OutputFormat,
+        BatchOutputFormat,
         typer.Option("--format", help="Report output format."),
-    ] = OutputFormat.TERMINAL,
+    ] = BatchOutputFormat.TERMINAL,
+    suppressions_path: Annotated[
+        Path | None,
+        typer.Option(
+            "--suppressions",
+            help="Reviewed YAML suppressions with justification and expiry.",
+        ),
+    ] = None,
+    write_baseline: Annotated[
+        Path | None,
+        typer.Option(
+            "--write-baseline",
+            help="Write current findings as a review-required suppression draft.",
+        ),
+    ] = None,
 ) -> None:
     """Apply one policy and report deterministic per-skill timings."""
     try:
         report = scan_target(target, policy_path=policy_path)
-    except (BatchScanError, PolicyError) as error:
+        if write_baseline is not None:
+            document = baseline_document(report, date.today() + timedelta(days=30))
+            write_baseline.write_text(
+                yaml.safe_dump(document, sort_keys=False), encoding="utf-8"
+            )
+        if suppressions_path is not None:
+            report = apply_suppressions(report, load_suppressions(suppressions_path))
+    except (BatchScanError, OSError, PolicyError, ValueError) as error:
         console.print(f"[bold red]SCAN ERROR[/bold red] {error}")
         raise typer.Exit(code=2) from error
-    if output_format is OutputFormat.JSON:
+    if output_format is BatchOutputFormat.JSON:
         typer.echo(json.dumps(report.model_dump(mode="json"), indent=2))
+    elif output_format is BatchOutputFormat.SARIF:
+        typer.echo(json.dumps(to_sarif(report), indent=2))
     else:
         _render_batch_report(report)
     if report.summary.errors:
         raise typer.Exit(code=2)
     if report.summary.failed:
+        raise typer.Exit(code=1)
+
+
+@app.command("hook")
+def hook_command(
+    target: Annotated[
+        Path,
+        typer.Argument(help="Skill file or directory checked by a Git hook."),
+    ] = Path("."),
+    policy_path: Annotated[
+        Path | None,
+        typer.Option("--policy", help="Repository policy used by the hook."),
+    ] = None,
+) -> None:
+    """Fail a pre-commit or pre-push hook when a skill needs review."""
+    try:
+        report = scan_target(target, policy_path=policy_path)
+    except (BatchScanError, OSError, PolicyError, ValueError) as error:
+        console.print(f"[bold red]HOOK ERROR[/bold red] {error}")
+        raise typer.Exit(code=2) from error
+    console.print(
+        f"SkillTrustOps: {report.summary.discovered} scanned, "
+        f"{report.summary.passed} passed, {report.summary.failed} need review, "
+        f"{report.summary.errors} errors ({report.duration_ms:.1f} ms)"
+    )
+    if report.summary.errors:
+        raise typer.Exit(code=2)
+    if report.summary.failed:
+        console.print(
+            "[bold red]Git operation stopped.[/bold red] Run "
+            f"'skilltrustops scan {target}' for findings."
+        )
         raise typer.Exit(code=1)
 
 
@@ -279,6 +354,18 @@ def redteam_run(
             help="Reference profile or OpenAI model ID.",
         ),
     ] = "resistant-demo",
+    endpoint: Annotated[
+        str | None,
+        typer.Option(
+            "--endpoint", help="HTTPS endpoint for the generic-http provider."
+        ),
+    ] = None,
+    token_env: Annotated[
+        str,
+        typer.Option(
+            "--token-env", help="Environment variable containing a provider token."
+        ),
+    ] = "SKILLTRUSTOPS_PROVIDER_TOKEN",
     sandbox: Annotated[
         SandboxProviderName | None,
         typer.Option("--sandbox", help="Override configured isolation provider."),
@@ -304,11 +391,15 @@ def redteam_run(
     load_discovered_env(Path.cwd())
     loaded_policy = _load_policy(policy_path)
     try:
-        target = (
-            OpenAIModelTarget(model)
-            if provider is ModelProvider.OPENAI
-            else ReferenceModelTarget(model)
-        )
+        target: ModelTarget
+        if provider is ModelProvider.OPENAI:
+            target = OpenAIModelTarget(model)
+        elif provider is ModelProvider.GENERIC_HTTP:
+            if endpoint is None:
+                raise ValueError("--endpoint is required for generic-http")
+            target = GenericHTTPModelTarget(model, endpoint, token_env=token_env)
+        else:
+            target = ReferenceModelTarget(model)
         sandbox_provider = provider_from_policy(
             loaded_policy.policy.redteam.sandbox,
             provider_override=sandbox.value if sandbox is not None else None,
@@ -324,7 +415,7 @@ def redteam_run(
         typer.echo(json.dumps(report.model_dump(mode="json"), indent=2))
     else:
         color = {
-            "assured": "green",
+            "passed_scope": "green",
             "blocked": "red",
             "inconclusive": "yellow",
         }[report.decision.value]
@@ -363,7 +454,7 @@ def redteam_run(
                 )
                 table.add_row(attempt.case.id, attempt.case.family.value, failed)
             console.print(table)
-    if report.decision.value != "assured":
+    if report.decision.value != "passed_scope":
         raise typer.Exit(code=1 if report.decision.value == "blocked" else 3)
 
 

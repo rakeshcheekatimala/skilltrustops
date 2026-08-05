@@ -47,18 +47,16 @@ def test_gvisor_requires_runsc_and_digest_pinned_image(
 
     monkeypatch.setattr("shutil.which", lambda _: "/usr/local/bin/docker")
     image = "alpine@sha256:" + "a" * 64
-    report = DockerSandboxProvider(
-        runtime="runsc", image=image, runner=runner
-    ).run(_package(tmp_path))
+    report = DockerSandboxProvider(runtime="runsc", image=image, runner=runner).run(
+        _package(tmp_path)
+    )
 
     assert report.provider == "gvisor"
     assert report.certifying is True
     assert calls[1][calls[1].index("--runtime") :][:2] == ("--runtime", "runsc")
 
 
-def test_timeout_forcibly_cleans_up_container(
-    tmp_path: Path, monkeypatch: Any
-) -> None:
+def test_timeout_forcibly_cleans_up_container(tmp_path: Path, monkeypatch: Any) -> None:
     calls: list[tuple[str, ...]] = []
 
     def runner(command: tuple[str, ...], **_: Any) -> subprocess.CompletedProcess[str]:

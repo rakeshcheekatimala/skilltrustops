@@ -1,0 +1,594 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "creationInfo": {
+    "created": "2026-08-05T00:00:00Z",
+    "creators": [
+      "Tool: SkillTrustOps-sbom-generator"
+    ]
+  },
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://skilltrustops.dev/spdx/7c19d51d0862cdc4eea3868b73e454ef5e37b3efdc483728f28414eb249f2d2b",
+  "name": "skilltrustops-uv-lock",
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-annotated-doc-0.0.4",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "fbcda96e87e9c92ad167c2e53839e57503ecfda18804ea28102353485033faa4"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "annotated-doc",
+      "versionInfo": "0.0.4"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-annotated-types-0.8.0",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "13b2beaad985e05e2d6407ee4c4f35590b11f8d693a258a561055cac8f64cab7"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "annotated-types",
+      "versionInfo": "0.8.0"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-colorama-0.4.6",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "colorama",
+      "versionInfo": "0.4.6"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-coverage-7.15.3",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "ae7ea5a4614acf399ef0483c4cb34f8f8f01df848d8fcbe7d3ce0865733f1c4d"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "coverage",
+      "versionInfo": "7.15.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-iniconfig-2.3.0",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "c76315c77db068650d49c5b56314774a7804df16fee4402c1f19d6d15d8c4730"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "iniconfig",
+      "versionInfo": "2.3.0"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-librt-0.13.0",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "1d2a610c14ac0d0750ee0a3ab8548e83155258387891caaca04def4bf7289781"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "librt",
+      "versionInfo": "0.13.0"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-markdown-it-py-4.2.0",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "04a21681d6fbb623de53f6f364d352309d4094dd4194040a10fd51833e418d49"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "markdown-it-py",
+      "versionInfo": "4.2.0"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-mdurl-0.1.2",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "bb413d29f5eea38f31dd4754dd7377d4465116fb207585f97bf925588687c1ba"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "mdurl",
+      "versionInfo": "0.1.2"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-mypy-1.20.2",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e8222c26daaafd9e8626dec58ae36029f82585890589576f769a650dd20fd665"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "mypy",
+      "versionInfo": "1.20.2"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-mypy-extensions-1.1.0",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "52e68efc3284861e772bbcd66823fde5ae21fd2fdb51c62a211403730b916558"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "mypy-extensions",
+      "versionInfo": "1.1.0"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-packaging-26.2",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "ff452ff5a3e828ce110190feff1178bb1f2ea2281fa2075aadb987c2fb221661"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "packaging",
+      "versionInfo": "26.2"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-pathspec-1.1.1",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "17db5ecd524104a120e173814c90367a96a98d07c45b2e10c2f3919fff91bf5a"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "pathspec",
+      "versionInfo": "1.1.1"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-pluggy-1.6.0",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "7dcc130b76258d33b90f61b658791dede3486c3e6bfb003ee5c9bfb396dd22f3"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "pluggy",
+      "versionInfo": "1.6.0"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-pydantic-2.13.4",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "c40756b57adaa8b1efeeced5c196f3f3b7c435f90e84ea7f443901bec8099ef6"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "pydantic",
+      "versionInfo": "2.13.4"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-pydantic-core-2.46.4",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "62f875393d7f270851f20523dd2e29f082bcc82292d66db2b64ea71f64b6e1c1"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "pydantic-core",
+      "versionInfo": "2.46.4"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-pygments-2.20.0",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "6757cd03768053ff99f3039c1a36d6c0aa0b263438fcab17520b30a303a82b5f"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "pygments",
+      "versionInfo": "2.20.0"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-pytest-8.4.2",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "86c0d0b93306b961d58d62a4db4879f27fe25513d4b969df351abdddb3c30e01"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "pytest",
+      "versionInfo": "8.4.2"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-pytest-cov-7.1.0",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "30674f2b5f6351aa09702a9c8c364f6a01c27aae0c1366ae8016160d1efc56b2"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "pytest-cov",
+      "versionInfo": "7.1.0"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-pyyaml-6.0.3",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "d76623373421df22fb4cf8817020cbb7ef15c725b9d5e45f17e189bfc384190f"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "pyyaml",
+      "versionInfo": "6.0.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-rich-14.3.4",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "817e02727f2b25b40ef56f5aa2217f400c8489f79ca8f46ea2b70dd5e14558a9"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "rich",
+      "versionInfo": "14.3.4"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-ruff-0.16.0",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e460aafd5495ec89efaa6ced2e4a9a581116451e1c88b9d37ef497e0f8e93982"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "ruff",
+      "versionInfo": "0.16.0"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-shellingham-1.5.4",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "8dbca0739d487e5bd35ab3ca4b36e11c4078f3a234bfce294b0a0291363404de"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "shellingham",
+      "versionInfo": "1.5.4"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-skilltrustops-0.1.0",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "skilltrustops",
+      "versionInfo": "0.1.0"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-tomli-2.4.1",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "7c7e1a961a0b2f2472c1ac5b69affa0ae1132c39adcb67aba98568702b9cc23f"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "tomli",
+      "versionInfo": "2.4.1"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-typer-0.27.0",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "629bd12ea5d13a17148125d9a264f949eb171fb3f120f9b04d85873cab054fa5"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "typer",
+      "versionInfo": "0.27.0"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-types-pyyaml-6.0.12.20260724",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "3c1ce1bb73cd5ec02e90390c2b1f00e810d241d8825fd73ff359696839271b6b"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "types-pyyaml",
+      "versionInfo": "6.0.12.20260724"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-typing-extensions-4.16.0",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "dc983d19a509c94dba722ee6abd33940f7c05a89e243c47e907eb4db6f1a43e5"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "typing-extensions",
+      "versionInfo": "4.16.0"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-typing-inspection-0.4.2",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "ba561c48a67c5958007083d386c3295464928b01faa735ab8547c5692e87f464"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "https://pypi.org/simple",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "typing-inspection",
+      "versionInfo": "0.4.2"
+    }
+  ],
+  "relationships": [
+    {
+      "relatedSpdxElement": "SPDXRef-Package-annotated-doc-0.0.4",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-annotated-types-0.8.0",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-colorama-0.4.6",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-coverage-7.15.3",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-iniconfig-2.3.0",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-librt-0.13.0",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-markdown-it-py-4.2.0",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-mdurl-0.1.2",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-mypy-1.20.2",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-mypy-extensions-1.1.0",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-packaging-26.2",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-pathspec-1.1.1",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-pluggy-1.6.0",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-pydantic-2.13.4",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-pydantic-core-2.46.4",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-pygments-2.20.0",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-pytest-8.4.2",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-pytest-cov-7.1.0",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-pyyaml-6.0.3",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-rich-14.3.4",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-ruff-0.16.0",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-shellingham-1.5.4",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-tomli-2.4.1",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-typer-0.27.0",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-types-pyyaml-6.0.12.20260724",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-typing-extensions-4.16.0",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-typing-inspection-0.4.2",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-skilltrustops"
+    }
+  ],
+  "spdxVersion": "SPDX-2.3"
+}

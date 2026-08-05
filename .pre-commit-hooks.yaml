@@ -1,0 +1,9 @@
+- id: skilltrustops
+  name: SkillTrustOps skill security gate
+  description: Scan complete AI skill packages before commit or push.
+  entry: skilltrustops
+  args: [hook, .]
+  language: python
+  pass_filenames: false
+  always_run: true
+  stages: [pre-commit, pre-push]

@@ -17,6 +17,9 @@ when risk warrants it, and retain evidence for review.
    to local and CI operation.
 6. Use the [Policy reference](policy-reference.md) for exact schema details and
    [Troubleshooting](troubleshooting.md) when a command fails closed.
+7. Add [Git hooks](git-hooks.md) for local feedback and use
+   [exit codes and rule compatibility](exit-codes-and-rules.md) for CI, SARIF,
+   baselines, and suppressions.
 
 ## Trust model
 
@@ -54,5 +57,5 @@ discover that filename. Use `skilltrustops.yaml`, `skilltrustops.yml`, or
 - Live red-team runs send the skill and attack context to the selected model
   provider.
 - Simulated tools cannot perform external side effects.
-- Docker is a development boundary and cannot produce `assured` by itself.
-- A clean result is `assured` only for the exact scope recorded in evidence.
+- Docker is a development boundary and cannot produce `passed_scope` by itself.
+- A clean result is `passed_scope` only for the exact scope recorded in evidence.

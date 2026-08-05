@@ -220,7 +220,5 @@ def test_security_runs_builtin_and_gitleaks_together(
 
     assert result.exit_code == 1
     assert secret not in result.stdout
-    rule_ids = {
-        finding["rule_id"] for finding in json.loads(result.stdout)["findings"]
-    }
+    rule_ids = {finding["rule_id"] for finding in json.loads(result.stdout)["findings"]}
     assert rule_ids == {"STO-SEC-003", "STO-SEC-GL-001"}

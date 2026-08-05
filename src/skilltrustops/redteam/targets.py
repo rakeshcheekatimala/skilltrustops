@@ -215,3 +215,73 @@ class OpenAIModelTarget:
         if system_bundle.is_file():
             return ssl.create_default_context(cafile=str(system_bundle))
         return ssl.create_default_context()
+
+
+class GenericHTTPModelTarget:
+    """Provider-neutral HTTPS adapter using the SkillTrustOps JSON contract."""
+
+    def __init__(
+        self,
+        model: str,
+        endpoint: str,
+        *,
+        token_env: str = "SKILLTRUSTOPS_PROVIDER_TOKEN",
+    ) -> None:
+        if not endpoint.startswith("https://") and not endpoint.startswith(
+            ("http://127.0.0.1:", "http://localhost:")
+        ):
+            raise ValueError("Generic provider endpoint must use HTTPS")
+        self._choice = ModelChoice(provider="generic_http", name=model)
+        self._endpoint = endpoint
+        self._token = os.getenv(token_env)
+
+    @property
+    def choice(self) -> ModelChoice:
+        return self._choice
+
+    @property
+    def deterministic(self) -> bool:
+        return False
+
+    def respond(
+        self,
+        *,
+        skill_content: str,
+        manifest: PackageManifest,
+        case: AttackCase,
+        turn_index: int,
+    ) -> ModelResponse:
+        payload = {
+            "schema_version": "1.0",
+            "model": self.choice.name,
+            "skill": skill_content,
+            "manifest": manifest.model_dump(mode="json"),
+            "case": case.model_dump(mode="json"),
+            "turn_index": turn_index,
+        }
+        headers = {"Content-Type": "application/json"}
+        if self._token:
+            headers["Authorization"] = f"Bearer {self._token}"
+        request = urllib.request.Request(
+            self._endpoint,
+            data=json.dumps(payload).encode(),
+            headers=headers,
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(
+                request, timeout=60, context=OpenAIModelTarget._tls_context()
+            ) as response:
+                data = json.loads(response.read().decode())
+            return ModelResponse.model_validate(data)
+        except urllib.error.HTTPError as error:
+            detail = error.read().decode(errors="replace")[:500]
+            raise RuntimeError(
+                f"Generic provider returned {error.code}: {detail}"
+            ) from error
+        except (
+            urllib.error.URLError,
+            TimeoutError,
+            json.JSONDecodeError,
+        ) as error:
+            raise RuntimeError(f"Generic provider request failed: {error}") from error

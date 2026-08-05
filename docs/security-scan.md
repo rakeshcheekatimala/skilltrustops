@@ -1,8 +1,8 @@
 # Security scan
 
-The `security` command performs a deterministic, local scan of one `SKILL.md`.
-It looks for exposed secrets and dangerous instructions without executing the
-skill or uploading its content.
+The `security` command performs a deterministic, local scan of a complete skill
+package rooted beside one `SKILL.md`. It never executes package content, follows
+links, extracts archives, or uploads content.
 
 ```bash
 uv run skilltrustops security path/to/SKILL.md
@@ -45,13 +45,34 @@ Python code fences are parsed with Python's abstract syntax tree. The scanner
 also applies deterministic text patterns to the rest of the Markdown. Parsing
 and matching do not execute any submitted code.
 
+### Complete-package risk
+
+| Rule | Meaning | Severity | Developer action |
+| --- | --- | --- | --- |
+| `STO-PKG-200` | Prompt-injection or authority-override language | `high` | Remove it or isolate it as a labeled test fixture. |
+| `STO-PKG-201` | Runtime payload decoding or reconstruction | `high` | Keep executable behavior transparent and reviewable. |
+| `STO-PKG-202` | Startup, scheduler, authentication, or hook persistence | `critical` | Remove persistent host changes. |
+| `STO-PKG-203` | Potential secret or data-exfiltration flow | `critical` | Remove transmission or constrain data and destinations. |
+| `STO-PKG-204` | Excessive privilege or permission changes | `high` | Apply least privilege and exact resource scopes. |
+| `STO-PKG-205` | Install or build lifecycle execution hook | `high` | Review or remove executable supply-chain hooks. |
+| `STO-PKG-206` | Link or special filesystem entry | `high` | Replace it with a reviewed regular file. |
+| `STO-PKG-207` | Unsafe or over-limit archive | `critical` | Rebuild it with bounded regular relative entries. |
+| `STO-PKG-208` | Unpinned dependency | `medium` | Pin reviewed versions and hashes. |
+| `STO-PKG-209` | Missing file referenced by `SKILL.md` | `medium` | Add the file or remove the stale instruction. |
+| `STO-PKG-210` | `SKILL.md` delegates to a risky adjacent file | `high` | Review and constrain the referenced behavior. |
+
+Package inspection is bounded to 2,000 regular files, 32 MiB total input, and
+1 MiB for each decoded text file. Archives are inspected as metadata only and
+are limited to 5,000 members and 128 MiB declared expansion. Exceeding a bound
+is an error, never a pass.
+
 ## How it runs
 
 1. SkillTrustOps discovers or loads the trusted repository policy.
 2. It confirms that the security check exists and is enabled.
 3. The safe loader accepts exactly one regular file named `SKILL.md`.
-4. It rejects symbolic links, directories, invalid UTF-8, unreadable files, and
-   files larger than 1 MiB.
+4. The package inventory walks adjacent files without following links and checks
+   manifests, dependencies, archives, scripts, references, and assets.
 5. The policy selects the secret and dangerous-instruction detectors.
 6. Every selected detector scans the same in-memory text.
 7. SkillTrustOps returns `PASS` when there are no findings, or `FAIL` with rule
@@ -87,17 +108,16 @@ repository policy explicitly requires different behavior.
 
 ## Understand the boundary
 
-A passing security scan means that the configured detectors found no matching
-pattern in the submitted `SKILL.md`. It does not prove that the skill is safe.
+A passing security scan means that the configured deterministic detectors found
+no matching pattern in the bounded package snapshot. It does not prove safety.
 
 The command does not currently:
 
-- recursively scan scripts, assets, dependencies, or files referenced by the
-  skill;
 - determine whether a detected credential is active;
 - cover every provider-specific secret format;
 - decide whether a dangerous-looking instruction is safe in its broader
   operational context; or
+- perform semantic program analysis across arbitrary languages; or
 - test model behavior under adversarial input.
 
 Run `lint` and `privacy` alongside the security scan. Use `redteam run` when you

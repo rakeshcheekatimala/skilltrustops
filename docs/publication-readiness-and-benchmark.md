@@ -1,29 +1,28 @@
 # SkillTrustOps publication readiness and benchmark strategy
 
 **Assessment date:** 2026-08-05  
-**Decision:** **Do not market or publish SkillTrustOps as an enterprise-grade skill
-certification product yet.** A Python preview release is technically buildable, but
-the security coverage, corpus evaluation, calibration, and release governance do
-not yet support the words *certified*, *assured*, or *enterprise-ready*.
+**Decision:** **Publish only as a developer preview and pre-trust review tool.**
+Whole-package scanning, scoped behavioral evidence, release controls, and a
+reproducible benchmark now support that claim. They do not support calling a
+skill certified safe or calling this release enterprise-ready. Independent
+dataset review and an external security assessment remain release gates for
+stronger claims.
 
 ## Executive assessment
 
-SkillTrustOps has a credible foundation: it is local-first for static analysis,
-does not execute submitted skill content, produces redacted findings, binds
-behavioral evidence to hashes, simulates tool calls in memory, and distinguishes
-blocked from inconclusive results. The current repository has 91 passing tests,
-passes repository-wide Ruff checks and strict mypy, and builds a Python wheel and
-source distribution.
+SkillTrustOps is local-first for static analysis, does not execute submitted
+skill content, produces redacted findings, binds behavioral evidence to hashes,
+simulates tool calls in memory, and distinguishes blocked from inconclusive
+results. It scans the complete bounded package: instructions, scripts,
+references, assets, manifests, dependencies, archives, and links. Results can be
+written as terminal output, JSON, or SARIF and compared through expiring
+suppressions and fingerprinted baselines.
 
-Its present detection surface is narrow relative to current competitors and the
-agent-skill threat model. Static analysis mainly covers structure, a small set of
-secret formats, four PII types, Python `eval`/`exec`, selected shell invocation,
-recursive `rm`, and download-to-shell. Behavioral testing has six built-in attack
-families and five deterministic assertions. It evaluates a model's response to a
-skill, not the complete skill package, repository, dependency graph, install
-lifecycle, or real agent runtime. The deterministic reference target is a test
-fixture, so a reference-target pass is not evidence that a real model or agent is
-safe.
+The deterministic reference target is still a test fixture. It proves the
+harness and evidence pipeline work; it is not evidence that a real model or
+agent is safe. The 500-case calibration corpus is also a constructed regression
+suite whose second-review queue is public and incomplete. Its metrics must not be
+presented as independently measured real-world detection accuracy.
 
 The defensible near-term positioning is:
 
@@ -35,15 +34,15 @@ The defensible near-term positioning is:
 | Area | Current state | Publication implication |
 | --- | --- | --- |
 | Python packaging | `0.1.0` wheel and sdist build | Suitable for a preview after release hygiene work |
-| Static safety | Local, deterministic, bounded single-file loading | Strong differentiator, but limited coverage |
+| Static safety | Local, deterministic, bounded whole-package loading | Ready for preview use with documented limits |
 | Skill format | Agent Skills frontmatter validation | Useful; must track spec and platform extensions |
 | Behavioral tests | Synthetic records, in-memory tools, evidence hashes | Promising research/preview capability |
 | Offline red team | Reference fixture plus deterministic assertions | Useful for harness QA, not model red teaming |
-| Real red team | One OpenAI Responses API adapter | Not provider-neutral; non-deterministic and costly |
+| Real red team | OpenAI and provider-neutral HTTPS adapters | Opt-in, non-deterministic, and separate from offline results |
 | Batch evaluation | Recursive file/folder API and CLI with one policy and per-skill timings | Ready for deterministic static benchmarks |
 | Dataset | 605 public skills locked by repository commit and per-skill hash | Reproducible performance corpus; not labeled accuracy ground truth |
 | Metrics | End-to-end, per-skill/check latency, percentiles, throughput, findings, and container resources | Performance claims are supported; accuracy and live-model cost are not |
-| Enterprise controls | No SBOM/signing/SARIF/security policy/release provenance shown | Blocks serious procurement conversations |
+| Enterprise controls | SARIF, SBOM, provenance workflow, security/support policies | Useful foundation; external review and operational history remain absent |
 
 ## Can red-team testing run without AI?
 
@@ -181,26 +180,29 @@ The benchmark runner should invoke a stable public Python API, not scrape CLI
 text. Results must be append-only JSONL/Parquet with a documented schema. The
 infographic should be generated from those result files, never edited by hand.
 
-## Product changes required before running the public benchmark
+## Release gate status
+
+The lean whole-package benchmark has now run against all 605 locked skills. The
+current raw results, checksums, and generated dashboard are under
+`benchmarks/market-scan/results/library-2026-08-05`. The items below remain the
+decision framework; implementation status is recorded explicitly.
 
 ### P0: blockers
 
-1. Replace safety/certification language with scoped, best-effort terminology.
-   Rename `assured` to a less absolute verdict such as `passed_scope`, or make the
-   exact assurance scope unavoidable in machine and human output.
-2. Scan the complete skill directory safely: `SKILL.md`, scripts, references,
-   assets, manifests, symlinks, archives, executable files, and dependency files.
-   The current one-file boundary misses the most consequential package risks.
-3. Stabilize the new batch and library API schema and add cancellation, timeouts,
-   and explicit concurrency limits before promising it as a long-term contract.
-4. Add prompt-injection, exfiltration, persistence, obfuscation, network, package
-   lifecycle, dependency, permission, and cross-file dataflow rules. A few regexes
-   cannot support broad “trust” claims.
-5. Build and independently label the 500-case calibration set before scanning the
-   200-skill corpus. Freeze the policy and tool version before evaluation.
-6. Separate scanner correctness, skill risk, and agent behavior into different
-   scores. A skill can be structurally valid, risky, useful, or safely handled by
-   one runtime; these are not the same outcome.
+1. **Implemented:** safety language is scoped and the behavioral success verdict
+   is `passed_scope`.
+2. **Implemented:** bounded scanning covers instructions, scripts, references,
+   assets, manifests, links, archives, executables, and dependency files.
+3. **Preview only:** the batch schema is versioned, but it is not promised as a
+   stable 1.x contract and cancellation/concurrency remain future work.
+4. **Implemented as deterministic first-pass rules:** injection, exfiltration,
+   persistence, obfuscation, lifecycle, dependency, permission, and cross-file
+   families. Novel semantic attacks remain a documented limitation.
+5. **Incomplete:** 500 constructed cases and per-family metrics are published;
+   the independent-review queue is intentionally blank and must be completed
+   before an accuracy claim.
+6. **Implemented in reporting:** scanner outcomes, package findings, and model
+   behavior remain separate evidence surfaces.
 
 ### P1: needed for a credible public Python release
 
@@ -247,15 +249,15 @@ Likely community criticisms and the correct response:
 
 | Criticism | Why it would be fair today | Required response |
 | --- | --- | --- |
-| “Security theater/certification washing” | `assured` can be read as universal | Narrow terminology and publish limitations prominently |
-| “Regex scanner with a trust brand” | Core static coverage is currently small | Publish rule coverage and benchmark precision/recall |
-| “Cherry-picked 200 skills” | No sampling/provenance protocol exists | Pre-register the corpus and publish immutable source SHAs |
-| “Pass rate says nothing” | Ground truth and false negatives are unknown | Release the labeled 500-case calibration set and CIs |
+| “Security theater/certification washing” | `passed_scope` can be read as universal | Narrow terminology and publish limitations prominently |
+| “Regex scanner with a trust brand” | Deterministic rules cannot understand every semantic attack | Publish rule scope, calibration limits, and independent review |
+| “Cherry-picked public skills” | The 605-skill corpus is broad but not statistically representative | Keep immutable source SHAs and document sampling bias |
+| “Pass rate says nothing” | Public-corpus ground truth and false negatives are unknown | Do not convert findings into accuracy or safety claims |
 | “The offline model test is fake” | Reference targets are designed fixtures | Call it harness self-test; never present it as agent safety |
-| “You ignored files that execute” | Only one `SKILL.md` is accepted | Add whole-package, lifecycle, and dependency analysis |
-| “Yet another vendor-locked LLM tool” | Live adapter is OpenAI-only | Add runtime/provider adapters and replayable traces |
+| “You ignored files that execute” | Whole-package rules are bounded and do not execute or fully resolve code | Publish limits and add deeper language-aware analysis over time |
+| “Yet another vendor-locked LLM tool” | Generic HTTPS is neutral but its schema is intentionally small | Add documented adapters and replayable traces based on demand |
 | “Benchmark is not independent” | Maker evaluates own tool | Invite external annotations and competitor baselines |
-| “Enterprise-ready claim is unsupported” | Governance and supply-chain controls are absent | Complete P1/P2 evidence and an external assessment |
+| “Enterprise-ready claim is unsupported” | Governance exists, but independent review and operating history do not | Keep preview positioning and complete P2 external assessment |
 
 ## Go/no-go by audience
 
