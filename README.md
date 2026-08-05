@@ -4,6 +4,7 @@
 [![Snyk Security](https://img.shields.io/github/actions/workflow/status/rakeshcheekatimala/skilltrustops/snyk.yml?branch=library&label=Snyk%20Security)](https://github.com/rakeshcheekatimala/skilltrustops/actions/workflows/snyk.yml)
 [![CodeQL](https://img.shields.io/github/actions/workflow/status/rakeshcheekatimala/skilltrustops/codeql.yml?branch=library&label=CodeQL)](https://github.com/rakeshcheekatimala/skilltrustops/actions/workflows/codeql.yml)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/rakeshcheekatimala/skilltrustops/badge)](https://scorecard.dev/viewer/?uri=github.com/rakeshcheekatimala/skilltrustops)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/13962/badge)](https://www.bestpractices.dev/projects/13962)
 [![PyPI](https://img.shields.io/pypi/v/skilltrustops)](https://pypi.org/project/skilltrustops/)
 [![Python](https://img.shields.io/pypi/pyversions/skilltrustops)](https://pypi.org/project/skilltrustops/)
 [![License: MIT](https://img.shields.io/pypi/l/skilltrustops)](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/LICENSE)
