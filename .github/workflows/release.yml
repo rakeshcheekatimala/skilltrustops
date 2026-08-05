@@ -27,16 +27,16 @@ jobs:
       - run: uv run pytest
       - name: Scan Python source with Bandit
         run: uvx --from bandit==1.9.4 bandit -r src/skilltrustops -q
-      - name: Export locked runtime dependencies
+      - name: Export locked project dependencies
         run: >-
-          uv export --locked --no-dev --no-emit-project
+          uv export --locked --extra dev --no-emit-project
           --format requirements-txt
-          --output-file /tmp/skilltrustops-audit-requirements.txt
-      - name: Audit locked dependencies
+          --output-file /tmp/skilltrustops-all-requirements.txt
+      - name: Audit locked runtime and development dependencies
         run: >-
           uvx --from pip-audit==2.10.1 pip-audit
           --disable-pip --require-hashes --progress-spinner off
-          --requirement /tmp/skilltrustops-audit-requirements.txt
+          --requirement /tmp/skilltrustops-all-requirements.txt
       - run: uv build
       - name: Validate package metadata
         run: uvx --from twine==7.0.0 twine check dist/*
@@ -56,3 +56,43 @@ jobs:
         with:
           packages-dir: dist/
           attestations: true
+      - name: Collect signed release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p release-assets attestations
+          cp dist/* artifacts/skilltrustops.spdx.json release-assets/
+          cd attestations
+          for subject in ../dist/* ../artifacts/skilltrustops.spdx.json; do
+            gh attestation download "$subject" --repo "$GITHUB_REPOSITORY"
+          done
+          cp ./*.jsonl ../release-assets/
+      - name: Upload signed release assets
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: signed-release-assets
+          path: release-assets/*
+          if-no-files-found: error
+
+  github-release:
+    name: Publish GitHub release
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download signed release assets
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
+        with:
+          name: signed-release-assets
+          path: release-assets
+      - name: Create signed GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          gh release create "$GITHUB_REF_NAME"
+          release-assets/*
+          --repo "$GITHUB_REPOSITORY"
+          --verify-tag
+          --generate-notes
+          --title "$GITHUB_REF_NAME"

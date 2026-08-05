@@ -1,9 +1,9 @@
 # Security policy
 
-Do not open a public issue for a suspected vulnerability. Use GitHub's private
-vulnerability-reporting workflow for this repository. Include the affected
-version, reproducible input, impact, and whether untrusted content was executed
-or disclosed.
+Do not open a public issue for a suspected vulnerability. Submit a report through
+[GitHub private vulnerability reporting](https://github.com/rakeshcheekatimala/skilltrustops/security/advisories/new).
+Include the affected version, reproducible input, impact, and whether untrusted
+content was executed or disclosed.
 
 Maintainers will acknowledge a report within three business days, provide an
 initial assessment within seven business days, and coordinate disclosure after a

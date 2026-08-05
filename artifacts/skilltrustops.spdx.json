@@ -7,7 +7,7 @@
     ]
   },
   "dataLicense": "CC0-1.0",
-  "documentNamespace": "https://skilltrustops.dev/spdx/43b384c5a184c25a010ecb9bc2c1d4719da698582276b98785aacf24fcbf9fa2",
+  "documentNamespace": "https://skilltrustops.dev/spdx/aa4b5d4e47a9c46f2d1f2b09541bcc1dd935481dbe5e0330952adc7c81e928b1",
   "name": "skilltrustops-uv-lock",
   "packages": [
     {
@@ -283,11 +283,11 @@
       "versionInfo": "2.20.0"
     },
     {
-      "SPDXID": "SPDXRef-Package-pytest-8.4.2",
+      "SPDXID": "SPDXRef-Package-pytest-9.1.1",
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "86c0d0b93306b961d58d62a4db4879f27fe25513d4b969df351abdddb3c30e01"
+          "checksumValue": "1088fbde8f2b49d95a549a195707afa7a76a3ce9bcadc26b6d71f0ffda5fe313"
         }
       ],
       "copyrightText": "NOASSERTION",
@@ -296,7 +296,7 @@
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "NOASSERTION",
       "name": "pytest",
-      "versionInfo": "8.4.2"
+      "versionInfo": "9.1.1"
     },
     {
       "SPDXID": "SPDXRef-Package-pytest-cov-7.1.0",
@@ -556,7 +556,7 @@
       "spdxElementId": "SPDXRef-Package-skilltrustops"
     },
     {
-      "relatedSpdxElement": "SPDXRef-Package-pytest-8.4.2",
+      "relatedSpdxElement": "SPDXRef-Package-pytest-9.1.1",
       "relationshipType": "DEPENDS_ON",
       "spdxElementId": "SPDXRef-Package-skilltrustops"
     },

@@ -12,7 +12,7 @@ artifacts.
 | CI test matrix | Linux, macOS, Windows; Python 3.11, 3.12, 3.13 | Any failed test or coverage below 80% fails CI | Workflow logs and `coverage.xml` artifact |
 | Quality | Ruff, strict mypy, documentation links, deterministic calibration | Any error or generated-data drift fails CI | Workflow logs and repository diff |
 | Bandit 1.9.4 | Python source under `src/skilltrustops` | Any unsuppressed finding fails CI and release | Workflow logs; narrow suppressions include an inline reason and rule ID |
-| [PyPA pip-audit](https://github.com/pypa/pip-audit) 2.10.1 | Fully pinned runtime dependency graph exported from `uv.lock` with hashes | Any known advisory fails CI and release | Workflow logs and the committed lockfile |
+| [PyPA pip-audit](https://github.com/pypa/pip-audit) 2.10.1 | Fully pinned runtime and development dependency graph exported from `uv.lock` with hashes | Any known advisory fails CI and release | Workflow logs and the committed lockfile |
 | [Snyk Open Source](https://docs.snyk.io/snyk-cli/commands/test) 1.1306.2 | Installed runtime graph exported from `uv.lock` | Any Snyk finding at low severity or above fails the Snyk workflow | Snyk workflow logs |
 | [Snyk Code](https://docs.snyk.io/snyk-cli/commands/code-test) 1.1306.2 | Python source | Any Snyk finding at low severity or above fails the Snyk workflow | Snyk workflow logs and Snyk project |
 | [CodeQL](https://docs.github.com/en/code-security/code-scanning/introduction-to-code-scanning/about-code-scanning-with-codeql) | Python source with the `security-extended` query suite | Analysis failure fails the workflow; findings are reviewed in GitHub code scanning | Security tab and workflow logs |
@@ -58,12 +58,12 @@ uv run ruff check .
 uv run mypy src
 
 uvx --from bandit==1.9.4 bandit -r src/skilltrustops -q
-uv export --locked --no-dev --no-emit-project \
+uv export --locked --extra dev --no-emit-project \
   --format requirements-txt \
-  --output-file /tmp/skilltrustops-audit-requirements.txt
+  --output-file /tmp/skilltrustops-all-requirements.txt
 uvx --from pip-audit==2.10.1 pip-audit \
   --disable-pip --require-hashes --progress-spinner off \
-  --requirement /tmp/skilltrustops-audit-requirements.txt
+  --requirement /tmp/skilltrustops-all-requirements.txt
 ```
 
 After authenticating the Snyk CLI with your own Snyk account, reproduce the

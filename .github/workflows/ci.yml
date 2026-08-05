@@ -52,16 +52,16 @@ jobs:
       - run: uv run mypy src
       - name: Scan Python source with Bandit
         run: uvx --from bandit==1.9.4 bandit -r src/skilltrustops -q
-      - name: Export locked runtime dependencies
+      - name: Export locked project dependencies
         run: >-
-          uv export --locked --no-dev --no-emit-project
+          uv export --locked --extra dev --no-emit-project
           --format requirements-txt
-          --output-file /tmp/skilltrustops-audit-requirements.txt
-      - name: Audit locked dependencies
+          --output-file /tmp/skilltrustops-all-requirements.txt
+      - name: Audit locked runtime and development dependencies
         run: >-
           uvx --from pip-audit==2.10.1 pip-audit
           --disable-pip --require-hashes --progress-spinner off
-          --requirement /tmp/skilltrustops-audit-requirements.txt
+          --requirement /tmp/skilltrustops-all-requirements.txt
       - run: uv run python scripts/check_docs.py
       - run: uv run python benchmarks/calibration/generate_dataset.py
       - run: uv run python benchmarks/calibration/evaluate.py
@@ -82,3 +82,18 @@ jobs:
             dist/*
             artifacts/skilltrustops.spdx.json
           retention-days: 14
+
+  required:
+    name: CI required
+    if: always()
+    needs: [test, quality]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require every CI job to pass
+        env:
+          TEST_RESULT: ${{ needs.test.result }}
+          QUALITY_RESULT: ${{ needs.quality.result }}
+        run: |
+          if [ "$TEST_RESULT" != "success" ] || [ "$QUALITY_RESULT" != "success" ]; then
+            exit 1
+          fi
