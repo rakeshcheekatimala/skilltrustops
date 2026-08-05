@@ -23,7 +23,7 @@ used by that run; it is not a claim that unknown vulnerabilities cannot exist.
 | --- | --- |
 | Tests and coverage | Full unit-test suite across Linux, macOS, Windows and Python 3.11–3.13; branch coverage cannot fall below 80% |
 | Dependency security | PyPA `pip-audit` and Snyk Open Source check the locked runtime dependency graph and fail on detected vulnerabilities |
-| Source security | Bandit fails CI on findings; CodeQL runs the `security-extended` query suite and publishes independently reviewable alerts |
+| Source security | Bandit and Snyk Code are blocking gates; CodeQL runs the `security-extended` query suite and publishes independently reviewable alerts |
 | Package integrity | Wheel and source archive build, pass Twine metadata validation, and install in isolated smoke tests |
 | Supply chain | Runtime resolutions are locked, Actions are commit-pinned, Dependabot is enabled, an SPDX SBOM is generated, and releases use OIDC Trusted Publishing plus build-provenance attestations |
 | Repository practices | OpenSSF Scorecard measures the public repository controls instead of relying on a self-issued score |

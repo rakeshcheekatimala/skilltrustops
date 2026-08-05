@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   snyk:
-    name: Runtime dependencies
+    name: Dependencies and Python source
     if: >-
       github.event_name != 'pull_request' ||
       github.event.pull_request.head.repo.full_name == github.repository
@@ -51,6 +51,14 @@ jobs:
           --file=/tmp/skilltrustops-snyk-requirements.txt
           --package-manager=pip --command=python
           --severity-threshold=low
+      - name: Snyk Code
+        id: code
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        run: >-
+          uv run --no-sync npx --yes snyk@1.1306.2 code test
+          --severity-threshold=low
       - name: Register clean dependency snapshot for continuous monitoring
         if: steps.open_source.outcome == 'success' && github.event_name != 'pull_request'
         env:
@@ -59,12 +67,17 @@ jobs:
           uv run --no-sync npx --yes snyk@1.1306.2 monitor
           --file=/tmp/skilltrustops-snyk-requirements.txt
           --package-manager=pip --command=python
-      - name: Enforce Snyk Open Source gate
+      - name: Enforce both Snyk gates
         if: always()
         env:
           OPEN_SOURCE_OUTCOME: ${{ steps.open_source.outcome }}
+          CODE_OUTCOME: ${{ steps.code.outcome }}
         run: |
           if [ "$OPEN_SOURCE_OUTCOME" != "success" ]; then
             echo "::error::Snyk Open Source did not pass."
+            exit 1
+          fi
+          if [ "$CODE_OUTCOME" != "success" ]; then
+            echo "::error::Snyk Code did not pass."
             exit 1
           fi

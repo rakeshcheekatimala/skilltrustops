@@ -14,6 +14,7 @@ artifacts.
 | Bandit 1.9.4 | Python source under `src/skilltrustops` | Any unsuppressed finding fails CI and release | Workflow logs; narrow suppressions include an inline reason and rule ID |
 | [PyPA pip-audit](https://github.com/pypa/pip-audit) 2.10.1 | Fully pinned runtime and development dependency graph exported from `uv.lock` with hashes | Any known advisory fails CI and release | Workflow logs and the committed lockfile |
 | [Snyk Open Source](https://docs.snyk.io/snyk-cli/commands/test) 1.1306.2 | Installed runtime graph exported from `uv.lock` | Any Snyk finding at low severity or above fails the Snyk workflow | Snyk workflow logs |
+| [Snyk Code](https://docs.snyk.io/snyk-cli/commands/code-test) 1.1306.2 | Python source | Any Snyk finding at low severity or above fails the Snyk workflow | Snyk workflow logs and Snyk project |
 | [CodeQL](https://docs.github.com/en/code-security/code-scanning/introduction-to-code-scanning/about-code-scanning-with-codeql) | Python source with the `security-extended` query suite | Analysis failure fails the workflow; findings are reviewed in GitHub code scanning | Security tab and workflow logs |
 | Package verification | Wheel, source archive, metadata, and isolated installs | Build, Twine, or either smoke test failure blocks CI and release | Downloadable package-assurance artifact |
 | [OpenSSF Scorecard](https://github.com/ossf/scorecard-action) | Public repository and supply-chain practices | Reports posture; it is not a merge gate | Public Scorecard result and SARIF |
@@ -28,13 +29,13 @@ reviewer can challenge.
 The Snyk credential is separate from the PyPI upload token. Never reuse or paste
 a PyPI token into Snyk.
 
-1. In Snyk, create a personal or service-account token for the organization that
-   will own this project.
+1. In Snyk, create a personal or service-account token and enable Snyk Code for
+   the organization that will own this project.
 2. In GitHub, open **Settings → Secrets and variables → Actions** and create a
    repository secret named `SNYK_TOKEN`.
-3. Run the **Snyk Security** workflow manually once. `Snyk Open Source` must pass
-   before treating its badge as dependency-security evidence.
-4. Make `Snyk Security / Runtime dependencies` a required status check
+3. Run the **Snyk Security** workflow manually once. Both `Snyk Open Source` and
+   `Snyk Code` must pass before treating its badge as evidence.
+4. Make `Snyk Security / Dependencies and Python source` a required status check
    in the default-branch ruleset.
 
 The workflow deliberately fails when the secret is absent. Pull requests from
@@ -76,6 +77,7 @@ uv export --locked --no-dev --no-emit-project --no-hashes \
 uv run --no-sync npx --yes snyk@1.1306.2 test \
   --file=/tmp/skilltrustops-snyk-requirements.txt \
   --package-manager=pip --command=python --severity-threshold=low
+uv run --no-sync npx --yes snyk@1.1306.2 code test --severity-threshold=low
 ```
 
 ## Repository settings that make the evidence enforceable
