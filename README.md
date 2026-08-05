@@ -1,13 +1,13 @@
 # SkillTrustOps
 
-[![Tests, coverage, and audit](https://img.shields.io/github/actions/workflow/status/rakeshcheekatimala/skilltrustops/ci.yml?branch=library&label=tests%20%7C%20coverage%20%7C%20audit)](https://github.com/rakeshcheekatimala/skilltrustops/actions/workflows/ci.yml)
-[![Snyk Security](https://img.shields.io/github/actions/workflow/status/rakeshcheekatimala/skilltrustops/snyk.yml?branch=library&label=Snyk%20Security)](https://github.com/rakeshcheekatimala/skilltrustops/actions/workflows/snyk.yml)
-[![CodeQL](https://img.shields.io/github/actions/workflow/status/rakeshcheekatimala/skilltrustops/codeql.yml?branch=library&label=CodeQL)](https://github.com/rakeshcheekatimala/skilltrustops/actions/workflows/codeql.yml)
-[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/rakeshcheekatimala/skilltrustops/badge)](https://scorecard.dev/viewer/?uri=github.com/rakeshcheekatimala/skilltrustops)
-[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/13962/badge)](https://www.bestpractices.dev/projects/13962)
-[![PyPI](https://img.shields.io/pypi/v/skilltrustops)](https://pypi.org/project/skilltrustops/)
-[![Python](https://img.shields.io/pypi/pyversions/skilltrustops)](https://pypi.org/project/skilltrustops/)
-[![License: MIT](https://img.shields.io/pypi/l/skilltrustops)](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/LICENSE)
+<a href="https://github.com/rakeshcheekatimala/skilltrustops/actions/workflows/ci.yml"><img alt="Tests, coverage, and audit" height="24" src="https://img.shields.io/github/actions/workflow/status/rakeshcheekatimala/skilltrustops/ci.yml?branch=library&amp;label=tests%20%7C%20coverage%20%7C%20audit"></a>
+<a href="https://github.com/rakeshcheekatimala/skilltrustops/actions/workflows/snyk.yml"><img alt="Snyk Security" height="24" src="https://img.shields.io/github/actions/workflow/status/rakeshcheekatimala/skilltrustops/snyk.yml?branch=library&amp;label=Snyk%20Security"></a>
+<a href="https://github.com/rakeshcheekatimala/skilltrustops/actions/workflows/codeql.yml"><img alt="CodeQL" height="24" src="https://img.shields.io/github/actions/workflow/status/rakeshcheekatimala/skilltrustops/codeql.yml?branch=library&amp;label=CodeQL"></a>
+<a href="https://scorecard.dev/viewer/?uri=github.com/rakeshcheekatimala/skilltrustops"><img alt="OpenSSF Scorecard" height="24" src="https://api.scorecard.dev/projects/github.com/rakeshcheekatimala/skilltrustops/badge"></a>
+<a href="https://www.bestpractices.dev/projects/13962"><img alt="OpenSSF Best Practices" height="24" src="https://www.bestpractices.dev/projects/13962/badge"></a>
+<a href="https://pypi.org/project/skilltrustops/"><img alt="PyPI" height="24" src="https://img.shields.io/pypi/v/skilltrustops"></a>
+<a href="https://pypi.org/project/skilltrustops/"><img alt="Python" height="24" src="https://img.shields.io/pypi/pyversions/skilltrustops"></a>
+<a href="https://github.com/rakeshcheekatimala/skilltrustops/blob/library/LICENSE"><img alt="License: MIT" height="24" src="https://img.shields.io/pypi/l/skilltrustops"></a>
 
 SkillTrustOps finds unsafe instructions, secrets, personal data, dangerous code,
 and risky package structure before an agent loads a skill. Its core primitive is
