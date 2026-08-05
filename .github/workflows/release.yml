@@ -24,6 +24,23 @@ jobs:
           version: "0.11.32"
           python-version: "3.11"
       - run: uv sync --locked --extra dev
+      - name: Verify tag matches package version
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          uv run --no-sync python - <<'PY'
+          import os
+          import tomllib
+          from pathlib import Path
+
+          metadata = tomllib.loads(Path("pyproject.toml").read_text(encoding="utf-8"))
+          expected_tag = f"v{metadata['project']['version']}"
+          if os.environ["RELEASE_TAG"] != expected_tag:
+              raise SystemExit(
+                  f"release tag {os.environ['RELEASE_TAG']!r} does not match "
+                  f"package version {expected_tag!r}"
+              )
+          PY
       - run: uv run pytest
       - name: Scan Python source with Bandit
         run: uvx --from bandit==1.9.4 bandit -r src/skilltrustops -q
@@ -51,11 +68,6 @@ jobs:
           subject-path: |
             dist/*
             artifacts/skilltrustops.spdx.json
-      - name: Publish with PyPI trusted publishing
-        uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # release/v1
-        with:
-          packages-dir: dist/
-          attestations: true
       - name: Collect signed release assets
         env:
           GH_TOKEN: ${{ github.token }}
@@ -73,6 +85,11 @@ jobs:
           name: signed-release-assets
           path: release-assets/*
           if-no-files-found: error
+      - name: Publish with PyPI trusted publishing
+        uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # release/v1
+        with:
+          packages-dir: dist/
+          attestations: true
 
   github-release:
     name: Publish GitHub release

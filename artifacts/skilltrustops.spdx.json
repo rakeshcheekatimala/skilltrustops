@@ -7,7 +7,7 @@
     ]
   },
   "dataLicense": "CC0-1.0",
-  "documentNamespace": "https://skilltrustops.dev/spdx/aa4b5d4e47a9c46f2d1f2b09541bcc1dd935481dbe5e0330952adc7c81e928b1",
+  "documentNamespace": "https://skilltrustops.dev/spdx/ae063c604a04ee3fcff891bb725f68f9106b9ad1bf5fdb937ccd7080b1aa309c",
   "name": "skilltrustops-uv-lock",
   "packages": [
     {
@@ -379,14 +379,14 @@
       "versionInfo": "1.5.4"
     },
     {
-      "SPDXID": "SPDXRef-Package-skilltrustops-0.1.3",
+      "SPDXID": "SPDXRef-Package-skilltrustops-0.1.4",
       "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "NOASSERTION",
       "name": "skilltrustops",
-      "versionInfo": "0.1.3"
+      "versionInfo": "0.1.4"
     },
     {
       "SPDXID": "SPDXRef-Package-tomli-2.4.1",
