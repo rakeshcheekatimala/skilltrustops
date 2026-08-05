@@ -680,12 +680,13 @@ def redteam_run(
             "--endpoint", help="HTTPS endpoint for the generic-http provider."
         ),
     ] = None,
+    # The default below is an environment-variable name, not a credential value.
     token_env: Annotated[
         str,
         typer.Option(
             "--token-env", help="Environment variable containing a provider token."
         ),
-    ] = "SKILLTRUSTOPS_PROVIDER_TOKEN",
+    ] = "SKILLTRUSTOPS_PROVIDER_TOKEN",  # nosec B107
     sandbox: Annotated[
         SandboxProviderName | None,
         typer.Option("--sandbox", help="Override configured isolation provider."),

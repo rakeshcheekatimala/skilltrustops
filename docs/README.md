@@ -20,6 +20,8 @@ when risk warrants it, and retain evidence for review.
 7. Add [Git hooks](git-hooks.md) for local feedback and use
    [exit codes and rule compatibility](exit-codes-and-rules.md) for CI, SARIF,
    baselines, and suppressions.
+8. Review [Project assurance](project-assurance.md) to verify the library's own
+   test, coverage, security, package, and release evidence.
 
 ## Trust model
 

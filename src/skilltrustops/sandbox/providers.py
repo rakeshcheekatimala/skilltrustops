@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import shutil
-import subprocess
+
+# The provider executes fixed Docker argument arrays without a shell.
+import subprocess  # nosec B404
 from collections.abc import Callable, Sequence
 from contextlib import suppress
 from datetime import UTC, datetime
@@ -211,7 +213,8 @@ class DockerSandboxProvider:
             "--user",
             f"{self.user_id}:{self.group_id}",
             "--tmpfs",
-            f"/tmp:rw,noexec,nosuid,nodev,size={self.tmpfs_size_mb}m",
+            # Docker tmpfs mount, not a host temporary-file path.
+            f"/tmp:rw,noexec,nosuid,nodev,size={self.tmpfs_size_mb}m",  # nosec B108
             "--mount",
             f"type=bind,src={package_root.absolute()},dst=/input,readonly",
         ]

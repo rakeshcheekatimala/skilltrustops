@@ -225,7 +225,8 @@ class OpenAIModelTarget:
             method="POST",
         )
         try:
-            with urllib.request.urlopen(
+            # The request URL is the fixed OpenAI HTTPS endpoint above.
+            with urllib.request.urlopen(  # nosec B310
                 request, timeout=60, context=self._tls_context()
             ) as response:
                 data = json.loads(response.read().decode())
@@ -326,7 +327,8 @@ class GenericHTTPModelTarget:
             method="POST",
         )
         try:
-            with urllib.request.urlopen(
+            # The endpoint scheme is restricted by __init__.
+            with urllib.request.urlopen(  # nosec B310
                 request, timeout=60, context=OpenAIModelTarget._tls_context()
             ) as response:
                 data = json.loads(response.read().decode())

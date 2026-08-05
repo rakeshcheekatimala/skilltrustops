@@ -1,0 +1,8 @@
+* @rakeshcheekatimala
+
+# Security- and release-sensitive paths require an explicit owner review.
+/.github/workflows/ @rakeshcheekatimala
+/SECURITY.md @rakeshcheekatimala
+/pyproject.toml @rakeshcheekatimala
+/uv.lock @rakeshcheekatimala
+/src/ @rakeshcheekatimala

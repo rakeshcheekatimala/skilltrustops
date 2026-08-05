@@ -6,7 +6,9 @@ import json
 import os
 import re
 import shutil
-import subprocess
+
+# The adapter executes a resolved binary with an argument array and no shell.
+import subprocess  # nosec B404
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
@@ -66,7 +68,8 @@ class GitleaksSecretDetector:
             environment.pop("GITLEAKS_CONFIG", None)
             environment.pop("GITLEAKS_CONFIG_TOML", None)
             try:
-                completed = subprocess.run(
+                # The command is an argument array; shell execution is disabled.
+                completed = subprocess.run(  # nosec B603
                     command,
                     input=skill_file.content,
                     capture_output=True,

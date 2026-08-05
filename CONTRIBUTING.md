@@ -14,5 +14,5 @@ uv run mypy src
 uv build
 ```
 
-Contributions must be Apache-2.0 compatible and must not add copied third-party
+Contributions are accepted under the MIT License and must not add copied third-party
 skill bodies without documented redistribution rights.

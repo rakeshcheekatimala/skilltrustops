@@ -1,9 +1,35 @@
 # SkillTrustOps
 
+[![Tests, coverage, and audit](https://img.shields.io/github/actions/workflow/status/rakeshcheekatimala/skilltrustops/ci.yml?branch=library&label=tests%20%7C%20coverage%20%7C%20audit)](https://github.com/rakeshcheekatimala/skilltrustops/actions/workflows/ci.yml)
+[![Snyk Security](https://img.shields.io/github/actions/workflow/status/rakeshcheekatimala/skilltrustops/snyk.yml?branch=library&label=Snyk%20Security)](https://github.com/rakeshcheekatimala/skilltrustops/actions/workflows/snyk.yml)
+[![CodeQL](https://img.shields.io/github/actions/workflow/status/rakeshcheekatimala/skilltrustops/codeql.yml?branch=library&label=CodeQL)](https://github.com/rakeshcheekatimala/skilltrustops/actions/workflows/codeql.yml)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/rakeshcheekatimala/skilltrustops/badge)](https://scorecard.dev/viewer/?uri=github.com/rakeshcheekatimala/skilltrustops)
+[![PyPI](https://img.shields.io/pypi/v/skilltrustops)](https://pypi.org/project/skilltrustops/)
+[![Python](https://img.shields.io/pypi/pyversions/skilltrustops)](https://pypi.org/project/skilltrustops/)
+[![License: MIT](https://img.shields.io/pypi/l/skilltrustops)](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/LICENSE)
+
 SkillTrustOps finds unsafe instructions, secrets, personal data, dangerous code,
 and risky package structure before an agent loads a skill. Its core primitive is
 a policy-bound scan report: deterministic findings with stable rule IDs, evidence,
 and exit codes for local review or CI.
+
+## Verified project assurance
+
+Every badge above links to independently inspectable evidence. A green result
+applies to the exact commit, dependency lock, scanner versions, and advisory data
+used by that run; it is not a claim that unknown vulnerabilities cannot exist.
+
+| Signal | What must pass |
+| --- | --- |
+| Tests and coverage | Full unit-test suite across Linux, macOS, Windows and Python 3.11–3.13; branch coverage cannot fall below 80% |
+| Dependency security | PyPA `pip-audit` and Snyk Open Source check the locked runtime dependency graph and fail on detected vulnerabilities |
+| Source security | Bandit and Snyk Code are blocking gates; CodeQL publishes independently reviewable code-scanning alerts |
+| Package integrity | Wheel and source archive build, pass Twine metadata validation, and install in isolated smoke tests |
+| Supply chain | Runtime resolutions are locked, Actions are commit-pinned, Dependabot is enabled, an SPDX SBOM is generated, and releases use OIDC Trusted Publishing plus build-provenance attestations |
+| Repository practices | OpenSSF Scorecard measures the public repository controls instead of relying on a self-issued score |
+
+See [Project assurance](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/project-assurance.md) for exact commands, badge interpretation,
+Snyk setup, evidence locations, and limitations.
 
 ## Try it
 
@@ -222,6 +248,7 @@ independent real-world accuracy claim.
 | [Policy guide](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/policy-guide.md) | Create, validate, discover, and maintain `skilltrustops.yaml`. |
 | [Policy reference](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/policy-reference.md) | Look up every supported policy field and constraint. |
 | [Security scan](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/security-scan.md) | Understand secret and dangerous-instruction checks, execution flow, and limits. |
+| [Project assurance](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/project-assurance.md) | Verify test, coverage, security, package, and release evidence for this library. |
 | [Red-team testing](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/red-team-testing.md) | Decide when to test, activate it, review manifests, and interpret evidence. |
 | [Security best practices](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/security-best-practices.md) | Operate SkillTrustOps safely in development and CI. |
 | [Troubleshooting](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/troubleshooting.md) | Resolve common policy, provider, sandbox, and exit-code failures. |
@@ -248,4 +275,4 @@ uv build
 
 ## License
 
-Apache-2.0. See [`LICENSE`](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/LICENSE).
+MIT. See [`LICENSE`](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/LICENSE).

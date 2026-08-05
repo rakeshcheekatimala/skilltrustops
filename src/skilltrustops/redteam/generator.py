@@ -252,7 +252,8 @@ class RedTeamManifestGenerator:
             method="POST",
         )
         try:
-            with urllib.request.urlopen(
+            # The request URL is the fixed OpenAI HTTPS endpoint above.
+            with urllib.request.urlopen(  # nosec B310
                 request,
                 timeout=90,
                 context=OpenAIModelTarget._tls_context(),
