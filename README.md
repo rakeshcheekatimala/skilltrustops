@@ -4,18 +4,23 @@ Security checks for AI agent skills. Local first. Reproducible by default.
 
 ## Explanation
 
-An AI skill can contain instructions, scripts, dependencies, links, archives,
-and lifecycle hooks. SkillTrustOps checks that complete package before an agent
-loads it. Give it one skill or a folder of skills. It finds unsafe structure,
-secrets, personal data, dangerous execution, prompt injection, obfuscation,
-persistence, exfiltration, excessive permissions, supply-chain hooks, unsafe
-archives, and cross-file risk. Static checks run locally. They do not execute the
-skill, call an LLM, or need an API key. Results include the exact policy, rule-set
-version, findings, and time spent on every skill. JSON and SARIF work in CI. An
-optional red-team harness tests a reviewed behavior manifest with fake data and
-in-memory tools, offline or through a selected model provider. A clean result is
-`passed_scope`: it applies only to the package, policy, model, and attacks recorded
-in that report.
+- **Checks the complete skill package:** Reviews instructions, scripts,
+  dependencies, links, archives, and lifecycle hooks before an agent loads them.
+- **Scans one skill or many:** Accepts a single skill or recursively checks a
+  folder of skills.
+- **Detects security and privacy risks:** Finds unsafe structure, secrets,
+  personal data, dangerous execution, prompt injection, obfuscation, persistence,
+  exfiltration, excessive permissions, supply-chain hooks, unsafe archives, and
+  cross-file risk.
+- **Runs locally by default:** Static checks do not execute the skill, call an
+  LLM, or require an API key.
+- **Produces auditable results:** Reports the exact policy, rule-set version,
+  findings, and time spent on each skill, with JSON and SARIF output for CI.
+- **Supports optional red-team testing:** Tests a reviewed behavior manifest with
+  fake data and in-memory tools, either offline or through a selected model
+  provider.
+- **Defines the scope of a clean result:** `passed_scope` applies only to the
+  package, policy, model, and attacks recorded in that report.
 
 **Strongest selling point:** SkillTrustOps does not ask you to trust a score. It
 ships the evidence needed to check the result: versioned rules, bounded scanning,
