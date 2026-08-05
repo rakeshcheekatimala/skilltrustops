@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "skilltrustops"
-version = "0.1.0"
+version = "0.1.1"
 description = "Local-first security scanning and behavioral testing for AI agent skills"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -46,6 +46,9 @@ Changelog = "https://github.com/rakeshcheekatimala/skilltrustops/blob/main/CHANG
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/skilltrustops"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/skilltrustops"]
 
 [tool.pytest.ini_options]
 addopts = "-q"

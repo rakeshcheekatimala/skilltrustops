@@ -136,7 +136,7 @@ passes.
 SkillTrustOps evaluates a skill in three stages: structure, security and
 privacy, then model behavior under attack.
 
-[![Three SkillTrustOps trust gates: lint, security and privacy, and red-team testing](docs/images/skilltrustops-three-gates.png)](docs/images/skilltrustops-three-gates.png)
+[![Three SkillTrustOps trust gates: lint, security and privacy, and red-team testing](https://raw.githubusercontent.com/rakeshcheekatimala/skilltrustops/main/docs/images/skilltrustops-three-gates.png)](https://github.com/rakeshcheekatimala/skilltrustops/blob/main/docs/images/skilltrustops-three-gates.png)
 
 ## Run individual checks
 
@@ -150,7 +150,7 @@ uv run skilltrustops privacy examples/valid-skill/SKILL.md
 `policy init` creates `skilltrustops.yaml` in the repository root and never
 overwrites an existing file.
 
-[![SkillTrustOps command reference for policy validation, static checks, and red-team testing](docs/images/skilltrustops-command-reference.png)](docs/images/skilltrustops-command-reference.png)
+[![SkillTrustOps command reference for policy validation, static checks, and red-team testing](https://raw.githubusercontent.com/rakeshcheekatimala/skilltrustops/main/docs/images/skilltrustops-command-reference.png)](https://github.com/rakeshcheekatimala/skilltrustops/blob/main/docs/images/skilltrustops-command-reference.png)
 
 ### What the security scan checks
 
