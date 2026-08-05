@@ -4,17 +4,16 @@
 **Decision:** **Do not market or publish SkillTrustOps as an enterprise-grade skill
 certification product yet.** A Python preview release is technically buildable, but
 the security coverage, corpus evaluation, calibration, and release governance do
-not yet support the words *certified*, *assured*, or *enterprise-ready*. There is
-no TypeScript library implementation yet.
+not yet support the words *certified*, *assured*, or *enterprise-ready*.
 
 ## Executive assessment
 
 SkillTrustOps has a credible foundation: it is local-first for static analysis,
 does not execute submitted skill content, produces redacted findings, binds
 behavioral evidence to hashes, simulates tool calls in memory, and distinguishes
-blocked from inconclusive results. The current repository has 85 passing tests,
-passes Ruff on the library/test/backend sources, passes strict mypy, and builds a
-Python wheel and source distribution.
+blocked from inconclusive results. The current repository has 91 passing tests,
+passes repository-wide Ruff checks and strict mypy, and builds a Python wheel and
+source distribution.
 
 Its present detection surface is narrow relative to current competitors and the
 agent-skill threat model. Static analysis mainly covers structure, a small set of
@@ -36,15 +35,14 @@ The defensible near-term positioning is:
 | Area | Current state | Publication implication |
 | --- | --- | --- |
 | Python packaging | `0.1.0` wheel and sdist build | Suitable for a preview after release hygiene work |
-| TypeScript SDK | No TypeScript library/package; only a Vite web app | Do not announce a TypeScript SDK |
 | Static safety | Local, deterministic, bounded single-file loading | Strong differentiator, but limited coverage |
 | Skill format | Agent Skills frontmatter validation | Useful; must track spec and platform extensions |
 | Behavioral tests | Synthetic records, in-memory tools, evidence hashes | Promising research/preview capability |
 | Offline red team | Reference fixture plus deterministic assertions | Useful for harness QA, not model red teaming |
 | Real red team | One OpenAI Responses API adapter | Not provider-neutral; non-deterministic and costly |
-| Batch evaluation | One skill per command | Missing for 200-skill benchmark |
-| Dataset | No versioned labeled corpus | Results cannot yet support accuracy claims |
-| Metrics | Static scan duration per command only | Missing end-to-end, percentile, throughput, and cost data |
+| Batch evaluation | Recursive file/folder API and CLI with one policy and per-skill timings | Ready for deterministic static benchmarks |
+| Dataset | 605 public skills locked by repository commit and per-skill hash | Reproducible performance corpus; not labeled accuracy ground truth |
+| Metrics | End-to-end, per-skill/check latency, percentiles, throughput, findings, and container resources | Performance claims are supported; accuracy and live-model cost are not |
 | Enterprise controls | No SBOM/signing/SARIF/security policy/release provenance shown | Blocks serious procurement conversations |
 
 ## Can red-team testing run without AI?
@@ -193,8 +191,8 @@ infographic should be generated from those result files, never edited by hand.
 2. Scan the complete skill directory safely: `SKILL.md`, scripts, references,
    assets, manifests, symlinks, archives, executable files, and dependency files.
    The current one-file boundary misses the most consequential package risks.
-3. Add batch and library APIs with stable typed result schemas, explicit scanner
-   errors, deterministic ordering, cancellation/timeouts, and concurrency limits.
+3. Stabilize the new batch and library API schema and add cancellation, timeouts,
+   and explicit concurrency limits before promising it as a long-term contract.
 4. Add prompt-injection, exfiltration, persistence, obfuscation, network, package
    lifecycle, dependency, permission, and cross-file dataflow rules. A few regexes
    cannot support broad “trust” claims.
@@ -207,8 +205,6 @@ infographic should be generated from those result files, never edited by hand.
 ### P1: needed for a credible public Python release
 
 - Support Python 3.10 or 3.11 onward unless 3.12-only behavior is essential.
-- Remove web-server dependencies from the minimal scanner install; expose API/UI
-  extras separately.
 - Add public API documentation, semantic-versioning policy, changelog, security
   disclosure policy, contribution guide, code of conduct, and maintainer/contact
   metadata.
@@ -221,14 +217,12 @@ infographic should be generated from those result files, never edited by hand.
   input tests, large-file/time/memory limits, and archive/symlink escape tests.
 - Make output paths privacy-safe and add a data-retention/redaction model for
   behavioral transcripts.
-- Fix repository-wide Ruff failures in `artifacts/product-video/render.py`, or
-  exclude generated/media tooling with an explicit lint configuration.
+- Keep generated media and application UI code outside the Python library
+  repository so the package quality gate covers the complete maintained source
+  tree.
 
-### P2: enterprise and TypeScript readiness
+### P2: enterprise readiness
 
-- Define a language-neutral JSON Schema/OpenAPI contract first. Generate or
-  implement Python and TypeScript clients against the same contract and shared
-  conformance fixtures.
 - Add policy packs mapped to OWASP Agentic/LLM risks, MITRE ATLAS, and enterprise
   control evidence without implying formal compliance certification.
 - Add signed policy/rule packs, offline update bundles, audit logging, RBAC around

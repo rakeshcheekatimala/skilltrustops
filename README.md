@@ -2,6 +2,51 @@
 
 Local-first trust checks and behavioral security testing for AI agent skills.
 
+## The 40-second explanation
+
+AI agent skills are executable trust decisions written in Markdown. Before a
+team loads one, SkillTrustOps recursively inspects every `SKILL.md` in a file or
+folder, applies one versioned policy, and produces a deterministic report with
+per-skill findings and timings. Structure, exposed secrets, dangerous command
+patterns, and common personal data are tested locally without executing the
+skill, calling an LLM, or requiring an API key. An opt-in red-team harness then
+tests behavioral manifests against simulated tools using either an offline
+reference target or an explicitly configured live model. Reports distinguish a
+confirmed failure from missing evidence instead of turning uncertainty into a
+pass. The published benchmark locks the exact 605-skill corpus, policy, Docker
+limits, raw runs, checksums, and dashboard so anyone can reproduce the evidence
+on their own machine.
+
+SkillTrustOps is a pre-trust review gate, not a claim that an agent is universally
+safe. Its differentiator is evidence: deterministic offline checks, explicit
+assurance boundaries, machine-readable reports, and reproducible resource-bound
+benchmarks in one Python package.
+
+## Requirements and installation
+
+SkillTrustOps requires **Python 3.12 or newer**.
+
+```bash
+python -m pip install skilltrustops
+skilltrustops --help
+```
+
+Until the first PyPI release, install a locally built wheel or the Git repository
+instead. The package exposes both the `skilltrustops` CLI and `skilltrustops.scan`
+Python API.
+
+| Capability | Network or OpenAI key required? |
+| --- | --- |
+| Recursive lint, security, and privacy scan | No |
+| Docker benchmark reproduction | No after corpus and image inputs are available locally |
+| Reference-provider red-team harness validation | No |
+| Deterministic red-team manifest generation | No |
+| Red-team assessment of a real OpenAI model | Yes |
+
+Offline red-team runs validate the harness, fixtures, attack assertions, evidence
+format, and deterministic reference behavior. They do **not** establish how an
+unqueried production model will behave.
+
 ## Catch unsafe skill instructions before an agent follows them
 
 Run the first trust check in three commands:
