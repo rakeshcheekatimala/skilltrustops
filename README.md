@@ -34,7 +34,7 @@ the scanner guarantees, and [anti-patterns](docs/anti-patterns.md) for unsafe wa
 to integrate it. Production integrations can use the documented
 [structured logging and OpenTelemetry spans](docs/observability.md).
 
-[![SkillTrustOps scanning and red-team workflow](https://raw.githubusercontent.com/rakeshcheekatimala/skilltrustops/main/docs/images/skilltrustops-overview.png)](https://github.com/rakeshcheekatimala/skilltrustops/blob/main/docs/images/skilltrustops-overview.png)
+[![SkillTrustOps scanning and red-team workflow](https://raw.githubusercontent.com/rakeshcheekatimala/skilltrustops/library/docs/images/skilltrustops-overview.png)](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/images/skilltrustops-overview.png)
 
 ## Requirements and installation
 
@@ -170,11 +170,11 @@ proxy.
 
 ### Static review stays local
 
-[![Static review trust boundary sequence](https://raw.githubusercontent.com/rakeshcheekatimala/skilltrustops/main/docs/images/skilltrustops-static-review.png)](https://github.com/rakeshcheekatimala/skilltrustops/blob/main/docs/images/skilltrustops-static-review.png)
+[![Static review trust boundary sequence](https://raw.githubusercontent.com/rakeshcheekatimala/skilltrustops/library/docs/images/skilltrustops-static-review.png)](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/images/skilltrustops-static-review.png)
 
 ### Red-team testing uses simulated tools
 
-[![Red-team testing with simulated tools sequence](https://raw.githubusercontent.com/rakeshcheekatimala/skilltrustops/main/docs/images/skilltrustops-redteam-flow.png)](https://github.com/rakeshcheekatimala/skilltrustops/blob/main/docs/images/skilltrustops-redteam-flow.png)
+[![Red-team testing with simulated tools sequence](https://raw.githubusercontent.com/rakeshcheekatimala/skilltrustops/library/docs/images/skilltrustops-redteam-flow.png)](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/images/skilltrustops-redteam-flow.png)
 
 ## Red-team a skill
 
