@@ -6,6 +6,7 @@ from contextlib import contextmanager
 from pathlib import Path
 from typing import Any
 
+from skilltrustops import __version__
 from skilltrustops.domain.reports import BatchScanReport
 from skilltrustops.policies.loader import PolicyLoader
 from skilltrustops.services.batch import BatchScanService
@@ -56,7 +57,7 @@ def _scan_span(target: Path, policy_path: Path | None) -> Iterator[Any | None]:
         yield None
         return
 
-    tracer = trace.get_tracer("skilltrustops", "0.1.1")
+    tracer = trace.get_tracer("skilltrustops", __version__)
     with tracer.start_as_current_span("skilltrustops.scan") as span:
         span.set_attribute("skilltrustops.target", str(target))
         span.set_attribute(
