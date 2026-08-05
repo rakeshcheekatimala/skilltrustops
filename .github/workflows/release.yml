@@ -78,6 +78,12 @@ jobs:
           for subject in ../dist/* ../artifacts/skilltrustops.spdx.json; do
             gh attestation download "$subject" --repo "$GITHUB_REPOSITORY"
           done
+          for attestation in ./*.jsonl; do
+            safe_name="${attestation/:/-}"
+            if [ "$attestation" != "$safe_name" ]; then
+              mv "$attestation" "$safe_name"
+            fi
+          done
           cp ./*.jsonl ../release-assets/
       - name: Upload signed release assets
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
