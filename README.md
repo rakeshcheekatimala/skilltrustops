@@ -17,6 +17,32 @@ credentials, dangerous instructions, and personal data. Start with
 [Getting started](docs/getting-started.md) for installation alternatives and
 behavioral testing.
 
+## Scan one skill or a folder
+
+Apply one policy to every `SKILL.md` below a folder and report deterministic
+per-skill timings:
+
+```bash
+uv run skilltrustops scan path/to/skills \
+  --policy skilltrustops.yaml \
+  --format json > skilltrustops-report.json
+```
+
+The same stable report is available from Python:
+
+```python
+from skilltrustops import scan
+
+report = scan("path/to/skills", policy_path="skilltrustops.yaml")
+for skill in report.skills:
+    print(skill.relative_path, skill.status, skill.duration_ms)
+```
+
+Folder discovery is recursive, deterministic, and limited to regular,
+non-symlink files named `SKILL.md`. A failed skill produces findings while a
+scanner failure is reported separately as an error; errors are never counted as
+passes.
+
 > [!IMPORTANT]
 > Static checks never execute the submitted skill or upload its content.
 > Red-team runs call the model provider you select. All tools used by the

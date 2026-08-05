@@ -37,8 +37,8 @@ class SafeSkillFileLoader:
                 self._rule_id("003"),
                 "Skill path is not a regular file.",
                 f"Expected one file but received: {skill_path}",
-                "Pass a SKILL.md file directly. Directory discovery is not "
-                "supported in this phase.",
+                "Pass a SKILL.md file directly, or use the batch scan API/command "
+                "for recursive directory discovery.",
             )
 
         if skill_path.name != "SKILL.md":

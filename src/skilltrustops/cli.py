@@ -9,7 +9,8 @@ import typer
 from rich.console import Console
 from rich.table import Table
 
-from skilltrustops.domain.reports import LintReport, StaticScanReport
+from skilltrustops.api import scan as scan_target
+from skilltrustops.domain.reports import BatchScanReport, LintReport, StaticScanReport
 from skilltrustops.engines.errors import ScannerError
 from skilltrustops.factories import (
     build_lint_engine,
@@ -28,6 +29,7 @@ from skilltrustops.redteam.loader import RedTeamPackageError
 from skilltrustops.redteam.service import RedTeamService
 from skilltrustops.redteam.targets import OpenAIModelTarget, ReferenceModelTarget
 from skilltrustops.sandbox.providers import provider_from_policy
+from skilltrustops.services.batch import BatchScanError
 from skilltrustops.services.lint import LintService
 from skilltrustops.services.local_env import load_discovered_env
 from skilltrustops.services.static_scan import StaticScanService
@@ -120,6 +122,37 @@ def redteam_init(
 @app.callback()
 def main() -> None:
     """Run local, static trust checks for AI agent skills."""
+
+
+@app.command("scan")
+def scan_command(
+    target: Annotated[
+        Path,
+        typer.Argument(help="One SKILL.md or a folder containing multiple skills."),
+    ],
+    policy_path: Annotated[
+        Path | None,
+        typer.Option("--policy", help="One YAML or JSON policy for the batch."),
+    ] = None,
+    output_format: Annotated[
+        OutputFormat,
+        typer.Option("--format", help="Report output format."),
+    ] = OutputFormat.TERMINAL,
+) -> None:
+    """Apply one policy and report deterministic per-skill timings."""
+    try:
+        report = scan_target(target, policy_path=policy_path)
+    except (BatchScanError, PolicyError) as error:
+        console.print(f"[bold red]SCAN ERROR[/bold red] {error}")
+        raise typer.Exit(code=2) from error
+    if output_format is OutputFormat.JSON:
+        typer.echo(json.dumps(report.model_dump(mode="json"), indent=2))
+    else:
+        _render_batch_report(report)
+    if report.summary.errors:
+        raise typer.Exit(code=2)
+    if report.summary.failed:
+        raise typer.Exit(code=1)
 
 
 @app.command()
@@ -475,4 +508,32 @@ def _render_static_report(report: StaticScanReport) -> None:
             finding.evidence,
             finding.remediation,
         )
+
+
+def _render_batch_report(report: BatchScanReport) -> None:
+    table = Table(show_header=True, header_style="bold")
+    table.add_column("Skill")
+    table.add_column("Path")
+    table.add_column("Status")
+    table.add_column("Findings", justify="right")
+    table.add_column("Time (ms)", justify="right")
+    for skill in report.skills:
+        findings = sum(check.finding_count for check in skill.checks)
+        table.add_row(
+            skill.skill,
+            skill.relative_path,
+            skill.status.upper(),
+            str(findings),
+            f"{skill.duration_ms:.3f}",
+        )
+    console.print(table)
+    console.print(
+        f"Scanned {report.summary.discovered} skill(s): "
+        f"{report.summary.passed} passed, {report.summary.failed} failed, "
+        f"{report.summary.errors} errors in {report.duration_ms:.3f} ms"
+    )
+    console.print(
+        f"[dim]Policy: {report.policy.profile} ({report.policy.source}); "
+        f"SHA-256: {report.policy.sha256}[/dim]"
+    )
     console.print(table)
