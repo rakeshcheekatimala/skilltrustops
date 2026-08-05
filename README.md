@@ -29,10 +29,10 @@ skilltrustops scan . --debt-report engineering-debt.md
 | Stay offline | Static scanning and reference red-team testing without an API key |
 | Verify claims | Locked corpus, Docker resource limits, raw runs, checksums, calibration metrics |
 
-See [invariants and failure modes](docs/invariants-and-failure-modes.md) for what
-the scanner guarantees, and [anti-patterns](docs/anti-patterns.md) for unsafe ways
+See [invariants and failure modes](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/invariants-and-failure-modes.md) for what
+the scanner guarantees, and [anti-patterns](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/anti-patterns.md) for unsafe ways
 to integrate it. Production integrations can use the documented
-[structured logging and OpenTelemetry spans](docs/observability.md).
+[structured logging and OpenTelemetry spans](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/observability.md).
 
 [![SkillTrustOps scanning and red-team workflow](https://raw.githubusercontent.com/rakeshcheekatimala/skilltrustops/library/docs/images/skilltrustops-overview.png)](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/images/skilltrustops-overview.png)
 
@@ -71,7 +71,7 @@ uv run skilltrustops scan .
 
 You get a local, deterministic pass or fail for skill structure, exposed
 credentials, dangerous instructions, and personal data. Start with
-[Getting started](docs/getting-started.md) for installation alternatives and
+[Getting started](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/getting-started.md) for installation alternatives and
 behavioral testing.
 
 ## Scan one skill or a folder
@@ -93,8 +93,8 @@ because local hooks can be bypassed.
 skilltrustops scan path/to/skills --format sarif > skilltrustops.sarif
 ```
 
-See [Git hooks](docs/git-hooks.md) and
-[exit codes and rule compatibility](docs/exit-codes-and-rules.md).
+See [Git hooks](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/git-hooks.md) and
+[exit codes and rule compatibility](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/exit-codes-and-rules.md).
 
 The same stable report is available from Python:
 
@@ -146,7 +146,7 @@ exfiltration, excessive permissions, lifecycle hooks, unsafe archives, unpinned
 dependencies, and risky cross-file delegation. It never follows links or executes
 package content. Sensitive matches are redacted from output.
 
-See [Security scan](docs/security-scan.md) for the complete rule list, execution
+See [Security scan](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/security-scan.md) for the complete rule list, execution
 flow, configuration, and scope limits.
 
 ## Evidence, explanations, and engineering debt
@@ -187,7 +187,7 @@ uv run skilltrustops scan path/to/SKILL.md --redteam
 
 This primary workflow uses the offline deterministic reference target. Advanced
 live-provider and sandbox configuration remains in
-[red-team testing](docs/red-team-testing.md).
+[red-team testing](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/red-team-testing.md).
 
 ## Measured on 605 public skills
 
@@ -206,10 +206,10 @@ All 605 skills completed with zero scanner errors. 137 passed the selected
 policy and 468 produced findings for review. Those counts are not labels of
 safe or malicious content. The public corpus has no adjudicated ground truth.
 
-[Open the interactive benchmark](benchmarks/market-scan/index.html), read the
-[plain-English summary](benchmarks/market-scan/BENCHMARK-SUMMARY.md), or verify
+[Open the benchmark dashboard source](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/benchmarks/market-scan/index.html), read the
+[plain-English summary](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/benchmarks/market-scan/BENCHMARK-SUMMARY.md), or verify
 the compressed raw results and checksums in
-[`results/library-2026-08-05`](benchmarks/market-scan/results/library-2026-08-05/).
+[`results/library-2026-08-05`](https://github.com/rakeshcheekatimala/skilltrustops/tree/library/benchmarks/market-scan/results/library-2026-08-05).
 The 500-case calibration report is a constructed regression result, not an
 independent real-world accuracy claim.
 
@@ -217,14 +217,14 @@ independent real-world accuracy claim.
 
 | Guide | Use it when you need to… |
 | --- | --- |
-| [Documentation home](docs/README.md) | Find the right guide and understand the trust model. |
-| [Getting started](docs/getting-started.md) | Install SkillTrustOps and complete a first assessment. |
-| [Policy guide](docs/policy-guide.md) | Create, validate, discover, and maintain `skilltrustops.yaml`. |
-| [Policy reference](docs/policy-reference.md) | Look up every supported policy field and constraint. |
-| [Security scan](docs/security-scan.md) | Understand secret and dangerous-instruction checks, execution flow, and limits. |
-| [Red-team testing](docs/red-team-testing.md) | Decide when to test, activate it, review manifests, and interpret evidence. |
-| [Security best practices](docs/security-best-practices.md) | Operate SkillTrustOps safely in development and CI. |
-| [Troubleshooting](docs/troubleshooting.md) | Resolve common policy, provider, sandbox, and exit-code failures. |
+| [Documentation home](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/README.md) | Find the right guide and understand the trust model. |
+| [Getting started](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/getting-started.md) | Install SkillTrustOps and complete a first assessment. |
+| [Policy guide](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/policy-guide.md) | Create, validate, discover, and maintain `skilltrustops.yaml`. |
+| [Policy reference](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/policy-reference.md) | Look up every supported policy field and constraint. |
+| [Security scan](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/security-scan.md) | Understand secret and dangerous-instruction checks, execution flow, and limits. |
+| [Red-team testing](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/red-team-testing.md) | Decide when to test, activate it, review manifests, and interpret evidence. |
+| [Security best practices](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/security-best-practices.md) | Operate SkillTrustOps safely in development and CI. |
+| [Troubleshooting](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/troubleshooting.md) | Resolve common policy, provider, sandbox, and exit-code failures. |
 
 ## What the decisions mean
 
@@ -248,4 +248,4 @@ uv build
 
 ## License
 
-Apache-2.0. See [`LICENSE`](LICENSE).
+Apache-2.0. See [`LICENSE`](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/LICENSE).
