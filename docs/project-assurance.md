@@ -14,7 +14,7 @@ artifacts.
 | Bandit 1.9.4 | Python source under `src/skilltrustops` | Any unsuppressed finding fails CI and release | Workflow logs; narrow suppressions include an inline reason and rule ID |
 | [PyPA pip-audit](https://github.com/pypa/pip-audit) 2.10.1 | Fully pinned runtime and development dependency graph exported from `uv.lock` with hashes | Any known advisory fails CI and release | Workflow logs and the committed lockfile |
 | [Snyk Open Source](https://docs.snyk.io/snyk-cli/commands/test) 1.1306.2 | Installed runtime graph exported from `uv.lock` | Any Snyk finding at low severity or above fails the Snyk workflow | Snyk workflow logs |
-| [Snyk Code](https://docs.snyk.io/snyk-cli/commands/code-test) 1.1306.2 | Python source | Any Snyk finding at low severity or above fails the Snyk workflow | Snyk workflow logs and Snyk project |
+| [Snyk Code](https://docs.snyk.io/snyk-cli/commands/code-test) 1.1306.2 | Shipped Python source under `src/skilltrustops` | Any Snyk finding at low severity or above fails the Snyk workflow | Snyk workflow logs and Snyk project |
 | [CodeQL](https://docs.github.com/en/code-security/code-scanning/introduction-to-code-scanning/about-code-scanning-with-codeql) | Python source with the `security-extended` query suite | Analysis failure fails the workflow; findings are reviewed in GitHub code scanning | Security tab and workflow logs |
 | Package verification | Wheel, source archive, metadata, and isolated installs | Build, Twine, or either smoke test failure blocks CI and release | Downloadable package-assurance artifact |
 | [OpenSSF Scorecard](https://github.com/ossf/scorecard-action) | Public repository and supply-chain practices | Reports posture; it is not a merge gate | Public Scorecard result and SARIF |
@@ -77,7 +77,8 @@ uv export --locked --no-dev --no-emit-project --no-hashes \
 uv run --no-sync npx --yes snyk@1.1306.2 test \
   --file=/tmp/skilltrustops-snyk-requirements.txt \
   --package-manager=pip --command=python --severity-threshold=low
-uv run --no-sync npx --yes snyk@1.1306.2 code test --severity-threshold=low
+uv run --no-sync npx --yes snyk@1.1306.2 code test src/skilltrustops \
+  --severity-threshold=low
 ```
 
 ## Repository settings that make the evidence enforceable
