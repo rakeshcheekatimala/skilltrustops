@@ -131,7 +131,6 @@ sequenceDiagram
     T->>T: Check authorization, confirmation, and leakage assertions
     T->>E: Record hashes, transcript, and findings
     T-->>R: Return assured, blocked, or inconclusive
-    Note over M,F: Live providers receive test context and simulated tools have no real side effects
 ```
 
 ## Red-team a skill
