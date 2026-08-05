@@ -9,12 +9,13 @@ when risk warrants it, and retain evidence for review.
 1. Start with [Getting started](getting-started.md).
 2. Create the trusted repository configuration with the
    [Policy guide](policy-guide.md).
-3. Use [Red-team testing](red-team-testing.md) before releasing skills that
+3. Review the [Security scan](security-scan.md) coverage and limits.
+4. Use [Red-team testing](red-team-testing.md) before releasing skills that
    process untrusted content, access sensitive data, call tools, or perform
    consequential actions.
-4. Apply the controls in [Security best practices](security-best-practices.md)
+5. Apply the controls in [Security best practices](security-best-practices.md)
    to local and CI operation.
-5. Use the [Policy reference](policy-reference.md) for exact schema details and
+6. Use the [Policy reference](policy-reference.md) for exact schema details and
    [Troubleshooting](troubleshooting.md) when a command fails closed.
 
 ## Trust model

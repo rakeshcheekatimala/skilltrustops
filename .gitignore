@@ -14,3 +14,4 @@ node_modules/
 !.env.example
 !**/.env.example
 .skilltrustops/redteam-runs/
+benchmarks/market-scan/.benchmark-work/

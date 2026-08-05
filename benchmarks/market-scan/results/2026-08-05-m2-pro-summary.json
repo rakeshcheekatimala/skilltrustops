@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "benchmark_date": "2026-08-05",
+  "tool_version": "0.1.0",
+  "policy_profile": "recommended-v2",
+  "machine": {
+    "model": "MacBook Pro Mac14,9",
+    "chip": "Apple M2 Pro",
+    "cpu_cores": 10,
+    "memory_gb": 16,
+    "architecture": "arm64",
+    "os": "macOS 26.5.2",
+    "python": "3.12.4"
+  },
+  "corpus": {
+    "repositories": 8,
+    "skills": 605,
+    "redistributed_skill_content": false
+  },
+  "runs": {
+    "count": 5,
+    "total_duration_ms": [1995.253, 1898.822, 1997.042, 1908.823, 1914.961],
+    "median_total_duration_ms": 1914.961,
+    "median_throughput_skills_per_second": 315.93,
+    "combined_skill_latency_ms": {
+      "p50": 2.591,
+      "p95": 5.555,
+      "p99": 9.006,
+      "max": 32.151
+    }
+  },
+  "last_run_outcomes": {
+    "passed": 298,
+    "failed": 307,
+    "errors": 0,
+    "adjudicated": false
+  },
+  "finding_counts": {
+    "STO-LINT-021": 239,
+    "STO-PRIV-001": 154,
+    "STO-LINT-024": 148,
+    "STO-SEC-101": 22,
+    "STO-SEC-100": 11,
+    "STO-SEC-004": 11,
+    "STO-SEC-102": 3,
+    "STO-LINT-016": 3,
+    "STO-PRIV-004": 1,
+    "STO-LINT-020": 1,
+    "STO-SEC-001": 1
+  },
+  "interpretation": "Failed means one or more deterministic findings require review; it does not mean malicious or unsafe. No precision or recall claim is supported without adjudicated labels."
+}
+
