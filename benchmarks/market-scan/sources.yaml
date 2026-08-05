@@ -1,0 +1,74 @@
+schema_version: "1.0"
+snapshot_date: "2026-08-05"
+selection:
+  method: named-prominent-plus-long-tail
+  note: >-
+    Prominent collections were selected from official sources and public
+    popularity signals. Lower-star collections were included to reduce
+    popularity bias. This is not a random sample of the full ecosystem.
+sources:
+  - repository: mattpocock/skills
+    commit: b137134ffb77f8aec24b2d7d0ba0250ca6e28345
+    default_branch: main
+    discovered_skills: 35
+    github_stars_at_snapshot: 204192
+    repository_license_spdx: MIT
+    stratum: prominent-community
+  - repository: anthropics/skills
+    commit: b29e7cf65e5cb78a5ac33d582270551bc74a14eb
+    default_branch: main
+    discovered_skills: 18
+    github_stars_at_snapshot: 166391
+    repository_license_spdx: NOASSERTION
+    license_note: Repository contains mixed/source-available terms; inspect per skill.
+    stratum: official-reference
+  - repository: addyosmani/agent-skills
+    commit: bdf76c7c6b7b3b3e01bb15c9fdc42ac5351855c1
+    default_branch: main
+    discovered_skills: 24
+    github_stars_at_snapshot: 81768
+    repository_license_spdx: MIT
+    stratum: prominent-community
+  - repository: NVIDIA/skills
+    commit: 0a78f333a1d67c837fbf4288efe6488169dc7140
+    default_branch: main
+    discovered_skills: 327
+    github_stars_at_snapshot: 2796
+    repository_license_spdx: Apache-2.0
+    stratum: official-vendor
+  - repository: obra/superpowers
+    commit: 44c9b2d6e889982ac18c27d05a19fefe335194e1
+    default_branch: main
+    discovered_skills: 14
+    github_stars_at_snapshot: 266934
+    repository_license_spdx: MIT
+    stratum: prominent-community
+  - repository: jeffallan/claude-skills
+    commit: e8be415bc94d8d6ebddc2fb50e5d03c6e27d4319
+    default_branch: main
+    discovered_skills: 66
+    github_stars_at_snapshot: 10883
+    repository_license_spdx: MIT
+    stratum: mid-tail-community
+  - repository: daymade/claude-code-skills
+    commit: 7d2be8a9c5ac1fa4eee0532bcb40e28800d440e0
+    default_branch: main
+    discovered_skills: 90
+    github_stars_at_snapshot: 1318
+    repository_license_spdx: MIT
+    stratum: long-tail-community
+  - repository: akin-ozer/cc-devops-skills
+    commit: 276af751e659315aaf56d3ad13d7c26f4e72e28a
+    default_branch: main
+    discovered_skills: 31
+    github_stars_at_snapshot: 288
+    repository_license_spdx: Apache-2.0
+    stratum: long-tail-community
+acquisition_gaps:
+  - source: Tessl Registry
+    reason: Authenticated registry access unavailable.
+  - source: skills.sh catalog API
+    reason: HTTP 401 without Vercel OIDC credentials.
+  - source: Cursor Marketplace
+    reason: No stable unauthenticated bulk export identified; use provider-approved API.
+

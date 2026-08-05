@@ -1,0 +1,3637 @@
+{
+  "schema_version": "1.0",
+  "skills": 605,
+  "entries_sha256": "58525efef3fec4e86635cf951205f98e88e356d43d6da44bd58dbb1891796f4b",
+  "entries": [
+    {
+      "path": "NVIDIA/skills/plugins/nvidia-skills/skills/nvidia-skill-finder/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 8353,
+      "sha256": "51fe4ff117f34919527ad4540513910e16eb225f7ad04686fbbe985035fdf9cf"
+    },
+    {
+      "path": "NVIDIA/skills/skills/accelerated-computing-cudf/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 9404,
+      "sha256": "4b8d3851b7e84b6ffb8fc6d781f66cf340a0b6f994c9f8b88894f82f7caeb353"
+    },
+    {
+      "path": "NVIDIA/skills/skills/aiq-deploy/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 13321,
+      "sha256": "9bfad6034823422b564c0ff3ff7d462eef237fec129f4f5fb1c027f625bc2b9f"
+    },
+    {
+      "path": "NVIDIA/skills/skills/aiq-research/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 16423,
+      "sha256": "2fac59742c3d288ca43245981bacbdd9c0b769b53e4513d4fe87b13d2304e1b7"
+    },
+    {
+      "path": "NVIDIA/skills/skills/amc-run-sample-calibration/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 14132,
+      "sha256": "019212e46e011dab956acb19ac4776cb904788f6ca0c015bedf2ac97b376bc1b"
+    },
+    {
+      "path": "NVIDIA/skills/skills/amc-run-video-calibration/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15624,
+      "sha256": "cb3ae46f9f825c2bf9f3c224c807b1f27440beb8b939264b5807a43e9a9d10af"
+    },
+    {
+      "path": "NVIDIA/skills/skills/amc-setup-calibration-stack/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15760,
+      "sha256": "c15374cef9c1a274ce94c73d4d4fddf65805411672bf553eb63ad1b3589c8c0e"
+    },
+    {
+      "path": "NVIDIA/skills/skills/cudaq-guide/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 12550,
+      "sha256": "fd9462b962fa83d41235d85188b0026fdd3eabe566e3c09927d68466986a1a58"
+    },
+    {
+      "path": "NVIDIA/skills/skills/cuopt-developer/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 13008,
+      "sha256": "92a3aef4cf607656d665087b69829663dcca2a518c19adeb5f52018fbf2929a4"
+    },
+    {
+      "path": "NVIDIA/skills/skills/cuopt-install/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 4229,
+      "sha256": "3d0a5ef4c30ab8691dd36ffa5ebdc599a40655f2ee69af14a2a6c40b83c3c581"
+    },
+    {
+      "path": "NVIDIA/skills/skills/cuopt-multi-objective-exploration/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15638,
+      "sha256": "0fae958202ba991c05053aeac8d8c8149d3d968fb9fc44073640f6fdd0df8789"
+    },
+    {
+      "path": "NVIDIA/skills/skills/cuopt-numerical-optimization-api/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 4946,
+      "sha256": "ac00f14099b3d0a7843d972e2e32aa707e7ff6907a03b42db2e302d33dba37bb"
+    },
+    {
+      "path": "NVIDIA/skills/skills/cuopt-numerical-optimization-formulation/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 19583,
+      "sha256": "ed5c1f0f40411b77c90602c419834b22a5ee41ef1419ec8250146b59ab70e2cf"
+    },
+    {
+      "path": "NVIDIA/skills/skills/cuopt-routing-api-python/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 3697,
+      "sha256": "3d885c036008464266ab3775fd573d0ab04f7d55749042989ab1ded81331560c"
+    },
+    {
+      "path": "NVIDIA/skills/skills/cuopt-server-api-python/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 3437,
+      "sha256": "9f7f191708079b7ea80f80c4e16cb0a03d1782c2bfa63808750e4ca50d38f119"
+    },
+    {
+      "path": "NVIDIA/skills/skills/cupynumeric-hdf5/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 11925,
+      "sha256": "ae9a178d41c491575788e2d107c6bcd07aae1522f8e754b9e89010109341619c"
+    },
+    {
+      "path": "NVIDIA/skills/skills/cupynumeric-install/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 7818,
+      "sha256": "4c4a7e7d76e213523ef124f2cd9dc1bb436021004e0e4ea5acb2b88c102dcfd9"
+    },
+    {
+      "path": "NVIDIA/skills/skills/cupynumeric-migration-readiness/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 18359,
+      "sha256": "0e67c55bd066ef71c225c62a235030925ac54e138f66e89da9c48ada12e34d29"
+    },
+    {
+      "path": "NVIDIA/skills/skills/cupynumeric-parallel-data-load/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 18178,
+      "sha256": "2ae4b284c285b5be96f9d9fe0cd3a6e51d86f3d12da3e9867ecde75265b99708"
+    },
+    {
+      "path": "NVIDIA/skills/skills/dali-dynamic-mode/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 14921,
+      "sha256": "48ec583090216b4cbbccad79eb60e890410d891cad5fcb5cda76682fc81d4bca"
+    },
+    {
+      "path": "NVIDIA/skills/skills/data-designer/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 4716,
+      "sha256": "30aeee1ecb4ae7e5b62ddb79ff75699e5e2b2d454ab4eed1e71cf69ea86e5853"
+    },
+    {
+      "path": "NVIDIA/skills/skills/deepstream-dev/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 11718,
+      "sha256": "3e42a832ea2133134ab8e7031288b7b4f1e075a66ac0a071a8371e044fca3eba"
+    },
+    {
+      "path": "NVIDIA/skills/skills/deepstream-generate-pipeline/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 16797,
+      "sha256": "ad1c26f75e186253c49b02655dfd013034c90d9d3b8ce3e019cc253dd348594a"
+    },
+    {
+      "path": "NVIDIA/skills/skills/deepstream-import-vision-model/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 10320,
+      "sha256": "9c69f50e0e7f871f234df9b00f62f7dd6999e6004d4eef486ac760e0a3d29065"
+    },
+    {
+      "path": "NVIDIA/skills/skills/deepstream-profile-pipeline/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 16386,
+      "sha256": "7d6193940e5508cc0246791634222465b5fde6e06b9402777caac61e770812ca"
+    },
+    {
+      "path": "NVIDIA/skills/skills/deepstream-sop/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 19633,
+      "sha256": "9030b35061302ba3a61cac1b9c1c691b737373b3514384388a2ffa6bccf4d308"
+    },
+    {
+      "path": "NVIDIA/skills/skills/dicom-metadata-extract/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 3238,
+      "sha256": "c90a0fb137fbbd554cf419c9964c24f9dedfdf8b7b617b427a74f84c3ba8293c"
+    },
+    {
+      "path": "NVIDIA/skills/skills/dicom-series-preflight/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 3343,
+      "sha256": "ab050367ef76abba858a28cd184e3e5c38ef8252a1aab87acb9084f23e8d6070"
+    },
+    {
+      "path": "NVIDIA/skills/skills/dicom-series-to-volume/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 3592,
+      "sha256": "988fc8c0291811fd229c7854646808c96fe3ae9af27a7f6ef27a39b527f06db0"
+    },
+    {
+      "path": "NVIDIA/skills/skills/digital-health-clinical-asr-build/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 19869,
+      "sha256": "05d528c2abbaf727594808b28ca3fa1a0ff1c97956cfffac9c8bac5a4fed3757"
+    },
+    {
+      "path": "NVIDIA/skills/skills/digital-health-clinical-asr-eval/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 18686,
+      "sha256": "7c333c676b23b18430f0bb661baac39e89932cb6a347bb35f16fb2ee057aca65"
+    },
+    {
+      "path": "NVIDIA/skills/skills/digital-health-clinical-asr-finetune/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 20185,
+      "sha256": "951ddeba55bd2ab770240ed77ebe51280a9dccd2b93b59b6edee1e2579549d5b"
+    },
+    {
+      "path": "NVIDIA/skills/skills/digital-health-clinical-asr-setup/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 18282,
+      "sha256": "025880f0939e1caf28fbf5bf3943c1490ab32ad18f642a511f1bfa617a265984"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-aes-gcm/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 16739,
+      "sha256": "fe377a6798fd74b04981307c1b1c582a86e57a5e31492b4c22b0f8b682a75d0d"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-argp/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 12829,
+      "sha256": "45a793b1fd7a1f3526b5243e0bcd7fa3663b273dcf1e52b962f4208c22c55078"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-argus/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 19102,
+      "sha256": "63af7714ccab39bfc73249cbd6ffdba3d79cdbe2f43c1462caf18305dd3b0575"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-bare-metal-deployment/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 11602,
+      "sha256": "fd7304c1e9a60a61337f1aa210061f4d812a720a5751904c49e192e38367ac66"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-bench/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 13923,
+      "sha256": "5bd330d96c390d2d1cacdb4b1e38c6d75e60fda28dfdc8360c32703ea5264c08"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-bench-extension/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15992,
+      "sha256": "80550360751f490d728140320771eddab9fc20b26d457a12c61ac556dd2f1b54"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-bf3-deployment/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 10972,
+      "sha256": "a7e6c617a104ccd1ead28da9b96ca5352ca6e7ff1134884a638accfdd382bc02"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-bf4-deployment/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 12247,
+      "sha256": "3904b048f20775ac64b56fc7e177cba51c25eea8943e6494b8cee588e4c7fa39"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-caps/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 9741,
+      "sha256": "d74dc39cdaca16ffceaefc4803a0533318c0385b6eebc040c17cbfcce8e341e2"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-collectx-deployment/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 11397,
+      "sha256": "8a9d3317bc27398bc4fcbb7e49f82d37a2c6361780259393a5e1f8cf3b24952c"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-comch/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 12623,
+      "sha256": "c5f154dfbe2d659e90e9443a19d78fe7e1cc8fa4f57e4a13883d5d8bfb93b274"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-comm-channel-admin/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 12543,
+      "sha256": "a4714f4b78d68093e936f2edaf940471db84016c5da0e6d1c8a7578cd7a06496"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-common/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15466,
+      "sha256": "d452ad2123d0f207cd19b6b618bcbd981761bf0652d01d567184bba71bdfa8d1"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-compress/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15271,
+      "sha256": "a8c5823b8607be8648eb21da269cedda327c9ede4af89340627123ebfb2ab744"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-container-deployment/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 10105,
+      "sha256": "20274f090dcefd1774e09712aabaf66d126b53806574589c8c88444b4af5f3cb"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-debug/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 10238,
+      "sha256": "e1abf8013bc53875a9cc4cdfa6f717b0908cd44ef95fe2d0466403232eef328b"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-devemu/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 11003,
+      "sha256": "a3beb452823cc83ee0df5d3f861bf8b9c67dc037f5b15bf5e2c23fd37ad45f0b"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-dma/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 13365,
+      "sha256": "1fdd6616f44cd83bc420b7acb1afbdfd4d510ecb6dc11fa3b5019fda2b443e67"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-dms/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 11381,
+      "sha256": "627d53528cf09be7fa14ebf99d95a19da1a8dc8d6ac12ee011ff4805af397c5e"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-dpa/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 20070,
+      "sha256": "365844ba02c15917cfd2d33ceb0989e0c94851d20f47bf4bdcd4fe83244e45c3"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-dpa-hl-tracer/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 17466,
+      "sha256": "c05b4a3fa5fe7f772ef657bab932cc196b36e6f6dc3ff7fef0f258a982fca661"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-dpdk-bridge/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15423,
+      "sha256": "9bdabb38ae1d13e22e04f124e173d72ee637ac5d577a3ceb0f9e7caded19bae6"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-erasure-coding/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 17188,
+      "sha256": "7eac958bd8ef786f367509e3b48cb9f5ac82377c482d3550823ea18bee76517a"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-eth/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 13597,
+      "sha256": "593e261eb238b3bc95e97aa8db9510fffbc333586ccba3213b24e7d1fbb29fa1"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-firefly/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 18186,
+      "sha256": "5fc66f2aea83852db0790da1f9c157efa8341f7d152865c0ab69669e0d7612bd"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-flow/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 13764,
+      "sha256": "74450442e7e5804ca99f57bb6010f92280fca735e71f6a78dc25b004d209b160"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-flow-dpa-perf/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15670,
+      "sha256": "80702bdcd18aaf46d6fec511bd87848e9fa58b4516f3cb1fe9fbb6663d910b55"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-flow-dpa-provider/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 18185,
+      "sha256": "75fc7c6223df1a2949294490dc87c137c1f0e5985ee32367a4c2de1cbaffd834"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-flow-grpc-server/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 16767,
+      "sha256": "c6641c05dd97f87dfe4d4368380d7552e360e7e8fbf25a3b48683f04d5bd7697"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-flow-perf/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15605,
+      "sha256": "f9031d77f1a98dd2adb5be1e31f008d6483bf648333ced8dd660b749b8b50c83"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-flow-tune/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 19342,
+      "sha256": "b63e1e8056ffb61a27652206c1f3f88bc97c9043cfd91e48d8efc82be58c2838"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-gpi/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15850,
+      "sha256": "23a86302747fca94401ffe9236bf0d70098ebaa0c43b5702ab0dbbcac617f85a"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-gpunetio/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15005,
+      "sha256": "2fcc7b98f23be52cd9ce5bb17d6daafa1b17e9d80b74a7ea1bebbe0d313e8510"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-gpunetio-ib-write-bw/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 16936,
+      "sha256": "d8c93fa1d19b6af2eb540cf4d29d4c7a88859179c563702c07ec7af3daf8c2c6"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-gpunetio-ib-write-lat/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15174,
+      "sha256": "0ef5cce4622dde79cd8ad0cc1cd508396f5d89283c24ee18262cc70e9ab80a21"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-hardware-safety/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 17022,
+      "sha256": "e3b805499b8f02b79f29b8054e0a92671a1d956821339ff8ed95f83f6901f198"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-mgmt/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15978,
+      "sha256": "f0dc45d01c222debd47fabb128dd1533bb339e97b6ef3ebb6bd98249ed9d7de3"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-pcc/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 19256,
+      "sha256": "e74ce6abe8e5bec2a4d3863524a5862dbf88aa3d93991a4bb9bf7ff49e69fa31"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-pcc-counters/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 12166,
+      "sha256": "3f7bed79c883d8c1bd657b2109243bf21125c9e501b584924616dc107fab22c8"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-pcc-ztr-rttcc-algo/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 19094,
+      "sha256": "8904fc66d0b5c88c03daf4c61aa0a89446a28e238a9af5349fccfee33e25e64d"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-programming-guide/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 13777,
+      "sha256": "a4d12cce69186d37f4ea37d4f81cbce9243a109bf34cbfb4a5ee33772be523a2"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-public-knowledge-map/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 13090,
+      "sha256": "96c97dd4299aedfac2cbfaa3965b4835042884b777f0e7671d95407358fb39a4"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-rdma/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 14146,
+      "sha256": "714ddab7f80ecce5e4f8644722e942c0f6db0fd3c72f13cd25485784af9ca4a0"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-rdmi/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15416,
+      "sha256": "6e1c19f72ad9a19dd45e7eac5ea2d5dc816655994b76fa82191f61557c0b0495"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-rmax/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 18345,
+      "sha256": "0659124fcfa9fafaa10585e39caa7de7c09d0ae75d40a041b69548c78b062610"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-setup/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 13557,
+      "sha256": "396d42fe44c883eda51323d15d61c898bf5de660cc235ae3fa601a6ed20ccdfb"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-sha/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 13704,
+      "sha256": "da98751cca8e8a8908371643b6254ab0b38b062146dd018f3e6af96c109c36a8"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-sha-offload-engine/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15880,
+      "sha256": "3852d4b802f343ea15bfd38f08a40ba98212644718c0735ae671d670290ebea4"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-socket-relay/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 16135,
+      "sha256": "fdda57c5c5676880efea9b8d7f6047e34d409319703de8e6b630e77f01efd5a8"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-spcx-cc/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 19874,
+      "sha256": "3d7dc41f12dc36ebd321ad7498a6937f3f5b2a5d90908e9a261b7a514fee9545"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-sta/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15905,
+      "sha256": "437259c476baf4481c046c51881c573ab3d19905426d3657b6dacf935a8ecc15"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-structured-tools-contract/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 19870,
+      "sha256": "d09efa2729c627925c356b1c79e1bf02184b1d2aae8eb708d7a6f5f240da02ff"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-telemetry/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 11129,
+      "sha256": "967e526bc1dc04cc65f997c94040ecef4f7c2b3e04a9ae89864e77d17ff5eb8d"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-telemetry-exporter/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15918,
+      "sha256": "053e5544759c691e3bdcb2959f2ff012c03cbb757ffa9b99e9e7fcaf7d25353a"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-telemetry-utils/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 17039,
+      "sha256": "fb418b1e783dab52219e8d5fde39a051a7a4764e4a74c321e5ed5e330d01e944"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-upgrade/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 13590,
+      "sha256": "e0696c3e04453539f9f3e809496a8d3988d67269e61ac37d6d15582fbdc12610"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-urom/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 18793,
+      "sha256": "3fd12cccda00198c0b298991dc25c5906767bea1c9cee6e072bcf659cc0b1271"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-urom-svc/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 18841,
+      "sha256": "4107bfc6edde4367c2a8abe419eb9782a83ee9a6acc27c2d6f0079fb5448c645"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-verbs/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 19606,
+      "sha256": "4eb227177019793c3842bbc85039fad71c8646e44c2d877064c26985eb3c5a52"
+    },
+    {
+      "path": "NVIDIA/skills/skills/doca-version/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 12186,
+      "sha256": "656865dfa499a2c4c3268caa52ae64b9fc9f13c122a82c9c9a990a1ca8f4c264"
+    },
+    {
+      "path": "NVIDIA/skills/skills/dynamo-interconnect-check/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 6405,
+      "sha256": "55090c73dcd785d0661458b646d2d84381330ed163c13d2cd590c9c09d373884"
+    },
+    {
+      "path": "NVIDIA/skills/skills/dynamo-recipe-runner/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 7336,
+      "sha256": "03c3c629e70891ecb7a41d152081b122e99ea803082ae55c06a236638433d091"
+    },
+    {
+      "path": "NVIDIA/skills/skills/dynamo-router-starter/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 5712,
+      "sha256": "1274a47bcd28c5086c26ce1a10f2b2e6c4a28b1b3fa9599ad2c4d1cb6ba67728"
+    },
+    {
+      "path": "NVIDIA/skills/skills/dynamo-troubleshoot/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 5130,
+      "sha256": "3f11c76e09e40865ac9c983161388506763b9699f7dd37db56e07c619664e4bd"
+    },
+    {
+      "path": "NVIDIA/skills/skills/earth2studio-create-datasource/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 10613,
+      "sha256": "d2ab0f793092d841e065b24511df849e66bf0106d9f4405eb2ab121005e274c4"
+    },
+    {
+      "path": "NVIDIA/skills/skills/earth2studio-create-diagnostic/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 14796,
+      "sha256": "b0f40d4eba51ff492da4d515f67abacf5422572f36425121c3813fe37994a6f2"
+    },
+    {
+      "path": "NVIDIA/skills/skills/earth2studio-create-prognostic/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 10253,
+      "sha256": "811fafca9495b5fcf5ffe8f1bd052cfb67e741e006feef47269ee3c93d389bed"
+    },
+    {
+      "path": "NVIDIA/skills/skills/earth2studio-data-fetch/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 8697,
+      "sha256": "035abf88c10de48888423f7ab6a0efeeeaaa9f06b44d73d5ddbb8e4efd47ca7b"
+    },
+    {
+      "path": "NVIDIA/skills/skills/earth2studio-deterministic-forecast/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 5488,
+      "sha256": "e77fd15c3f6735c7b4cf40a66356c03bf12fa70202796af43b12f7f41d2ea9f5"
+    },
+    {
+      "path": "NVIDIA/skills/skills/earth2studio-discover/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 8548,
+      "sha256": "e9f400c95db84a682aa3f2db4e2579950422794836ffb6ce450658cd4edd9739"
+    },
+    {
+      "path": "NVIDIA/skills/skills/earth2studio-install/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 6581,
+      "sha256": "0028947da325d1ab8706ab94e1d7987f5f1a08ef1d210dab4c9e98d75ee5ea0e"
+    },
+    {
+      "path": "NVIDIA/skills/skills/holoscan-install-conda/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 7876,
+      "sha256": "117f4bf5986956f2cb66a259e5118f67219e2fbefce221d44da897808356ee45"
+    },
+    {
+      "path": "NVIDIA/skills/skills/holoscan-install-container/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 7481,
+      "sha256": "827f102e0f639221ccdaf794cc4ba2ba28acb9f94519fb92e50482df20ce436f"
+    },
+    {
+      "path": "NVIDIA/skills/skills/holoscan-install-debian/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 6220,
+      "sha256": "9a1dcc022685de5bef668fc585b877411983824654a71bab01ad18423696e02f"
+    },
+    {
+      "path": "NVIDIA/skills/skills/holoscan-install-source/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 6135,
+      "sha256": "fb7a4450a5901c20058e43d96cf47deac1e4fd0e6d65d3efb0a58334b21d7220"
+    },
+    {
+      "path": "NVIDIA/skills/skills/holoscan-install-wheel/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 6318,
+      "sha256": "18751c15917165577b17b2c95a1481977b9d2e0b1ea5a419d060f7d8b797cf6d"
+    },
+    {
+      "path": "NVIDIA/skills/skills/holoscan-setup/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 10174,
+      "sha256": "6cf83332173257fcada877d3f3385ca700cd41384e5a89faf4214b45721a8d71"
+    },
+    {
+      "path": "NVIDIA/skills/skills/hsb-app/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 16560,
+      "sha256": "4fc440a720536fef741eff824755b190f053496772c2ae25412fb3a3a1261b3d"
+    },
+    {
+      "path": "NVIDIA/skills/skills/hsb-flash/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 17699,
+      "sha256": "17b105ebf36066eafaae16bc1f84de757300fb25901ba857cc502e613a52ad57"
+    },
+    {
+      "path": "NVIDIA/skills/skills/hsb-ip-create-top/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 10956,
+      "sha256": "75d885b53e1460f5e504c540eb23a45a9726720fd64836a9ffb9dc7242059134"
+    },
+    {
+      "path": "NVIDIA/skills/skills/hsb-ip-def/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 11553,
+      "sha256": "9b3b6c192edbe4e9674e617c210c4d4e141b2fb3a32a3598eb9752c2eac4726f"
+    },
+    {
+      "path": "NVIDIA/skills/skills/hsb-ip-packetizer/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 14339,
+      "sha256": "c1ce9142b917d5c5976597f22bf18e8a40988b80ea7740af74ad9233f37f08f5"
+    },
+    {
+      "path": "NVIDIA/skills/skills/hsb-setup/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 19653,
+      "sha256": "479332edc6cbdcd4b571782d208cab4ce08460193b743c39d895b5e2dec5384b"
+    },
+    {
+      "path": "NVIDIA/skills/skills/hsb-test/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 16679,
+      "sha256": "20281216bbba8139deb34b8a42c0d8bae052001ff259c31fd80dae3d668bffef"
+    },
+    {
+      "path": "NVIDIA/skills/skills/i4h-catheter-navigation/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 5773,
+      "sha256": "316118287f0e675e5774eaded3f111e318836fef1991a2b930d3df87668ae552"
+    },
+    {
+      "path": "NVIDIA/skills/skills/i4h-catheter-navigation-digital-twin/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 4795,
+      "sha256": "9e0e98014521384dd5afb419954274052bec6cc0acc2a93f75e4d6e3b828ebe3"
+    },
+    {
+      "path": "NVIDIA/skills/skills/i4h-catheter-navigation-e2e/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 3913,
+      "sha256": "5a965dcd247bf20dcfd1125951330446436de3006ff9f5e1dc1f25fd8d40ba91"
+    },
+    {
+      "path": "NVIDIA/skills/skills/i4h-catheter-navigation-render-drr/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 3403,
+      "sha256": "76cefe6a500f94109e5b164fa9ca624dc77af1254cbb96fe8874ac21241a36d5"
+    },
+    {
+      "path": "NVIDIA/skills/skills/i4h-catheter-navigation-setup/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 4695,
+      "sha256": "6787c841a123eab2075144ac338b6f647a08963029cb97949ad0f22cd76432c8"
+    },
+    {
+      "path": "NVIDIA/skills/skills/i4h-catheter-navigation-smoke/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 2548,
+      "sha256": "a9661bc33459325eef1b50eb3f625ea26f7798aa7d79c308dff462fafe52c0ce"
+    },
+    {
+      "path": "NVIDIA/skills/skills/i4h-catheter-navigation-viewport/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 3660,
+      "sha256": "08b286b119465fba999cc820f8f6ec2c3c203326f0ef4071aa32b83bc88142cd"
+    },
+    {
+      "path": "NVIDIA/skills/skills/i4h-lerobot-viz/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 4649,
+      "sha256": "1421577340b4bd37f4c9d8633c9c0972ddf0cc181ed231625a90e4a602bf0ed3"
+    },
+    {
+      "path": "NVIDIA/skills/skills/i4h-workflow/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 5869,
+      "sha256": "05e17615e5f6f82a8ac9d31823c7b1819a0d0b1bc1da3eb5c6d4c470e644286c"
+    },
+    {
+      "path": "NVIDIA/skills/skills/i4h-workflow-create/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 7741,
+      "sha256": "c8fbb7bbb13f9611ae7eaf73f430df9488285a0a4c71a0e36eb25814119b9089"
+    },
+    {
+      "path": "NVIDIA/skills/skills/i4h-workflow-dataset-annotate/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 10916,
+      "sha256": "7422102266c70f79b472a7cc13505ade5cb4d7202b7f4579bf0f47ce465b92a6"
+    },
+    {
+      "path": "NVIDIA/skills/skills/i4h-workflow-dataset-convert/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 5412,
+      "sha256": "a72783b90ab4bded94b42fb339b2bb6ed6625e3b18096027885def8807118b1e"
+    },
+    {
+      "path": "NVIDIA/skills/skills/i4h-workflow-dataset-mimic/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 6567,
+      "sha256": "0f26038e3e3d4cad145b2f9165e1b47e0201be69c93199b5f3787e93d340f92e"
+    },
+    {
+      "path": "NVIDIA/skills/skills/i4h-workflow-dataset-replay/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 5008,
+      "sha256": "9a973975fde835f95352ca5a2dc7d5bd4a47546556b080edf7b7e9f16332fbe3"
+    },
+    {
+      "path": "NVIDIA/skills/skills/i4h-workflow-dataset-teleop/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 8009,
+      "sha256": "ee1643b920e0c60df4e7183e8dbc5295ec0d3ea775256c085841c6a774ce6364"
+    },
+    {
+      "path": "NVIDIA/skills/skills/i4h-workflow-e2e/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 5586,
+      "sha256": "d95450819a16ae0f553a943630c0223a7b71fdfd021fa4ddb698c0960226c5ec"
+    },
+    {
+      "path": "NVIDIA/skills/skills/i4h-workflow-finetune/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 6298,
+      "sha256": "2ceeb6c29af6d1d2db6eaab3753f83958b6b8ca579635f1cf63a0f34d1b0e92d"
+    },
+    {
+      "path": "NVIDIA/skills/skills/i4h-workflow-scene-edit/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 19857,
+      "sha256": "7decc4333d5fb2f0f3b89e02722c605b5765baba07c1ea0b695b3a2f83d33ea2"
+    },
+    {
+      "path": "NVIDIA/skills/skills/i4h-workflow-setup/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 4700,
+      "sha256": "4cc5a166a2c99de89b095de096e01db4fa51901631d7dcd9f6ca3c8944522397"
+    },
+    {
+      "path": "NVIDIA/skills/skills/i4h-workflow-validate/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 11788,
+      "sha256": "54e68d92f89f30db8e8cfddfb14b6e87d6697785715a11e26d542c2edddc13c4"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-build-source/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 20078,
+      "sha256": "3322a4e010028ac6b11140dde9851c858d758869a69fe13a95d3461d50ca15ce"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-customize-camera/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 9840,
+      "sha256": "6568b29b31be2c7d83a10eccb9f00e9fb3719014e4d354fca16a738d9ce43a6f"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-customize-clocks/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 19128,
+      "sha256": "9e1bc4ae8e9b50909b14f250eb9d9439c882ee33811bf2e52a6cf696886917b5"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-customize-fan/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 17206,
+      "sha256": "120a4bc0e466bacba85cac4f294e90ff3be93ce721b54b1ec9a1662b36f18c18"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-customize-mgbe/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 8276,
+      "sha256": "745ab5cab97e54fab80e20ef46f1987b00c472645065209628b5992979ebc71e"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-customize-nvpmodel/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 17884,
+      "sha256": "e7f45f72b2287337fa50d510448eb99a9cd75f5e11db9bb1b25d570bfe591ef4"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-customize-pcie/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 9336,
+      "sha256": "38d55e9897a2725df6fea85cf9a90d7d64cb625e5ed21466de753ccb23285250"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-customize-pinmux/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 9723,
+      "sha256": "0af6f45689b4498a42f237d1901d08f02caac8128c287d3a5157d167acd33c8e"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-customize-uphy/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 9488,
+      "sha256": "c45e3101ce2df737a1fd618f12929bc1393711c6b3ffcf5d243d80a787390648"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-customize-usb/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 8397,
+      "sha256": "5c08383c04ad1f55ad452139e4e428616a42eaefe4559d6d7aa4e4f96f5e88c2"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-derive-carrier/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 16969,
+      "sha256": "770df96468b5475fdfbdba5685de51a2e230641b54e9af6e8800cca5815e5733"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-diagnostic/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 10834,
+      "sha256": "5c2d3242b0d493090c3534c21cb9b087f85214956a216e7fae9525f3fc4cde5c"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-download-bsp/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 11824,
+      "sha256": "47cb24be68f03b002eee3dcf43c9defb59641fc37422f95671d49bb402c0b114"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-flash-image/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 19769,
+      "sha256": "2b2d429830ab2454a143111f64a2f7072b76247655a79ee771da7389ce56d633"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-generate-kb/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15236,
+      "sha256": "8168eb132a4b016779f776d39fc0dfac0280712834327c3c676f28264a995fd6"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-headless-mode/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 7717,
+      "sha256": "91f2f17fb9e54aaceb6e1e876292e8f7182483715a120ff8f68992c96b281cb8"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-inference-mem-tune/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 11436,
+      "sha256": "329a322031d2971ad46e2d88bd4744219eeb788e03cbd33001aa4a4fe35c19ab"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-init-image/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 7285,
+      "sha256": "12ce4a63ae000c122eeeed9e0bab776066bab6f921cf90ce7366a9b74b9075eb"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-init-source/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 17065,
+      "sha256": "94f34c1bdc43bc95d77fe26f6474e5817e3f5d5ab4c113582e58d959d5f7cd1f"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-init-target/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 19136,
+      "sha256": "6e619a90d06ce26e90fdb6a37b5a53aa48be81b3ff38cc95d34187bc8980c2f9"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-link-docs/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 13390,
+      "sha256": "ca96ac6bba5ebafde5214a1b0b38a6f5b331a077135633de4abafd8b96c157d4"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-llm-benchmark/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 12242,
+      "sha256": "53432dfa4d208879424bce6be9e728d7af63935115ab6f27cc42506911413c71"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-llm-serve/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 12090,
+      "sha256": "8534775ef77268e68133302a8164542cd925a6ecedea41631c6a192f72f94cf5"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-memory-audit/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 9114,
+      "sha256": "c751cb62c4a6b4ac4286528dff868d3266184ee7bd91ec6de818d456bb538cdd"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-optimize-memory/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 8148,
+      "sha256": "94401c223ed5ba0a7cf6af35af66deb140f75ce42dee47d7f388e5d8a2348be6"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-package/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 7336,
+      "sha256": "e7f8ab40a2ba875045fa3fb15f524394cee1d85b4bbf7f80831fc79acec4dbd0"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-print-bsp-info/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 5108,
+      "sha256": "6b7890c7a2c0757f598c54032aa19e239e1f543db03d325782f4e9dd14e6bdaa"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-print-device-info/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 5211,
+      "sha256": "b305bb2ec752174857eed7156d9614578ee4a014bdf9222a695cc81421c7240a"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-promote-image/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 20046,
+      "sha256": "8cdfa699298ee267d83012085ab56232688edbfdf791abae2b0e05b5df524ee6"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-quick-start/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 18879,
+      "sha256": "92523aca2210b1dcf977e3efdd126e9ecbb5b6527d866e837bed844d6248ad5c"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-set-target/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 6951,
+      "sha256": "4f4747241b1a8ece25a4671003972e2d282436479087fdf63038ab0d8e141665"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-speculative-decoding/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 4832,
+      "sha256": "a94e228320c83370322f427d3245abe0c03f3963e10db7226d8beac40f5cc0fe"
+    },
+    {
+      "path": "NVIDIA/skills/skills/jetson-validate-image/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 13940,
+      "sha256": "89ea19249821528e1afc2c111fc55477f2e6df6df812ee12391eb2e4204d89d9"
+    },
+    {
+      "path": "NVIDIA/skills/skills/launch-nemo-rl/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 17864,
+      "sha256": "2c3b61209faeb629c2eef3c0d65b7e7806d6abfa19075cea455ac48a09e8ea4c"
+    },
+    {
+      "path": "NVIDIA/skills/skills/mcore-create-issue/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 6372,
+      "sha256": "7c06cfe897a53f7e1230bdd9525bbddeb19144c33373a31283b1a54314dba88d"
+    },
+    {
+      "path": "NVIDIA/skills/skills/mcore-linting-and-formatting/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 1628,
+      "sha256": "8cf1cb7df99031f69af06079b7f8dcc755bab653849097f14f6d60c14f267338"
+    },
+    {
+      "path": "NVIDIA/skills/skills/mcore-run-on-slurm/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 7235,
+      "sha256": "09d08fecad809510c20ab45b11ce01e8677d78a6f115dbbefc4340927ab8832c"
+    },
+    {
+      "path": "NVIDIA/skills/skills/mcore-split-pr/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 4484,
+      "sha256": "0f3d40922d3c57eb6eba1ed74b8b6cdb3e87a469c1e6afd41541d2fed72e21a0"
+    },
+    {
+      "path": "NVIDIA/skills/skills/mcore-testing/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 7443,
+      "sha256": "a43229bf5eb517b12742bfe9b27398c6d5854af7f2afd7906fcbfecdc96da3d8"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-automodel-distributed-training/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 19262,
+      "sha256": "565716e3b7d61c2ac2e438b51c64df52c15cf029f27e02c59ac2aa2a7a1a91ef"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-automodel-launcher-config/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 8800,
+      "sha256": "3fab626f05d1d481de9d2c2a590e3932793ab2da74c2abcae7286d9ad266e528"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-automodel-model-onboarding/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 19531,
+      "sha256": "4e4eb5f36d82d5a8c3ad8d86fb32bebb4de7c315e47a325f76961647af9c4140"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-automodel-recipe-development/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 11396,
+      "sha256": "9c588c650e181e266600e03dc62af1cc49932f69fa93b61ffcba5e55f832b52f"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-data-designer-plugin/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 5982,
+      "sha256": "2c9fb62205bce7e94ae17ae594583b01e7bc4a8b5c2ed5440731fca775e67334"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-evaluator-plugin/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 5225,
+      "sha256": "7f83a416a1252c78f60a7ef3df5780beafef2a7069e037f408ffbf3f27b27d26"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-mbridge-mlm-bridge-training/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 6296,
+      "sha256": "7eae976eb49a73e87d1e77a5295c3a79e4f1fac7a70dd0643cbffc5d4d3801c1"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-mbridge-multi-node-slurm/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15784,
+      "sha256": "1755991a2310d06d8a98d8576b14ce7e8b14c6bddb0901c4a1eb11350be64535"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-mbridge-perf-activation-recompute/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 9197,
+      "sha256": "e4244526231220b8a6745e362d29dee5fe0239239c5f3b46b4060316fa86a982"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-mbridge-perf-cpu-offloading/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 9328,
+      "sha256": "8654c5cbc5e161e3475c21b40ed3e57c181a15643b27ab5d27ca6d6ef28afab0"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-mbridge-perf-cuda-graphs/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 14089,
+      "sha256": "24c276f4810cba126cf6f3977b462b9aa4d3bbb1b7760269afa1baab9303316b"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-mbridge-perf-expert-parallel-overlap/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 11517,
+      "sha256": "06ede723c0149b6226485a904104122b57074d445419ac40e366bfa7c4c56c43"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-mbridge-perf-hierarchical-context-parallel/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 5641,
+      "sha256": "5881cb210e69f1875dfcec3e34caa614a95c67fd972e6baf8fb740b644bf8609"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-mbridge-perf-megatron-fsdp/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 3892,
+      "sha256": "1fdbfd0eaac5bb3b1aa8eeaac5b969195426d82378a4f74383e297be2f60b409"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-mbridge-perf-memory-tuning/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 14433,
+      "sha256": "3e40e553688d53b8d73b0759ad0f523a0791bf622015d34ee97f631ab617664c"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-mbridge-perf-moe-comm-overlap/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 5053,
+      "sha256": "3598fd1dfee0d53ee03fb55834ff1c9ffceadb84c57a30d8cc218e6f48c8228f"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-mbridge-perf-moe-dispatcher-selection/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 7950,
+      "sha256": "45ef7dbdfb45aaea37d7b18fad2494d47260a7c4a3c94ce5578a76721b4b264f"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-mbridge-perf-moe-hardware-configs/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 6021,
+      "sha256": "7c481040880c803b4d59f73d91a9b75fd6c35dcb5c6a89efdc029879ee10b2a1"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-mbridge-perf-moe-long-context/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 4935,
+      "sha256": "5fef955b43953fcf0191874aa411293533ab6a79f8cb5e863af3bcc77bf1acbd"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-mbridge-perf-moe-optimization-workflow/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 7259,
+      "sha256": "7a1aa370bdb3ac50b2c8d1c2e2e11c7d73d55c56cada05d0a60d18b03f5142a8"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-mbridge-perf-moe-vlm-training/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 5141,
+      "sha256": "05233919a18709017bdb4a553a39b503fb2baa08eb83261dba029c3ec309777d"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-mbridge-perf-parallelism-strategies/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 9580,
+      "sha256": "3036c4f17732215b5692841b1cd34b8b3acaedbd3d099bc7eaf8e259e5935bec"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-mbridge-perf-sequence-packing/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 7584,
+      "sha256": "3b91e925f22cc120ba6ed05ffa6acb417b76124d01dfc6c774bb167702f790ae"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-mbridge-perf-tp-dp-comm-overlap/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 3694,
+      "sha256": "0cc7266274d77a5d06ad40a5aedc15947a4c6d00922f6dc9a84831a17694078e"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-mbridge-recipe-recommender/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 19417,
+      "sha256": "9aff064285ddfdddc5d7a0ff39d1c0a481380452c0d2eab15a7ec5657d071ac5"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-mbridge-resiliency/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 11324,
+      "sha256": "026c7e4d9b0994f9d5bc8da3d58e2504d3836b957bc90ac5cb4c56e816d8cbef"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-relay-debug-runtime-integration/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 4120,
+      "sha256": "0603669614c33eb51270f4c8fdd875b290e0f50796516c357469cc7956da4eba"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-relay-get-started/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 6052,
+      "sha256": "c0da33fef524a49313efaa5a6efb3bfe036e8eafd1535cdb4fea85ff69abb79e"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-relay-install/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 6956,
+      "sha256": "60d9d46cede2355719b529c15fd4efda0f30eed1095e5e7ff98b73eff3bd2554"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-relay-instrument-calls/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 4147,
+      "sha256": "ccb99a894d3315062781468f7a9ab777c0a7d265a136733a333b7444f049caf9"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-relay-instrument-context-isolation/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 2667,
+      "sha256": "3a6faa4fc1f542fd09c3a6dd42dc90241ebb93b59c7099f2a95aa46ebc5952b4"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-relay-instrument-typed-wrappers/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 3461,
+      "sha256": "673ed87e9940805158b6570077d74b95eb44d16f9c4441d1f8f989833e452df4"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-relay-migrate-from-flow/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 6475,
+      "sha256": "6fc236f654906871b539a1c9a2675d3358cf92f812d11f3b24d93393ad40e245"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-relay-plugin-adaptive-tuning/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 4517,
+      "sha256": "4b4f4ac9ca3406d9cf73092523b128db941793f7d5443cde32ece6104dc2336b"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-relay-plugin-build/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 6597,
+      "sha256": "ef1d197b6a2bea1b9369c06151c54b8d5cbf4ffc80d6c936b2ec005bc1f26930"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-relay-plugin-observability/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 6782,
+      "sha256": "cb1898da2c52d61a1c8ee941284dc5be2128839bacfa0e93343b97c7ecca1f41"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-retriever/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 3417,
+      "sha256": "14192c989e1e4bae65cd7d2f099ad291b3ff721b874c5e3d9e11b0d7ed758882"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-rl-auto-research/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 9168,
+      "sha256": "5d79495dfc7dda03ba5b8567b7213acf659d07374608f711d60e959d28bb5ffc"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-rl-brev-etiquette/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 5258,
+      "sha256": "ac8382cb0c563c809e9a61e5e03dadc20f027d8c472ba7f9a79f69478f4c5989"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-rl-docs/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 1428,
+      "sha256": "cf6f9256102f715984c778114aea67b2c97c17e30aa6b9859949b99f5f9dfb87"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemo-rl-session-memory/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 5450,
+      "sha256": "4b9691d8eca60e4d4c737857b61074d267dbed27814005d5cf3a2ecdc60ddaea"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemoclaw-user-guide/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 4770,
+      "sha256": "0447a641558b29bd5f689275e3d004a091dfb59991849174962ce11d797ef3a6"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemotron-asr-finetune/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 9358,
+      "sha256": "21b1ee8086dd0ce86fcc629cc9be2f78d3fc5542d66d26f0302f0b75a619b757"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemotron-customize/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 16527,
+      "sha256": "985a97bb839e8f031a7a7c1bba67c54372fdef80ded896ba45a0b43ce83c5672"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemotron-policy-generator/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 19882,
+      "sha256": "5c9cb78cca6b5afa24742d4f387f13b34b4de63b4cf0d911ea6a569da036626d"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemotron-retrieval-recipes/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 10471,
+      "sha256": "5a4c2b4d1663c0ad7d07122caae172544d4eda6825cdf0b9ee89643756455b28"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nemotron-speech/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 9451,
+      "sha256": "43a87d9c64a5de684f06c3cd571aab128d943a352cd4a3a153d60181e7ac8800"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nv-generate-ct-rflow/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 12285,
+      "sha256": "f74c0f8063554f05b5d0306ccb262b7629a9bf13f6ad675cee1db353de9447d4"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nv-generate-mr/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 8037,
+      "sha256": "7177ff15f0380c03fe2cbca906c4fd98518d8a0d7b6aec8bffbb4619aabf7e80"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nv-generate-mr-brain/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 7992,
+      "sha256": "9ed1a5b99fd9fffdac8078610aefdfbe6f20815ed00b661fb5518ead07bf0813"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nv-generate-mr-brain-finetune/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 12997,
+      "sha256": "84b080b693dc64de6470728fe3a5500191552afeaad81daf9ccad5cc262f031c"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nv-generate-vae-finetune/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 12474,
+      "sha256": "dc047ffce1109bd657cd6a99725ec0f6dad7966e288bba7ddc8c8396e486b162"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nv-reason-cxr/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15727,
+      "sha256": "4fc7afa15551a6cb0dc1e4b7b201538e70fa8d96f548cd41ccb53c510dab3d75"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nv-segment-ct/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 8360,
+      "sha256": "72e4a90c3a83c489eb270e9c49aef0e242cae8772a0304e27d4da82c3b244242"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nv-segment-ct-finetune/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 9203,
+      "sha256": "2d19894c9ce6cfb8c4bd98de677570e4d14d1a86bc07da39a932729be3d69a1c"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nv-segment-ctmr/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 8968,
+      "sha256": "b62e52d0b2250bcdcebba6d6ef2af6a201ab62cbdfb97929a378e3afb9f7a779"
+    },
+    {
+      "path": "NVIDIA/skills/skills/nvidia-skill-finder/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 8353,
+      "sha256": "51fe4ff117f34919527ad4540513910e16eb225f7ad04686fbbe985035fdf9cf"
+    },
+    {
+      "path": "NVIDIA/skills/skills/omniverse-cad-to-simready/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 17961,
+      "sha256": "8ff34f478610613bd37aa19ce0c3b0fdc2352226ca561b831799fce4db069531"
+    },
+    {
+      "path": "NVIDIA/skills/skills/omniverse-realtime-viewer/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 7611,
+      "sha256": "6e6a1f7ed10d152be12b7d210e8f7f399c203912985cc8ade684fb18645dc262"
+    },
+    {
+      "path": "NVIDIA/skills/skills/omniverse-usd-performance-tuning/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 14191,
+      "sha256": "ba156dba3a4142aab83b2816383e87aadfea698855d7efbe7a06112074972615"
+    },
+    {
+      "path": "NVIDIA/skills/skills/paidf-anomalygen/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 17997,
+      "sha256": "4e37ca39df36dad9a3725a11a4740efad6c980b42d0d2c814284d3f438892129"
+    },
+    {
+      "path": "NVIDIA/skills/skills/physical-ai-defect-image-generation/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 20002,
+      "sha256": "02b77b4e1eedf523422a4f17fb6dd143cbfc044eca624ee8bbc716099c508828"
+    },
+    {
+      "path": "NVIDIA/skills/skills/physical-ai-infrastructure-setup-and-resilient-scaling/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 11120,
+      "sha256": "ee96598544cb3e7399c0e12c245e94104aea847bcb7d647a5b25bcb2320727ba"
+    },
+    {
+      "path": "NVIDIA/skills/skills/physical-ai-neural-reconstruction/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 16699,
+      "sha256": "8b147771121f4df1ebf1e29327ca93e22b250d0089969bd8ad824ac1ac0bcda4"
+    },
+    {
+      "path": "NVIDIA/skills/skills/physical-ai-people-attribute-search/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 10873,
+      "sha256": "715af62336a1a799b5560c39065e9fce9ec36f8ad5c45c67d38d0672fd51a945"
+    },
+    {
+      "path": "NVIDIA/skills/skills/physical-ai-video-data-augmentation/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 18988,
+      "sha256": "78f6b652e0eba4ea0a141c57f7a1b322bcf01871bc4abdb4be71b7fbc3f48f47"
+    },
+    {
+      "path": "NVIDIA/skills/skills/physicsnemo-discover/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 7464,
+      "sha256": "7ff4564485e94139d17c12552d8a2c2d57d7985297189f385692be62d71cfda2"
+    },
+    {
+      "path": "NVIDIA/skills/skills/portfolio-optimization/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 19639,
+      "sha256": "49a088b6d2d67063879d8bb585a168bbe442d36acb66e25c70309ff191d4a69b"
+    },
+    {
+      "path": "NVIDIA/skills/skills/rag-blueprint/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 11354,
+      "sha256": "7167ef6b9d4f30ffe47b698ae7fdf9f0beafe4ea9a75752a056d0e4f03d6e51b"
+    },
+    {
+      "path": "NVIDIA/skills/skills/rag-eval/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 9415,
+      "sha256": "572126a6a3e15989ba62f90fe5856b6d8eda11c9097b86889db2c6eddd612a73"
+    },
+    {
+      "path": "NVIDIA/skills/skills/rag-perf/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 16346,
+      "sha256": "81f1d3a07186d9bfe3be54ae90fdb0addfef7c23b8845affd981c9e04a57fe54"
+    },
+    {
+      "path": "NVIDIA/skills/skills/skill-card-generator/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 6429,
+      "sha256": "42012d124c5d974674015f1eca88a4d13a211fe16fc7d0a0c37f5d869d057cfa"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-analyze-changenet-rca/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 6348,
+      "sha256": "8ab15468bda62a7b5a135d5badecec2ee453921dc019c784f635599607318be6"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-analyze-gaps-visual-changenet/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 16570,
+      "sha256": "58c24ff4f15fdad740bca5e5c2785c54d5abf52efb2c9d1caec531842b487777"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-analyze-gaps-vlm-bcq/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 3606,
+      "sha256": "37cb27168b97911952dfba707a49d4f457def4e25c31b51a9f8d005c1fee46f2"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-convert-dataset-format/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 5064,
+      "sha256": "e8f28f4dee8c0305cd9e05ae9f84d52d9489ac2311b8e4d688707d77ee76bd2e"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-finetune-clip/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15157,
+      "sha256": "999c59c01a2d5b9208a0d2889d9a080a6e23c9226ea09359c5c764ad3b967298"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-finetune-cosmos-embed/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 14120,
+      "sha256": "8f8d70c5177be87aae95c5040d952a4a639beeeab124f1809c4f29256c2a7cbb"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-finetune-cosmos-reason/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 12417,
+      "sha256": "d5a2934b587b27134e0bcb46c4dcd37ad2e2a9f1f95bc8998fde6fdce578bd1d"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-finetune-huggingface-model/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 17991,
+      "sha256": "2978c20a676877cdfc413fd4535173ae5194e45d94c345df80fb776a2f683a5c"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-generate-image-grounding/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 7829,
+      "sha256": "e18fecf894263e38450e40339bdf6dfb409f5136162ee06c7369338218c6fb05"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-generate-referring-expressions/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 10191,
+      "sha256": "b3103703f2425619c259dbd14c529c6eb6f81bc6a82a225b77f88d18387ed5f4"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-generate-video-reasoning-annotations/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 11068,
+      "sha256": "01e48f17d9ec950234f5cb37733cf773840f179e139b3bc3ca9f67c63d207c67"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-launch-workflow/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 18636,
+      "sha256": "ce74fbfb3152bdc54800cff86734f3332bfda115c08a5c39dd203cfe2b81fd29"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-list-capabilities/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 3014,
+      "sha256": "92f936daeb442febf4354994857a5ae00d44b78b2772887b8de014faf8f95eff"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-mine-aoi-images/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 12554,
+      "sha256": "7ee64b6e3835ded491cca5755d5a3c3b5df4fb679a346cb6a85453a54984ef3a"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-port-huggingface-model/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 17985,
+      "sha256": "36c7717d8712a58e7195a0a05989e2ce1ecb432e2d047d6e40b618c590cc701f"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-route-visual-changenet-samples/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 12474,
+      "sha256": "652a2888a419206d5f520fea291da8e8aaff37aa7d1cbb4b01268d0daad084f5"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-run-automl/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 16744,
+      "sha256": "609fae521fef793b0abbe9541ed871277bb91a07638fab9d0da0aee1b5981092"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-run-automl-deft-pipeline/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 17586,
+      "sha256": "99f276982b5ad342a45c7a763301c87a52153e002edb288c9796e709827006ff"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-run-deft-aoi/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 14301,
+      "sha256": "49417c8e9cb7872493984bd33fed179b2095bb6fccf29f881c1295b3950b2109"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-run-inference-service/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 18261,
+      "sha256": "5e01da036218ee83340b662cf5a5b51f9512be0554430ed308611ad3777e4212"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-run-on-brev/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 9921,
+      "sha256": "ace8731dc2542439b77311d1271bb5d02e57a7b18757b4e605aeec8abbfba1e4"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-run-on-docker/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 9485,
+      "sha256": "9929c0ded63097acedee2e3a2eb174a124362fc40d4368b502cdcee9d5174c6e"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-run-on-kubernetes/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15276,
+      "sha256": "2e9af900eca00ed56a36c411428395019c11436f24c8e3a798e05b2990762975"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-run-on-local-docker/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 12315,
+      "sha256": "de114da77a6aa3b2376590d7ba753edb643dd63677069179faed9b4eaf9fa947"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-run-on-slurm/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 10021,
+      "sha256": "e7073d160eeef7142e7c4da92745cf28672a07307a31db0fbd6492e9ba60eb5b"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-run-platform/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15044,
+      "sha256": "db8066b3c8f36ce4dfca7f0949f568fb65485715c95f0b05c52b9b42e3a2806a"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-setup-nvidia-gpu-host/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 11790,
+      "sha256": "ff975f3503ec4e54436f6fe2423681dedb516b4c4bf38d07c0f14f5d3ab5c58e"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-action-recognition/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 9554,
+      "sha256": "cbba30ed9b9233e8c6eeb8e98ba803825ecee911aa65140e6cf188397bd42f1e"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-bevfusion/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 12836,
+      "sha256": "144ad5149172edd69700b0fbc0131bb1035399aafeb629d0ecd76d477fc289eb"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-centerpose/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 10577,
+      "sha256": "06deebe970bd301747e4185d227d77cbc3b1c0ba0c19e05ed3371b9ef5020dcb"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-deformable-detr/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 14639,
+      "sha256": "598c358d2a2a7c58dc44b460d32ef65968f39e19c7bd7a9f6de82faf771f97b1"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-depth-anything-v2/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 14736,
+      "sha256": "6e4fba97bb87d5707eff43682f2ba4d4eee9399257f8bc707d8ff891913f0006"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-dino/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 11215,
+      "sha256": "173a6f2a59a0907dc0f8a53a21f0bdf6dc09859f152268c749348073c7fa375e"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-fast-foundation-stereo/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 11680,
+      "sha256": "e16dd07ae81e6df6453205affd482c3e34ce1e372d276b7f7c9054297bed3b5e"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-foundation-stereo/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 11977,
+      "sha256": "5d94639a2328e3277e0178a7e37b41246263aa97eba5280034a54d4649d39a5f"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-grounding-dino/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15031,
+      "sha256": "4fc99d44184a9d15036e296cde59f124edd3428875d38a91e5f9a2a0a0f6f35d"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-image-classification/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 12897,
+      "sha256": "9c5f9e447b5da0a7a99bd6789fc535f67eb1c38f203a87dcebb0582de3370236"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-mask-auto-encoder/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 10968,
+      "sha256": "e9c86135813a93fd1f42da2f402184dae21017b78df05054bbe4602fd519656c"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-mask-auto-label/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 9253,
+      "sha256": "8fa1cf1726d37374c93b171074f02cfc110d83e57dface27dcce2d91c34ad4de"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-mask-grounding-dino/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 12985,
+      "sha256": "f68f3ae1a85fd48a60c170f45417bb4917fff9174267e1f69c650a9f8405816f"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-mask2former/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 19678,
+      "sha256": "c6b0519f5c0a1bb6c38ab4095bdbadf55c3cae689b0ef9b8b343aca242543504"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-metric-learning-recognition/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 10922,
+      "sha256": "f73fa36177b22f11edbaa393bc156ee71e45dfd3b2876764de91423ca702c763"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-nvdinov2/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 10746,
+      "sha256": "7f47ccc7a6fccd3cac861689528fa106d7107bd8e2f9dc6b0e0dc978f90c2cf3"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-nvpanoptix3d/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15335,
+      "sha256": "c6fceef697c4b22fd6d05290273349e05d2c5cf6a2f9127a54ccdaefeb4d99e2"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-ocdnet/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 13990,
+      "sha256": "e8c0c2b6d097d4a2eb3a8efead353912f3e842795daa6cacf3d8d15649afaa24"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-ocrnet/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 17166,
+      "sha256": "d157a6d8a3e4ff727dff7066cb35ec2cbf61b333f8c473552359a781f14766e7"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-oneformer/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 19633,
+      "sha256": "cd3acf2b143fb1d1b86683e2c59cd952f77676d79c4e153339299c2bf6241825"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-optical-inspection/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 12378,
+      "sha256": "a0a571d1b9f7b583971ee951a0d8e569ece31c61b37a1e1f2a6261bb8d51e1a1"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-pointpillars/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 15352,
+      "sha256": "b73c216c3fd01524090ad9f041fe927288c4f68c51ca24f4ba99ddaea8f9fd1a"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-pose-classification/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 13149,
+      "sha256": "5b82b3dbc1f33f8c3f59fa5141c161f92f19778ffd629f38aa63bb8861d20cd8"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-reid/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 12562,
+      "sha256": "ab663a79a6195d6358025acb1f6b701b4a9a892f92f7dec618ab6029b1619f0c"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-rtdetr/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 17354,
+      "sha256": "ad88a856a153898b0643600a54b3348448b7fa9cccafaadd1ebf532fdae2f39c"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-segformer/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 14423,
+      "sha256": "4f2157459328f4ca306dc575a58d20ac5046a04179774449f00554d497e48966"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-single-step/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 3920,
+      "sha256": "38a9358d96a1de59533002374011d5c4e6abf0d8f36bcfb83f22fc2169293b28"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-sparse4d/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 14834,
+      "sha256": "1c3c8f9db419e0b196e8d4483d05d18a50ae90de6fb8926b8b0f98c83ebed7d3"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-train-visual-changenet/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 16974,
+      "sha256": "22b3dff29d884081d3a3473f3fb7d952a199add3d9940b5e687e1644242c8391"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tao-validate-dataset-format/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 4827,
+      "sha256": "0c96702d12b71b78ac34f4dc5a7ba9375557038bcde3963ceca004d8a678e08e"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tilegym-adding-cutile-kernel/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 8230,
+      "sha256": "27068b4e36a8dd2ea782c3c9661452b157cafc36a5e245bda6729e2fe18b6d84"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tilegym-converting-cutile-to-julia/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 6932,
+      "sha256": "2ab5d1dd79b2466adc437b00a4c913734b5254dfd670eb061c187df1837dc022"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tilegym-converting-cutile-to-triton/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 17062,
+      "sha256": "1eeb791c6eb9fa50a4acd7b8807084da3d27663fa9e3bff806a45802c9f9375e"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tilegym-cutile-autotuning/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 18703,
+      "sha256": "f6ec77fb83a032497735ef41c90a370d7c9261d6ee413c590f289caf805de8af"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tilegym-cutile-python/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 20393,
+      "sha256": "48cb2d85bf74a75faad90d7d024159139d179abb62df0bb5611ce8dbc6d17dba"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tilegym-improve-cutile-kernel-perf/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 7812,
+      "sha256": "50031cc274b9039b70a4d59c62efc3c7b737a5c0c450c3779f68295129052ecb"
+    },
+    {
+      "path": "NVIDIA/skills/skills/tilegym-monkey-patch-kernels-to-transformers/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 2966,
+      "sha256": "de7a00ee69c859ccbda4ba8ac91a26655491e9e3039b1ae0cadc7966a8aa7a93"
+    },
+    {
+      "path": "NVIDIA/skills/skills/vss-ask-video/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 5648,
+      "sha256": "a5239391fa1c4f5ec36397984fe5d714ab7f591f640148eb5c98582fbe88b43f"
+    },
+    {
+      "path": "NVIDIA/skills/skills/vss-deploy-dense-captioning/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 13297,
+      "sha256": "93d784c4a371982f70083cc9051a03ca7e73336e9d090730375e5d44399c517e"
+    },
+    {
+      "path": "NVIDIA/skills/skills/vss-deploy-detection-tracking-2d/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 19465,
+      "sha256": "f5514e079c7ba7564042aa2f0299b5f7c2333a7aa31ec8076a64185bd34a5905"
+    },
+    {
+      "path": "NVIDIA/skills/skills/vss-deploy-detection-tracking-3d/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 19320,
+      "sha256": "1cdb2fbbbe7c158bc2aabceb97165c6bbccb2f310cd226b225f00a6d9caf5c20"
+    },
+    {
+      "path": "NVIDIA/skills/skills/vss-deploy-profile/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 20076,
+      "sha256": "d777f8b46d5cc48d1a7a460202290f3d823be5a153ba172a14d367e9c4475f81"
+    },
+    {
+      "path": "NVIDIA/skills/skills/vss-deploy-video-embedding/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 14670,
+      "sha256": "a023102dbdef6d63e5da460d4b42a18abb48015d968e93384c43505a6b45e828"
+    },
+    {
+      "path": "NVIDIA/skills/skills/vss-generate-video-calibration/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 16819,
+      "sha256": "8e4d22366e5db87d1536858fe6a836c8f99fc49f22b632556d337e24afebfb33"
+    },
+    {
+      "path": "NVIDIA/skills/skills/vss-generate-video-report/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 18707,
+      "sha256": "197314d3a391be89c7b263482b2fa0ce9ccafe5ec19a750630a722803e7b2f14"
+    },
+    {
+      "path": "NVIDIA/skills/skills/vss-manage-alerts/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 18056,
+      "sha256": "6c7254848e512b5a0ad006919d99488ba80755f2fa22fa8dea7089e427348a28"
+    },
+    {
+      "path": "NVIDIA/skills/skills/vss-manage-video-io-storage/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 20077,
+      "sha256": "41451937ad703a9d9104c6ea63028629a6fe04653436d9e12d5c4008f3388552"
+    },
+    {
+      "path": "NVIDIA/skills/skills/vss-query-analytics/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 9415,
+      "sha256": "38925c4bc4e29eb51f0bb85de87dfd70adaa81c3a488ff7e8d72728403205ac5"
+    },
+    {
+      "path": "NVIDIA/skills/skills/vss-search-archive/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 16926,
+      "sha256": "337ae027bfa4de55716a0ee0c7ba4f22d2c965aa863191d0337ec1eb957f331b"
+    },
+    {
+      "path": "NVIDIA/skills/skills/vss-setup-behavior-analytics/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 7864,
+      "sha256": "08d757a9a558cda1ecf4c4bb5abfb81e8dbce11dcab255552aca7239f9d77f4e"
+    },
+    {
+      "path": "NVIDIA/skills/skills/vss-setup-video-analytics-api/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 9293,
+      "sha256": "4d96ab4482f490181641c97c56623f2e615e93825d2c1d8ea4452f2708595c6d"
+    },
+    {
+      "path": "NVIDIA/skills/skills/vss-summarize-video/SKILL.md",
+      "repository": "NVIDIA/skills",
+      "bytes": 18864,
+      "sha256": "99ab3d6a7ddc9c258d16c9d20e1670b8791dd22053283836538373a8291fddd6"
+    },
+    {
+      "path": "addyosmani/agent-skills/skills/api-and-interface-design/SKILL.md",
+      "repository": "addyosmani/agent-skills",
+      "bytes": 10307,
+      "sha256": "293db2903b41316a5109a1e0ce3e1740eeafae31735bc1f9143dafbfd1187363"
+    },
+    {
+      "path": "addyosmani/agent-skills/skills/browser-testing-with-devtools/SKILL.md",
+      "repository": "addyosmani/agent-skills",
+      "bytes": 14539,
+      "sha256": "4e3aacd6a380cd25bc6c2d67fdd1c926a9b22535b8a62109ecd33cefd909e3d9"
+    },
+    {
+      "path": "addyosmani/agent-skills/skills/ci-cd-and-automation/SKILL.md",
+      "repository": "addyosmani/agent-skills",
+      "bytes": 11332,
+      "sha256": "a6ed8ed56456b01ff8314c44eefc69897d9905ae4e06bb2b7036286efb79b5f0"
+    },
+    {
+      "path": "addyosmani/agent-skills/skills/code-review-and-quality/SKILL.md",
+      "repository": "addyosmani/agent-skills",
+      "bytes": 20543,
+      "sha256": "bec431b759ff389e47b8d2c9d74e1981ff93cf5f3c36b4a3b6a71a75c250be2c"
+    },
+    {
+      "path": "addyosmani/agent-skills/skills/code-simplification/SKILL.md",
+      "repository": "addyosmani/agent-skills",
+      "bytes": 13545,
+      "sha256": "f0c5ed754057eb0c1e027e2587f59de816651feb5e837242296c43ea21cf621d"
+    },
+    {
+      "path": "addyosmani/agent-skills/skills/context-engineering/SKILL.md",
+      "repository": "addyosmani/agent-skills",
+      "bytes": 11070,
+      "sha256": "ff9d4e5706bdd2eb7de1bfed569f1f42d28e478979ce6fcc32e617e7861b491d"
+    },
+    {
+      "path": "addyosmani/agent-skills/skills/debugging-and-error-recovery/SKILL.md",
+      "repository": "addyosmani/agent-skills",
+      "bytes": 10837,
+      "sha256": "67ce2c9442da0c5a6e3515617fc9c4003cfe232ef7c7210da342f40f508f9958"
+    },
+    {
+      "path": "addyosmani/agent-skills/skills/deprecation-and-migration/SKILL.md",
+      "repository": "addyosmani/agent-skills",
+      "bytes": 12516,
+      "sha256": "92d9846321fab624eded7ac55d19a7738cfd2321c2be2e35eb153dcacf7359de"
+    },
+    {
+      "path": "addyosmani/agent-skills/skills/documentation-and-adrs/SKILL.md",
+      "repository": "addyosmani/agent-skills",
+      "bytes": 9782,
+      "sha256": "b867bb80fb681257c7625ae59a0dfd849b1fc0f0a2f0338e7923f38030df9793"
+    },
+    {
+      "path": "addyosmani/agent-skills/skills/doubt-driven-development/SKILL.md",
+      "repository": "addyosmani/agent-skills",
+      "bytes": 16487,
+      "sha256": "59aef769adeae40aad67a1d54474aaf914ea7ecdfc2a4752a54840a8d29f80de"
+    },
+    {
+      "path": "addyosmani/agent-skills/skills/frontend-ui-engineering/SKILL.md",
+      "repository": "addyosmani/agent-skills",
+      "bytes": 10705,
+      "sha256": "9c284b1f06d617b289c0d250004af5cbaedd5135071e1b17c0211a0aa03a73a4"
+    },
+    {
+      "path": "addyosmani/agent-skills/skills/git-workflow-and-versioning/SKILL.md",
+      "repository": "addyosmani/agent-skills",
+      "bytes": 14000,
+      "sha256": "51677cf03845dd29d08ea4d3125665057b720aea3dccc572f25d8b172409ece6"
+    },
+    {
+      "path": "addyosmani/agent-skills/skills/idea-refine/SKILL.md",
+      "repository": "addyosmani/agent-skills",
+      "bytes": 8111,
+      "sha256": "79e773058963adc7646b0115b4f8a4afc974c5ff95843e4ef1cafff3cb51899e"
+    },
+    {
+      "path": "addyosmani/agent-skills/skills/incremental-implementation/SKILL.md",
+      "repository": "addyosmani/agent-skills",
+      "bytes": 9501,
+      "sha256": "f3336e581a5247d9a6a58096f0015dbbfb7673a35e71aebd39491c55662a1906"
+    },
+    {
+      "path": "addyosmani/agent-skills/skills/interview-me/SKILL.md",
+      "repository": "addyosmani/agent-skills",
+      "bytes": 14359,
+      "sha256": "1d94741d10d2c826cd0c191aea3981ee94c8abb27ef2a166f6a372117d06448f"
+    },
+    {
+      "path": "addyosmani/agent-skills/skills/observability-and-instrumentation/SKILL.md",
+      "repository": "addyosmani/agent-skills",
+      "bytes": 11047,
+      "sha256": "40c59a0c3ba28f5697600add521e38f81f880f986317628cdc0df9bdb8acf126"
+    },
+    {
+      "path": "addyosmani/agent-skills/skills/performance-optimization/SKILL.md",
+      "repository": "addyosmani/agent-skills",
+      "bytes": 15139,
+      "sha256": "64f4f4105b66d155f0a6654dd8d542a58329d282c4e07bc82881bb755230fb29"
+    },
+    {
+      "path": "addyosmani/agent-skills/skills/planning-and-task-breakdown/SKILL.md",
+      "repository": "addyosmani/agent-skills",
+      "bytes": 7653,
+      "sha256": "1fd1c06f06042d60123ec7144fd7f16655993b6cbc152e76eb5fcdd1a4805a6c"
+    },
+    {
+      "path": "addyosmani/agent-skills/skills/security-and-hardening/SKILL.md",
+      "repository": "addyosmani/agent-skills",
+      "bytes": 20511,
+      "sha256": "266c60e073bc81651ad070a1427a93af4d062dc44470580eae31806b38561833"
+    },
+    {
+      "path": "addyosmani/agent-skills/skills/shipping-and-launch/SKILL.md",
+      "repository": "addyosmani/agent-skills",
+      "bytes": 10113,
+      "sha256": "f45d9bb9e96fd1a49f3231179acac9d3cd2bbe02f237f0e08fa86866cc57909a"
+    },
+    {
+      "path": "addyosmani/agent-skills/skills/source-driven-development/SKILL.md",
+      "repository": "addyosmani/agent-skills",
+      "bytes": 8204,
+      "sha256": "b979e7531ea601ed14a090f32a5b135db517c48ab9821c5e8b09efd80f4ff4d8"
+    },
+    {
+      "path": "addyosmani/agent-skills/skills/spec-driven-development/SKILL.md",
+      "repository": "addyosmani/agent-skills",
+      "bytes": 8527,
+      "sha256": "af5b873414a8b45b96b0d30d5297400f55eb3a56425161a088e470c14260a1e5"
+    },
+    {
+      "path": "addyosmani/agent-skills/skills/test-driven-development/SKILL.md",
+      "repository": "addyosmani/agent-skills",
+      "bytes": 16477,
+      "sha256": "71fdddb96c2c54041fcfbfdaef3c172b202fb9240b609e658d9d82edbed6cad1"
+    },
+    {
+      "path": "addyosmani/agent-skills/skills/using-agent-skills/SKILL.md",
+      "repository": "addyosmani/agent-skills",
+      "bytes": 10337,
+      "sha256": "a5bf05293cfb67af9c5e21e14023d723d2ac8ca42912cef4cee29fbb07e67d64"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/ansible-generator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 9168,
+      "sha256": "b0643e15354eb3c49d316c54ba5fe6dde8066ca605886e221ee2bd699804c3ec"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/ansible-validator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 41065,
+      "sha256": "7fe3137edee6841cbd4b1714e9674ef0f176ce376e611ec058cbc3570955fad9"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/azure-pipelines-generator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 7606,
+      "sha256": "99e7ae998f87bb6a54ee543f84539efe8e1bc46a9da3bb7a8ed584d1f5c96428"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/azure-pipelines-validator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 6188,
+      "sha256": "6f2971f08868e27feab7593c9487841a3d483c1c1cea2cd3b9e7dc63a77b1f6e"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/bash-script-generator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 6812,
+      "sha256": "b47b1523883f16e171bfef13efa34ee0786b6e2225ef6f5e91b5bd726d43d4ab"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/bash-script-validator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 7642,
+      "sha256": "13059ee80d914a1f24577af583a571bccc0aa520b4115b2c4baba4809ac7d33e"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/dockerfile-generator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 30852,
+      "sha256": "b7fc8d970fbe864e8c0fb7025655375fb338b3f309b84c72c4c8cfa52c0d4499"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/dockerfile-validator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 9250,
+      "sha256": "6b02fd078c813e49c11bc1ad6e1c82bdbe11c65ec2c54fb7c9b0ba1ea6a209d9"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/fluentbit-generator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 8447,
+      "sha256": "cedb482b9aeb6ec681128f5db59981b0883747cd0533a17fbbc1c84db6fe8bbe"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/fluentbit-validator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 5614,
+      "sha256": "62eb91991939eaa5923e043c7cfe5e1ed2cbe547fd64a2423e30e601126e9647"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/github-actions-generator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 12215,
+      "sha256": "485a62c648f2a163fe479948409bd4b146dd3b47712f742452efadeab6dcbe3a"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/github-actions-validator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 18891,
+      "sha256": "aa9fa15e70ef975eb14dc58f6dcf8dd671a33a585c7d77f70f87565c94d220e0"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/gitlab-ci-generator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 43464,
+      "sha256": "5933f0ba4ba588c832a1ec0ec7c9db58f95c95c770940e909240bd5cbdb92509"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/gitlab-ci-validator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 6461,
+      "sha256": "0cbfbb1431311c9d9e2c8da27944ad30ec66cad31e9741740539f0c5d4648333"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/helm-generator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 11696,
+      "sha256": "71e7bf30488a8712faaf8e0b9576f349dafd3b56b4cdd5e776691f73a65f6df0"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/helm-validator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 35061,
+      "sha256": "88a00dc66996b57b38bf13f813b0ccc8048c783a4cd8fb7b38f9f024ffc2046e"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/jenkinsfile-generator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 14875,
+      "sha256": "eebcb2680fbb4a7462d676aff066d154782a4139aab02d58bb52c66d2d3fec5c"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/jenkinsfile-validator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 10697,
+      "sha256": "4df986b225021446a385de26fb6b42829454e79f1062a317602566231d5b594e"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/k8s-debug/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 11433,
+      "sha256": "e1d4a3e516153475a688d533944a1644f11af18cfed3598c66c3bf4f068ea741"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/k8s-yaml-generator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 8866,
+      "sha256": "f8133da33f1cae792e57399d2dcc0d700e05ce8819cce4047a0fb4a226432efb"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/k8s-yaml-validator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 33101,
+      "sha256": "0b12ebec5d9c93b2ecf6ee3a02308ba352a749dfbe8ee293b357bc43747619b0"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/logql-generator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 15358,
+      "sha256": "7f2c47a47624268f46f8526bdad8387601d7cd701e7d549d6ac8c3ed0858bc53"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/loki-config-generator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 18593,
+      "sha256": "9adc7ec99977379fc6694fb9b05629258e1c2ff920708514afe5f902860f1310"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/makefile-generator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 22063,
+      "sha256": "1dd5902d5d3d696dc3bfacc361ba2a0a85404e3fa06a756b8d364468c6a48f2c"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/makefile-validator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 7215,
+      "sha256": "758d3db075a39e71f878dc843cffe4e7c775c90def3de9938880146abb4ecde5"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/promql-generator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 36864,
+      "sha256": "e0ef53892d987ab969149a47499ea8fc205e467ccf20dc4dacb2df463ed06ba9"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/promql-validator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 15990,
+      "sha256": "ef8e6ece056ac4f2fab9f1be4e935d7caa235226990d2c29ffda4cc6f8f042f0"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/terraform-generator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 31423,
+      "sha256": "ff3ee314acc7e95cf4c0fa62405e6c78cde6d0c710445d0663f415670df4a8e3"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/terraform-validator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 19977,
+      "sha256": "654761796a39ff234f70321bf96478a98cfa246adee94392ff9019d6652a436a"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/terragrunt-generator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 31905,
+      "sha256": "f244ac2ca462399a3d7c13554bd387b47474520c338897b862c8dad6c26401d6"
+    },
+    {
+      "path": "akin-ozer/cc-devops-skills/devops-skills-plugin/skills/terragrunt-validator/SKILL.md",
+      "repository": "akin-ozer/cc-devops-skills",
+      "bytes": 34800,
+      "sha256": "ca994497d009bcf013b542231ffe89be84c21bebb80c4e449d5795fc8e8f55f7"
+    },
+    {
+      "path": "anthropics/skills/skills/algorithmic-art/SKILL.md",
+      "repository": "anthropics/skills",
+      "bytes": 19769,
+      "sha256": "3bc4092c09804853186524c826bc0621b940bb6122c05b84496dff95388e6eef"
+    },
+    {
+      "path": "anthropics/skills/skills/brand-guidelines/SKILL.md",
+      "repository": "anthropics/skills",
+      "bytes": 2235,
+      "sha256": "1120b3769e2985cefb3d25be981b1f914abeba57ae079b83c20c666c164fa9fe"
+    },
+    {
+      "path": "anthropics/skills/skills/canvas-design/SKILL.md",
+      "repository": "anthropics/skills",
+      "bytes": 11939,
+      "sha256": "a1f288079624402f30682753c1d43920b6664785698d21d3e7aa197450a6448b"
+    },
+    {
+      "path": "anthropics/skills/skills/claude-api/SKILL.md",
+      "repository": "anthropics/skills",
+      "bytes": 71590,
+      "sha256": "dec5113c74b754a462aa43f47dfdf8e4739d1b411bd81596d86c113399d6f94e"
+    },
+    {
+      "path": "anthropics/skills/skills/doc-coauthoring/SKILL.md",
+      "repository": "anthropics/skills",
+      "bytes": 15815,
+      "sha256": "2e47d78846faeea4a56e9809c52700087a15a2155a3f293a3efbaded81398ef4"
+    },
+    {
+      "path": "anthropics/skills/skills/docx/SKILL.md",
+      "repository": "anthropics/skills",
+      "bytes": 6911,
+      "sha256": "8017469ea95fb7d28225c62daf8e2f3492a7b516fc64c18c28977cbf8980b7fe"
+    },
+    {
+      "path": "anthropics/skills/skills/frontend-design/SKILL.md",
+      "repository": "anthropics/skills",
+      "bytes": 8260,
+      "sha256": "1608ea77fbb6fc30d13a97d12cfa8ebf31358d40f0dd97beed24829d6b3f45dd"
+    },
+    {
+      "path": "anthropics/skills/skills/internal-comms/SKILL.md",
+      "repository": "anthropics/skills",
+      "bytes": 1511,
+      "sha256": "067b7587a344a928fc6534ef66b1bcd591fc7c26d207ea7ca3334aeb678d6475"
+    },
+    {
+      "path": "anthropics/skills/skills/mcp-builder/SKILL.md",
+      "repository": "anthropics/skills",
+      "bytes": 9092,
+      "sha256": "0f4592dcb53cf2b5d6b7febee6b4152018b565551a1c29e3c612f57b218ab295"
+    },
+    {
+      "path": "anthropics/skills/skills/pdf/SKILL.md",
+      "repository": "anthropics/skills",
+      "bytes": 8072,
+      "sha256": "9f78b8359fbd4943ad260a7a1e436e5a96503406d6c34e99f69223d647d85b9c"
+    },
+    {
+      "path": "anthropics/skills/skills/pptx/SKILL.md",
+      "repository": "anthropics/skills",
+      "bytes": 20796,
+      "sha256": "a7ff03e2c85b636f55232a6b1555f5dd90216b7a1a359ab289d8364e6acbc6a0"
+    },
+    {
+      "path": "anthropics/skills/skills/skill-creator/SKILL.md",
+      "repository": "anthropics/skills",
+      "bytes": 33168,
+      "sha256": "dcd4803e61e913e6fc27294184cd3a71f09f5e924ff20c8a9a20173e7b3c2bcf"
+    },
+    {
+      "path": "anthropics/skills/skills/slack-gif-creator/SKILL.md",
+      "repository": "anthropics/skills",
+      "bytes": 7841,
+      "sha256": "2efca615ce55a3edd8fc05c779068a8085816617991987e446606403cd3abb22"
+    },
+    {
+      "path": "anthropics/skills/skills/theme-factory/SKILL.md",
+      "repository": "anthropics/skills",
+      "bytes": 3124,
+      "sha256": "c35893e221e28895c52143cc11bf30e41a44817796b39d4b15727dadc9796552"
+    },
+    {
+      "path": "anthropics/skills/skills/web-artifacts-builder/SKILL.md",
+      "repository": "anthropics/skills",
+      "bytes": 3087,
+      "sha256": "81c5002c6643b0de7b8710b00e7a9038daa6fb9b68d59870ee6adb12da8d10f8"
+    },
+    {
+      "path": "anthropics/skills/skills/webapp-testing/SKILL.md",
+      "repository": "anthropics/skills",
+      "bytes": 3913,
+      "sha256": "51b7349e77ec63b7744a6f63647e7566a0b4d2e301121cc10e8c2113af6556a2"
+    },
+    {
+      "path": "anthropics/skills/skills/xlsx/SKILL.md",
+      "repository": "anthropics/skills",
+      "bytes": 8598,
+      "sha256": "6712b39718fe815054abca9c3ee72f989613e6f771c8a5c58f30a65a6c905622"
+    },
+    {
+      "path": "anthropics/skills/template/SKILL.md",
+      "repository": "anthropics/skills",
+      "bytes": 140,
+      "sha256": "eb685d91de039ed864fbd790cddf31684b017fd4a34ee1a55760d8d7cdbadefa"
+    },
+    {
+      "path": "daymade/claude-code-skills/auto-repo-setup/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 10656,
+      "sha256": "00a4c58d1d8d388687ddab50a900935bc378c7e92a949a3f25033f2e0f83c72d"
+    },
+    {
+      "path": "daymade/claude-code-skills/benchmark-due-diligence/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 9905,
+      "sha256": "b4e58ad49d077a58c951d14f3901b1f54aef2a60cd8a60d04a2f008685adc75b"
+    },
+    {
+      "path": "daymade/claude-code-skills/bilibili-source/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 6545,
+      "sha256": "1c4b42552875fdb5f032ce4f1ee480ac4c9b31fd26c8fcc6bf425d82dd76b202"
+    },
+    {
+      "path": "daymade/claude-code-skills/capture-screen/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 9534,
+      "sha256": "45cc3f210a853eda20edbf8524a0076c2ee119eb4001bf0de70b7940178ad339"
+    },
+    {
+      "path": "daymade/claude-code-skills/cli-demo-generator/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 6758,
+      "sha256": "b699d8ecc6980bfa3c9eedcb09b91e3faace090b530d358e8a75162b0c0f38a1"
+    },
+    {
+      "path": "daymade/claude-code-skills/cloudflare-troubleshooting/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 10101,
+      "sha256": "74075d05e00368d734b0e4b916ea74ea584641974c22f79736072c5a5944501b"
+    },
+    {
+      "path": "daymade/claude-code-skills/codex-image-gallery/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 2540,
+      "sha256": "57869932705016607c9c97c8392ee627f6ba2ae491d1d74cf1986c22453a95d7"
+    },
+    {
+      "path": "daymade/claude-code-skills/competitors-analysis/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 8381,
+      "sha256": "d8fddd679e987058ce94bb8bf69448bf02c885189ae5bf31e9813cb71d067611"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-audio/asr-transcribe-to-text/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 43098,
+      "sha256": "45b6fac8704acd60c9c84edcba5758d4de2c84bf0382bd4d84fcba1f838c6e4a"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-audio/meeting-minutes-taker/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 40600,
+      "sha256": "ab6bb018326e2a7b6622053e76efd95d37ae3c44266908fd7a50ce00e535b35e"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-audio/stepfun-asr/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 8913,
+      "sha256": "f7dac6c93d54bf56b6974785d62231f20253a7ca4511394c179f6bf33c0dc53f"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-audio/stepfun-tts/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 7360,
+      "sha256": "e7386835142bebacb4b3b811f0ef6ed2a32e2e8bd911a804661aa73a67b71169"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-audio/transcript-fixer/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 106222,
+      "sha256": "192c087913e067af465fccc5be066cbd27efed8eec84b02dc6492d9d0fa9d5aa"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-claude-code/claude-code-history-files-finder/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 20542,
+      "sha256": "29afeeda75d33ac8f274fa653f1e78ecb6018893344b7e30f6be4c28cc8bf9eb"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-claude-code/claude-code-hooks/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 54083,
+      "sha256": "78e47cce17f87b2aa126d1902348e4411a898dd1e850cb942b7ac70116cb2144"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-claude-code/claude-export-txt-better/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 4610,
+      "sha256": "41da97b27d3540227b9d2fa0dc6b8303450144b004cdd9a4bf19bcbbb74a3208"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-claude-code/claude-md-progressive-disclosurer/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 52105,
+      "sha256": "df3591b3e748ca137d663b654d805dccdab26055f9ed45ac333c6a993f2ce7a4"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-claude-code/claude-migrate-memory-to-doc/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 15194,
+      "sha256": "2b5bb58bd9f75227f850f550c227934c44a1e5ef61993693f5d7b93eb49cfa4e"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-claude-code/claude-skills-troubleshooting/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 5149,
+      "sha256": "45719baba6b9ada5fea2779ab480660a06679ed2083e8341387eb61d1d919421"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-claude-code/claude-switch-models-setup/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 27262,
+      "sha256": "6b1c9c4218becd047b7854aab8eff85905089889ef0ed3c637fd3d2754bb74ec"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-claude-code/claude-usage-analyst/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 2795,
+      "sha256": "2937e96ac368a0d555849a10b475015092f351f4b02d070abf170856d026c43d"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-claude-code/continue-claude-work/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 7187,
+      "sha256": "d52e2f036a09356d00151afc1dd37327907cb9bb4175ace127cb69b1e27ca463"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-claude-code/continue-codex-work/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 9558,
+      "sha256": "c19f415159101a2b21426bab71bf84380e7496aee342fd0ad3e686be4cac4303"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-claude-code/local-conversation-history/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 7160,
+      "sha256": "d2096a3af74cec0506bb31dd3bc26b0c5ecf6180f0ce6db9f70fcea52df3e7c3"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-claude-code/marketplace-dev/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 14601,
+      "sha256": "990155b170dfa49d04f52356b7076453225dfae428eb098e890fea53aa043a56"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-claude-code/read-claude-web-conversation/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 26331,
+      "sha256": "844f7f8c288f7d4a45cc2ec5680b991c955bc6b6654524418834eee079287820"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-claude-code/statusline-generator/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 9366,
+      "sha256": "dff9418e56b5eea8c45add86cbc4f6c71aed1d0136cfcf20aebeffa1d8d77b87"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-claude-code/terminal-screenshot/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 7173,
+      "sha256": "0edd9567ae3e8988f746935df066d43bcd3291b57385f14e25d6eed0cabc8f7e"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-docs/doc-to-markdown/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 6962,
+      "sha256": "881f67c78d33996e470de0a6f12babab778a13d10d3832c16a8d0a597319de49"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-docs/docs-cleaner/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 2952,
+      "sha256": "34ce64f2a79af4bc90ba975672ce47f16b29e097a508936795afde887af2f8fd"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-docs/docx-creator/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 9150,
+      "sha256": "1d8d8fefa685cf0b7b3c03f32732ed86e899b789b696ba95b91ca910fe9f4f0b"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-docs/mermaid-tools/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 5494,
+      "sha256": "7f390eef2337c669af926b8b578e3fa0fe2d1517c81e4ce2bb117482c4cfd553"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-docs/pdf-creator/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 13110,
+      "sha256": "edea1efe2bad9358b9503aa7696ae52add6935b582bbad31af09bbd1c2055ae7"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-docs/pdf-to-html/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 7352,
+      "sha256": "aad8bb703234fb03530aa72e00351b67894fea86eaa87d0f8f1fcd8945b1c4b9"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-docs/photo-to-scanned-pdf/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 9533,
+      "sha256": "5f5b2161e7150934a22324560f2af8382d33c6dee12896cb45528bbe2d98b491"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-docs/ppt-creator/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 11411,
+      "sha256": "ac15264bd34f655dcd2dbeb29351322e74c61459f79e8afe18f21f999366b2db"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-financial/ashare-news-fetcher/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 5350,
+      "sha256": "60678cf874dbfbbc205ffaeb8dbbaf0667be6a858cc9c3126c1078c73de49d02"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-financial/bigdata-skill/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 15285,
+      "sha256": "6141e2938559c6db9e294f77e49250c17f8b3f5cdf9dbcf25aa6d2d77d8fd820"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-financial/financial-data-collector/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 5719,
+      "sha256": "120d57d82e0d023a4b534e463fba6f141527f876f7d66049ea6b029464cc3a70"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-financial/gangtise-copilot/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 22557,
+      "sha256": "92a94de5df7873ab45ddfb74cae0183d8efcc4faf2e60583ab08aafb22f239c3"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-financial/pharma-daily-report/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 5058,
+      "sha256": "42507f60f567df1639635197728848f4c318b4308e79c63805986f737070fc67"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-skill/skill-creator/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 160637,
+      "sha256": "348d775707e25320b884c49a211e5662a028798d87a75ac70d55be8cf5e85c49"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-skill/skill-governance/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 10515,
+      "sha256": "8511089f17870211370789f11f5729502baa3a45e95a0729f4e590bac6295eb3"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-skill/skill-reviewer/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 5398,
+      "sha256": "bf71e4dd35e91786c56ff4ba4ee04cd5b17e6756f14fd90bdf2f493fd1453d01"
+    },
+    {
+      "path": "daymade/claude-code-skills/daymade-skill/skills-search/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 4218,
+      "sha256": "dd449112ce5c339f12eb0dd04b92b130ed2aec19d088aa7d35c71cb95035f567"
+    },
+    {
+      "path": "daymade/claude-code-skills/debugging-network-issues/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 33234,
+      "sha256": "89efefeb583c4075851293e213d1ca5874e1b3574edbc27ffc54254693270362"
+    },
+    {
+      "path": "daymade/claude-code-skills/deep-research/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 23774,
+      "sha256": "ae34edc0b0370a1a956c78f8049ae4c5d56f4f9c591161b2ae55cfe95e96c26c"
+    },
+    {
+      "path": "daymade/claude-code-skills/design-style-picker/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 4654,
+      "sha256": "763776d62bbab81df8f86c51223fa27f8cd353bc81fdc3aad74c23d7e5f45423"
+    },
+    {
+      "path": "daymade/claude-code-skills/douban-skill/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 4743,
+      "sha256": "c2e4df8912a276c8dd78302d747f77a1c8d03af2d7779469303cbd8c6ba220e3"
+    },
+    {
+      "path": "daymade/claude-code-skills/download-gemini-images/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 3449,
+      "sha256": "246efb539272a928fec0b4f513675d2153b7fae96aa764a979ed56359ef1e9bd"
+    },
+    {
+      "path": "daymade/claude-code-skills/excel-automation/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 10558,
+      "sha256": "33c9ddc5b665bf56b31b4f59559e070aae393e8bcd21fae773d81daa967c3712"
+    },
+    {
+      "path": "daymade/claude-code-skills/fact-checker/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 8635,
+      "sha256": "1a09e288c43173147077bdc071ed32afe3729caf982500e7ec6998666e12a48a"
+    },
+    {
+      "path": "daymade/claude-code-skills/feishu-doc-scraper/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 14362,
+      "sha256": "4549008b605a5bad3f4d5526cf3d71058f3c67df31ebc3726f368a87aac9ca1e"
+    },
+    {
+      "path": "daymade/claude-code-skills/frontend-visual-qa/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 26779,
+      "sha256": "e6f901fca74284da2e0a5f87d1ed4f329c5d8b2f2fdd6307172f0872f84f38ca"
+    },
+    {
+      "path": "daymade/claude-code-skills/gemini-history-analyzer/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 9271,
+      "sha256": "4acbd387213f77fef886867facf0c5e3dea2a53ff815f7dec30a09798fc0d31f"
+    },
+    {
+      "path": "daymade/claude-code-skills/git-safety-net/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 31651,
+      "sha256": "4cc7c1b99962d04a962aafa7b159c6ef9df71db02a62efe34780d32018e02e02"
+    },
+    {
+      "path": "daymade/claude-code-skills/github-contributor/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 19099,
+      "sha256": "c748297b542e94b4cc9e1ce704e51e5dadca6ad36bbf19cf085a2387b2f495d3"
+    },
+    {
+      "path": "daymade/claude-code-skills/github-ops/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 6338,
+      "sha256": "39e86e76e647178cb55a12cae41221b06776887416c49db516aa966dd43b0891"
+    },
+    {
+      "path": "daymade/claude-code-skills/github-review-pr/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 26322,
+      "sha256": "cfa766acfc0ca7d38682caf6ddc6e8b94b1df1f2cef1cd628bd580f5852c0d5c"
+    },
+    {
+      "path": "daymade/claude-code-skills/github-sensitive-data-cleanup/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 11201,
+      "sha256": "58c34915eee9fd601a8d853aabf46d5da6b5534ceaf13005d7dbd9c355634ea8"
+    },
+    {
+      "path": "daymade/claude-code-skills/i18n-expert/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 5263,
+      "sha256": "5c241471325b349806f8fb03f5aba43ea0af3c70bdf98f00fbdde38448dbb232"
+    },
+    {
+      "path": "daymade/claude-code-skills/iOS-APP-developer/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 13112,
+      "sha256": "d31dcc6abf0361da49903fe8c70642eba2d78fce58dbddd59fb3a98d78cfb270"
+    },
+    {
+      "path": "daymade/claude-code-skills/ima-copilot/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 13002,
+      "sha256": "9e3c78c8c20a471b175267f0b7ccbe467eaaa75fa2929715285734ec498f3a77"
+    },
+    {
+      "path": "daymade/claude-code-skills/llm-eval-harness/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 19768,
+      "sha256": "9d5d8e75f10df7b9a60cccf018d1534f867e66a00e9ccd346520f64137753d84"
+    },
+    {
+      "path": "daymade/claude-code-skills/llm-icon-finder/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 3378,
+      "sha256": "fe87e210af1ec5e57f08e16502071bfdf99b728cdadf6c8bf071688cc83afa68"
+    },
+    {
+      "path": "daymade/claude-code-skills/llm-wiki-setup/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 6086,
+      "sha256": "f7768451fc01420ac2af0ee987ebfb33489565dc05eb8e9950c2f3a8764df494"
+    },
+    {
+      "path": "daymade/claude-code-skills/local-codex/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 3900,
+      "sha256": "b01ae3538f74d9d34d513d01f3f05f06012c8cb379c3f0180f46d013552edbc2"
+    },
+    {
+      "path": "daymade/claude-code-skills/macos-cleaner/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 26484,
+      "sha256": "bd1efcab34db4a9bf483af289b2079e015f69af49034308440f81e2ace7479e3"
+    },
+    {
+      "path": "daymade/claude-code-skills/marketplace-health-check/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 8515,
+      "sha256": "bd792bae3be57ada0dfe6eff43c8aef75627cbb4137c150ea6421469b560f8bb"
+    },
+    {
+      "path": "daymade/claude-code-skills/notify-wecom/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 2307,
+      "sha256": "53fa211dcd88b9511e9a5fe229a51a8543aecab51225eebf8b98fca08d2b598c"
+    },
+    {
+      "path": "daymade/claude-code-skills/openclaw/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 6376,
+      "sha256": "5dc419cd0a70d25699e41d22c3b080c1c22077f5c2bbbc31cf6e73ab171dcfe6"
+    },
+    {
+      "path": "daymade/claude-code-skills/openclaw-model-switch/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 5681,
+      "sha256": "7b9ab8e1ec5bb7a836ce0c8e098d3ca1b5cceb771fd03849c80b526a385df942"
+    },
+    {
+      "path": "daymade/claude-code-skills/product-analysis/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 9379,
+      "sha256": "b022efb35053c1693141ec8b519422ce3d7d75ed456c7906070311abe6fdd93d"
+    },
+    {
+      "path": "daymade/claude-code-skills/prompt-optimizer/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 7941,
+      "sha256": "006f848fec362a9ac26350abf21f97127a4a8a8b607cbd6a53bdf9e6ea68c3aa"
+    },
+    {
+      "path": "daymade/claude-code-skills/promptfoo-evaluation/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 12210,
+      "sha256": "dfe42fda246f589cdc3f6f6f559e1861dfbc4ccda284913817e39b9deb2cb2f9"
+    },
+    {
+      "path": "daymade/claude-code-skills/qa-expert/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 10448,
+      "sha256": "9c38813fe3b95ba0423f7d6b2b052a9f2195ae872b8cd9f8ff835d4c97247f49"
+    },
+    {
+      "path": "daymade/claude-code-skills/repomix-safe-mixer/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 7858,
+      "sha256": "3e8c020d62244dc2f635dcfda65da6996476a69af3efdabf1ec521f3d83c6094"
+    },
+    {
+      "path": "daymade/claude-code-skills/repomix-unmixer/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 8267,
+      "sha256": "d4fb97ca016a12563019dcffd4bf65b404b0da716b6a2acb07d0b6db72ba1800"
+    },
+    {
+      "path": "daymade/claude-code-skills/scrapling-skill/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 5662,
+      "sha256": "cb4a3d3e3b3de538b99a77bbc8e82f3eabee4afb88f916e2552d1fd6f8a5aa85"
+    },
+    {
+      "path": "daymade/claude-code-skills/setup-notifications-via-wecom/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 8088,
+      "sha256": "d46c06dc52f6c419d4227e80e7ab46521b243015f36b4796d8be2e43f491404b"
+    },
+    {
+      "path": "daymade/claude-code-skills/slides-creator/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 22066,
+      "sha256": "cf905672d74a4570b3b5e4b45c95afdfc3024c306d17fb2cd03726091dbf241c"
+    },
+    {
+      "path": "daymade/claude-code-skills/teams-channel-post-writer/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 4752,
+      "sha256": "5fc9ebe47e4288561818bc2e423fe5d9889c3b7de7fb6f1703383435fff50d84"
+    },
+    {
+      "path": "daymade/claude-code-skills/terraform-skill/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 9721,
+      "sha256": "34b139a0c885292a4c37309470b5493bb878449162bd315e2744358759d0a264"
+    },
+    {
+      "path": "daymade/claude-code-skills/tunnel-doctor/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 58652,
+      "sha256": "216f506007046c3803f39885872133466f16b83a66ade9fc067717efa3040456"
+    },
+    {
+      "path": "daymade/claude-code-skills/twitter-reader/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 4175,
+      "sha256": "c438fd3aea09bb0e5b024c1e004ff237f484a01c2552a547ee6596840130e9a2"
+    },
+    {
+      "path": "daymade/claude-code-skills/ui-designer/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 6923,
+      "sha256": "f6a8eb5e20c9c291546eed3e106d2272ad36d08564f45fbedfbfc21a25a3609b"
+    },
+    {
+      "path": "daymade/claude-code-skills/video-comparer/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 5422,
+      "sha256": "b9029fec57bc4bac38c8ffbcf6779c7dc2285d1e30c4ee2ad0d3d480e237ac24"
+    },
+    {
+      "path": "daymade/claude-code-skills/windows-remote-desktop-connection-doctor/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 16102,
+      "sha256": "e64c38dd55739e8aba50dbf288fe3f69d16f2261e5dc10ef0b361e991deb1a81"
+    },
+    {
+      "path": "daymade/claude-code-skills/wps-doc-scraper/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 4419,
+      "sha256": "e958a3f41e4413dab2f175639fa45b17987ee7c81e88a0364f9f9e5193f44d1a"
+    },
+    {
+      "path": "daymade/claude-code-skills/youtube-downloader/SKILL.md",
+      "repository": "daymade/claude-code-skills",
+      "bytes": 18868,
+      "sha256": "e67f1ff2eb489ee16d81ceb55a3368b17834e7039bfccfb6a976a91d102ab8ca"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/angular-architect/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5993,
+      "sha256": "0679809aad404eb5ebe00ef1fc3764e400c2c14b8dc30c2cbb1a00d9dd3d7a91"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/api-designer/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 7832,
+      "sha256": "75a1d0df12641ef02803a1c8dba1e079f0b4cd7b238dd53ab4c257fad5b49e93"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/architecture-designer/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 4750,
+      "sha256": "5235b031e8fadacf01f39ad9db7b8d5ec9d6f83460ebcef78da95d31c9f36276"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/atlassian-mcp/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5150,
+      "sha256": "a2531f7027ceca8c79b638ccd246ff96e3adaf1f2a7d7bbf3da20f5deccf5592"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/chaos-engineer/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 6890,
+      "sha256": "80619e93302d1697c631409911f3c4412918db3998d3c0b19cf8ab4a1c61dbe4"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/cli-developer/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 4614,
+      "sha256": "562117ef72de629311794ae401cc9a627cef7aacfa05bb7e239ff5cee1dca87f"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/cloud-architect/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 7363,
+      "sha256": "ddf5e3ca3d9092f869df140696856ccf3a555e0d01550d1f0fef9c3f935a8f3e"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/code-documenter/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5496,
+      "sha256": "9db40547fcaf27844d3b2ca80737bd7e5b94da99094d7f7ca2b27b540b2686f2"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/code-reviewer/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5179,
+      "sha256": "8f0ddb7d90178b6986f8d597ab0bc93ec01adb044bd27b75e1682b06902dae93"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/cpp-pro/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 4496,
+      "sha256": "a08e1b284deb806b9912730c7e1902592f7c8c5b19e729ce09a8153eb85120d6"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/csharp-developer/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5079,
+      "sha256": "a0fd3be38f9c374f214163fd1b586998147815c0060ccd1917bd49035589b7a0"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/database-optimizer/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 6056,
+      "sha256": "b581ed9eadeced125c26fee4ca204a48c5b183da00448fb2eeb1362e5741ccab"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/debugging-wizard/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 3741,
+      "sha256": "82c442c0a4f87785adc0a5ad9f9968d7ceb83e03f937151f19f362c76267e2e7"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/devops-engineer/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5998,
+      "sha256": "48824f5f4de1181d2b6ec0051f36536108bb30b55ea68aac90efb88ebb28972b"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/django-expert/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 6003,
+      "sha256": "a31857b227edfb90f6bed2f231ae46a797775627f597185d48c68965de3ce39c"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/dotnet-core-expert/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5079,
+      "sha256": "25901e10aa7328a521c08c780b24714c6746fa4e523310e5cfa67cff4329ddfe"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/embedded-systems/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 6117,
+      "sha256": "16845321aee2bf735be7fec4cbbd0f397e210ac6fec77f151277c5cae87c5d07"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/fastapi-expert/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 6898,
+      "sha256": "73331cf09b52388e9b4c65ef3e851daa31c6c1ab03d8729308ebe6084ce21607"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/feature-forge/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 4289,
+      "sha256": "3c8b8c363767177e39262b229be0285779816ed251c8bd658073efc3cda0f1c6"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/fine-tuning-expert/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 6629,
+      "sha256": "da72ef468de313b02176e232e0570fe1064cc95c9e36ea3a987e0abf134dbfe0"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/flutter-expert/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5632,
+      "sha256": "0fe1313754652dc7e98e9189f5c16565cfeeb5d8c96682ce74cbe940f9076f78"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/fullstack-guardian/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5822,
+      "sha256": "22a1c39c86be63fafce6e2aaa5b667a588de346c359dbb67231e75d5c0fe990c"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/game-developer/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5722,
+      "sha256": "89297efd2a6ba43237bd711d41d5d8bc50241954fe535d413bc08a1c345bc176"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/golang-pro/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5033,
+      "sha256": "937bafb4bd14906e33420206500a8404a9de14705184ade02c77734221e748d6"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/graphql-architect/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5095,
+      "sha256": "0a4e1eb5f4a3f1e4f127339c781005c91691e5046e48cc3b1de5d7b5b2adb1c8"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/java-architect/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5709,
+      "sha256": "6e38cf7391e2248808ba50ab18699fb2738645076dbdb50d1e2cd62e73b95c30"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/javascript-pro/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 4822,
+      "sha256": "fb73d05454525647884f3aae73ec831fad4efc3c128a1a584bf6d97e73b35e15"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/kotlin-specialist/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5935,
+      "sha256": "d27d8e173d521dc0373ea6fbf7bc40da7c213dce9de0d6916688802acb785637"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/kubernetes-specialist/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 8167,
+      "sha256": "f84cb51c86968d3936194f9afe4cadd83ff08f98407fb93749ece28602c9a10f"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/laravel-specialist/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 8348,
+      "sha256": "eb3c286d02b4a314a1ffd73b796fb433e94d7628783820e9fb6a5eb2f92eda2d"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/legacy-modernizer/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 6109,
+      "sha256": "0d2258af837cc137a7636915f8233d5305330e00a73e05507da5ed89785d7b49"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/mcp-developer/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5724,
+      "sha256": "6c0adeb3e3626f450c5ee4160eb82e237a5b88b65e05231def45e59e5badc852"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/microservices-architect/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 6898,
+      "sha256": "d4a22ae7b850c047049209514d2ac2dcd02016472ec9e8f8dfaa51538b495246"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/ml-pipeline/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 7247,
+      "sha256": "8d6436c5f4ca75da425fa6e0f04d57f9eb96e50b47bf0891f5cbfd7aa9049845"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/monitoring-expert/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 6176,
+      "sha256": "dc69392186b8cc9b3db6e66bb3b8c5fd11f2483e346b544e77dbb3cb09488d01"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/nestjs-expert/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 7680,
+      "sha256": "7d2809fbc80586af81129a39713aea5b49520768da28ce8b31f703dd9ddca27f"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/nextjs-developer/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5511,
+      "sha256": "a8631cf7789732d8f9924ec763d5f9b99ddb35b793929a2d067a72088c96de70"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/pandas-pro/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 6001,
+      "sha256": "4c026295382b0cc8cc4bf38a01644dd19a5b1ecb4a89ce693b2960d6a9d954a8"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/php-pro/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 6074,
+      "sha256": "6aa71a7bd4129ab0bf1921a9402bcb441cd31513ffa10406f539b8959a525d10"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/playwright-expert/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5582,
+      "sha256": "d6c5c04e570659a902e7c212067116131743e588af16406672fab58f0f62d8e1"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/postgres-pro/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5821,
+      "sha256": "e2f32f2fb3b4e640bd58d3133f7bed38697c85e526860cacdc504c8ef456655f"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/prompt-engineer/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5870,
+      "sha256": "1ab0f43e1c6d91501ffe2d432914b9f2b4462e071f4127c54536c186e36c4b81"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/python-pro/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 6094,
+      "sha256": "83acbb761bc372bb8f3df377a4a8f5c3bfb0b95e3d38eebd2e9ee320be255859"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/rag-architect/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 7741,
+      "sha256": "9038b0d030c9cbdbddb47141ec3314d7c998390f9011e8acd856b91132698e21"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/rails-expert/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5509,
+      "sha256": "7484d4e55a6b7e1d248f63c59df53ae40854b63c10ac44639e2bf984010406a1"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/react-expert/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5260,
+      "sha256": "542b344c6b4c3b801255c77fe93c7685ff37a4a1c2d04ecaaa81f3f5aa15dc0a"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/react-native-expert/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 6512,
+      "sha256": "3cba7fabe2b7e9e1953f9bea66969e0a16f7f4fec3bfc470ea037d657eacb6d9"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/rust-engineer/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 6011,
+      "sha256": "c8e11f71fa92c956b5750d1bdae1cbe27c89b12763b6f2d897ee6dce1fed6bda"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/salesforce-developer/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 7515,
+      "sha256": "79c7999666bcc64e13a3bce53bcf6a2dddd1bc681016d40b28b9c03852869868"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/secure-code-guardian/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 7044,
+      "sha256": "19153a339a499baf6ea7fc684afc535d8b31292af468e5dd008b58b20d29a89c"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/security-reviewer/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 4878,
+      "sha256": "e9a96f7be5c52e4c0ee7eec268a2f3bdb16e24ea31620e648bfb95c36e1437d8"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/shopify-expert/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 7122,
+      "sha256": "f3f9ee3c39704408e30405f307d69aa1428609515a8193ef64f76e783c6a3500"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/spark-engineer/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 6538,
+      "sha256": "5766658d6709e99dcca2f3e66a76ca787332d85497fcd4cc0f78bb9aad0efc47"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/spec-miner/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 4595,
+      "sha256": "0deb55afcc6c776497cec782d1590474242a5f6ab70b4db2a4a8ed2b2fe2a6fd"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/spring-boot-engineer/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 7347,
+      "sha256": "6dcc68c578adc986cbaf6d0d2adaa7a0e9b2c158caff13a64c989338a54d01ea"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/sql-pro/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5224,
+      "sha256": "88ee296bc482dc47ad4bc9f2d0e21c0d37568690e43874fd55beed1099cfcf5d"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/sre-engineer/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 6757,
+      "sha256": "7d3ff7346b57ae80a345bb32bfde35712639ccff0fbb042ee98d89e905b7796d"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/swift-expert/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5844,
+      "sha256": "3aadaa9f0f09ecaab62821077f0b8bfd43a46ed15cbb5ba59630195bcff86379"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/terraform-engineer/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5223,
+      "sha256": "b0dd29480e53f20b46fe1b5eb241748149687e356b8eb8fe1192d92ad4cbd5e7"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/test-master/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5034,
+      "sha256": "f16f02c55fcc761bac2e9f31fff2fc47398601b125a3658399b35670271889e9"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/the-fool/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 6205,
+      "sha256": "adc3352be9a0b6a2b0ea26f0c080d68415e02a60c720099af5ca751e28cbbdce"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/typescript-pro/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 5451,
+      "sha256": "5f5bc47c167f0485c01a3b5a14b9999141b1e7c54e7775aecf73ad16f114c066"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/vue-expert/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 4283,
+      "sha256": "acae433fcb2539fae961e5170158e0d98d9e2d230fbc676a67a95a315bfee1a7"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/vue-expert-js/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 6073,
+      "sha256": "8f1ae156b56e52a278ba228365a6aa7ba38e4fe93a7b1ce858cc8f566c888a55"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/websocket-engineer/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 6410,
+      "sha256": "3557582d3169663c5561950fc390a6e1998b38d9722169ae09548624eb6c1f02"
+    },
+    {
+      "path": "jeffallan/claude-skills/skills/wordpress-pro/SKILL.md",
+      "repository": "jeffallan/claude-skills",
+      "bytes": 6278,
+      "sha256": "16f4f72214a98b85c144b33aaf797f266a526ea20dc016612cc7bad10e45d329"
+    },
+    {
+      "path": "mattpocock/skills/skills/engineering/ask-matt/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 11491,
+      "sha256": "3d38910535f5f01e15bc5fd7f6ca8880d628cd248741f08e6780dd7c1828e832"
+    },
+    {
+      "path": "mattpocock/skills/skills/engineering/code-review/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 6731,
+      "sha256": "7b2611d766ed7b9f375e73c821c7727535a6c036cf66870882770cd5a8188f70"
+    },
+    {
+      "path": "mattpocock/skills/skills/engineering/codebase-design/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 6488,
+      "sha256": "a8d50abac5a4018f60e1d911d4b6f4e36454ca14d6c390c0695a578c7de65dad"
+    },
+    {
+      "path": "mattpocock/skills/skills/engineering/diagnosing-bugs/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 8536,
+      "sha256": "7a0779480f323a66d109404646bcc1a14bf0232b45b3e3ea93b652a035718acb"
+    },
+    {
+      "path": "mattpocock/skills/skills/engineering/domain-modeling/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 3427,
+      "sha256": "152e2c97239affb12a60c5f4a7e74ab546a49ae169688c81f4e2ccc42dafa579"
+    },
+    {
+      "path": "mattpocock/skills/skills/engineering/grill-with-docs/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 245,
+      "sha256": "610d091047bcfb9db0f75c057d15538481a721111579fc5ec7f83ad9131a2165"
+    },
+    {
+      "path": "mattpocock/skills/skills/engineering/implement/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 433,
+      "sha256": "6d3fd9e83b8f36e5213854779db49b256a457a7ebb4a503e53fa7dcff696adc3"
+    },
+    {
+      "path": "mattpocock/skills/skills/engineering/improve-codebase-architecture/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 6039,
+      "sha256": "4b4cb798c3863d5b6f5c0b4604af1ecb5beb6df82553c972898a91ba38bcf289"
+    },
+    {
+      "path": "mattpocock/skills/skills/engineering/prototype/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 2954,
+      "sha256": "2579ecf89a7fb7e73345117405c7ba9b9fb5ab22a78ecb08b0ce68b73f0148c2"
+    },
+    {
+      "path": "mattpocock/skills/skills/engineering/research/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 799,
+      "sha256": "af378829f015775a3bcd65ff466826722e99359017ae6bae227ca4c9bd14049c"
+    },
+    {
+      "path": "mattpocock/skills/skills/engineering/resolving-merge-conflicts/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 921,
+      "sha256": "c7c9ba81362a786aac05d2223123bf1bd2f8a99c3243a72882ede9c68bedfb24"
+    },
+    {
+      "path": "mattpocock/skills/skills/engineering/setup-matt-pocock-skills/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 6922,
+      "sha256": "310fb1a73c0467e617e17d7c41d4a2278b5405c4a27f36d7cd22bb4599aee6bb"
+    },
+    {
+      "path": "mattpocock/skills/skills/engineering/tdd/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 3568,
+      "sha256": "5e6b9c16b547113e90afbb946489d1c1384be5c2128f0159bd0bee57251ecf08"
+    },
+    {
+      "path": "mattpocock/skills/skills/engineering/to-spec/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 3035,
+      "sha256": "5d26479544b08048d3a8f79d937b39bc613a617f026b3fd083bafc1e99a7b811"
+    },
+    {
+      "path": "mattpocock/skills/skills/engineering/to-tickets/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 5707,
+      "sha256": "5ecdf1d4df8a360ed39df21a2347f97ba177afd449a577da4f6b6ea8e1ebb808"
+    },
+    {
+      "path": "mattpocock/skills/skills/engineering/triage/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 6582,
+      "sha256": "91e2817ecb688c4df4e2444eab472d1d79d2a0a57abf9f6726967664c460ff2e"
+    },
+    {
+      "path": "mattpocock/skills/skills/engineering/wayfinder/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 11887,
+      "sha256": "d33e2141f7c8bbfd137fef0213cbec465820e4680e67da5d0f0815d6742d26c2"
+    },
+    {
+      "path": "mattpocock/skills/skills/engineering/wizard/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 4207,
+      "sha256": "943eed20759aae508f22f5ce0eb2d0c343b0e3c6206beef6464de5311d29f8cc"
+    },
+    {
+      "path": "mattpocock/skills/skills/in-progress/claude-handoff/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 1286,
+      "sha256": "ef298da8abf31c80e4770e6881cee4973a20d66a3ad74364889c2b388f30184e"
+    },
+    {
+      "path": "mattpocock/skills/skills/in-progress/loop-me/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 2560,
+      "sha256": "ad7110ecbd419fc312c3e7c62f496bd346a05462cdf1589b12ff7550fce3202a"
+    },
+    {
+      "path": "mattpocock/skills/skills/in-progress/setup-ts-deep-modules/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 7602,
+      "sha256": "2c6e39ccdd77f85337c13a4877c222d47dcd26e31619157af9688798244192d5"
+    },
+    {
+      "path": "mattpocock/skills/skills/in-progress/writing-beats/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 4905,
+      "sha256": "668185cfb6eb6a324b8d864404c398e21f3cddbb637b760e39b7784c8c5e4fee"
+    },
+    {
+      "path": "mattpocock/skills/skills/in-progress/writing-fragments/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 3579,
+      "sha256": "c61b6608f227b0eee1b832273360cf5088ad68c343c15ec9c06673086662e64e"
+    },
+    {
+      "path": "mattpocock/skills/skills/in-progress/writing-shape/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 5970,
+      "sha256": "67d34422bbe43cfd523dea9fe7b3ec5260791aed8ea52309b5b85f9d76f32745"
+    },
+    {
+      "path": "mattpocock/skills/skills/misc/git-guardrails-claude-code/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 2312,
+      "sha256": "03c4de7613c712aea336d64c467ea3ed14be2cbd52345925fe949c75c01c29f7"
+    },
+    {
+      "path": "mattpocock/skills/skills/misc/migrate-to-shoehorn/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 2795,
+      "sha256": "de4da4c11d924fac79c924b2ee3d2db4a5cb98386eb490a599119463d036ae72"
+    },
+    {
+      "path": "mattpocock/skills/skills/misc/scaffold-exercises/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 3589,
+      "sha256": "75f5c9d771606fb9762f16522efc954df11c324f87148d8ff069bce166257de9"
+    },
+    {
+      "path": "mattpocock/skills/skills/misc/setup-pre-commit/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 2261,
+      "sha256": "872f4037cb7e6e0e340d4175c086550072959925dffc87b160d1a30dc9f63bbd"
+    },
+    {
+      "path": "mattpocock/skills/skills/productivity/grill-me/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 147,
+      "sha256": "6189dfceb7304a6e5558f75d87e68fa3bc7fcf7ba120e44f21f8a61fe01eba54"
+    },
+    {
+      "path": "mattpocock/skills/skills/productivity/grilling/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 1872,
+      "sha256": "fa5c1e5ee76b1c8f1ae56101f52c9e239de75d5c578adc61227b92d10b7e52ef"
+    },
+    {
+      "path": "mattpocock/skills/skills/productivity/handoff/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 879,
+      "sha256": "57c9f1f392d7352cdc85b1e39ca49eddc70ce1dc278bd9653fb4f23dfc2560fc"
+    },
+    {
+      "path": "mattpocock/skills/skills/productivity/teach/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 9507,
+      "sha256": "6d2dbe5e03084cf26fef66b535127b36cd1bcbe9478e26b0626029cd51dc2259"
+    },
+    {
+      "path": "mattpocock/skills/skills/productivity/to-questionnaire/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 2921,
+      "sha256": "8e7f9ed8d7b2e66babf1a54aee9b94319bf38c32619cffe78819df6518ead5fc"
+    },
+    {
+      "path": "mattpocock/skills/skills/productivity/wait-what/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 325,
+      "sha256": "8923f7df1a0d1b138281658e134caa4bf1c618d2876a2323b19acdfdffebc024"
+    },
+    {
+      "path": "mattpocock/skills/skills/productivity/writing-for-agents/SKILL.md",
+      "repository": "mattpocock/skills",
+      "bytes": 10966,
+      "sha256": "a842323e664e5af104eac5c97ad22fda929ebeb62d81c501161ac1f6f482db58"
+    },
+    {
+      "path": "obra/superpowers/skills/brainstorming/SKILL.md",
+      "repository": "obra/superpowers",
+      "bytes": 10047,
+      "sha256": "4a54a4858b99807f3155ed1614b2f116e35ea5c1b788e793f565dd837fd3891f"
+    },
+    {
+      "path": "obra/superpowers/skills/dispatching-parallel-agents/SKILL.md",
+      "repository": "obra/superpowers",
+      "bytes": 6078,
+      "sha256": "1968923066f3b707eb01d1992cdf4c42284c3855f70253b9cd5000ff45fca13c"
+    },
+    {
+      "path": "obra/superpowers/skills/executing-plans/SKILL.md",
+      "repository": "obra/superpowers",
+      "bytes": 2305,
+      "sha256": "c4c3d8b628c51114cd165fb8246fe02744cd8be180032328391252e653028d9b"
+    },
+    {
+      "path": "obra/superpowers/skills/finishing-a-development-branch/SKILL.md",
+      "repository": "obra/superpowers",
+      "bytes": 7022,
+      "sha256": "d0ac8360ed9d59121776ef95c84bcb38e9747de0d7ae7e227dca81e437593b9b"
+    },
+    {
+      "path": "obra/superpowers/skills/receiving-code-review/SKILL.md",
+      "repository": "obra/superpowers",
+      "bytes": 6203,
+      "sha256": "091df1629510af1b92fc4abd6f96732ebedb4cb2c0f3457e8f2740b0504a2438"
+    },
+    {
+      "path": "obra/superpowers/skills/requesting-code-review/SKILL.md",
+      "repository": "obra/superpowers",
+      "bytes": 2956,
+      "sha256": "d71cc01ba56d2325cf8af5f7c11837819b63ecd57de0bfdb812f7f3ff7751df8"
+    },
+    {
+      "path": "obra/superpowers/skills/subagent-driven-development/SKILL.md",
+      "repository": "obra/superpowers",
+      "bytes": 28077,
+      "sha256": "349a08ad8b59b19b86c13a7d2f34a1a38719bf88257004a863eefefa8d9f9e40"
+    },
+    {
+      "path": "obra/superpowers/skills/systematic-debugging/SKILL.md",
+      "repository": "obra/superpowers",
+      "bytes": 9465,
+      "sha256": "808fc5717aa88ad65efff312b11c186294d3e6ee301afb584e2f86599b137787"
+    },
+    {
+      "path": "obra/superpowers/skills/test-driven-development/SKILL.md",
+      "repository": "obra/superpowers",
+      "bytes": 9015,
+      "sha256": "bf1b8216e523851a411e91d429a7c1c2a173e79d88957bc78e348218d50edd54"
+    },
+    {
+      "path": "obra/superpowers/skills/using-git-worktrees/SKILL.md",
+      "repository": "obra/superpowers",
+      "bytes": 6813,
+      "sha256": "8cfb86f121269e8f7f12361e6795c4f6738828340e28964c9229d365666c9edd"
+    },
+    {
+      "path": "obra/superpowers/skills/using-superpowers/SKILL.md",
+      "repository": "obra/superpowers",
+      "bytes": 3063,
+      "sha256": "55379fe7c1c473a02c61961c822996bff30e1320d6921d9062509bc508482c05"
+    },
+    {
+      "path": "obra/superpowers/skills/verification-before-completion/SKILL.md",
+      "repository": "obra/superpowers",
+      "bytes": 3646,
+      "sha256": "2befe7fc55bcadaa3d97dd9e8efeb633d2561c0ebe74c5a8b17c4d9e7e4520b3"
+    },
+    {
+      "path": "obra/superpowers/skills/writing-plans/SKILL.md",
+      "repository": "obra/superpowers",
+      "bytes": 6907,
+      "sha256": "72190c88b2b5a67a96b91d66aa72b9161913e10e8769da3f28a226f4cc7b99d0"
+    },
+    {
+      "path": "obra/superpowers/skills/writing-skills/SKILL.md",
+      "repository": "obra/superpowers",
+      "bytes": 26360,
+      "sha256": "d34db5c8aed6a4e0440132bd0613aace70a693ec7819d5637ad77481d8e10d1b"
+    }
+  ]
+}
