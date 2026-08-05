@@ -37,18 +37,34 @@ class BatchScanError(ValueError):
 class BatchScanService:
     """Apply one loaded policy to every SKILL.md under a target."""
 
-    def run(self, target: Path, loaded_policy: LoadedPolicy) -> BatchScanReport:
+    def run(
+        self,
+        target: Path,
+        loaded_policy: LoadedPolicy,
+        *,
+        include_timing: bool = False,
+        run_security: bool = True,
+        run_privacy: bool = True,
+    ) -> BatchScanReport:
         started = perf_counter()
         root, skill_paths = self.discover(target)
         results = tuple(
-            self._scan_skill(path, root, loaded_policy) for path in skill_paths
+            self._scan_skill(
+                path,
+                root,
+                loaded_policy,
+                include_timing,
+                run_security,
+                run_privacy,
+            )
+            for path in skill_paths
         )
         return BatchScanReport(
             tool_version=__version__,
             ruleset_version=RULESET_VERSION,
             target=str(target.absolute()),
             policy=loaded_policy.reference,
-            duration_ms=self._elapsed_ms(started),
+            duration_ms=self._elapsed_ms(started) if include_timing else 0.0,
             summary=BatchSummary(
                 discovered=len(results),
                 passed=sum(result.status == "passed" for result in results),
@@ -95,6 +111,9 @@ class BatchScanService:
         skill_path: Path,
         root: Path,
         loaded: LoadedPolicy,
+        include_timing: bool,
+        run_security: bool,
+        run_privacy: bool,
     ) -> BatchSkillResult:
         started = perf_counter()
         checks: list[BatchCheckResult] = []
@@ -107,32 +126,35 @@ class BatchScanService:
                     lambda: LintService(build_lint_engine(policy.checks.lint)).run(
                         skill_path, loaded.reference
                     ),
+                    include_timing,
                 )
             )
         else:
             checks.append(self._skipped("lint"))
 
         security = policy.checks.security
-        if security is not None and security.enabled:
+        if run_security and security is not None and security.enabled:
             checks.append(
                 self._run_check(
                     "security",
                     lambda: StaticScanService(
                         build_security_engine(security, loaded.base_dir), "security"
                     ).run(skill_path, loaded.reference),
+                    include_timing,
                 )
             )
         else:
             checks.append(self._skipped("security"))
 
         privacy = policy.checks.privacy
-        if privacy is not None and privacy.enabled:
+        if run_privacy and privacy is not None and privacy.enabled:
             checks.append(
                 self._run_check(
                     "privacy",
                     lambda: StaticScanService(
                         build_privacy_engine(privacy), "privacy"
                     ).run(skill_path, loaded.reference),
+                    include_timing,
                 )
             )
         else:
@@ -149,7 +171,7 @@ class BatchScanService:
             skill=skill_path.parent.name,
             relative_path=skill_path.relative_to(root).as_posix(),
             status=status,
-            duration_ms=self._elapsed_ms(started),
+            duration_ms=self._elapsed_ms(started) if include_timing else 0.0,
             checks=tuple(checks),
         )
 
@@ -157,6 +179,7 @@ class BatchScanService:
         self,
         command: Literal["lint", "security", "privacy"],
         operation: Callable[[], LintReport | StaticScanReport],
+        include_timing: bool,
     ) -> BatchCheckResult:
         started = perf_counter()
         try:
@@ -166,7 +189,7 @@ class BatchScanService:
             return BatchCheckResult(
                 command=command,
                 status="passed" if report.passed else "failed",
-                duration_ms=self._elapsed_ms(started),
+                duration_ms=self._elapsed_ms(started) if include_timing else 0.0,
                 finding_count=len(report.findings),
                 findings=report.findings,
             )
@@ -174,7 +197,7 @@ class BatchScanService:
             return BatchCheckResult(
                 command=command,
                 status="error",
-                duration_ms=self._elapsed_ms(started),
+                duration_ms=self._elapsed_ms(started) if include_timing else 0.0,
                 error=str(error),
             )
 

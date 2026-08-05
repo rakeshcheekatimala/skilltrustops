@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 
+import pytest
 from typer.testing import CliRunner
 
 from skilltrustops.cli import app
@@ -22,6 +23,20 @@ def create_valid_skill(tmp_path: Path) -> Path:
         encoding="utf-8",
     )
     return skill_file
+
+
+def test_doctor_reports_capabilities_without_exposing_secrets(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    secret = "sk-never-print-this-value"
+    monkeypatch.setenv("OPENAI_API_KEY", secret)
+    result = runner.invoke(app, ["doctor", "--format", "json"])
+
+    assert result.exit_code == 0
+    report = json.loads(result.stdout)
+    assert report["ready"] is True
+    assert report["checks"]["openai_credentials"]["detail"] == "configured"
+    assert secret not in result.stdout
 
 
 def test_lint_passes_valid_skill(tmp_path: Path) -> None:

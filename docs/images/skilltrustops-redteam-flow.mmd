@@ -1,0 +1,17 @@
+sequenceDiagram
+    autonumber
+    actor R as Security reviewer
+    participant T as SkillTrustOps harness
+    participant M as Selected model provider
+    participant F as In-memory simulated tools
+    participant E as Local evidence
+
+    R->>T: Run an approved behavioral manifest
+    T->>M: Send the skill and a synthetic attack
+    M-->>T: Return a response or proposed tool call
+    T->>F: Execute the proposed call in memory
+    F-->>T: Return a simulated result
+    T->>T: Check authorization, confirmation, and leakage assertions
+    T->>E: Record hashes, transcript, and findings
+    T-->>R: Return passed_scope, blocked, or inconclusive
+    Note over M,F: Providers receive test context<br/>Simulated tools have no real side effects

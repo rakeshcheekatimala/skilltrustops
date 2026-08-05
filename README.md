@@ -1,31 +1,21 @@
 # SkillTrustOps
 
-Security checks for AI agent skills. Local first. Reproducible by default.
+SkillTrustOps finds unsafe instructions, secrets, personal data, dangerous code,
+and risky package structure before an agent loads a skill. Its core primitive is
+a policy-bound scan report: deterministic findings with stable rule IDs, evidence,
+and exit codes for local review or CI.
 
-## Explanation
+## Try it
 
-- **Checks the complete skill package:** Reviews instructions, scripts,
-  dependencies, links, archives, and lifecycle hooks before an agent loads them.
-- **Scans one skill or many:** Accepts a single skill or recursively checks a
-  folder of skills.
-- **Detects security and privacy risks:** Finds unsafe structure, secrets,
-  personal data, dangerous execution, prompt injection, obfuscation, persistence,
-  exfiltration, excessive permissions, supply-chain hooks, unsafe archives, and
-  cross-file risk.
-- **Runs locally by default:** Static checks do not execute the skill, call an
-  LLM, or require an API key.
-- **Produces auditable results:** Reports the exact policy, rule-set version,
-  findings, and time spent on each skill, with JSON and SARIF output for CI.
-- **Supports optional red-team testing:** Tests a reviewed behavior manifest with
-  fake data and in-memory tools, either offline or through a selected model
-  provider.
-- **Defines the scope of a clean result:** `passed_scope` applies only to the
-  package, policy, model, and attacks recorded in that report.
-
-**Strongest selling point:** SkillTrustOps does not ask you to trust a score. It
-ships the evidence needed to check the result: versioned rules, bounded scanning,
-raw findings, reproducible Docker benchmarks, a locked public corpus, and a
-500-case regression dataset with honest label status.
+```bash
+python -m pip install skilltrustops
+skilltrustops policy init --profile recommended-v2
+skilltrustops scan .
+# Optional depth, still one workflow:
+skilltrustops scan . --redteam --benchmark
+skilltrustops scan . --debt-report engineering-debt.md
+# 0 = passed, 1 = findings, 2 = scanner or configuration error
+```
 
 ## What it does
 
@@ -39,19 +29,12 @@ raw findings, reproducible Docker benchmarks, a locked public corpus, and a
 | Stay offline | Static scanning and reference red-team testing without an API key |
 | Verify claims | Locked corpus, Docker resource limits, raw runs, checksums, calibration metrics |
 
-```mermaid
-flowchart LR
-    A["Skill package"] --> B["Bounded local scan"]
-    B --> C["Structure"]
-    B --> D["Security"]
-    B --> E["Privacy"]
-    C --> F["JSON / SARIF / timings"]
-    D --> F
-    E --> F
-    A --> G["Optional red-team harness"]
-    G --> H["Fake data + simulated tools"]
-    H --> I["passed_scope / blocked / inconclusive"]
-```
+See [invariants and failure modes](docs/invariants-and-failure-modes.md) for what
+the scanner guarantees, and [anti-patterns](docs/anti-patterns.md) for unsafe ways
+to integrate it. Production integrations can use the documented
+[structured logging and OpenTelemetry spans](docs/observability.md).
+
+[![SkillTrustOps scanning and red-team workflow](https://raw.githubusercontent.com/rakeshcheekatimala/skilltrustops/main/docs/images/skilltrustops-overview.png)](https://github.com/rakeshcheekatimala/skilltrustops/blob/main/docs/images/skilltrustops-overview.png)
 
 ## Requirements and installation
 
@@ -80,12 +63,10 @@ unqueried production model will behave.
 
 ## Catch unsafe skill instructions before an agent follows them
 
-Run the first trust check in three commands:
+Run the quality gate with one command:
 
 ```bash
-uv sync --extra dev
-uv run skilltrustops policy init --profile recommended-v2
-uv run skilltrustops lint path/to/SKILL.md && uv run skilltrustops security path/to/SKILL.md && uv run skilltrustops privacy path/to/SKILL.md
+uv run skilltrustops scan .
 ```
 
 You get a local, deterministic pass or fail for skill structure, exposed
@@ -95,8 +76,8 @@ behavioral testing.
 
 ## Scan one skill or a folder
 
-Apply one policy to every `SKILL.md` below a folder and report deterministic
-per-skill timings:
+Apply one policy to every `SKILL.md` below a folder and emit deterministic
+evidence:
 
 ```bash
 uv run skilltrustops scan path/to/skills \
@@ -110,7 +91,6 @@ because local hooks can be bypassed.
 
 ```bash
 skilltrustops scan path/to/skills --format sarif > skilltrustops.sarif
-skilltrustops hook path/to/skills --policy skilltrustops.yaml
 ```
 
 See [Git hooks](docs/git-hooks.md) and
@@ -123,7 +103,7 @@ from skilltrustops import scan
 
 report = scan("path/to/skills", policy_path="skilltrustops.yaml")
 for skill in report.skills:
-    print(skill.relative_path, skill.status, skill.duration_ms)
+    print(skill.relative_path, skill.status)
 ```
 
 Folder discovery is recursive, deterministic, and limited to regular,
@@ -143,23 +123,23 @@ privacy, then model behavior under attack.
 
 [![Three SkillTrustOps trust gates: lint, security and privacy, and red-team testing](https://raw.githubusercontent.com/rakeshcheekatimala/skilltrustops/main/docs/images/skilltrustops-three-gates.png)](https://github.com/rakeshcheekatimala/skilltrustops/blob/main/docs/images/skilltrustops-three-gates.png)
 
-## Run individual checks
+## Control scan depth
 
 ```bash
-uv run skilltrustops policy validate
-uv run skilltrustops lint examples/valid-skill/SKILL.md
-uv run skilltrustops security examples/valid-skill/SKILL.md
-uv run skilltrustops privacy examples/valid-skill/SKILL.md
+uv run skilltrustops scan . --security --privacy
+uv run skilltrustops scan . --redteam
+uv run skilltrustops scan . --benchmark
+uv run skilltrustops scan . --metrics
 ```
 
-`policy init` creates `skilltrustops.yaml` in the repository root and never
-overwrites an existing file.
-
-[![SkillTrustOps command reference for policy validation, static checks, and red-team testing](https://raw.githubusercontent.com/rakeshcheekatimala/skilltrustops/main/docs/images/skilltrustops-command-reference.png)](https://github.com/rakeshcheekatimala/skilltrustops/blob/main/docs/images/skilltrustops-command-reference.png)
+Security and privacy are enabled by default. `--no-security` and `--no-privacy`
+exist for focused troubleshooting, not for certification. `--benchmark` verifies
+that a replay produces identical evidence. `--metrics` opts into nondeterministic
+wall-clock timings and cannot be combined with the replay check.
 
 ### What the security scan checks
 
-`skilltrustops security` reads the complete adjacent skill package under strict
+The security stage reads the complete adjacent skill package under strict
 file, byte, archive, and symlink limits. It checks text and known manifests for
 credentials, dangerous execution, prompt injection, obfuscation, persistence,
 exfiltration, excessive permissions, lifecycle hooks, unsafe archives, unpinned
@@ -169,6 +149,19 @@ package content. Sensitive matches are redacted from output.
 See [Security scan](docs/security-scan.md) for the complete rule list, execution
 flow, configuration, and scope limits.
 
+## Evidence, explanations, and engineering debt
+
+```bash
+skilltrustops certify .
+skilltrustops explain STO-SEC-103 --report scan.json
+skilltrustops scan . --debt-report engineering-debt.md
+```
+
+`certify` is an evidence matrix, not a blanket badge: unsupported controls are
+shown as `NOT ASSESSED`. `explain` connects a stable rule ID to observed evidence,
+risk, remediation, and primary references. The debt report groups and prioritizes
+the same findings without inventing a score.
+
 ## Agent-to-Skill trust boundary
 
 SkillTrustOps is a pre-trust review gate. It evaluates an untrusted skill before
@@ -177,93 +170,24 @@ proxy.
 
 ### Static review stays local
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor M as Maintainer
-    participant S as Untrusted SKILL.md
-    participant T as SkillTrustOps
-    participant P as Trusted repository policy
-    participant D as Local detectors
-    actor R as Reviewer
-    participant A as Agent runtime
-
-    M->>T: Submit one SKILL.md
-    T->>P: Load and validate policy
-    T->>S: Read bounded UTF-8 text
-    T->>D: Run lint, security, and privacy
-    D-->>T: Return redacted findings
-    T-->>R: Report PASS or FAIL with policy hash
-    alt Review passes
-        R->>A: Allow the reviewed skill
-    else Finding or scanner error
-        R-->>M: Fix the skill and scan again
-    end
-    Note over S,A: Trust boundary: only a reviewed skill should reach the agent
-```
+[![Static review trust boundary sequence](https://raw.githubusercontent.com/rakeshcheekatimala/skilltrustops/main/docs/images/skilltrustops-static-review.png)](https://github.com/rakeshcheekatimala/skilltrustops/blob/main/docs/images/skilltrustops-static-review.png)
 
 ### Red-team testing uses simulated tools
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor R as Security reviewer
-    participant T as SkillTrustOps harness
-    participant M as Selected model provider
-    participant F as In-memory simulated tools
-    participant E as Local evidence
-
-    R->>T: Run an approved behavioral manifest
-    T->>M: Send the skill and a synthetic attack
-    M-->>T: Return a response or proposed tool call
-    T->>F: Execute the proposed call in memory
-    F-->>T: Return a simulated result
-    T->>T: Check authorization, confirmation, and leakage assertions
-    T->>E: Record hashes, transcript, and findings
-    T-->>R: Return passed_scope, blocked, or inconclusive
-    Note over M,F: Live providers receive test context and simulated tools have no real side effects
-```
+[![Red-team testing with simulated tools sequence](https://raw.githubusercontent.com/rakeshcheekatimala/skilltrustops/main/docs/images/skilltrustops-redteam-flow.png)](https://github.com/rakeshcheekatimala/skilltrustops/blob/main/docs/images/skilltrustops-redteam-flow.png)
 
 ## Red-team a skill
 
-Create and review a behavioral test manifest, then run it:
+After creating and reviewing an adjacent behavioral manifest, use the same scan
+workflow:
 
 ```bash
-uv run skilltrustops redteam init path/to/SKILL.md \
-  --provider deterministic
-
-# Review path/to/skilltrust-package.yaml before relying on the result.
-
-uv run skilltrustops redteam run path/to/SKILL.md \
-  --provider reference \
-  --model resistant-demo
+uv run skilltrustops scan path/to/SKILL.md --redteam
 ```
 
-Use the reference provider to learn and validate the workflow without a network
-connection. For a live OpenAI assessment, configure `OPENAI_API_KEY` in an
-uncommitted repository `.env`, generate or review the manifest, and run with
-`--provider openai`.
-
-```bash
-uv run skilltrustops redteam run path/to/SKILL.md \
-  --provider openai \
-  --model <approved-model-id>
-```
-
-For another model vendor or an internal gateway, use the provider-neutral JSON
-adapter. The endpoint returns `content` and `tool_calls`; credentials stay in the
-named environment variable.
-
-```bash
-uv run skilltrustops redteam run path/to/skilltrust-package.yaml \
-  --provider generic-http \
-  --endpoint https://model-gateway.example/evaluate \
-  --model enterprise-model
-```
-
-Red-team testing is opt-in: running `redteam run` turns it on for that
-assessment. There is no `redteam.enabled` policy field. The `redteam` policy
-section configures sandbox behavior.
+This primary workflow uses the offline deterministic reference target. Advanced
+live-provider and sandbox configuration remains in
+[red-team testing](docs/red-team-testing.md).
 
 ## Measured on 605 public skills
 

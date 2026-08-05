@@ -1,0 +1,22 @@
+sequenceDiagram
+    autonumber
+    actor M as Maintainer
+    participant S as Untrusted SKILL.md
+    participant T as SkillTrustOps
+    participant P as Trusted repository policy
+    participant D as Local detectors
+    actor R as Reviewer
+    participant A as Agent runtime
+
+    M->>T: Submit one SKILL.md
+    T->>P: Load and validate policy
+    T->>S: Read bounded UTF-8 text
+    T->>D: Run lint, security, and privacy
+    D-->>T: Return redacted findings
+    T-->>R: Report PASS or FAIL with policy hash
+    alt Review passes
+        R->>A: Allow the reviewed skill
+    else Finding or scanner error
+        R-->>M: Fix the skill and scan again
+    end
+    Note over S,A: Trust boundary: only a reviewed skill should reach the agent

@@ -10,6 +10,8 @@ import urllib.request
 from pathlib import Path
 from typing import Any, Protocol
 
+from pydantic import ValidationError
+
 from skilltrustops.redteam.models import (
     AttackCase,
     AttackFamily,
@@ -18,6 +20,45 @@ from skilltrustops.redteam.models import (
     PackageManifest,
     ToolCall,
 )
+
+
+class ModelProviderError(RuntimeError):
+    """A provider failure with machine-readable recovery metadata."""
+
+    def __init__(
+        self,
+        message: str,
+        *,
+        code: str,
+        retryable: bool,
+        recovery_hint: str,
+        status_code: int | None = None,
+    ) -> None:
+        super().__init__(message)
+        self.code = code
+        self.retryable = retryable
+        self.recovery_hint = recovery_hint
+        self.status_code = status_code
+
+
+class ProviderConfigurationError(ModelProviderError, ValueError):
+    """Provider configuration is missing or unsafe."""
+
+
+class ProviderTimeoutError(ModelProviderError, TimeoutError):
+    """The provider did not respond before the bounded timeout."""
+
+
+class ProviderConnectionError(ModelProviderError):
+    """The provider could not be reached."""
+
+
+class ProviderHTTPError(ModelProviderError):
+    """The provider returned a non-success HTTP response."""
+
+
+class ProviderResponseError(ModelProviderError):
+    """The provider response did not satisfy the response contract."""
 
 
 class ModelTarget(Protocol):
@@ -116,8 +157,11 @@ class OpenAIModelTarget:
         self._choice = ModelChoice(provider="openai", name=model)
         self._api_key = api_key or os.getenv("OPENAI_API_KEY")
         if not self._api_key:
-            raise ValueError(
-                "OPENAI_API_KEY is not configured. Add it to the backend environment."
+            raise ProviderConfigurationError(
+                "OPENAI_API_KEY is not configured.",
+                code="provider_configuration",
+                retryable=False,
+                recovery_hint="Set OPENAI_API_KEY or select the reference provider.",
             )
 
     @property
@@ -187,9 +231,17 @@ class OpenAIModelTarget:
                 data = json.loads(response.read().decode())
         except urllib.error.HTTPError as error:
             detail = error.read().decode(errors="replace")[:500]
-            raise RuntimeError(f"OpenAI API returned {error.code}: {detail}") from error
-        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as error:
-            raise RuntimeError(f"OpenAI API request failed: {error}") from error
+            raise _http_error("OpenAI API", error.code, detail) from error
+        except TimeoutError as error:
+            raise _timeout_error("OpenAI API") from error
+        except urllib.error.URLError as error:
+            if isinstance(error.reason, TimeoutError):
+                raise _timeout_error("OpenAI API") from error
+            raise _connection_error("OpenAI API", error) from error
+        except json.JSONDecodeError as error:
+            raise _response_error(
+                "OpenAI API", "response was not valid JSON"
+            ) from error
 
         content_parts: list[str] = []
         calls: list[ToolCall] = []
@@ -230,7 +282,12 @@ class GenericHTTPModelTarget:
         if not endpoint.startswith("https://") and not endpoint.startswith(
             ("http://127.0.0.1:", "http://localhost:")
         ):
-            raise ValueError("Generic provider endpoint must use HTTPS")
+            raise ProviderConfigurationError(
+                "Generic provider endpoint must use HTTPS.",
+                code="provider_configuration",
+                retryable=False,
+                recovery_hint="Use HTTPS, or localhost HTTP for local development.",
+            )
         self._choice = ModelChoice(provider="generic_http", name=model)
         self._endpoint = endpoint
         self._token = os.getenv(token_env)
@@ -276,12 +333,60 @@ class GenericHTTPModelTarget:
             return ModelResponse.model_validate(data)
         except urllib.error.HTTPError as error:
             detail = error.read().decode(errors="replace")[:500]
-            raise RuntimeError(
-                f"Generic provider returned {error.code}: {detail}"
+            raise _http_error("Generic provider", error.code, detail) from error
+        except TimeoutError as error:
+            raise _timeout_error("Generic provider") from error
+        except urllib.error.URLError as error:
+            if isinstance(error.reason, TimeoutError):
+                raise _timeout_error("Generic provider") from error
+            raise _connection_error("Generic provider", error) from error
+        except (json.JSONDecodeError, ValidationError) as error:
+            raise _response_error(
+                "Generic provider", "response did not match the JSON contract"
             ) from error
-        except (
-            urllib.error.URLError,
-            TimeoutError,
-            json.JSONDecodeError,
-        ) as error:
-            raise RuntimeError(f"Generic provider request failed: {error}") from error
+
+
+def _timeout_error(provider: str) -> ProviderTimeoutError:
+    return ProviderTimeoutError(
+        f"{provider} timed out before returning a result.",
+        code="provider_timeout",
+        retryable=True,
+        recovery_hint="Retry with backoff or use the offline reference provider.",
+    )
+
+
+def _connection_error(
+    provider: str, error: urllib.error.URLError
+) -> ProviderConnectionError:
+    return ProviderConnectionError(
+        f"{provider} could not be reached: {error.reason}",
+        code="provider_connection",
+        retryable=True,
+        recovery_hint=(
+            "Check DNS, TLS, proxy, and network connectivity before retrying."
+        ),
+    )
+
+
+def _http_error(provider: str, status_code: int, detail: str) -> ProviderHTTPError:
+    retryable = status_code == 429 or status_code >= 500
+    return ProviderHTTPError(
+        f"{provider} returned HTTP {status_code}: {detail}",
+        code="provider_http_error",
+        retryable=retryable,
+        recovery_hint=(
+            "Retry with backoff."
+            if retryable
+            else "Correct the request or credentials before retrying."
+        ),
+        status_code=status_code,
+    )
+
+
+def _response_error(provider: str, detail: str) -> ProviderResponseError:
+    return ProviderResponseError(
+        f"{provider} {detail}.",
+        code="provider_invalid_response",
+        retryable=False,
+        recovery_hint="Fix the provider response contract before retrying.",
+    )

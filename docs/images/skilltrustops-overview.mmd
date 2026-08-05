@@ -1,0 +1,11 @@
+flowchart LR
+    A["Skill package"] --> B["Bounded local scan"]
+    B --> C["Structure"]
+    B --> D["Security"]
+    B --> E["Privacy"]
+    C --> F["JSON / SARIF / timings"]
+    D --> F
+    E --> F
+    A --> G["Optional red-team harness"]
+    G --> H["Fake data + simulated tools"]
+    H --> I["passed_scope / blocked / inconclusive"]
