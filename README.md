@@ -2,7 +2,7 @@
 
 Security checks for AI agent skills. Local first. Reproducible by default.
 
-## The 40-second explanation
+## Explanation
 
 An AI skill can contain instructions, scripts, dependencies, links, archives,
 and lifecycle hooks. SkillTrustOps checks that complete package before an agent
