@@ -8,6 +8,12 @@
 <a href="https://pypi.org/project/skilltrustops/"><img alt="PyPI" src="https://img.shields.io/pypi/v/skilltrustops?style=for-the-badge"></a>
 <a href="https://pypi.org/project/skilltrustops/"><img alt="Python" src="https://img.shields.io/pypi/pyversions/skilltrustops?style=for-the-badge"></a>
 <a href="https://github.com/rakeshcheekatimala/skilltrustops/blob/library/LICENSE"><img alt="License: MIT" src="https://img.shields.io/pypi/l/skilltrustops?style=for-the-badge"></a>
+<a href="https://www.bestpractices.dev/projects/13962">
+  <img
+    alt="OpenSSF Best Practices"
+    src="https://img.shields.io/cii/summary/13962?label=OpenSSF%20Best%20Practices&style=for-the-badge"
+  />
+</a>
 
 SkillTrustOps finds unsafe instructions, secrets, personal data, dangerous code,
 and risky package structure before an agent loads a skill. Its core primitive is
