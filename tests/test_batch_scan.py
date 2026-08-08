@@ -167,6 +167,16 @@ def test_batch_refuses_empty_folder(tmp_path: Path) -> None:
         scan(tmp_path)
 
 
+def test_batch_ignores_git_metadata(tmp_path: Path) -> None:
+    write_skill(tmp_path, "real-skill")
+    write_skill(tmp_path / ".git" / "refs" / "heads", "metadata")
+
+    report = scan(tmp_path)
+
+    assert report.summary.discovered == 1
+    assert report.skills[0].skill == "real-skill"
+
+
 def test_batch_uses_explicit_policy_for_all_skills(tmp_path: Path) -> None:
     write_skill(tmp_path, "alpha", "Email test.user@example.com")
     policy = tmp_path / "batch-policy.yaml"

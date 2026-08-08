@@ -28,6 +28,7 @@ from skilltrustops.services.lint import LintService
 from skilltrustops.services.static_scan import StaticScanService
 
 MAX_BATCH_SKILLS = 10_000
+IGNORED_DISCOVERY_DIRECTORIES = frozenset({".git", ".hg", ".svn"})
 
 
 class BatchScanError(ValueError):
@@ -93,7 +94,11 @@ class BatchScanService:
                 (
                     path
                     for path in absolute.rglob("SKILL.md")
-                    if not path.is_symlink() and path.is_file()
+                    if not path.is_symlink()
+                    and path.is_file()
+                    and not IGNORED_DISCOVERY_DIRECTORIES.intersection(
+                        path.relative_to(absolute).parts[:-1]
+                    )
                 ),
                 key=lambda path: path.relative_to(absolute).as_posix(),
             )
