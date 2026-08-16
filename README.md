@@ -1,285 +1,252 @@
 # SkillTrustOps
 
-<a href="https://github.com/rakeshcheekatimala/skilltrustops/actions/workflows/ci.yml"><img alt="Tests, coverage, and audit" src="https://img.shields.io/github/actions/workflow/status/rakeshcheekatimala/skilltrustops/ci.yml?branch=library&amp;label=tests%20%7C%20coverage%20%7C%20audit&amp;style=for-the-badge"></a>
-<a href="https://github.com/rakeshcheekatimala/skilltrustops/actions/workflows/snyk.yml"><img alt="Snyk Security" src="https://img.shields.io/github/actions/workflow/status/rakeshcheekatimala/skilltrustops/snyk.yml?branch=library&amp;label=Snyk%20Security&amp;style=for-the-badge"></a>
-<a href="https://github.com/rakeshcheekatimala/skilltrustops/actions/workflows/codeql.yml"><img alt="CodeQL" src="https://img.shields.io/github/actions/workflow/status/rakeshcheekatimala/skilltrustops/codeql.yml?branch=library&amp;label=CodeQL&amp;style=for-the-badge"></a>
-<a href="https://scorecard.dev/viewer/?uri=github.com/rakeshcheekatimala/skilltrustops"><img alt="OpenSSF Scorecard" src="https://img.shields.io/ossf-scorecard/github.com/rakeshcheekatimala/skilltrustops?style=for-the-badge"></a>
-<a href="https://www.bestpractices.dev/projects/13962"><img alt="OpenSSF Best Practices" src="https://img.shields.io/cii/level/13962?style=for-the-badge"></a>
-<a href="https://pypi.org/project/skilltrustops/"><img alt="PyPI" src="https://img.shields.io/pypi/v/skilltrustops?style=for-the-badge"></a>
-<a href="https://pypi.org/project/skilltrustops/"><img alt="Python" src="https://img.shields.io/pypi/pyversions/skilltrustops?style=for-the-badge"></a>
-<a href="https://github.com/rakeshcheekatimala/skilltrustops/blob/library/LICENSE"><img alt="License: MIT" src="https://img.shields.io/pypi/l/skilltrustops?style=for-the-badge"></a>
-<a href="https://www.bestpractices.dev/projects/13962">
-  <img
-    alt="OpenSSF Best Practices"
-    src="https://img.shields.io/cii/summary/13962?label=OpenSSF%20Best%20Practices&style=for-the-badge"
-  />
-</a>
+[![PyPI](https://img.shields.io/pypi/v/skilltrustops?style=flat-square)](https://pypi.org/project/skilltrustops/)
+[![Python](https://img.shields.io/pypi/pyversions/skilltrustops?style=flat-square)](https://pypi.org/project/skilltrustops/)
+[![CI](https://img.shields.io/github/actions/workflow/status/rakeshcheekatimala/skilltrustops/ci.yml?branch=library&label=CI&style=flat-square)](https://github.com/rakeshcheekatimala/skilltrustops/actions/workflows/ci.yml)
+[![OpenSSF Best Practices](https://img.shields.io/cii/summary/13962?label=OpenSSF%20Best%20Practices&style=flat-square)](https://www.bestpractices.dev/projects/13962)
+[![License: MIT](https://img.shields.io/pypi/l/skilltrustops?style=flat-square)](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/LICENSE)
 
-SkillTrustOps finds unsafe instructions, secrets, personal data, dangerous code,
-and risky package structure before an agent loads a skill. Its core primitive is
-a policy-bound scan report: deterministic findings with stable rule IDs, evidence,
-and exit codes for local review or CI.
+**Review AI agent skills before an agent trusts them.**
 
-## Verified project assurance
+An agent skill is more than a Markdown file. Its package can contain
+instructions, scripts, dependencies, assets, archives and permission
+assumptions. SkillTrustOps treats that package as untrusted input and produces a
+policy-bound report for local review or CI.
 
-Every badge above links to independently inspectable evidence. A green result
-applies to the exact commit, dependency lock, scanner versions, and advisory data
-used by that run; it is not a claim that unknown vulnerabilities cannot exist.
+It does not run the skill. It returns stable rule IDs, redacted evidence, clear
+remediation, and a result that keeps findings separate from scanner errors.
 
-| Signal | What must pass |
-| --- | --- |
-| Tests and coverage | Full unit-test suite across Linux, macOS, Windows and Python 3.11–3.13; branch coverage cannot fall below 80% |
-| Dependency security | PyPA `pip-audit` and Snyk Open Source check the locked runtime dependency graph and fail on detected vulnerabilities |
-| Source security | Bandit and Snyk Code block on findings in the shipped package; CodeQL runs the `security-extended` query suite across the repository and publishes independently reviewable alerts |
-| Package integrity | Wheel and source archive build, pass Twine metadata validation, and install in isolated smoke tests |
-| Supply chain | Runtime resolutions are locked, Actions are commit-pinned, Dependabot is enabled, an SPDX SBOM is generated, and releases use OIDC Trusted Publishing plus build-provenance attestations |
-| Repository practices | OpenSSF Scorecard measures the public repository controls instead of relying on a self-issued score |
+## Install and scan
 
-See [Project assurance](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/project-assurance.md) for exact commands, badge interpretation,
-Snyk setup, evidence locations, and limitations.
-
-## Try it
+SkillTrustOps supports Python 3.11 and newer.
 
 ```bash
 python -m pip install skilltrustops
+
 skilltrustops policy init --profile recommended-v2
 skilltrustops scan .
-# Optional depth, still one workflow:
-skilltrustops scan . --redteam --benchmark
+```
+
+`scan` discovers every `SKILL.md` below the target, inspects each adjacent skill
+package and applies one repository policy. `policy init` creates
+`skilltrustops.yaml` and never overwrites an existing file.
+
+Use JSON for automation or SARIF for code-scanning platforms:
+
+```bash
+skilltrustops scan . --format json > skilltrustops.json
+skilltrustops scan . --format sarif > skilltrustops.sarif
+```
+
+## What it checks
+
+| Area | Coverage |
+| --- | --- |
+| Skill contract | Agent Skills front matter, required fields and supported package shape |
+| Package contents | `SKILL.md`, scripts, references, assets, manifests, dependency files, archive metadata and links |
+| Security | Secrets, dangerous execution, prompt injection, obfuscation, persistence, exfiltration, excessive permissions and lifecycle hooks |
+| Privacy | Configured email, phone, US SSN and payment-card patterns across bounded text files |
+| Cross-file behavior | Missing references and delegation from `SKILL.md` into risky adjacent files |
+| Behavioral testing | Optional attacks for data leakage, authorization, confirmation and simulated tool use |
+
+The default scan runs structure, security and privacy checks. Findings include a
+severity, source location, redacted evidence and a suggested fix. Reports also
+record the tool version, ruleset version, effective policy and policy hash.
+
+See the [security scan reference](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/security-scan.md)
+for the complete rule list and detection limits.
+
+## Designed for a release gate
+
+SkillTrustOps keeps three outcomes separate:
+
+| Exit code | Meaning |
+| ---: | --- |
+| `0` | The requested checks completed with no unsuppressed findings. |
+| `1` | Findings require review. |
+| `2` | Input, policy, provider or scanner failure prevented a trustworthy result. |
+| `3` | Behavioral testing was inconclusive. Treat it as a failure. |
+
+Scanner errors never become passes. Default JSON and SARIF reports omit
+wall-clock timing so the same input and policy produce stable evidence. Add
+`--metrics` when you need timings, or use `--benchmark` to replay the scan and
+verify that the evidence is identical.
+
+```bash
+skilltrustops scan . --benchmark
+skilltrustops scan . --metrics
+```
+
+The two modes are intentionally separate: timing is nondeterministic; trust
+evidence should not be.
+
+## From finding to fix
+
+The CLI supports the rest of the review workflow without introducing a second
+control plane:
+
+```bash
+# Explain one stable rule and include evidence from a report
+skilltrustops explain STO-SEC-103 --report skilltrustops.json
+
+# Produce a prioritized Markdown backlog from the same findings
 skilltrustops scan . --debt-report engineering-debt.md
-# 0 = passed, 1 = findings, 2 = scanner or configuration error
+
+# Show which controls have evidence and which were not assessed
+skilltrustops certify .
 ```
 
-## What it does
+`certify` produces an evidence matrix, not a blanket certificate. Unsupported
+controls stay `NOT ASSESSED`.
 
-| Need | What SkillTrustOps provides |
+For accepted risk, generate a review-required baseline and apply it explicitly:
+
+```bash
+skilltrustops scan . --write-baseline skilltrustops-suppressions.yaml
+skilltrustops scan . --suppressions skilltrustops-suppressions.yaml
+```
+
+Suppressions require a rule ID, path, justification and expiry. Fingerprinted
+entries apply only to the exact finding that was reviewed.
+
+## Test model behavior when static analysis is not enough
+
+Static scanning answers what is present in a package. Behavioral testing asks
+what a selected model attempts when an attack tries to make it reveal data,
+cross an authorization boundary, skip confirmation or misuse a tool.
+
+Add a reviewed `skilltrust-package.yaml` beside each skill, then run the offline
+reference workflow:
+
+```bash
+skilltrustops scan path/to/skills --redteam
+```
+
+The reference target is a deterministic fixture. It validates manifests, attack
+assertions, simulated tools, evidence capture and CI wiring without an API key.
+It does not establish how an unqueried production model will behave.
+
+For a live assessment, use the advanced red-team command with OpenAI or a
+generic HTTPS model provider:
+
+```bash
+skilltrustops redteam run path/to/SKILL.md \
+  --provider openai \
+  --model <approved-model-id>
+```
+
+Live runs send the skill and attack context to the selected provider. Tool calls
+remain in-memory simulations over synthetic data, so the harness cannot perform
+the proposed filesystem, network, communication, destructive or financial
+action.
+
+Every run writes a human-readable report, structured report, event log and
+integrity manifest. Its decision has deliberately narrow semantics:
+
+| Decision | Meaning |
 | --- | --- |
-| Review one or many skills | Recursive discovery, one policy, stable ordering, per-skill timing |
-| Inspect the full package | `SKILL.md`, scripts, references, assets, manifests, dependencies, archives, and symlinks |
-| Find static risk | Structure, secrets, PII, dangerous code, injection, obfuscation, persistence, exfiltration, permissions, lifecycle, and cross-file rules |
-| Use it in CI | Exit-code contract, JSON, SARIF 2.1.0, expiring suppressions, fingerprinted baselines |
-| Test behavior | Synthetic data, simulated tools, deterministic assertions, immutable evidence |
-| Stay offline | Static scanning and reference red-team testing without an API key |
-| Verify claims | Locked corpus, Docker resource limits, raw runs, checksums, calibration metrics |
+| `passed_scope` | Every required assertion passed for the exact package, model, harness, sandbox and attack definitions in the evidence. |
+| `blocked` | At least one deterministic assertion confirmed a security failure. |
+| `inconclusive` | Evidence was missing, uncertain, unapproved, or produced under a non-certifying boundary. |
 
-See [invariants and failure modes](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/invariants-and-failure-modes.md) for what
-the scanner guarantees, and [anti-patterns](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/anti-patterns.md) for unsafe ways
-to integrate it. Production integrations can use the documented
-[structured logging and OpenTelemetry spans](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/observability.md).
+`passed_scope` is evidence for a recorded scope, not a universal safety claim.
+Never convert `inconclusive` into a pass.
 
-[![SkillTrustOps scanning and red-team workflow](https://raw.githubusercontent.com/rakeshcheekatimala/skilltrustops/library/docs/images/skilltrustops-overview.png)](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/images/skilltrustops-overview.png)
+Read [Red-team testing](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/red-team-testing.md)
+for manifest review, live providers, sandbox choices and evidence handling.
 
-## Requirements and installation
+## Python API
 
-SkillTrustOps requires **Python 3.11 or newer**.
-
-```bash
-python -m pip install skilltrustops
-skilltrustops --help
-```
-
-Until the first PyPI release, install a locally built wheel or the Git repository
-instead. The package exposes both the `skilltrustops` CLI and `skilltrustops.scan`
-Python API.
-
-| Capability | Network or OpenAI key required? |
-| --- | --- |
-| Recursive lint, security, and privacy scan | No |
-| Docker benchmark reproduction | No after corpus and container image inputs are available locally |
-| Reference-provider red-team harness validation | No |
-| Deterministic red-team manifest generation | No |
-| Red-team assessment of a live model | Yes; use OpenAI or a generic HTTPS provider |
-
-Offline red-team runs validate the harness, fixtures, attack assertions, evidence
-format, and deterministic reference behavior. They do **not** establish how an
-unqueried production model will behave.
-
-## Catch unsafe skill instructions before an agent follows them
-
-Run the quality gate with one command:
-
-```bash
-uv run skilltrustops scan .
-```
-
-You get a local, deterministic pass or fail for skill structure, exposed
-credentials, dangerous instructions, and personal data. Start with
-[Getting started](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/getting-started.md) for installation alternatives and
-behavioral testing.
-
-## Scan one skill or a folder
-
-Apply one policy to every `SKILL.md` below a folder and emit deterministic
-evidence:
-
-```bash
-uv run skilltrustops scan path/to/skills \
-  --policy skilltrustops.yaml \
-  --format json > skilltrustops-report.json
-```
-
-For code scanning platforms, change the format to SARIF. To create a local Git
-gate, install the supplied pre-commit and pre-push hook. CI must run the same scan
-because local hooks can be bypassed.
-
-```bash
-skilltrustops scan path/to/skills --format sarif > skilltrustops.sarif
-```
-
-See [Git hooks](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/git-hooks.md) and
-[exit codes and rule compatibility](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/exit-codes-and-rules.md).
-
-The same stable report is available from Python:
+The same deterministic batch report is available as a library:
 
 ```python
 from skilltrustops import scan
 
 report = scan("path/to/skills", policy_path="skilltrustops.yaml")
+
 for skill in report.skills:
     print(skill.relative_path, skill.status)
 ```
 
-Folder discovery is recursive, deterministic, and limited to regular,
-non-symlink files named `SKILL.md`. A failed skill produces findings while a
-scanner failure is reported separately as an error; errors are never counted as
-passes.
+Install `skilltrustops[observability]` to emit a `skilltrustops.scan`
+OpenTelemetry span. The library does not configure an exporter or record skill
+contents, findings, credentials or provider payloads in span attributes.
 
-> [!IMPORTANT]
-> Static checks never execute the submitted skill or upload its content.
-> Red-team runs call the model provider you select. All tools used by the
-> red-team harness are in-memory simulations and perform no real side effects.
+## Local by default
 
-## Three gates to trust
+| Operation | Network required | Executes submitted code |
+| --- | --- | --- |
+| Structure, security and privacy scan | No | No |
+| Deterministic manifest generation | No | No |
+| Reference red-team run | No | No |
+| Live-model red-team run | Yes, to the selected provider | No |
 
-SkillTrustOps evaluates a skill in three stages: structure, security and
-privacy, then model behavior under attack.
+Package inspection is bounded to 2,000 regular files and 32 MiB of input, with a
+1 MiB decoded-text limit per file. Archives are inspected as metadata only; they
+are never extracted. Links are reported but never followed. Crossing a bound is
+an error, never a pass.
 
-[![Three SkillTrustOps trust gates: lint, security and privacy, and red-team testing](https://raw.githubusercontent.com/rakeshcheekatimala/skilltrustops/main/docs/images/skilltrustops-three-gates.png)](https://github.com/rakeshcheekatimala/skilltrustops/blob/main/docs/images/skilltrustops-three-gates.png)
+SkillTrustOps is a pre-trust review gate. It is not a runtime proxy, a malware
+sandbox, or a replacement for agent permissions and isolation.
 
-## Control scan depth
+## Measured, not claimed
 
-```bash
-uv run skilltrustops scan . --security --privacy
-uv run skilltrustops scan . --redteam
-uv run skilltrustops scan . --benchmark
-uv run skilltrustops scan . --metrics
-```
+The committed benchmark locks 605 public skills from eight repositories by
+commit and file hash. Whole-package structure, security and privacy scanning
+completed for all 605 with zero scanner errors and no model or network access.
 
-Security and privacy are enabled by default. `--no-security` and `--no-privacy`
-exist for focused troubleshooting, not for certification. `--benchmark` verifies
-that a replay produces identical evidence. `--metrics` opts into nondeterministic
-wall-clock timings and cannot be combined with the replay check.
+On the 1 CPU / 512 MiB profile, the median run took 26.031 seconds (23.242
+skills/s) with 127.3 MB peak memory. These numbers measure compatibility,
+throughput and resource use. The corpus has no adjudicated security labels, so
+it does not establish real-world detection accuracy.
 
-### What the security scan checks
+Read the [benchmark summary](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/benchmarks/market-scan/BENCHMARK-SUMMARY.md)
+or [reproduce the run](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/benchmarks/market-scan/README.md).
 
-The security stage reads the complete adjacent skill package under strict
-file, byte, archive, and symlink limits. It checks text and known manifests for
-credentials, dangerous execution, prompt injection, obfuscation, persistence,
-exfiltration, excessive permissions, lifecycle hooks, unsafe archives, unpinned
-dependencies, and risky cross-file delegation. It never follows links or executes
-package content. Sensitive matches are redacted from output.
+## Project assurance
 
-See [Security scan](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/security-scan.md) for the complete rule list, execution
-flow, configuration, and scope limits.
+The library's own release path is evidence-backed:
 
-## Evidence, explanations, and engineering debt
+- tests run on Linux, macOS and Windows with Python 3.11–3.13, with an 80%
+  branch-coverage floor;
+- Ruff, strict mypy, Bandit, pip-audit, Snyk and CodeQL cover code and locked
+  dependencies;
+- wheel and source distributions are built and installed in isolated smoke
+  tests; and
+- releases use OIDC Trusted Publishing, an SPDX SBOM and build-provenance
+  attestations.
 
-```bash
-skilltrustops certify .
-skilltrustops explain STO-SEC-103 --report scan.json
-skilltrustops scan . --debt-report engineering-debt.md
-```
-
-`certify` is an evidence matrix, not a blanket badge: unsupported controls are
-shown as `NOT ASSESSED`. `explain` connects a stable rule ID to observed evidence,
-risk, remediation, and primary references. The debt report groups and prioritizes
-the same findings without inventing a score.
-
-## Agent-to-Skill trust boundary
-
-SkillTrustOps is a pre-trust review gate. It evaluates an untrusted skill before
-a reviewer allows an agent runtime to load it; it is not an inline production
-proxy.
-
-### Static review stays local
-
-[![Static review trust boundary sequence](https://raw.githubusercontent.com/rakeshcheekatimala/skilltrustops/library/docs/images/skilltrustops-static-review.png)](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/images/skilltrustops-static-review.png)
-
-### Red-team testing uses simulated tools
-
-[![Red-team testing with simulated tools sequence](https://raw.githubusercontent.com/rakeshcheekatimala/skilltrustops/library/docs/images/skilltrustops-redteam-flow.png)](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/images/skilltrustops-redteam-flow.png)
-
-## Red-team a skill
-
-After creating and reviewing an adjacent behavioral manifest, use the same scan
-workflow:
-
-```bash
-uv run skilltrustops scan path/to/SKILL.md --redteam
-```
-
-This primary workflow uses the offline deterministic reference target. Advanced
-live-provider and sandbox configuration remains in
-[red-team testing](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/red-team-testing.md).
-
-## Measured on 605 public skills
-
-The final lean-package benchmark used Python 3.11, seven Docker CPU/memory
-profiles, five complete runs per profile, and no model or API key. Timed
-containers had networking disabled.
-
-| Docker limit | Median for 605 skills | Throughput | Peak memory |
-| --- | ---: | ---: | ---: |
-| 0.25 CPU / 1 GiB | 57.694 s | 10.486 skills/s | 126.3 MB |
-| 1 CPU / 512 MiB | 26.031 s | 23.242 skills/s | 127.3 MB |
-| 1 CPU / 1 GiB | 25.484 s | 23.740 skills/s | 123.7 MB |
-| 2 CPU / 1 GiB | 25.398 s | 23.821 skills/s | 124.4 MB |
-
-All 605 skills completed with zero scanner errors. 137 passed the selected
-policy and 468 produced findings for review. Those counts are not labels of
-safe or malicious content. The public corpus has no adjudicated ground truth.
-
-[Open the benchmark dashboard source](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/benchmarks/market-scan/index.html), read the
-[plain-English summary](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/benchmarks/market-scan/BENCHMARK-SUMMARY.md), or verify
-the compressed raw results and checksums in
-[`results/library-2026-08-05`](https://github.com/rakeshcheekatimala/skilltrustops/tree/library/benchmarks/market-scan/results/library-2026-08-05).
-The 500-case calibration report is a constructed regression result, not an
-independent real-world accuracy claim.
+Each badge applies to a specific commit and workflow run. It does not prove that
+unknown vulnerabilities do not exist. See [Project assurance](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/project-assurance.md)
+for the exact gates, versions and evidence locations.
 
 ## Documentation
 
-| Guide | Use it when you need to… |
+| Guide | Use it for |
 | --- | --- |
-| [Documentation home](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/README.md) | Find the right guide and understand the trust model. |
-| [Getting started](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/getting-started.md) | Install SkillTrustOps and complete a first assessment. |
-| [Policy guide](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/policy-guide.md) | Create, validate, discover, and maintain `skilltrustops.yaml`. |
-| [Policy reference](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/policy-reference.md) | Look up every supported policy field and constraint. |
-| [Security scan](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/security-scan.md) | Understand secret and dangerous-instruction checks, execution flow, and limits. |
-| [Project assurance](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/project-assurance.md) | Verify test, coverage, security, package, and release evidence for this library. |
-| [Red-team testing](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/red-team-testing.md) | Decide when to test, activate it, review manifests, and interpret evidence. |
-| [Security best practices](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/security-best-practices.md) | Operate SkillTrustOps safely in development and CI. |
-| [Troubleshooting](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/troubleshooting.md) | Resolve common policy, provider, sandbox, and exit-code failures. |
-
-## What the decisions mean
-
-| Decision | Meaning |
-| --- | --- |
-| `passed_scope` | Every applicable case passed for the exact approved package, model, harness, sandbox boundary, and attack definitions recorded in evidence. |
-| `blocked` | At least one deterministic assertion confirmed a security failure. |
-| `inconclusive` | Required evidence was missing or uncertain, a draft was unapproved, or the configured isolation boundary was non-certifying. |
-
-`passed_scope` is scoped evidence, not a universal safety guarantee. Never convert
-`inconclusive` into a pass.
+| [Getting started](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/getting-started.md) | First policy, scan and behavioral assessment |
+| [Policy guide](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/policy-guide.md) | Policy discovery, configuration and maintenance |
+| [Security scan](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/security-scan.md) | Rules, package bounds and detection limits |
+| [Invariants and failure modes](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/invariants-and-failure-modes.md) | Guarantees, errors and recovery |
+| [Git hooks](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/git-hooks.md) | Pre-commit and pre-push integration |
+| [Observability](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/observability.md) | Structured logging and OpenTelemetry |
+| [Anti-patterns](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/anti-patterns.md) | Unsafe integration choices to avoid |
+| [Troubleshooting](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/docs/troubleshooting.md) | Common failures and fixes |
 
 ## Development
 
 ```bash
-uv run --extra dev pytest
-uv run --extra dev ruff check .
-uv run --extra dev mypy src
-uv build
+uv sync --locked --extra dev
+uv run pytest --cov=skilltrustops --cov-report=term-missing
+uv run ruff check .
+uv run mypy src
 ```
+
+See [CONTRIBUTING.md](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/CONTRIBUTING.md)
+before opening a pull request. Report security issues through
+[SECURITY.md](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/SECURITY.md),
+not a public issue.
 
 ## License
 
-MIT. See [`LICENSE`](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/LICENSE).
+MIT. See [LICENSE](https://github.com/rakeshcheekatimala/skilltrustops/blob/library/LICENSE).
