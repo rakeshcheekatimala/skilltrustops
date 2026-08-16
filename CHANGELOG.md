@@ -6,6 +6,8 @@ not intentionally break documented contracts.
 
 ## Unreleased
 
+## 0.1.5 - 2026-08-16
+
 ### Added
 
 - Complete-package inventory with bounded file, archive, and symlink handling.
@@ -19,3 +21,5 @@ not intentionally break documented contracts.
 
 - Minimum Python version lowered to 3.11.
 - Behavioral success verdict renamed from `assured` to `passed_scope`.
+- Reworked the README around the product workflow, trust model, CLI, Python API,
+  operating bounds, and measured performance.
